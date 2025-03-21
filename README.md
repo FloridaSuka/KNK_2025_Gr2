@@ -1,6 +1,7 @@
 # KNK2025_gr2
 
 Zhvillimi i Sistemit Interaktiv për Llogaritjen e Statistikave të Notave në Arsimin Parauniversitar 🎓📊
+
 Ky projekt është pjesë e lëndës "Komunikimi Njeri-Kompjuter" dhe ka për qëllim zhvillimin e një Sistemi Interaktiv për menaxhimin dhe analizimin e statistikave të notave në arsimin parauniversitar.
 
 🔹 Teknologjitë e përdorura
