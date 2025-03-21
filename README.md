@@ -11,6 +11,7 @@ Ky projekt është pjesë e lëndës "Komunikimi Njeri-Kompjuter" dhe ka për q�
 ✅ GitHub (privat) për menaxhimin e versioneve të kodit
 
 📌 Karakteristikat kryesore
+
 ✔️ Ndërfaqe interaktive (GUI/UX i përmirësuar)
 ✔️ Meny kryesore me toolbox, shortcut-e dhe status bar
 ✔️ Fushat e inputit me Label, TextField, CheckBox, RadioButton etj.
