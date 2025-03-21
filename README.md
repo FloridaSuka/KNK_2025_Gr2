@@ -5,6 +5,7 @@ Zhvillimi i Sistemit Interaktiv për Llogaritjen e Statistikave të Notave në A
 Ky projekt është pjesë e lëndës "Komunikimi Njeri-Kompjuter" dhe ka për qëllim zhvillimin e një Sistemi Interaktiv për menaxhimin dhe analizimin e statistikave të notave në arsimin parauniversitar.
 
 🔹 Teknologjitë e përdorura
+
 ✅ Java (JavaFX - IntelliJ) për ndërtimin e ndërfaqes grafike (GUI)
 ✅ PostgreSQL për menaxhimin e bazës së të dhënave
 ✅ GitHub (privat) për menaxhimin e versioneve të kodit
