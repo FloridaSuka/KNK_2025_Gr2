@@ -1,4 +1,4 @@
-# KNK2025_gr2
+# KNK_2025_gr2
 
 Zhvillimi i Sistemit Interaktiv për Llogaritjen e Statistikave të Notave në Arsimin Parauniversitar 🎓📊
 
