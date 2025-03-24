@@ -6,19 +6,23 @@ import java.sql.*;
 public class TestDb {
     public static void main(String[] args)  throws SQLException {
         Connection connection = DBConnector.getConnection();
-        String query = " INSERT INTO Users(Id, Emri, Mbiemri, Mosha, Email ) VALUES (101, 'filann','filannii', 25,'fila.n@gmail.com')";
+        if (connection == null) {
+            System.out.println("Lidhja me databazën ka dështuar!");
+            return;
+        }
+        String query = " INSERT INTO users (emri, mbiemri, mosha, email, new_id ) VALUES ('grupi_2','KNK', 25,'gr2test@gmail.com', 100)";
         Statement statement = connection.createStatement();
         statement.execute(query);
-        statement.execute("DELETE FROM users WHERE id = 1");
+//        statement.execute("DELETE FROM users WHERE id = 1");
         query = " SELECT * FROM Users ";
         ResultSet results = statement.executeQuery(query);
         while(results.next()){
-            int id = results.getInt("Id");
-            String name = results.getString("Emri");
-            String surname = results.getString("Mbiemri");
-            int age = results.getInt("Mosha");
-            String email = results.getString("Email");
-            System.out.println("ID: " + id);
+            int new_id = results.getInt("new_id");
+            String name = results.getString("emri");
+            String surname = results.getString("mbiemri");
+            int age = results.getInt("mosha");
+            String email = results.getString("email");
+            System.out.println("ID: " + new_id);
             System.out.println("Name: " + name);
             System.out.println("Mbiemri: " + surname);
             System.out.println("Email: " + email);
@@ -26,6 +30,6 @@ public class TestDb {
             System.out.println("------------------");
         }
         //fshirja e te gjitha rekordeve
-        statement.execute("TRUNCATE TABLE Users RESTART IDENTITY");
+        statement.execute("DELETE FROM users");
     }
 }
