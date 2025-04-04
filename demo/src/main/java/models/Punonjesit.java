@@ -1,4 +1,4 @@
-package models;
+package main.java.models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

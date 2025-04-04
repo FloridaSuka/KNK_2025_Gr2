@@ -1,4 +1,4 @@
-package KNK_2025;
+package main.java.KNK_2025;
 
 import Database.DBConnector;
 import java.sql.*;
@@ -22,7 +22,7 @@ public class TestDb {
             String surname = results.getString("mbiemri");
             int age = results.getInt("mosha");
             String email = results.getString("email");
-            System.out.println("ID: " + new_id);
+            System.out.println("ID: " + id);
             System.out.println("Name: " + name);
             System.out.println("Mbiemri: " + surname);
             System.out.println("Email: " + email);
