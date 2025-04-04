@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/models/dto/Nxenesit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/dto/Nxenesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/models/Nxenesit.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +62,6 @@
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\Aferdita\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="9fd2cf44-9fd7-44a6-af8d-7a2fb0c8e347" reportId="KNK_2025_Gr2/qodana/2025-03-25" />
     </option>
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\flori\OneDrive\Desktopi\DATABAZE\KNK_2025_Gr2\demo\src\main\java\models" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
