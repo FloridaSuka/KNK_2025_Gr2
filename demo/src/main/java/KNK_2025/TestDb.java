@@ -10,14 +10,14 @@ public class TestDb {
             System.out.println("Lidhja me databazën ka dështuar!");
             return;
         }
-        String query = " INSERT INTO users (emri, mbiemri, mosha, email, new_id ) VALUES ('grupi_2','KNK', 25,'gr2test@gmail.com', 100)";
+        String query = " INSERT INTO nxenesit (id,emri, mbiemri, email, mosha,gjinia, adresa, tel) VALUES (1, 'Emri1', 'Mbiemri1', 'email1', 15, 'm', 'adresa1', '1234567890') ";
         Statement statement = connection.createStatement();
         statement.execute(query);
 //        statement.execute("DELETE FROM users WHERE id = 1");
-        query = " SELECT * FROM Users ";
+        query = " SELECT * FROM nxenesit ";
         ResultSet results = statement.executeQuery(query);
         while(results.next()){
-            int new_id = results.getInt("new_id");
+            int id = results.getInt("id");
             String name = results.getString("emri");
             String surname = results.getString("mbiemri");
             int age = results.getInt("mosha");
