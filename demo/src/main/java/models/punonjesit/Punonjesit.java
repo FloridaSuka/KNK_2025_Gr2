@@ -4,59 +4,60 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Punonjesit {
-    private int punonjesit_id;
-    private String punonjesit_emri;
-    private String punonjesit_mbiemri;
-    private String punonjesit_email;
-    private String punonjesit_tel;
+    private int id;
+    private String emri;
+    private String mbiemri;
+    private String email;
+    private String tel;
     private String roli;
-    private String punonjesit_qyteti;
+    private String qyteti;
 
-    private Punonjesit(int punonjesit_id,String punonjesit_emri, String punonjesit_mbiemri,String punonjesit_email,String punonjesit_tel,String roli,String punonjesit_qyteti) {
-      this.punonjesit_id = punonjesit_id;
-      this.punonjesit_emri = punonjesit_emri;
-      this.punonjesit_mbiemri = punonjesit_mbiemri;
-      this.punonjesit_email = punonjesit_email;
-      this.punonjesit_tel = punonjesit_tel;
+    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,String qyteti) {
+      this.id = id;
+      this.emri = emri;
+      this.mbiemri = mbiemri;
+      this.email = email;
+      this.tel = tel;
       this.roli = roli;
-      this.punonjesit_qyteti
+      this.qyteti = qyteti;
+
     }
 
     public static Punonjesit getInstance(ResultSet result) throws SQLException {
-        int punonjesitId = result.getInt("punonjesit_id");
-        String punonjesitEmri= result.getString("punonjesit_emri");
-        String punonjesitMbiemri = result.getString("punonjesit_mbiemri");
-        String punonjesitEmail = result.getString("punonjesit_email");
-        String punonjesitTel = result.getString("punonjesit_tel");
+        int id = result.getInt("id");
+        String emri = result.getString("emri");
+        String mbiemri = result.getString("mbiemri");
+        String email = result.getString("email");
+        String tel = result.getString("tel");
         String roli = result.getString("roli");
-        Strinf punonjesitQyteti = result.getString("punonjesit_qyteti");
+        String qyteti = result.getString("qyteti");
 
 
-        return new Punonjesit(punonjesitId,punonjesitEmri,punonjesitMbiemri,punonjesitEmail,punonjesitTel,roli,punonjesitQyteti);
+        return new Punonjesit(id,emri,mbiemri,email,tel,roli,qyteti);
     }
 
     public int getId() {
-        return punonjesit_id;
+        return id;
     }
 
     public String getEmri() {
-        return punonjesit_emri;
+        return emri;
     }
 
     public String getMbiemri() {
-        return punonjesit_mbiemri;
+        return mbiemri;
     }
     public String getEmail() {
-        return punonjesit_email;
+        return email;
     }
     public String getTel() {
-        return punonjesit_tel;
+        return tel;
     }
     public String getRoli() {
         return roli;
     }
     public String getQyteti() {
-        return punonjesit_qyteti;
+        return qyteti;
     }
 
 
