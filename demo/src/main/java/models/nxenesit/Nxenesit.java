@@ -5,12 +5,12 @@ import java.sql.SQLException;
 
 public class Nxenesit {
     private int id;
-    private String name;
-    private String surname;
+    private String emri;
+    private String mbiemri;
     private String email;
-    private int age;
-    private char  gjinia[];
-    private String adresa[];
+    private int mosha;
+    private boolean gjinia;
+    private String adresa;
     private String phone;
 
     private User(int id, String name, String email, String surname int age, String[] adresa, String phone, char[]  gjinia) {
