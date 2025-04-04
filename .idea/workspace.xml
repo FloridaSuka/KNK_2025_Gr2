@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/Nxenesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/models/nxenesit/Nxenesit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/Punonjesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/models/punonjesit/Punonjesit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/Database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/database/DBConnector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
