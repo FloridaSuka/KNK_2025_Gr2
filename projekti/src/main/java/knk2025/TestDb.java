@@ -9,7 +9,7 @@ public class TestDb {
             System.out.println("Lidhja me databazën ka dështuar!");
             return;
         }
-        String query = " INSERT INTO nxenesit (id,emri, mbiemri, email, mosha,gjinia, adresa, tel) VALUES (1, 'Emri1', 'Mbiemri1', 'email1', 15, 'm', 'adresa1', '1234567890') ";
+        String query = " INSERT INTO nxenesit (id,emri, mbiemri, email, mosha,gjinia, adresa, tel) VALUES (10, 'Emri1', 'Mbiemri1', 'email1', 15, 'm', 'adresa1', '1234567890') ";
         Statement statement = connection.createStatement();
         statement.execute(query);
 //        statement.execute("DELETE FROM users WHERE id = 1");

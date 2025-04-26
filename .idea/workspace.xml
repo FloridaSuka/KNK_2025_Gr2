@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projekti/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/KNK_2025/TestDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/knk2025/TestDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.sync"
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="QodanaCIConfigService">
