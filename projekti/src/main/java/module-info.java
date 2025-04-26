@@ -6,8 +6,8 @@ module com.example.demo {
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
-    opens Database to javafx.fxml;
-    exports Database;
+    opens database to javafx.fxml;
+    exports database;
     opens KNK_2025 to javafx.fxml;
     exports KNK_2025;
 }

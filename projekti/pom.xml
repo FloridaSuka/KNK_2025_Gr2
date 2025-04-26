@@ -11,7 +11,18 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<junit.version>5.10.2</junit.version>  </properties>
+<junit.version>5.10.2</junit.version>
+    <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <java.version>23</java.version>
+      <javafx.version>17.0.6</javafx.version> <!-- e njëjtë me atë që përdor -->
+      <junit.version>5.10.2</junit.version>
+    </properties>
+  </properties>
+
+
+
+
 
   <dependencies>
     <dependency>
