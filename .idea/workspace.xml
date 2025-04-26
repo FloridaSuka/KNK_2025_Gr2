@@ -5,64 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/repository/NxenesitRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/KNK_2025_Gr2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KNK_2025_Gr2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/KNK_2025/TestDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/KNK_2025/TestDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/com/example/demo/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/com/example/demo/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/database/DBConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/models/Nxenesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/models/Nxenesit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/models/Punonjesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/models/Punonjesit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/models/dto/create/CreateNxenesitDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/models/dto/create/CreateNxenesitDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/models/dto/delete/DeleteNxenesitDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/models/dto/delete/DeleteNxenesitDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/models/dto/update/UpdateNxenesitDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/models/dto/update/UpdateNxenesitDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNK_2025_Gr2/demo/src/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/KNK_2025_Gr2/projekti/src/main/resources/com/example/demo/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/KNK_2025/TestDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/KNK_2025/TestDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/com/example/demo/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/Nxenesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Nxenesit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/Punonjesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Punonjesit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/dto/create/CreateNxenesitDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateNxenesitDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/dto/delete/DeleteNxenesitDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/delete/DeleteNxenesitDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/models/dto/update/UpdateNxenesitDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/update/UpdateNxenesitDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/com/example/demo/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/KNK_2025_Gr2/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/target/classes/Database/DBConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/target/classes/KNK_2025/TestDb.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/target/classes/com/example/demo/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/target/classes/com/example/demo/HelloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/target/classes/com/example/demo/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/target/classes/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/KNK_2025/TestDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/knk2025/TestDb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +48,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.HelloApplication.executor": "Run",
     "Application.TestDb.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",

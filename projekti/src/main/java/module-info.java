@@ -1,13 +1,13 @@
 module com.example.demo {
-    requires javafx.controls;
-    requires javafx.fxml;
     requires java.sql;
-
+    requires javafx.fxml;
+    requires javafx.controls;
 
     opens com.example.demo to javafx.fxml;
-    exports com.example.demo;
     opens database to javafx.fxml;
+    opens knk2025 to javafx.fxml;
+
+    exports com.example.demo;
     exports database;
-    opens KNK_2025 to javafx.fxml;
-    exports KNK_2025;
+    exports knk2025;
 }

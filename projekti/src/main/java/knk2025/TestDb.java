@@ -1,6 +1,5 @@
-package main.java.KNK_2025;
-import main.java.database.DBConnector;
-
+package knk2025;
+import database.DBConnector;
 import java.sql.*;
 
 public class TestDb {
