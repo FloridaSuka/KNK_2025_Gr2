@@ -1,5 +1,6 @@
 package main.java.models;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -10,16 +11,16 @@ public class Punonjesit {
     private String email;
     private String tel;
     private String roli;
-    private String qyteti;
+    private String adresa_id;
 
-    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,String qyteti) {
+    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,String adresa_id) {
       this.id = id;
       this.emri = emri;
       this.mbiemri = mbiemri;
       this.email = email;
       this.tel = tel;
       this.roli = roli;
-      this.qyteti = qyteti;
+      this.adresa_id = adresa_id;
 
     }
 
@@ -30,10 +31,10 @@ public class Punonjesit {
         String email = result.getString("email");
         String tel = result.getString("tel");
         String roli = result.getString("roli");
-        String qyteti = result.getString("qyteti");
+        String adresa_id = result.getString("adresa_id");
 
 
-        return new Punonjesit(id,emri,mbiemri,email,tel,roli,qyteti);
+        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresa_id);
     }
 
     public int getId() {
@@ -56,8 +57,8 @@ public class Punonjesit {
     public String getRoli() {
         return roli;
     }
-    public String getQyteti() {
-        return qyteti;
+    public String getAdresaId() {
+        return adresa_id;
     }
 
 
