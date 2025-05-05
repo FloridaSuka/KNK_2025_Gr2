@@ -37,20 +37,33 @@ public class PeriodaController implements Initializable {
 
     @FXML
     private void shtoPerioda() {
+<<<<<<< Updated upstream
         var dto = new CreatePerioda(
                 txtEmri.getText(),
                 txtFillimi.getText(),
                 txtMbarimi.getText()
         );
+=======
+        try {
+            var dto = new CreatePeriodaDTO(
+                    txtEmri.getText(),
+                    txtFillimi.getText(),
+                    txtMbarimi.getText()
+            );
+>>>>>>> Stashed changes
 
-        int id = periodat.size() + 1;
-        Perioda p = new Perioda(id, dto.getEmri(), dto.getDataFillimit(), dto.getDataMbarimit());
-        periodat.add(p);
-        pastroFushat();
+            int id = periodat.size() + 1;
+            Perioda p = Perioda.of(id, dto.getEmri(), dto.getDataFillimit(), dto.getDataMbarimit());
+            periodat.add(p);
+            pastroFushat();
+        } catch (Exception e) {
+            showAlert("Gabim", "Nuk u shtua periudha: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     private void perditesoPerioda() {
+<<<<<<< Updated upstream
         int id = Integer.parseInt(txtId.getText());
         var dto = new UpdatePerioda(
                 id,
@@ -58,24 +71,50 @@ public class PeriodaController implements Initializable {
                 txtFillimi.getText(),
                 txtMbarimi.getText()
         );
+=======
+        try {
+            int id = Integer.parseInt(txtId.getText());
+            var dto = new UpdatePeriodaDTO(
+                    id,
+                    txtEmri.getText(),
+                    txtFillimi.getText(),
+                    txtMbarimi.getText()
+            );
+>>>>>>> Stashed changes
 
-        for (int i = 0; i < periodat.size(); i++) {
-            if (periodat.get(i).getIdPerioda() == id) {
-                periodat.set(i, new Perioda(dto.getIdPerioda(), dto.getEmri(), dto.getDataFillimit(), dto.getDataMbarimit()));
-                break;
+            for (int i = 0; i < periodat.size(); i++) {
+                if (periodat.get(i).getIdPerioda() == dto.getIdPerioda()) {
+                    Perioda eRe = Perioda.of(dto.getIdPerioda(), dto.getEmri(), dto.getDataFillimit(), dto.getDataMbarimit());
+                    periodat.set(i, eRe);
+                    break;
+                }
             }
+            pastroFushat();
+        } catch (Exception e) {
+            showAlert("Gabim", "Nuk u përditësua periudha: " + e.getMessage(), Alert.AlertType.ERROR);
         }
-        pastroFushat();
     }
 
     @FXML
     private void fshijPerioda() {
-        int id = Integer.parseInt(txtId.getText());
-        periodat.removeIf(p -> p.getIdPerioda() == id);
-        pastroFushat();
+        try {
+            int id = Integer.parseInt(txtId.getText());
+            periodat.removeIf(p -> p.getIdPerioda() == id);
+            pastroFushat();
+        } catch (Exception e) {
+            showAlert("Gabim", "Nuk u fshi periudha: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     private void pastroFushat() {
         txtId.clear(); txtEmri.clear(); txtFillimi.clear(); txtMbarimi.clear();
+    }
+
+    private void showAlert(String title, String msg, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
