@@ -1,4 +1,5 @@
-package models;
+package main.java.models;
+import models.Adresa;
 
 
 import java.sql.ResultSet;
@@ -13,7 +14,7 @@ public class Punonjesit {
     private String roli;
     private Adresa adresa_id;
 
-    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,String adresa_id) {
+    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,Adresa adresa_id) {
       this.id = id;
       this.emri = emri;
       this.mbiemri = mbiemri;
@@ -31,10 +32,11 @@ public class Punonjesit {
         String email = result.getString("email");
         String tel = result.getString("tel");
         String roli = result.getString("roli");
-        String adresa_id = result.getString("adresa_id");
+        int adresaId = result.getInt("adresa_id");
+        Adresa adresa = Adresa.getInstance(result);
 
 
-        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresa_id);
+        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresa);
     }
 
     public int getId() {
@@ -57,7 +59,7 @@ public class Punonjesit {
     public String getRoli() {
         return roli;
     }
-    public String getAdresaId() {
+    public Adresa getAdresaId() {
         return adresa_id;
     }
 
