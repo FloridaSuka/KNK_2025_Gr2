@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Mungesa;
-import models.dto.create.CreateMungesaDTO;
-import models.dto.update.UpdateMungesaDTO;
+import models.dto.create.CreateMungesa;
+import models.dto.update.UpdateMungesa;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +41,7 @@ public class MungesaController implements Initializable {
     @FXML
     private void shtoMungese() {
         try {
-            var dto = new CreateMungesaDTO(
+            var dto = new CreateMungesa(
                     txtStudent.getText(),
                     Integer.parseInt(txtLenda.getText()),
                     Integer.parseInt(txtPerioda.getText()),
@@ -61,7 +61,7 @@ public class MungesaController implements Initializable {
     private void perditesoMungese() {
         try {
             int id = Integer.parseInt(txtId.getText());
-            var dto = new UpdateMungesaDTO(
+            var dto = new UpdateMungesa(
                     id,
                     txtStudent.getText(),
                     Integer.parseInt(txtLenda.getText()),
