@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Adresa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Drejtimi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Mesimi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Nxenesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Nxenesit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Punonjesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Punonjesit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" afterDir="false" />
     </list>
@@ -128,7 +124,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742762610341</updated>
-      <workItem from="1746454717263" duration="943000" />
+      <workItem from="1746454717263" duration="1409000" />
     </task>
     <servers />
   </component>

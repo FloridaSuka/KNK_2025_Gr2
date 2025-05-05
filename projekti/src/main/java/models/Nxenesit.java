@@ -1,5 +1,7 @@
 package main.java.models;
 
+import models.Adresa;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -12,7 +14,7 @@ public class Nxenesit {
     private boolean gjinia;
     private String email;
     private String phone;
-    private String adresa;
+    private Adresa adresa;
 
 
     public Nxenesit(int id, String emri, String mbiemri, Date datelindja, boolean gjinia, String email, String phone, String adresa) {

@@ -11,7 +11,7 @@ public class Punonjesit {
     private String email;
     private String tel;
     private String roli;
-    private String adresa_id;
+    private Adresa adresa_id;
 
     private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,String adresa_id) {
       this.id = id;

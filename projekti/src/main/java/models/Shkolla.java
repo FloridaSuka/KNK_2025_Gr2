@@ -8,7 +8,7 @@ public class Shkolla {
     private int id;
     private String emri;
     private String tel;
-    private String adresa_id;
+    private Adresa adresa_id;
 
     private Shkolla(int id,String emri,String tel,String adresa_id) {
         this.id = id;
