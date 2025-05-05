@@ -1,4 +1,4 @@
-package main.java.models;
+package models;
 
 import java.sql.ResultSet;
 import java.sql.ResultSet;
