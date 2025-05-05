@@ -6,17 +6,11 @@ public class Perioda {
     private String dataFillimit;
     private String dataMbarimit;
 
-    // Konstruktor privat – kontrollon krijimin nga jashtë
-    private Perioda(int id, String emri, String dataFillimit, String dataMbarimit) {
-        this.id = id;
+    public Perioda(int Perioda, String emri, String dataFillimit, String dataMbarimit) {
+        this.id = Perioda;
         this.emri = emri;
         this.dataFillimit = dataFillimit;
         this.dataMbarimit = dataMbarimit;
-    }
-
-    // Factory method për të krijuar objekte
-    public static Perioda of(int id, String emri, String dataFillimit, String dataMbarimit) {
-        return new Perioda(id, emri, dataFillimit, dataMbarimit);
     }
 
     public int getIdPerioda() {
