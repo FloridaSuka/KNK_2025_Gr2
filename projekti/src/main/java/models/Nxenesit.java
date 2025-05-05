@@ -1,7 +1,6 @@
-package main.java.models;
+package models;
 
 import models.Adresa;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -14,10 +13,10 @@ public class Nxenesit {
     private boolean gjinia;
     private String email;
     private String phone;
-    private Adresa adresa;
+    private String adresa;
 
 
-    public Nxenesit(int id, String emri, String mbiemri, Date datelindja, boolean gjinia, String email, String phone, String adresa) {
+    private Nxenesit(int id, String emri, String mbiemri, Date datelindja, boolean gjinia, String email, String phone, String adresa) {
         this.id = id;
         this.emri = emri;
         this.mbiemri = mbiemri;
