@@ -9,7 +9,7 @@ public class Drejtimi {
     private int shkollaId;
     private int paraleljaId;
 
-    private Drejtimi(int id, String emri, int shkollaId, int paraleljaId) {
+  public Drejtimi(int id, String emri, int shkollaId, int paraleljaId) {
         this.id = id;
         this.emri = emri;
         this.shkollaId = shkollaId;
