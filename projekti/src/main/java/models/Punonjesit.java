@@ -12,16 +12,20 @@ public class Punonjesit {
     private String email;
     private String tel;
     private String roli;
-    private Adresa adresa_id;
+    private int adresaId;
 
+<<<<<<< Updated upstream
     private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,Adresa adresa_id) {
+=======
+    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,int adresaId) {
+>>>>>>> Stashed changes
       this.id = id;
       this.emri = emri;
       this.mbiemri = mbiemri;
       this.email = email;
       this.tel = tel;
       this.roli = roli;
-      this.adresa_id = adresa_id;
+      this.adresaId = adresaId;
 
     }
 
@@ -32,11 +36,18 @@ public class Punonjesit {
         String email = result.getString("email");
         String tel = result.getString("tel");
         String roli = result.getString("roli");
+<<<<<<< Updated upstream
         int adresaId = result.getInt("adresa_id");
         Adresa adresa = Adresa.getInstance(result);
 
 
         return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresa);
+=======
+        int adresaId = result.getInt("adresaId");
+
+
+        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresaId);
+>>>>>>> Stashed changes
     }
 
     public int getId() {
@@ -59,8 +70,13 @@ public class Punonjesit {
     public String getRoli() {
         return roli;
     }
+<<<<<<< Updated upstream
     public Adresa getAdresaId() {
         return adresa_id;
+=======
+    public int getAdresaId() {
+        return adresaId;
+>>>>>>> Stashed changes
     }
 
 
