@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateMesimiDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/delete/DeleteMesimiDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/update/UpdateMesimiDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projekti/src/main/resources/com/example/demo/adresa.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742762610341</updated>
-      <workItem from="1746454717263" duration="5920000" />
+      <workItem from="1746454717263" duration="6236000" />
     </task>
     <servers />
   </component>

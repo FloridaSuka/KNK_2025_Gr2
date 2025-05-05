@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.MesimiController" spacing="10" alignment="CENTER">
+
+
+    <TableView fx:id="tableMësimet" prefWidth="700">
+        <columns>
+            <TableColumn fx:id="colLendaId" text="Lenda ID" />
+            <TableColumn fx:id="colProfesoriId" text="Profesori ID" />
+            <TableColumn fx:id="colKlasaId" text="Klasa ID" />
+            <TableColumn fx:id="colDrejtimiId" text="Drejtimi ID" />
+        </columns>
+    </TableView>
+</VBox>
