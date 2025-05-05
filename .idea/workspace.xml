@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Administratori.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Klasa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Nxenesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Nxenesit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Punonjesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Punonjesit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +37,12 @@
     &quot;assignee&quot;: &quot;florjete&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/FloridaSuka/KNK_2025_Gr2.git&quot;,
-    &quot;accountId&quot;: &quot;abfe2bd2-c788-439a-92fa-7fcff2c9a1a7&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/FloridaSuka/KNK_2025_Gr2.git",
+    "accountId": "f3bcfded-a1a7-4c46-b5c1-704890a57d13"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/demo/src/main/java/KNK_2025/TestDb.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -75,9 +84,12 @@
     <option name="ciType" value="GITHUB" />
     <option name="path" value="$PROJECT_DIR$/.github/workflows/qodana_code_quality.yml" />
   </component>
+<<<<<<< Updated upstream
   <component name="QodanaIsSelectedPersistenceService">
     <option name="selectedOrLoading" value="true" />
   </component>
+=======
+>>>>>>> Stashed changes
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription path="C:\Users\DELL\OneDrive\Desktop\New folder\KNK_2025_Gr2\qodana.sarif.json" reportGuid="d48ec56f-c926-4b9d-9506-d7a882790963" reportId="KNK_2025_Gr2/qodana/2025-04-04" />

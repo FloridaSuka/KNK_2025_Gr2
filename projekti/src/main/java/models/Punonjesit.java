@@ -1,7 +1,6 @@
-package main.java.models;
+package models;
+
 import models.Adresa;
-
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,11 +13,7 @@ public class Punonjesit {
     private String roli;
     private int adresaId;
 
-<<<<<<< Updated upstream
-    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,Adresa adresa_id) {
-=======
     private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,int adresaId) {
->>>>>>> Stashed changes
       this.id = id;
       this.emri = emri;
       this.mbiemri = mbiemri;
@@ -36,18 +31,9 @@ public class Punonjesit {
         String email = result.getString("email");
         String tel = result.getString("tel");
         String roli = result.getString("roli");
-<<<<<<< Updated upstream
-        int adresaId = result.getInt("adresa_id");
-        Adresa adresa = Adresa.getInstance(result);
-
-
-        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresa);
-=======
         int adresaId = result.getInt("adresaId");
 
-
         return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresaId);
->>>>>>> Stashed changes
     }
 
     public int getId() {
@@ -61,23 +47,20 @@ public class Punonjesit {
     public String getMbiemri() {
         return mbiemri;
     }
+
     public String getEmail() {
         return email;
     }
+
     public String getTel() {
         return tel;
     }
+
     public String getRoli() {
         return roli;
     }
-<<<<<<< Updated upstream
-    public Adresa getAdresaId() {
-        return adresa_id;
-=======
+
     public int getAdresaId() {
         return adresaId;
->>>>>>> Stashed changes
     }
-
-
 }

@@ -1,57 +1,89 @@
-package main.java.models.dto.create;
+package models.dto.create;
 import java.util.Date;
 
 public class CreateNxenesitDto {
-    private int id;
+    private int ID;
     private String emri;
     private String mbiemri;
     private Date datelindja;
-    private boolean gjinia;
+    private char gjinia;
     private String email;
     private String phone;
-    private String adresa;
+    private int adresaID;
 
-    public CreateNxenesitDto(int id, String emri, String mbiemri, Date datelindja,
-                             boolean gjinia, String email, String phone, String adresa) {
-        this.id = id;
+    public CreateNxenesitDto(int ID, String emri, String mbiemri, Date datelindja,
+                             char gjinia, String email, String phone, int adresaID) {
+        this.ID = ID;
         this.emri = emri;
         this.mbiemri = mbiemri;
         this.datelindja = datelindja;
         this.gjinia = gjinia;
         this.email = email;
         this.phone = phone;
-        this.adresa = adresa;
+        this.adresaID = adresaID;
     }
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return this.ID;
+    }
+
+    public void setID(int ID){
+        this.ID=ID;
     }
 
     public String getEmri() {
-        return emri;
+        return this.emri;
+    }
+
+    public void setEmri(String emri){
+        this.emri=emri;
     }
 
     public String getMbiemri() {
-        return mbiemri;
+        return this.mbiemri;
+    }
+
+    public void setMbiemri(String mbiemri){
+        this.mbiemri=mbiemri;
     }
 
     public Date getDatelindja() {
-        return datelindja;
+        return this.datelindja;
     }
 
-    public boolean isGjinia() {
-        return gjinia;
+    public void setDatelindja(Date datelindja){
+        this.datelindja=datelindja;
+    }
+
+    public char getGjinia() {
+        return this.gjinia;
+    }
+
+    public void setGjinia(char gjinia){
+        this.gjinia=gjinia;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
+    }
+
+    public void setEmail(String email){
+        this.email=email;
     }
 
     public String getPhone() {
-        return phone;
+        return this.phone;
     }
 
-    public String getAdresa() {
-        return adresa;
+    public void setPhone(String phone){
+        this.phone=phone;
+    }
+
+    public int getAdresa() {
+        return this.adresaID;
+    }
+
+    public void setAdresa(int adresaID){
+        this.adresaID=adresaID;
     }
 }
