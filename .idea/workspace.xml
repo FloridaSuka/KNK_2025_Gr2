@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="449ed0e3-2d23-434a-b135-f4869f527b5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Nxenesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Nxenesit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Punonjesit.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Punonjesit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Shkolla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742762610341</updated>
-      <workItem from="1746454717263" duration="1409000" />
+      <workItem from="1746454717263" duration="2738000" />
     </task>
     <servers />
   </component>

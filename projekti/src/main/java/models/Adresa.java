@@ -9,7 +9,7 @@ public class Adresa {
     private String rruga;
     private String kodiPostar;
 
-    private Adresa(int id, String qyteti, String rruga, String kodiPostar) {
+   public Adresa(int id, String qyteti, String rruga, String kodiPostar) {
         this.id = id;
         this.qyteti = qyteti;
         this.rruga = rruga;
