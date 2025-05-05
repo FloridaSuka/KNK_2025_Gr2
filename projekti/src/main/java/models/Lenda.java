@@ -1,15 +1,16 @@
 package models;
 
 public class Lenda {
-    private int id;     // nga jashtë
-    private String emri;     // e kësaj klase
-    private int idMesimi;    // nga tabela Mesimi (Diella)
-    private int idDrejtimi;  // nga tabela Drejtimi (Diella)
-    private int idPerioda;   // nga tabela Perioda (Gresa)
-    private int idMesuesi;   // nga tabela User ose Punonjesit
+    private int id;
+    private String emri;
+    private int idMesimi;
+    private int idDrejtimi;
+    private int idPerioda;
+    private int idMesuesi;
 
-    public Lenda(int idLenda, String emri, int idMesimi, int idDrejtimi, int idPerioda, int idMesuesi) {
-        this.id = id;
+    // Konstruktor privat
+    private Lenda(int idLenda, String emri, int idMesimi, int idDrejtimi, int idPerioda, int idMesuesi) {
+        this.id = idLenda;
         this.emri = emri;
         this.idMesimi = idMesimi;
         this.idDrejtimi = idDrejtimi;
@@ -17,6 +18,12 @@ public class Lenda {
         this.idMesuesi = idMesuesi;
     }
 
+    // Metodë statike për krijim të kontrolluar
+    public static Lenda of(int idLenda, String emri, int idMesimi, int idDrejtimi, int idPerioda, int idMesuesi) {
+        return new Lenda(idLenda, emri, idMesimi, idDrejtimi, idPerioda, idMesuesi);
+    }
+
+    // Getters & Setters
     public int getIdLenda() {
         return id;
     }
@@ -65,15 +72,32 @@ public class Lenda {
         this.idMesuesi = idMesuesi;
     }
 
+    // Format për model logjik (KNK - ERD)
+    public void printERDFormat() {
+        System.out.println("Tabela: Lenda");
+        System.out.println("PK → idLenda: " + id);
+        System.out.println("emri: " + emri);
+        System.out.println("FK → idMesimi (Mesimi): " + idMesimi);
+        System.out.println("FK → idDrejtimi (Drejtimi): " + idDrejtimi);
+        System.out.println("FK → idPerioda (Perioda): " + idPerioda);
+        System.out.println("FK → idMesuesi (Punonjesit): " + idMesuesi);
+    }
+
+    // Format për model fizik (SQL)
+    public String toInsertSQL() {
+        return "INSERT INTO Lenda (id, emri, mesimi_id, drejtimi_id, perioda_id, mesuesi_id) VALUES (" +
+                id + ", '" + emri + "', " + idMesimi + ", " + idDrejtimi + ", " + idPerioda + ", " + idMesuesi + ");";
+    }
+
+    // Format për kontroll të normalizimit (relacione)
+    public String toNormalizedRecord() {
+        return "[Lenda: id=" + id + ", emri=" + emri + "] → " +
+                "(Mesimi#" + idMesimi + ", Drejtimi#" + idDrejtimi + ", Perioda#" + idPerioda + ", Mesuesi#" + idMesuesi + ")";
+    }
+
+    // Zëvendëson toString() default
     @Override
     public String toString() {
-        return "Lenda{" +
-                "idLenda=" + id +
-                ", emri='" + emri + '\'' +
-                ", idMesimi=" + idMesimi +
-                ", idDrejtimi=" + idDrejtimi +
-                ", idPerioda=" + idPerioda +
-                ", idMesuesi=" + idMesuesi +
-                '}';
+        return toNormalizedRecord(); // Mund ta ndrosh në printERDFormat() ose toInsertSQL() nëse preferon
     }
 }
