@@ -1,4 +1,54 @@
 package models;
 
+import java.time.LocalDateTime;
+
 public class RelacioniNotaMesuesi {
+
+    // ====== FUSHAT ======
+    private int id;
+    private int notaId;
+    private int mesuesId;
+
+    private LocalDateTime dataVendosjes;
+    private String koment;
+
+    // ====== KONSTRUKTORË ======
+
+    public RelacioniNotaMesuesi(int id, int notaId, int mesuesId, LocalDateTime dataVendosjes, String koment) {
+
+        this.id             = id;
+        this.notaId         = notaId;
+        this.mesuesId       = mesuesId;
+        this.dataVendosjes  = dataVendosjes;
+        this.koment         = koment;
+    }
+
+    public RelacioniNotaMesuesi(int notaId, int mesuesId, String koment) {
+        this(0, notaId, mesuesId, LocalDateTime.now(), koment);
+    }
+
+    // ====== GETTERS ======
+    public int getId()                     { return id; }
+    public int getNotaId()                 { return notaId; }
+    public int getMesuesId()               { return mesuesId; }
+    public LocalDateTime getDataVendosjes(){ return dataVendosjes; }
+    public String getKoment()              { return koment; }
+
+    // ====== SETTERS ======
+    public void setNotaId(int notaId)                   { this.notaId = notaId; }
+    public void setMesuesId(int mesuesId)               { this.mesuesId = mesuesId; }
+    public void setKoment(String koment)                { this.koment = koment; }
+    public void setDataVendosjes(LocalDateTime data)    { this.dataVendosjes = data; }
+
+
+    @Override
+    public String toString() {
+        return "RelacioniNotaMesuesi{" +
+                "id=" + id +
+                ", notaId=" + notaId +
+                ", mesuesId=" + mesuesId +
+                ", dataVendosjes=" + dataVendosjes +
+                ", koment='" + koment + '\'' +
+                '}';
+    }
 }
