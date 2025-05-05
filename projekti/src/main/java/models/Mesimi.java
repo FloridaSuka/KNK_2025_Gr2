@@ -9,7 +9,7 @@ public class Mesimi {
     private int klasaId;
     private int drejtimiId;
 
-    private Mesimi(int lendaId, int profesoriId, int klasaId, int drejtimiId) {
+   public Mesimi(int lendaId, int profesoriId, int klasaId, int drejtimiId) {
         this.lendaId = lendaId;
         this.profesoriId = profesoriId;
         this.klasaId = klasaId;
