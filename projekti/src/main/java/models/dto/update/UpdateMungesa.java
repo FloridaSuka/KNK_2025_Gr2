@@ -1,6 +1,6 @@
 package models.dto.update;
 
-public class UpdateMungesaDTO {
+public class UpdateMungesa {
     private int id;
     private String student;
     private int lendaId;
@@ -8,7 +8,7 @@ public class UpdateMungesaDTO {
     private String dataMungeses;
     private String arsyeja;
 
-    public UpdateMungesaDTO(int id, String student, int lendaId, int periodaId, String dataMungeses, String arsyeja) {
+    public UpdateMungesa(int id, String student, int lendaId, int periodaId, String dataMungeses, String arsyeja) {
         this.id = id;
         this.student = student;
         this.lendaId = lendaId;

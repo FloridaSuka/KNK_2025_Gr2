@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Perioda;
-import models.dto.create.CreatePeriodaDTO;
-import models.dto.update.UpdatePeriodaDTO;
+import models.dto.create.CreatePerioda;
+import models.dto.update.UpdatePerioda;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +37,7 @@ public class PeriodaController implements Initializable {
 
     @FXML
     private void shtoPerioda() {
-        var dto = new CreatePeriodaDTO(
+        var dto = new CreatePerioda(
                 txtEmri.getText(),
                 txtFillimi.getText(),
                 txtMbarimi.getText()
@@ -52,7 +52,7 @@ public class PeriodaController implements Initializable {
     @FXML
     private void perditesoPerioda() {
         int id = Integer.parseInt(txtId.getText());
-        var dto = new UpdatePeriodaDTO(
+        var dto = new UpdatePerioda(
                 id,
                 txtEmri.getText(),
                 txtFillimi.getText(),

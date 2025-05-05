@@ -1,10 +1,9 @@
 package models.dto.delete;
 
-
-public class DeleteAdresaDTO {
+public class DeleteDrejtimi {
     private int id;
 
-    public DeleteAdresaDTO(int id) {
+    public DeleteDrejtimi(int id) {
         this.id = id;
     }
 

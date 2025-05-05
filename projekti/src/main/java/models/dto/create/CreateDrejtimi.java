@@ -1,20 +1,14 @@
-package models.dto.update;
+package models.dto.create;
 
-public class UpdateDrejtimiDTO {
-    private int id;
+public class CreateDrejtimi {
     private String emri;
     private int shkollaId;
     private int paraleljaId;
 
-    public UpdateDrejtimiDTO(int id, String emri, int shkollaId, int paraleljaId) {
-        this.id = id;
+    public CreateDrejtimi(String emri, int shkollaId, int paraleljaId) {
         this.emri = emri;
         this.shkollaId = shkollaId;
         this.paraleljaId = paraleljaId;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getEmri() {
@@ -29,4 +23,3 @@ public class UpdateDrejtimiDTO {
         return paraleljaId;
     }
 }
-

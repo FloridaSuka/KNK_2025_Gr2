@@ -1,12 +1,12 @@
 package models.dto.update;
 
-public class UpdateAdresaDTO {
+public class UpdateAdresa {
     private int id;
     private String qyteti;
     private String rruga;
     private String kodiPostar;
 
-    public UpdateAdresaDTO(int id, String qyteti, String rruga, String kodiPostar) {
+    public UpdateAdresa(int id, String qyteti, String rruga, String kodiPostar) {
         this.id = id;
         this.qyteti = qyteti;
         this.rruga = rruga;

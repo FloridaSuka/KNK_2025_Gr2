@@ -1,12 +1,12 @@
 package models.dto.update;
 
-public class UpdateMesimiDTO {
+public class UpdateMesimi {
     private int lendaId;
     private int profesoriId;
     private int klasaId;
     private int drejtimiId;
 
-    public UpdateMesimiDTO(int lendaId, int profesoriId, int klasaId, int drejtimiId) {
+    public UpdateMesimi(int lendaId, int profesoriId, int klasaId, int drejtimiId) {
         this.lendaId = lendaId;
         this.profesoriId = profesoriId;
         this.klasaId = klasaId;

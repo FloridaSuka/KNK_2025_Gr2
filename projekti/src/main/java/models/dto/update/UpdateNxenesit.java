@@ -1,7 +1,7 @@
 package main.java.models.dto.update;
 import java.sql.Date;
 
-public class UpdateNxenesitDto {
+public class UpdateNxenesit {
     private int id;
     private String emri;
     private String mbiemri;
@@ -11,8 +11,8 @@ public class UpdateNxenesitDto {
     private String phone;
     private String adresa;
 
-    public UpdateNxenesitDto(int id, String emri, String mbiemri, Date datelindja,
-                             boolean gjinia, String email, String phone, String adresa) {
+    public UpdateNxenesit(int id, String emri, String mbiemri, Date datelindja,
+                          boolean gjinia, String email, String phone, String adresa) {
         this.id = id;
         this.emri = emri;
         this.mbiemri = mbiemri;

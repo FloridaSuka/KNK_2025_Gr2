@@ -1,9 +1,9 @@
 package models.dto.delete;
 
-public class DeleteMesimiDTO {
+public class DeleteMesimi {
     private int lendaId;
 
-    public DeleteMesimiDTO(int lendaId) {
+    public DeleteMesimi(int lendaId) {
         this.lendaId = lendaId;
     }
 

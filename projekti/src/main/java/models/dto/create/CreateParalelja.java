@@ -1,11 +1,11 @@
-package main.java.models.dto.delete;
+package main.java.models.dto.create;
 
-public class DeleteParaleljaDto {
+public class CreateParalelja {
     private int id;
     private String emri;
 
 
-    public  DeleteParaleljaDto(int id, String emri) {
+    public CreateParalelja(int id, String emri) {
         this.id = id;
         this.emri = emri;
 

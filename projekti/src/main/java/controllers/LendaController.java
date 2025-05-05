@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Lenda;
-import models.dto.create.CreateLendaDTO;
-import models.dto.update.UpdateLendaDTO;
+import models.dto.create.CreateLenda;
+import models.dto.update.UpdateLenda;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +41,7 @@ public class LendaController implements Initializable {
 
     @FXML
     private void shtoLende() {
-        var dto = new CreateLendaDTO(
+        var dto = new CreateLenda(
                 txtEmri.getText(),
                 Integer.parseInt(txtMesimi.getText()),
                 Integer.parseInt(txtDrejtimi.getText()),
@@ -58,7 +58,7 @@ public class LendaController implements Initializable {
     @FXML
     private void perditesoLende() {
         int id = Integer.parseInt(txtId.getText());
-        var dto = new UpdateLendaDTO(
+        var dto = new UpdateLenda(
                 id,
                 txtEmri.getText(),
                 Integer.parseInt(txtMesimi.getText()),

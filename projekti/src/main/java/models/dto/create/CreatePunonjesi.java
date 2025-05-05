@@ -2,7 +2,7 @@ package models.dto.create;
 import models.Adresa;
 
 
-public class CreatePunonjesiDto {
+public class CreatePunonjesi {
     private int id;
     private String emri;
     private String mbiemri;
@@ -11,7 +11,7 @@ public class CreatePunonjesiDto {
     private String roli;
     private Adresa adresa;
 
-    public CreatePunonjesiDto(int id, String emri, String mbiemri, String email, String tel, Adresa adresa) {
+    public CreatePunonjesi(int id, String emri, String mbiemri, String email, String tel, Adresa adresa) {
         this.id = id;
         this.emri = emri;
         this.mbiemri = mbiemri;

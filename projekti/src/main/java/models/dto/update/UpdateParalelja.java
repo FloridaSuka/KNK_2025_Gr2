@@ -1,11 +1,11 @@
 package main.java.models.dto.update;
 
-public class UpdateParaleljaDto {
+public class UpdateParalelja {
     private int id;
     private String emri;
 
 
-    public  UpdateParaleljaDto(int id, String emri) {
+    public UpdateParalelja(int id, String emri) {
         this.id = id;
         this.emri = emri;
 

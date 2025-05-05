@@ -1,7 +1,7 @@
 package models.dto.create;
 import java.util.Date;
 
-public class CreateNxenesitDto {
+public class CreateNxenesit {
     private int ID;
     private String emri;
     private String mbiemri;
@@ -11,8 +11,8 @@ public class CreateNxenesitDto {
     private String phone;
     private int adresaID;
 
-    public CreateNxenesitDto(int ID, String emri, String mbiemri, Date datelindja,
-                             char gjinia, String email, String phone, int adresaID) {
+    public CreateNxenesit(int ID, String emri, String mbiemri, Date datelindja,
+                          char gjinia, String email, String phone, int adresaID) {
         this.ID = ID;
         this.emri = emri;
         this.mbiemri = mbiemri;

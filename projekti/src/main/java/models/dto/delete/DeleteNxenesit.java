@@ -1,9 +1,9 @@
-package models.dto.delete;
+package main.java.models.dto.delete;
 
-public class DeleteDrejtimiDTO {
+public class DeleteNxenesit {
     private int id;
 
-    public DeleteDrejtimiDTO(int id) {
+    public DeleteNxenesit(int id) {
         this.id = id;
     }
 
@@ -11,4 +11,3 @@ public class DeleteDrejtimiDTO {
         return id;
     }
 }
-

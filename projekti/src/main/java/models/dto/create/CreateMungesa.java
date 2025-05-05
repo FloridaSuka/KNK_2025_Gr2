@@ -1,13 +1,13 @@
 package models.dto.create;
 
-public class CreateMungesaDTO {
+public class CreateMungesa {
     private String student;
     private int lendaId;
     private int periodaId;
     private String dataMungeses;
     private String arsyeja;
 
-    public CreateMungesaDTO(String student, int lendaId, int periodaId, String dataMungeses, String arsyeja) {
+    public CreateMungesa(String student, int lendaId, int periodaId, String dataMungeses, String arsyeja) {
         this.student = student;
         this.lendaId = lendaId;
         this.periodaId = periodaId;

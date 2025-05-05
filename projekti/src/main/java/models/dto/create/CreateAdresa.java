@@ -1,11 +1,11 @@
 package models.dto.create;
 
-public class CreateAdresaDTO {
+public class CreateAdresa {
     private String qyteti;
     private String rruga;
     private String kodiPostar;
 
-    public CreateAdresaDTO(String qyteti, String rruga, String kodiPostar) {
+    public CreateAdresa(String qyteti, String rruga, String kodiPostar) {
         this.qyteti = qyteti;
         this.rruga = rruga;
         this.kodiPostar = kodiPostar;

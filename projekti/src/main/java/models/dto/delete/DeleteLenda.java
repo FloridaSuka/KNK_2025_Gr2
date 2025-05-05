@@ -1,9 +1,9 @@
 package models.dto.delete;
 
-public class DeleteLendaDTO {
+public class DeleteLenda {
     private int idLenda;
 
-    public DeleteLendaDTO(int idLenda) {
+    public DeleteLenda(int idLenda) {
         this.idLenda = idLenda;
     }
 

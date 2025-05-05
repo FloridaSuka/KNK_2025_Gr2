@@ -1,24 +1,20 @@
-package models.dto.update;
+package models.dto.create;
 
-public class UpdatePeriodaDTO {
-    private int idPerioda;
+public class CreatePerioda {
     private String emri;
     private String dataFillimit;
     private String dataMbarimit;
 
-    public UpdatePeriodaDTO(int idPerioda, String emri, String dataFillimit, String dataMbarimit) {
-        this.idPerioda = idPerioda;
+    public CreatePerioda(String emri, String dataFillimit, String dataMbarimit) {
         this.emri = emri;
         this.dataFillimit = dataFillimit;
         this.dataMbarimit = dataMbarimit;
     }
 
-    public int getIdPerioda() { return idPerioda; }
     public String getEmri() { return emri; }
     public String getDataFillimit() { return dataFillimit; }
     public String getDataMbarimit() { return dataMbarimit; }
 
-    public void setIdPerioda(int idPerioda) { this.idPerioda = idPerioda; }
     public void setEmri(String emri) { this.emri = emri; }
     public void setDataFillimit(String dataFillimit) { this.dataFillimit = dataFillimit; }
     public void setDataMbarimit(String dataMbarimit) { this.dataMbarimit = dataMbarimit; }

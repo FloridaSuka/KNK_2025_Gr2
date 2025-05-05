@@ -1,12 +1,12 @@
 package models.dto.create;
 
-public class CreateMesimiDTO {
+public class CreateMesimi {
     private int lendaId;
     private int profesoriId;
     private int klasaId;
     private int drejtimiId;
 
-    public CreateMesimiDTO(int lendaId, int profesoriId, int klasaId, int drejtimiId) {
+    public CreateMesimi(int lendaId, int profesoriId, int klasaId, int drejtimiId) {
         this.lendaId = lendaId;
         this.profesoriId = profesoriId;
         this.klasaId = klasaId;
