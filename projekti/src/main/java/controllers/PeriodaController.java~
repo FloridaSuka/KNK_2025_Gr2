@@ -37,12 +37,20 @@ public class PeriodaController implements Initializable {
 
     @FXML
     private void shtoPerioda() {
+<<<<<<< Updated upstream
+        var dto = new CreatePerioda(
+                txtEmri.getText(),
+                txtFillimi.getText(),
+                txtMbarimi.getText()
+        );
+=======
         try {
-            var dto = new CreatePerioda(
+            var dto = new CreatePeriodaDTO(
                     txtEmri.getText(),
                     txtFillimi.getText(),
                     txtMbarimi.getText()
             );
+>>>>>>> Stashed changes
 
             int id = periodat.size() + 1;
             Perioda p = Perioda.of(id, dto.getEmri(), dto.getDataFillimit(), dto.getDataMbarimit());
@@ -55,14 +63,24 @@ public class PeriodaController implements Initializable {
 
     @FXML
     private void perditesoPerioda() {
+<<<<<<< Updated upstream
+        int id = Integer.parseInt(txtId.getText());
+        var dto = new UpdatePerioda(
+                id,
+                txtEmri.getText(),
+                txtFillimi.getText(),
+                txtMbarimi.getText()
+        );
+=======
         try {
             int id = Integer.parseInt(txtId.getText());
-            var dto = new UpdatePerioda(
+            var dto = new UpdatePeriodaDTO(
                     id,
                     txtEmri.getText(),
                     txtFillimi.getText(),
                     txtMbarimi.getText()
             );
+>>>>>>> Stashed changes
 
             for (int i = 0; i < periodat.size(); i++) {
                 if (periodat.get(i).getIdPerioda() == dto.getIdPerioda()) {
