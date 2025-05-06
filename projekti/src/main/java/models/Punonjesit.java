@@ -11,16 +11,16 @@ public class Punonjesit {
     private String email;
     private String tel;
     private String roli;
-    private int adresaId;
+    private Adresa adresa;
 
-    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,int adresaId) {
+    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,Adresa adresa) {
       this.id = id;
       this.emri = emri;
       this.mbiemri = mbiemri;
       this.email = email;
       this.tel = tel;
       this.roli = roli;
-      this.adresaId = adresaId;
+      this.adresa = adresa;
 
     }
 
@@ -31,9 +31,9 @@ public class Punonjesit {
         String email = result.getString("email");
         String tel = result.getString("tel");
         String roli = result.getString("roli");
-        int adresaId = result.getInt("adresaId");
+        Adresa adresa = Adresa.getInstance(result);
 
-        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresaId);
+        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresa);
     }
 
     public int getId() {
@@ -60,7 +60,7 @@ public class Punonjesit {
         return roli;
     }
 
-    public int getAdresaId() {
-        return adresaId;
+    public Adresa getAdresa() {
+        return adresa;
     }
 }

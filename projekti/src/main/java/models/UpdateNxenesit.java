@@ -1,18 +1,21 @@
-package models.dto.update;
+package models;
+
 import java.sql.Date;
+import models.Adresa;
 
 public class UpdateNxenesit {
     private int id;
     private String emri;
     private String mbiemri;
     private Date datelindja;
-    private boolean gjinia;
+    private char gjinia;
     private String email;
     private String phone;
-    private String adresa;
+    private Adresa adresa;
+
 
     public UpdateNxenesit(int id, String emri, String mbiemri, Date datelindja,
-                          boolean gjinia, String email, String phone, String adresa) {
+                          char gjinia, String email, String phone, Adresa adresa) {
         this.id = id;
         this.emri = emri;
         this.mbiemri = mbiemri;
@@ -27,31 +30,63 @@ public class UpdateNxenesit {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getEmri() {
         return emri;
+    }
+
+    public void setEmri(String emri) {
+        this.emri = emri;
     }
 
     public String getMbiemri() {
         return mbiemri;
     }
 
+    public void setMbiemri(String mbiemri) {
+        this.mbiemri = mbiemri;
+    }
+
     public Date getDatelindja() {
         return datelindja;
     }
 
-    public boolean isGjinia() {
+    public void setDatelindja(Date datelindja) {
+        this.datelindja = datelindja;
+    }
+
+    public char getGjinia() {
         return gjinia;
+    }
+
+    public void setGjinia(char gjinia) {
+        this.gjinia = gjinia;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPhone() {
         return phone;
     }
 
-    public String getAdresa() {
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Adresa getAdresa() {
         return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
     }
 }

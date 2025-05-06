@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.DrejtimiController" spacing="10" alignment="CENTER">
+
+
+    <TableView fx:id="tableDrejtimet" prefWidth="700">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" />
+            <TableColumn fx:id="colEmri" text="Emri" />
+            <TableColumn fx:id="colShkollaId" text="Shkolla ID" />
+            <TableColumn fx:id="colParaleljaId" text="Paralelja ID" />
+        </columns>
+    </TableView>
+</VBox>

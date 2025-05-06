@@ -1,4 +1,5 @@
 package models.dto.create;
+import models.Adresa;
 import java.util.Date;
 
 public class CreateNxenesit {
@@ -9,10 +10,10 @@ public class CreateNxenesit {
     private char gjinia;
     private String email;
     private String phone;
-    private int adresaID;
+    private Adresa adresa;
 
     public CreateNxenesit(int ID, String emri, String mbiemri, Date datelindja,
-                          char gjinia, String email, String phone, int adresaID) {
+                          char gjinia, String email, String phone, Adresa adresa) {
         this.ID = ID;
         this.emri = emri;
         this.mbiemri = mbiemri;
@@ -20,7 +21,7 @@ public class CreateNxenesit {
         this.gjinia = gjinia;
         this.email = email;
         this.phone = phone;
-        this.adresaID = adresaID;
+        this.adresa = adresa;
     }
 
     public int getID() {
@@ -79,11 +80,11 @@ public class CreateNxenesit {
         this.phone=phone;
     }
 
-    public int getAdresa() {
-        return this.adresaID;
+    public Adresa getAdresa() {
+        return this.adresa;
     }
 
-    public void setAdresa(int adresaID){
-        this.adresaID=adresaID;
+    public void setAdresa(Adresa adresa){
+        this.adresa=adresa;
     }
 }

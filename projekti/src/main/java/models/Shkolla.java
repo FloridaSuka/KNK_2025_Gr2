@@ -8,22 +8,22 @@ public class Shkolla {
     private int id;
     private String emri;
     private String tel;
-    private int adresaId;
+    private Adresa adresa;
 
-    private Shkolla(int id,String emri,String tel,int adresaId) {
+    private Shkolla(int id,String emri,String tel,Adresa adresa) {
         this.id = id;
         this.emri = emri;
         this.tel = tel;
-        this.adresaId = adresaId;
+        this.adresa = adresa;
     }
 
     public static Shkolla getInstance(ResultSet result) throws SQLException {
         int id = result.getInt("id");
         String emri = result.getString("emri");
         String tel = result.getString("tel");
-        int adresaId = result.getInt("adresaId");
+        Adresa adresa = Adresa.getInstance(result);
 
-        return new Shkolla(id,emri,tel,adresaId);
+        return new Shkolla(id,emri,tel,adresa);
     }
 
     public int getId() {
@@ -38,7 +38,7 @@ public class Shkolla {
         return tel;
     }
 
-    public int getAdresaId() {
-        return adresaId;
+    public Adresa getAdresa() {
+        return adresa;
     }
 }
