@@ -1,13 +1,13 @@
 package models.dto.delete;
 
 public class DeleteLenda {
-    private int idLenda;
+    private int id;
 
-    public DeleteLenda(int idLenda) {
-        this.idLenda = idLenda;
+    public DeleteLenda(int id) {
+        this.id = id;
     }
 
-    public int getIdLenda() { return idLenda; }
-
-    public void setIdLenda(int idLenda) { this.idLenda = idLenda; }
+    public int getId() {
+        return id;
+    }
 }

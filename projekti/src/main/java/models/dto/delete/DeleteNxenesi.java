@@ -1,9 +1,9 @@
 package models.dto.delete;
 
-public class DeletePerioda {
+public class DeleteNxenesi {
     private int id;
 
-    public DeletePerioda(int id) {
+    public DeleteNxenesi(int id) {
         this.id = id;
     }
 
