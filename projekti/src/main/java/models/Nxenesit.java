@@ -1,9 +1,10 @@
 package models;
 
-import java.sql.Date;
-import models.Adresa;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
 
-public class UpdateNxenesit {
+public class Nxenesit {
     private int id;
     private String emri;
     private String mbiemri;
@@ -14,8 +15,7 @@ public class UpdateNxenesit {
     private Adresa adresa;
 
 
-    public UpdateNxenesit(int id, String emri, String mbiemri, Date datelindja,
-                          char gjinia, String email, String phone, Adresa adresa) {
+    private Nxenesit(int id, String emri, String mbiemri, Date datelindja, char gjinia, String email, String phone, Adresa adresa) {
         this.id = id;
         this.emri = emri;
         this.mbiemri = mbiemri;
@@ -24,69 +24,49 @@ public class UpdateNxenesit {
         this.email = email;
         this.phone = phone;
         this.adresa = adresa;
+    }
+
+    public static Nxenesit getInstance(ResultSet result) throws SQLException {
+        int id = result.getInt("id");
+        String emri = result.getString("emri");
+        String mbiemri=result.getString("mbiemri");
+        Date datelindja = result.getDate("datelindja");
+        char gjinia = result.getString("gjinia").charAt(0);
+        String email = result.getString("email");
+        String phone = result.getString("phone");
+        Adresa adresa = Adresa.getInstance(result);
+        return new Nxenesit(id, emri, mbiemri, datelindja, gjinia, email, phone, adresa);
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getEmri() {
         return emri;
-    }
-
-    public void setEmri(String emri) {
-        this.emri = emri;
     }
 
     public String getMbiemri() {
         return mbiemri;
     }
 
-    public void setMbiemri(String mbiemri) {
-        this.mbiemri = mbiemri;
-    }
-
     public Date getDatelindja() {
         return datelindja;
-    }
-
-    public void setDatelindja(Date datelindja) {
-        this.datelindja = datelindja;
     }
 
     public char getGjinia() {
         return gjinia;
     }
 
-    public void setGjinia(char gjinia) {
-        this.gjinia = gjinia;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public Adresa getAdresa() {
         return adresa;
-    }
-
-    public void setAdresa(Adresa adresa) {
-        this.adresa = adresa;
     }
 }
