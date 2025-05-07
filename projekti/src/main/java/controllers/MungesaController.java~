@@ -71,7 +71,7 @@ public class MungesaController implements Initializable {
             );
             for (int i = 0; i < mungesat.size(); i++) {
                 if (mungesat.get(i).getId() == id) {
-                    mungesat.set(i, Mungesa.getInstance(dto.getId(), dto.getStudent(), dto.getLendaId(), dto.getPeriodaId(), dto.getDataMungeses(), dto.getArsyeja()));
+                    mungesat.set(i, Mungesa.of(dto.getId(), dto.getStudent(), dto.getLendaId(), dto.getPeriodaId(), dto.getDataMungeses(), dto.getArsyeja()));
                     break;
                 }
             }

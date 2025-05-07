@@ -19,7 +19,7 @@ public class Mungesa {
     }
 
     // Metodë statike për krijim të kontrolluar
-    public static Mungesa getInstance(int id, String student, int lendaId, int periodaId, String dataMungeses, String arsyeja) {
+    public static Mungesa of(int id, String student, int lendaId, int periodaId, String dataMungeses, String arsyeja) {
         return new Mungesa(id, student, lendaId, periodaId, dataMungeses, arsyeja);
     }
 

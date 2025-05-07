@@ -17,7 +17,7 @@ public class MungesaService {
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
-                lista.add(new Mungesa(
+                lista.add(Mungesa.getInstance(
                         rs.getInt("id"),
                         rs.getString("student"),
                         rs.getInt("lenda_id"),
