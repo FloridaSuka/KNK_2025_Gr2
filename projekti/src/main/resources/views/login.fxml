@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.LoginController"
+            stylesheets="@../views/style.css">
+   <children>
+      <AnchorPane layoutX="400.0" layoutY="69.0" prefHeight="350.0" prefWidth="287.0"
+                  styleClass="login-form" />
+   </children>
+</AnchorPane>

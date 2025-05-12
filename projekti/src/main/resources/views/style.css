@@ -1,0 +1,8 @@
+.login{
+       -fx-background-color:linear-gradient(to right, #2e728d,#264653);
+
+}
+.login-form {
+    -fx-background-color: #ffffff35;
+    -fx-background-radius: 10px;
+}
