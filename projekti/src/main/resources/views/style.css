@@ -6,3 +6,9 @@
     -fx-background-color: #ffffff35;
     -fx-background-radius: 10%;
 }
+.login-button {
+    -fx-background-radius: 20px;
+   -fx-background-color:linear-gradient(to right, #2e728d,#264653);
+    -fx-text-fill: white;
+}
+

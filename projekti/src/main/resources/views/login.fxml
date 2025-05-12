@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.LoginController"
-            stylesheets="@../views/style.css">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <AnchorPane layoutX="400.0" layoutY="69.0" prefHeight="350.0" prefWidth="287.0"
-                  styleClass="login-form" />
+      <AnchorPane layoutX="400.0" layoutY="67.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
+         <children>
+            <Button layoutX="121.0" layoutY="274.0" mnemonicParsing="false" text="Login" styleClass="login-button" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
