@@ -35,30 +35,19 @@ public class LendaController implements Initializable {
         colDrejtimi.setCellValueFactory(new PropertyValueFactory<>("idDrejtimi"));
         colPerioda.setCellValueFactory(new PropertyValueFactory<>("idPerioda"));
         colMesuesi.setCellValueFactory(new PropertyValueFactory<>("idMesuesi"));
-
         tableLendet.setItems(lendet);
     }
 
     @FXML
     private void shtoLende() {
-<<<<<<< Updated upstream
-        var dto = new CreateLenda(
-                txtEmri.getText(),
-                Integer.parseInt(txtMesimi.getText()),
-                Integer.parseInt(txtDrejtimi.getText()),
-                Integer.parseInt(txtPerioda.getText()),
-                Integer.parseInt(txtMesuesi.getText())
-        );
-=======
         try {
-            CreateLendaDTO dto = new CreateLendaDTO(
+            CreateLenda dto = new CreateLenda(
                     txtEmri.getText(),
                     Integer.parseInt(txtMesimi.getText()),
                     Integer.parseInt(txtDrejtimi.getText()),
                     Integer.parseInt(txtPerioda.getText()),
                     Integer.parseInt(txtMesuesi.getText())
             );
->>>>>>> Stashed changes
 
             int id = lendet.size() + 1;
             Lenda lenda = Lenda.of(id, dto.getEmri(), dto.getIdMesimi(), dto.getIdDrejtimi(), dto.getIdPerioda(), dto.getIdMesuesi());
@@ -71,20 +60,9 @@ public class LendaController implements Initializable {
 
     @FXML
     private void perditesoLende() {
-<<<<<<< Updated upstream
-        int id = Integer.parseInt(txtId.getText());
-        var dto = new UpdateLenda(
-                id,
-                txtEmri.getText(),
-                Integer.parseInt(txtMesimi.getText()),
-                Integer.parseInt(txtDrejtimi.getText()),
-                Integer.parseInt(txtPerioda.getText()),
-                Integer.parseInt(txtMesuesi.getText())
-        );
-=======
         try {
             int id = Integer.parseInt(txtId.getText());
-            UpdateLendaDTO dto = new UpdateLendaDTO(
+            UpdateLenda dto = new UpdateLenda(
                     id,
                     txtEmri.getText(),
                     Integer.parseInt(txtMesimi.getText()),
@@ -92,7 +70,6 @@ public class LendaController implements Initializable {
                     Integer.parseInt(txtPerioda.getText()),
                     Integer.parseInt(txtMesuesi.getText())
             );
->>>>>>> Stashed changes
 
             for (int i = 0; i < lendet.size(); i++) {
                 if (lendet.get(i).getIdLenda() == id) {
@@ -119,7 +96,12 @@ public class LendaController implements Initializable {
     }
 
     private void pastroFushat() {
-        txtId.clear(); txtEmri.clear(); txtMesimi.clear(); txtDrejtimi.clear(); txtPerioda.clear(); txtMesuesi.clear();
+        txtId.clear();
+        txtEmri.clear();
+        txtMesimi.clear();
+        txtDrejtimi.clear();
+        txtPerioda.clear();
+        txtMesuesi.clear();
     }
 
     private void showAlert(String title, String message, Alert.AlertType type) {

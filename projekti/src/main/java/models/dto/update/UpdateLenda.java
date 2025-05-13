@@ -17,17 +17,53 @@ public class UpdateLenda {
         this.idMesuesi = idMesuesi;
     }
 
-    public int getIdLenda() { return idLenda; }
-    public String getEmri() { return emri; }
-    public int getIdMesimi() { return idMesimi; }
-    public int getIdDrejtimi() { return idDrejtimi; }
-    public int getIdPerioda() { return idPerioda; }
-    public int getIdMesuesi() { return idMesuesi; }
+    // GETTERS
+    public int getIdLenda() {
+        return idLenda;
+    }
 
-    public void setIdLenda(int idLenda) { this.idLenda = idLenda; }
-    public void setEmri(String emri) { this.emri = emri; }
-    public void setIdMesimi(int idMesimi) { this.idMesimi = idMesimi; }
-    public void setIdDrejtimi(int idDrejtimi) { this.idDrejtimi = idDrejtimi; }
-    public void setIdPerioda(int idPerioda) { this.idPerioda = idPerioda; }
-    public void setIdMesuesi(int idMesuesi) { this.idMesuesi = idMesuesi; }
+    public String getEmri() {
+        return emri;
+    }
+
+    public int getIdMesimi() {
+        return idMesimi;
+    }
+
+    public int getIdDrejtimi() {
+        return idDrejtimi;
+    }
+
+    public int getIdPerioda() {
+        return idPerioda;
+    }
+
+    public int getIdMesuesi() {
+        return idMesuesi;
+    }
+
+    // SETTERS
+    public void setIdLenda(int idLenda) {
+        this.idLenda = idLenda;
+    }
+
+    public void setEmri(String emri) {
+        this.emri = emri;
+    }
+
+    public void setIdMesimi(int idMesimi) {
+        this.idMesimi = idMesimi;
+    }
+
+    public void setIdDrejtimi(int idDrejtimi) {
+        this.idDrejtimi = idDrejtimi;
+    }
+
+    public void setIdPerioda(int idPerioda) {
+        this.idPerioda = idPerioda;
+    }
+
+    public void setIdMesuesi(int idMesuesi) {
+        this.idMesuesi = idMesuesi;
+    }
 }
