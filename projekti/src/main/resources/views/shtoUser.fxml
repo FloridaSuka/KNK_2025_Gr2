@@ -19,8 +19,6 @@
       <TextField layoutX="400.0" layoutY="190.0" prefHeight="30.0" prefWidth="310.0" />
       <TextField layoutX="400.0" layoutY="230.0" prefHeight="30.0" prefWidth="310.0" />
       <TextField layoutX="400.0" layoutY="110.0" prefHeight="30.0" prefWidth="310.0" />
-      <TextField layoutX="400.0" layoutY="270.0" prefHeight="30.0" prefWidth="310.0" />
-      <TextField layoutX="400.0" layoutY="310.0" prefHeight="30.0" prefWidth="310.0" />
       <TextField layoutX="400.0" layoutY="150.0" prefHeight="30.0" prefWidth="310.0" />
       <Label layoutX="90.0" layoutY="110.0" prefHeight="30.0" prefWidth="240.0" text="Emri:" />
       <Label layoutX="90.0" layoutY="150.0" prefHeight="30.0" prefWidth="240.0" text="Mbiemri:" />
@@ -34,7 +32,11 @@
          </image>
       </ImageView>
       <Button layoutX="482.0" layoutY="417.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="150.0" styleClass="record-button" text="Regjistro" />
-      <TextField layoutX="400.0" layoutY="350.0" prefHeight="30.0" prefWidth="310.0" />
       <Label layoutX="90.0" layoutY="310.0" prefHeight="30.0" prefWidth="240.0" text="Rishkruaj fjalekalim-in:" />
+      <PasswordField layoutX="400.0" layoutY="270.0" prefHeight="30.0" prefWidth="310.0" />
+      <PasswordField layoutX="400.0" layoutY="310.0" prefHeight="30.0" prefWidth="310.0" />
+      <RadioButton layoutX="400.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Administrator" textFill="WHITE" />
+      <RadioButton layoutX="642.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" text="Nxenes" textFill="WHITE" />
+      <RadioButton layoutX="524.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="Mesues" textFill="WHITE" />
    </children>
 </AnchorPane>
