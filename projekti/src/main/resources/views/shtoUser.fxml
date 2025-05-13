@@ -1,1 +1,43 @@
-//florida
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <children>
+      <HBox layoutX="200.0" layoutY="14.0" spacing="10">
+         <children>
+            <Label text="EduMetrics" textFill="white">
+               <font>
+                  <Font name="Colonna MT" size="56.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <TextField layoutX="400.0" layoutY="200.0" prefHeight="39.0" prefWidth="313.0" />
+      <TextField layoutX="400.0" layoutY="250.0" prefHeight="39.0" prefWidth="313.0" />
+      <TextField layoutX="400.0" layoutY="100.0" prefHeight="39.0" prefWidth="313.0" />
+      <TextField layoutX="400.0" layoutY="300.0" prefHeight="39.0" prefWidth="313.0" />
+      <TextField layoutX="400.0" layoutY="350.0" prefHeight="39.0" prefWidth="313.0" />
+      <TextField layoutX="400.0" layoutY="150.0" prefHeight="39.0" prefWidth="313.0" />
+      <Label layoutX="84.0" layoutY="100.0" prefHeight="39.0" prefWidth="240.0" text="Emri:" />
+      <Label layoutX="84.0" layoutY="150.0" prefHeight="39.0" prefWidth="240.0" text="Mbiemri:" />
+      <Label layoutX="84.0" layoutY="250.0" prefHeight="39.0" prefWidth="240.0" text="Emri i perdoruesit:" />
+      <Label layoutX="84.0" layoutY="200.0" prefHeight="39.0" prefWidth="240.0" text="Email:" />
+      <Label layoutX="84.0" layoutY="300.0" prefHeight="39.0" prefWidth="240.0" text="Fjalekalimi:" />
+      <Label layoutX="84.0" layoutY="350.0" prefHeight="39.0" prefWidth="240.0" text="Roli:" />
+      <ImageView fitHeight="56.0" fitWidth="76.0" layoutX="472.0" layoutY="21.0">
+         <image>
+            <Image url="@../images/ikona.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="520.0" layoutY="416.0" mnemonicParsing="false" styleClass="record-button" text="Regjistro" />
+   </children>
+</AnchorPane>
