@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <AnchorPane layoutX="400.0" layoutY="67.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
+      <AnchorPane layoutX="400.0" layoutY="70.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
          <children>
-            <Button layoutX="121.0" layoutY="274.0" mnemonicParsing="false" text="Login" styleClass="login-button" />
+            <Button layoutX="121.0" layoutY="274.0" mnemonicParsing="false" styleClass="login-button" text="Login" />
          </children>
       </AnchorPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="137.0" prefHeight="70.0" prefWidth="300.0" text="EduMetrics">
+         <font>
+            <Font name="Colonna MT" size="56.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="233.0">
+         <image>
+            <Image url="@../images/ikona.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="614.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" styleClass="language">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../images/anglisht.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <Button layoutX="561.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" styleClass="language">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../images/shqip.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
    </children>
 </AnchorPane>

@@ -36,6 +36,6 @@
 .language {
     -fx-background-color: transparent;
     -fx-cursor: hand;
-    -fx-border-color: transparent;
+    -fx-border-color: #000000;
 }
 
