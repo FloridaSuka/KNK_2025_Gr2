@@ -25,24 +25,8 @@
       </ImageView>
       <MenuButton layoutX="600.0" layoutY="15.0" mnemonicParsing="false" text="Lang">
         <items>
-           <MenuItem mnemonicParsing="false" text="ALB">
-              <graphic>
-                 <ImageView fitHeight="20.0" fitWidth="30.0">
-                    <image>
-                       <Image url="@../images/shqip.png" />
-                    </image>
-                 </ImageView>
-              </graphic>
-           </MenuItem>
-           <MenuItem mnemonicParsing="false" text="ENG">
-              <graphic>
-                 <ImageView fitHeight="20.0" fitWidth="30.0">
-                    <image>
-                       <Image url="@../images/anglisht.png" />
-                    </image>
-                 </ImageView>
-              </graphic>
-           </MenuItem>
+          <MenuItem mnemonicParsing="false" text="ALB" />
+          <MenuItem mnemonicParsing="false" text="ENG" />
         </items>
       </MenuButton>
 
