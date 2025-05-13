@@ -28,14 +28,12 @@
      -fx-font-weight: bold;
 }
 
-.login-button:hover, .record-button:hover {
-    -fx-background-color: linear-gradient(to right, #3b8ea5, #2a4d57);
-    -fx-cursor: hand;
-}
-
 .language {
     -fx-background-color: transparent;
     -fx-cursor: hand;
-    -fx-border-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
 }
 

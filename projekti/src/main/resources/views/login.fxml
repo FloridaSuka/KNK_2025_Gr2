@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <AnchorPane layoutX="400.0" layoutY="70.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
+      <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
          <children>
-            <Button layoutX="121.0" layoutY="274.0" mnemonicParsing="false" styleClass="login-button" text="Login" />
+            <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="Login" />
+            <TextField layoutX="32.0" layoutY="84.0" promptText="email" />
+            <PasswordField layoutX="32.0" layoutY="175.0" promptText="password" />
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="137.0" prefHeight="70.0" prefWidth="300.0" text="EduMetrics" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="131.0" prefHeight="70.0" prefWidth="300.0" text="EduMetrics" textFill="WHITE">
          <font>
             <Font name="Colonna MT" size="56.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="233.0">
+      <ImageView fitHeight="178.0" fitWidth="200.0" layoutX="84.0" layoutY="229.0">
          <image>
             <Image url="@../images/ikona.png" />
          </image>
       </ImageView>
-      <MenuButton layoutX="600.0" layoutY="15.0" mnemonicParsing="false" text="Lang">
+      <MenuButton contentDisplay="TEXT_ONLY" layoutX="50.0" layoutY="27.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="129.0" style="-fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 1px;" styleClass="language" stylesheets="@style.css" text="Language">
         <items>
-          <MenuItem mnemonicParsing="false" text="ALB" />
+          <MenuItem mnemonicParsing="true" text="ALB" />
           <MenuItem mnemonicParsing="false" text="ENG" />
         </items>
       </MenuButton>
