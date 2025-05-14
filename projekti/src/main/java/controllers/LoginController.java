@@ -11,124 +11,69 @@ import models.User;
 import services.UserService;
 
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class LoginController {
 
-    @FXML
-    private TextField txtUsername;
-
-    @FXML
-    private PasswordField txtPassword;
-
-    @FXML
-    private Label lblError;
-
-    @FXML
-    private Hyperlink linkForgotPassword;
-
-    @FXML
-    private Button btnLogin;
-
-    @FXML
-    private MenuButton menuLanguage;
-
-    @FXML
-    private MenuItem menuAL;
-
-    @FXML
-    private MenuItem menuEN;
+    @FXML private TextField txtUsername;
+    @FXML private PasswordField txtPassword;
+    @FXML private Label lblError;
+    @FXML private Hyperlink linkForgotPassword;
+    @FXML private Button btnLogin;
 
     private final UserService userService = new UserService();
 
-    // Rrugët e FXML
-    private static final String ADMIN_FXML = "/fxml/admin_dashboard.fxml";
+    @FXML
+    private static final String ADMIN_FXML   = "/fxml/admin_dashboard.fxml";
     private static final String TEACHER_FXML = "/fxml/teacher_dashboard.fxml";
 
-    // Bundle dhe Locale
-    private ResourceBundle bundle;
-    private Locale locale;
-
-    @FXML
-    public void initialize() {
-        // Kontrollo nëse komponentët janë inicializuar
-        if (linkForgotPassword == null) {
-            System.out.println("linkForgotPassword nuk u inicializua nga FXML!");
-        }
-
-        // Vendosim gjuhën fillestare në Shqip
-        setLanguage("al");
-
-        // Event Listeners për ndërrim gjuhe
-        menuAL.setOnAction(event -> setLanguage("al"));
-        menuEN.setOnAction(event -> setLanguage("en"));
-    }
-
-
-    private void setLanguage(String lang) {
-        locale = new Locale(lang);
-        bundle = ResourceBundle.getBundle("bundles.Messages", locale, getClass().getClassLoader());
-
-        // Ndërro tekstet e fushave
-        menuLanguage.setText(bundle.getString("login.language"));
-        txtUsername.setPromptText(bundle.getString("login.username"));
-        txtPassword.setPromptText(bundle.getString("login.password"));
-        linkForgotPassword.setText(bundle.getString("login.forgot_password"));
-        btnLogin.setText(bundle.getString("login.button"));
-        lblError.setText(""); // Pastrimi i gabimeve nëse ka
-    }
-
-    /**
-     * Funksioni për login
-     */
     @FXML
     private void handleLogin() {
         String username = txtUsername.getText().trim();
         String password = txtPassword.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            lblError.setText(bundle.getString("login.fill_all_fields"));
+            lblError.setText("Plotëso të gjitha fushat");
             return;
         }
 
         User u = userService.authenticate(username, password);
         if (u == null) {
-            lblError.setText(bundle.getString("login.invalid_credentials"));
+            lblError.setText("Kredenciale të pasakta");
             return;
         }
 
         try {
             Stage stage = (Stage) txtUsername.getScene().getWindow();
             String target = (u.getRole() == User.Role.ADMIN) ? ADMIN_FXML : TEACHER_FXML;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(target), bundle);
-            Parent root = loader.load();
+            Parent root = FXMLLoader.load(getClass().getResource(target));
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException ex) {
-            lblError.setText(bundle.getString("login.error_loading_page"));
+            lblError.setText("Nuk u hap faqja kryesore");
             ex.printStackTrace();
         }
     }
 
-    /**
-     * Funksioni për rivendosje të fjalëkalimit
-     */
     @FXML
     private void onForgotPassword() {
+        // Hap një dialog për të vendosur fjalëkalimin e ri
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle(bundle.getString("login.reset_password"));
-        dialog.setHeaderText(bundle.getString("login.new_password_header"));
-        dialog.setContentText(bundle.getString("login.new_password"));
+        dialog.setTitle("Rivendos Fjalëkalimin");
+        dialog.setHeaderText("Vendos fjalëkalimin e ri:");
+        dialog.setContentText("Fjalëkalimi i ri:");
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(newPassword -> {
+            // Këtu e ruajmë fjalëkalimin e ri
+            // Për shembull mund të ruhet në databazë ose në fajll
             System.out.println("Fjalëkalimi u ndryshua në: " + newPassword);
 
+            // Tregon një mesazh për konfirmim
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(bundle.getString("login.password_changed"));
-            alert.setContentText(bundle.getString("login.password_changed_success"));
+            alert.setTitle("Sukses");
+            alert.setHeaderText("Fjalëkalimi u ndryshua me sukses!");
+            alert.setContentText("Mund të kyçesh me fjalëkalimin e ri.");
             alert.showAndWait();
         });
     }
