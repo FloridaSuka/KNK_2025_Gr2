@@ -126,6 +126,14 @@ public class MungesaController {
         }
     }
 
+    public void shfaqGrafikun(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Grafiku");
+        alert.setHeaderText(null);
+        alert.setContentText("Grafiku i mungesave është duke u ndërtuar.");
+        alert.showAndWait();
+    }
+
     // Metoda për të përditësuar orën dhe datën
     private void startClock() {
         Timer timer = new Timer();
@@ -150,5 +158,8 @@ public class MungesaController {
             chartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
         }
         pieChart.setData(chartData);
+    }
+
+    public void kerkoStudent(ActionEvent actionEvent) {
     }
 }
