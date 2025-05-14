@@ -10,9 +10,10 @@
    <children>
       <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
          <children>
-            <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="Login" />
+            <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="Kyçu" />
             <TextField layoutX="32.0" layoutY="84.0" promptText="email" />
-            <PasswordField layoutX="32.0" layoutY="175.0" promptText="password" />
+            <PasswordField layoutX="32.0" layoutY="175.0" promptText="fjalekalimi" />
+            <Hyperlink layoutX="31.0" layoutY="220.0" onAction="#onForgotPassword" text="Harrova Fjalëkalimin" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="131.0" prefHeight="70.0" prefWidth="300.0" text="EduMetrics" textFill="WHITE">
@@ -31,6 +32,5 @@
           <MenuItem mnemonicParsing="false" text="ENG" />
         </items>
       </MenuButton>
-
    </children>
 </AnchorPane>

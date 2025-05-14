@@ -1,17 +1,17 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.User;
 import services.UserService;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class LoginController {
 
@@ -51,5 +51,23 @@ public class LoginController {
             lblError.setText("Nuk u hap faqja kryesore");
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void onForgotPassword() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Rivendos Fjalëkalimin");
+        dialog.setHeaderText("Vendos fjalëkalimin e ri:");
+        dialog.setContentText("Fjalëkalimi i ri:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(newPassword -> {
+            System.out.println("Fjalëkalimi u ndryshua në: " + newPassword);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Fjalëkalimi u ndryshua me sukses!");
+            alert.setContentText("Mund të kyçesh me fjalëkalimin e ri.");
+            alert.showAndWait();
+        });
     }
 }
