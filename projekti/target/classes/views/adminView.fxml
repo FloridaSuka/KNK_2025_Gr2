@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AdminView">
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css" />
+      <AnchorPane layoutX="125.0" layoutY="145.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="nav-tile" stylesheets="@style.css" />
+      <AnchorPane layoutX="325.0" layoutY="145.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
+      <AnchorPane layoutX="522.0" layoutY="145.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
+      <AnchorPane layoutX="125.0" layoutY="314.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
+      <AnchorPane layoutX="325.0" layoutY="321.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
+      <AnchorPane layoutX="522.0" layoutY="321.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
+   </children>
+</AnchorPane>
