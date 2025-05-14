@@ -1,0 +1,116 @@
+package controllers;
+
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class NotatController {
+
+    @FXML
+    private TextField txtStudenti, txtLenda, txtNota, txtViti, txtPeriudha, txtKerkim;
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private ListView<String> listaNotave;
+    @FXML
+    private Label lblMesatarja, lblNumriNotave, lblStudentiMeNotaMeTeLarta;
+    @FXML
+    private LineChart<String, Number> lineChart;
+
+    // Lista që do të përmbajë notat dhe statistikat
+    private ObservableList<String> notat = FXCollections.observableArrayList();
+    private Map<String, Integer> statistika = new HashMap<>();
+    private XYChart.Series<String, Number> notaSeries = new XYChart.Series<>();
+
+    @FXML
+    public void initialize() {
+        startClock();
+        listaNotave.setItems(notat);
+        lineChart.setTitle("Progresi i Notave");
+        lineChart.getData().add(notaSeries);
+        notaSeries.setName("Notat gjatë vitit akademik");
+    }
+
+    @FXML
+    private void regjistroNota(ActionEvent actionEvent) {
+        String emri = txtStudenti.getText();
+        String lenda = txtLenda.getText();
+        String nota = txtNota.getText();
+        String viti = txtViti.getText();
+        String periudha = txtPeriudha.getText();
+        LocalDate data = datePicker.getValue();
+
+        if (!emri.isEmpty() && data != null && !nota.isEmpty() && (periudha.equals("1") || periudha.equals("2"))) {
+            String raport = "Nxënësi: " + emri + " | Lënda: " + lenda + " | Nota: " + nota + " | Viti: " + viti + " | Periudha: " + periudha + " | Data: " + data;
+            notat.add(raport);
+            listaNotave.setItems(notat);
+
+            // Përditëso statistikat
+            int notaVlera = Integer.parseInt(nota);
+            statistika.put(emri, statistika.getOrDefault(emri, 0) + notaVlera);
+            lblNumriNotave.setText("Total Nota: " + notat.size());
+
+            // Shto në LineChart
+            notaSeries.getData().add(new XYChart.Data<>(data.toString(), notaVlera));
+
+            // Gjetja e nxënësit me notat më të larta
+            String maxStudent = statistika.entrySet().stream()
+                    .max(Map.Entry.comparingByValue())
+                    .map(Map.Entry::getKey)
+                    .orElse("-");
+            lblStudentiMeNotaMeTeLarta.setText("Nxënësi me notat më të larta: " + maxStudent);
+
+            pastroFushat();
+        } else {
+            showError("Ju lutem plotësoni të gjitha fushat, datën dhe periudha duhet të jetë 1 ose 2!");
+        }
+    }
+
+    @FXML
+    private void pastroFushat() {
+        txtStudenti.clear();
+        txtLenda.clear();
+        txtNota.clear();
+        txtViti.clear();
+        txtPeriudha.clear();
+        datePicker.setValue(null);
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Gabim");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // Metoda për të përditësuar orën dhe datën
+    private void startClock() {
+        Timer timer = new Timer();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    lblMesatarja.setText("Ora: " + LocalTime.now().format(timeFormatter));
+                });
+            }
+        }, 0, 1000);
+    }
+
+    public void llogaritMesataren(ActionEvent actionEvent) {
+    }
+}
