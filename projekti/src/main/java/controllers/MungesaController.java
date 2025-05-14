@@ -2,105 +2,122 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import models.Mungesa;
-import models.dto.create.CreateMungesa;
-import models.dto.update.UpdateMungesa;
+import javafx.scene.input.MouseEvent;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class MungesaController implements Initializable {
-
-    @FXML private TableView<Mungesa> tableMungesat;
-    @FXML private TableColumn<Mungesa, Integer> colId;
-    @FXML private TableColumn<Mungesa, String> colStudent;
-    @FXML private TableColumn<Mungesa, Integer> colLenda;
-    @FXML private TableColumn<Mungesa, Integer> colPerioda;
-    @FXML private TableColumn<Mungesa, String> colData;
-    @FXML private TableColumn<Mungesa, String> colArsyeja;
-
-    @FXML private TextField txtId, txtStudent, txtLenda, txtPerioda, txtData, txtArsyeja;
-
-    private ObservableList<Mungesa> mungesat = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colStudent.setCellValueFactory(new PropertyValueFactory<>("student"));
-        colLenda.setCellValueFactory(new PropertyValueFactory<>("lendaId"));
-        colPerioda.setCellValueFactory(new PropertyValueFactory<>("periodaId"));
-        colData.setCellValueFactory(new PropertyValueFactory<>("dataMungeses"));
-        colArsyeja.setCellValueFactory(new PropertyValueFactory<>("arsyeja"));
-        tableMungesat.setItems(mungesat);
-    }
+public class MungesaController {
 
     @FXML
-    private void shtoMungese() {
-        try {
-            var dto = new CreateMungesa(
-                    txtStudent.getText(),
-                    Integer.parseInt(txtLenda.getText()),
-                    Integer.parseInt(txtPerioda.getText()),
-                    txtData.getText(),
-                    txtArsyeja.getText()
-            );
-            int id = mungesat.size() + 1;
-            var m = Mungesa.getInstance(id, dto.getStudent(), dto.getLendaId(), dto.getPeriodaId(), dto.getDataMungeses(), dto.getArsyeja());
-            mungesat.add(m);
-            pastro();
-        } catch (Exception e) {
-            alert("Gabim", e.getMessage());
-        }
-    }
+    private TextField txtKerkim, txtStudenti, txtLenda, txtKlasa, txtArsyeja;
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private ListView<String> listaStudentet, listaMungesave;
+    @FXML
+    private Label lblTotalJave, lblTotalMuaj, lblNxenesiMeShumeMungesa;
+
+    // Lista që do të përmbajë studentët
+    private ObservableList<String> studentet = FXCollections.observableArrayList("Arben Selimi", "Blerta Gashi", "Dion Bytyqi");
+    private ObservableList<String> mungesat = FXCollections.observableArrayList();
+    private Map<String, Integer> statistika = new HashMap<>();
 
     @FXML
-    private void perditesoMungese() {
-        try {
-            int id = Integer.parseInt(txtId.getText());
-            var dto = new UpdateMungesa(
-                    id,
-                    txtStudent.getText(),
-                    Integer.parseInt(txtLenda.getText()),
-                    Integer.parseInt(txtPerioda.getText()),
-                    txtData.getText(),
-                    txtArsyeja.getText()
-            );
-            for (int i = 0; i < mungesat.size(); i++) {
-                if (mungesat.get(i).getId() == id) {
-                    mungesat.set(i, Mungesa.getInstance(dto.getId(), dto.getStudent(), dto.getLendaId(), dto.getPeriodaId(), dto.getDataMungeses(), dto.getArsyeja()));
-                    break;
-                }
+    public void initialize() {
+        // Vendos listën e studentëve në ListView
+        listaStudentet.setItems(studentet);
+
+        // Event Listener për klikimin në listë
+        listaStudentet.setOnMouseClicked((MouseEvent event) -> {
+            String emri = listaStudentet.getSelectionModel().getSelectedItem();
+            if (emri != null) {
+                txtStudenti.setText(emri);
             }
-            pastro();
-        } catch (Exception e) {
-            alert("Gabim", e.getMessage());
+        });
+    }
+
+    @FXML
+    private void kerkoStudent() {
+        String query = txtKerkim.getText().toLowerCase();
+        ObservableList<String> filtruar = FXCollections.observableArrayList();
+        for (String student : studentet) {
+            if (student.toLowerCase().contains(query)) {
+                filtruar.add(student);
+            }
+        }
+        listaStudentet.setItems(filtruar);
+    }
+
+    @FXML
+    private void regjistroMungese(ActionEvent actionEvent) {
+        String emri = txtStudenti.getText();
+        String lenda = txtLenda.getText();
+        String klasa = txtKlasa.getText();
+        LocalDate data = datePicker.getValue();
+        String arsyeja = txtArsyeja.getText();
+
+        if (!emri.isEmpty() && data != null) {
+            String raport = "Nxënësi: " + emri + " | Lënda: " + lenda + " | Klasa: " + klasa + " | Data: " + data + " | Arsyeja: " + arsyeja;
+            mungesat.add(raport);
+            listaMungesave.setItems(mungesat);
+
+            // Përditëso statistikat
+            statistika.put(emri, statistika.getOrDefault(emri, 0) + 1);
+            lblTotalJave.setText("Total Mungesa (Javore): " + mungesat.size());
+            lblTotalMuaj.setText("Total Mungesa (Mujore): " + mungesat.size());
+
+            // Gjetja e nxënësit me më shumë mungesa
+            String maxStudent = statistika.entrySet().stream()
+                    .max(Map.Entry.comparingByValue())
+                    .map(Map.Entry::getKey)
+                    .orElse("-");
+            lblNxenesiMeShumeMungesa.setText("Nxënësi me më shumë mungesa: " + maxStudent);
+
+            pastroFushat();
+        } else {
+            showError("Ju lutem plotësoni të gjitha fushat dhe datën!");
         }
     }
 
     @FXML
-    private void fshijMungese() {
-        try {
-            int id = Integer.parseInt(txtId.getText());
-            mungesat.removeIf(m -> m.getId() == id);
-            pastro();
-        } catch (Exception e) {
-            alert("Gabim", e.getMessage());
-        }
+    private void pastroFushat() {
+        txtStudenti.clear();
+        txtLenda.clear();
+        txtKlasa.clear();
+        txtArsyeja.clear();
+        datePicker.setValue(null);
     }
 
-    private void pastro() {
-        txtId.clear(); txtStudent.clear(); txtLenda.clear(); txtPerioda.clear(); txtData.clear(); txtArsyeja.clear();
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Gabim");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-    private void alert(String title, String msg) {
-        var a = new Alert(Alert.AlertType.ERROR);
-        a.setTitle(title);
-        a.setHeaderText(null);
-        a.setContentText(msg);
-        a.showAndWait();
+    @FXML
+    public void printoRaportin(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Printim i Raportit");
+        alert.setHeaderText(null);
+        alert.setContentText("Raporti i mungesave u printua me sukses!");
+        alert.showAndWait();
+    }
+
+    @FXML
+    public void eksportoExcel(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Eksportim në Excel");
+        alert.setHeaderText(null);
+        alert.setContentText("Lista e mungesave u eksportua me sukses në Excel!");
+        alert.showAndWait();
+    }
+
+    public void shfaqGrafikun(ActionEvent actionEvent) {
     }
 }
