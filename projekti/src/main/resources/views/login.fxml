@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.LoginController">
-
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0">
+      <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
          <children>
-            <Button fx:id="btnLogin" layoutX="59.0" layoutY="274.0" mnemonicParsing="false"
-                    prefHeight="39.0" prefWidth="170.0" text="%loginButtonText"/>
-
-            <TextField fx:id="txtUsername" layoutX="32.0" layoutY="84.0" prefHeight="39.0" prefWidth="224.0"
-                       promptText="%usernamePrompt"/>
-
-            <PasswordField fx:id="txtPassword" layoutX="32.0" layoutY="175.0" prefHeight="39.0" prefWidth="224.0"
-                           promptText="%passwordPrompt"/>
-
-            <Hyperlink fx:id="linkForgotPassword" layoutX="31.0" layoutY="220.0"
-                       text="%forgotPassword"/>
+            <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="Kyçu" />
+            <TextField fx:id="txtUsername" layoutX="32.0" layoutY="84.0"  prefHeight="39.0" prefWidth="224.0" promptText="emri i perdoruesit"/>
+            <PasswordField fx:id="txtPassword" layoutX="32.0" layoutY="175.0" prefHeight="39.0" prefWidth="224.0" promptText="fjalekalimi" />
+            <Hyperlink layoutX="31.0" layoutY="220.0" onAction="#onForgotPassword" text="Harrova Fjalëkalimin" styleClass="password-field"/>
          </children>
       </AnchorPane>
-
-      <MenuButton fx:id="menuLanguage" layoutX="50.0" layoutY="27.0"
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="131.0" prefHeight="70.0" prefWidth="300.0" text="EduMetrics" textFill="WHITE">
+         <font>
+            <Font name="Colonna MT" size="56.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="178.0" fitWidth="200.0" layoutX="84.0" layoutY="229.0">
+         <image>
+            <Image url="@../images/ikona.png" />
+         </image>
+      </ImageView>
+      <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="50.0" layoutY="27.0"
                   mnemonicParsing="false" popupSide="TOP"
-                  prefHeight="41.0" prefWidth="119.0" text="%language">
+                  prefHeight="41.0" prefWidth="119.0"
+                  styleClass="language" text="Language">
          <items>
-            <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" onAction="#handleAlbanianLanguage"/>
-            <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" onAction="#handleEnglishLanguage"/>
+            <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+            <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
          </items>
       </MenuButton>
    </children>

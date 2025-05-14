@@ -1,126 +1,49 @@
-package views;
+<?xml version="1.0" encoding="UTF-8"?>
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.layout.*?>
+        <?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NotatController" style="-fx-background-color: #2c3e50;">
+    <children>
 
-        import javafx.application.Platform;
-        import javafx.collections.FXCollections;
-        import javafx.collections.ObservableList;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.scene.chart.PieChart;
-        import javafx.scene.control.*;
-        import javafx.scene.input.MouseEvent;
+        <HBox spacing="20" layoutX="30.0" layoutY="30.0">
+            <Label text="Menaxhimi i Notave" style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" />
+        </HBox>
 
-        import java.io.FileWriter;
-        import java.io.IOException;
-        import java.time.LocalDate;
-        import java.time.LocalTime;
-        import java.time.format.DateTimeFormatter;
-        import java.util.HashMap;
-        import java.util.Map;
-        import java.util.Timer;
-        import java.util.TimerTask;
+        <HBox spacing="20" layoutX="30.0" layoutY="80.0">
+            <TextField fx:id="kerkoNxenes" promptText="Kërko Nxënës..." prefWidth="400.0" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-prompt-text-fill: #bdc3c7;"/>
+            <Button text="🔍" style="-fx-background-color: #1abc9c; -fx-text-fill: white;" />
+        </HBox>
 
-        public class MenaxhimiNotaveController {
+        <HBox spacing="20" layoutX="30.0" layoutY="130.0">
+            <VBox spacing="15" prefWidth="350" style="-fx-background-color: #34495e; -fx-padding: 15px; -fx-border-radius: 8px;">
+                <Label text="Detajet e Notave" style="-fx-font-size: 18px; -fx-text-fill: white;"/>
+                <TextField fx:id="txtEmriNxenesit" promptText="Emri i Nxënësit" style="-fx-background-color: #2c3e50; -fx-text-fill: white;"/>
+                <TextField fx:id="txtLenda" promptText="Lënda e Mësimit" style="-fx-background-color: #2c3e50; -fx-text-fill: white;"/>
+                <ComboBox fx:id="comboPeriudha" prefWidth="250.0" style="-fx-background-color: #2c3e50; -fx-text-fill: white;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String/>
+                            <String fx:value="2"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <TextField fx:id="nota1" promptText="Nota 1" style="-fx-background-color: #2c3e50; -fx-text-fill: white;"/>
+                <TextField fx:id="nota2" promptText="Nota 2" style="-fx-background-color: #2c3e50; -fx-text-fill: white;"/>
+                <TextField fx:id="nota3" promptText="Nota 3" style="-fx-background-color: #2c3e50; -fx-text-fill: white;"/>
+                <Button text="Regjistro Notat" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+            </VBox>
 
-        @FXML
-        private TextField txtKerkim, txtStudenti, txtLenda, txtNota, txtViti, txtPeriudha;
-        @FXML
-        private DatePicker datePicker;
-        @FXML
-        private ListView<String> listaNotave;
-    @FXML
-    private Label lblMesatarja, lblNumriNotave, lblStudentiMeNotaMeTeLarta, lblPeriudha;
-    @FXML
-    private PieChart pieChart;
+            <VBox spacing="15" prefWidth="300" style="-fx-background-color: #34495e; -fx-padding: 15px; -fx-border-radius: 8px;">
+                <Label text="Statistika e Notave" style="-fx-font-size: 18px; -fx-text-fill: white;"/>
+                <Label text="Mesatarja e Notave: -" style="-fx-text-fill: white;" fx:id="lblMesatarja"/>
+                <Label text="Nota Finale: -" style="-fx-text-fill: white;" fx:id="lblNotaFinale"/>
+                <Button text="Llogarit Mesataren" style="-fx-background-color: #27ae60; -fx-text-fill: white;" onAction="#llogaritMesataren"/>
+                <Button text="Printo Raportin" style="-fx-background-color: #2980b9; -fx-text-fill: white;" />
+            </VBox>
+        </HBox>
 
-    // Lista që do të përmbajë notat dhe statistikat
-    private ObservableList<String> notat = FXCollections.observableArrayList();
-        private Map<String, Integer> statistika = new HashMap<>();
-
-            @FXML
-            public void initialize() {
-            // Orë dhe Datë që përditësohen automatikisht
-            startClock();
-            // Vendos listën e notave në ListView
-            listaNotave.setItems(notat);
-            // Inicimi i PieChart
-            pieChart.setTitle("Statistikat e Notave");
-            }
-
-            @FXML
-            private void regjistroNota(ActionEvent actionEvent) {
-            String emri = txtStudenti.getText();
-            String lenda = txtLenda.getText();
-            String nota = txtNota.getText();
-            String viti = txtViti.getText();
-            String periudha = txtPeriudha.getText();
-            LocalDate data = datePicker.getValue();
-
-            if (!emri.isEmpty() && data != null && !nota.isEmpty() && (periudha.equals("1") || periudha.equals("2"))) {
-            String raport = "Nxënësi: " + emri + " | Lënda: " + lenda + " | Nota: " + nota + " | Viti: " + viti + " | Periudha: " + periudha + " | Data: " + data;
-            notat.add(raport);
-            listaNotave.setItems(notat);
-
-            // Përditëso statistikat
-            int notaVlera = Integer.parseInt(nota);
-            statistika.put(emri, statistika.getOrDefault(emri, 0) + notaVlera);
-            lblNumriNotave.setText("Total Nota: " + notat.size());
-            updateChart();
-
-            // Gjetja e nxënësit me notat më të larta
-            String maxStudent = statistika.entrySet().stream()
-            .max(Map.Entry.comparingByValue())
-            .map(Map.Entry::getKey)
-            .orElse("-");
-            lblStudentiMeNotaMeTeLarta.setText("Nxënësi me notat më të larta: " + maxStudent);
-
-            pastroFushat();
-            } else {
-            showError("Ju lutem plotësoni të gjitha fushat, datën dhe periudha duhet të jetë 1 ose 2!");
-            }
-            }
-
-            @FXML
-            private void pastroFushat() {
-            txtStudenti.clear();
-            txtLenda.clear();
-            txtNota.clear();
-            txtViti.clear();
-            txtPeriudha.clear();
-            datePicker.setValue(null);
-            }
-
-            private void showError(String message) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Gabim");
-            alert.setHeaderText(null);
-            alert.setContentText(message);
-            alert.showAndWait();
-            }
-
-            // Metoda për të përditësuar grafikun
-            private void updateChart() {
-            ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();
-                for (Map.Entry<String, Integer> entry : statistika.entrySet()) {
-                chartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
-                }
-                pieChart.setData(chartData);
-                }
-
-                // Metoda për të përditësuar orën dhe datën
-                private void startClock() {
-                Timer timer = new Timer();
-                DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-                timer.scheduleAtFixedRate(new TimerTask() {
-                @Override
-                public void run() {
-                Platform.runLater(() -> {
-                lblMesatarja.setText("Ora: " + LocalTime.now().format(timeFormatter));
-                });
-                }
-                }, 0, 1000);
-                }
-                }
-                ""
+    </children>
+</AnchorPane>
 
