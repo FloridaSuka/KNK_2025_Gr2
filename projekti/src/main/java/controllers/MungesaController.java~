@@ -159,4 +159,7 @@ public class MungesaController {
         }
         pieChart.setData(chartData);
     }
+
+    public void kerkoStudent(ActionEvent actionEvent) {
+    }
 }
