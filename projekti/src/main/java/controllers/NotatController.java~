@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
@@ -58,34 +59,33 @@ public class NotatController {
         comboPeriudha.setItems(FXCollections.observableArrayList("1", "2"));
     }
 
-    // Regjistrimi i datës kur vendoset Nota 1
     @FXML
     private void onKeyReleasedNota1(KeyEvent event) {
         if (!nota1.getText().isEmpty()) {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            lblDataOra1.setText("Vendosur më: " + dtf.format(LocalDateTime.now()));
+            LocalDateTime now = LocalDateTime.now();
+            lblDataOra1.setText("Nota 1 u vendos më: " + dtf.format(now));
         }
     }
 
-    // Regjistrimi i datës kur vendoset Nota 2
     @FXML
     private void onKeyReleasedNota2(KeyEvent event) {
         if (!nota2.getText().isEmpty()) {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            lblDataOra2.setText("Vendosur më: " + dtf.format(LocalDateTime.now()));
+            LocalDateTime now = LocalDateTime.now();
+            lblDataOra2.setText("Nota 2 u vendos më: " + dtf.format(now));
         }
     }
 
-    // Regjistrimi i datës kur vendoset Nota 3
     @FXML
     private void onKeyReleasedNota3(KeyEvent event) {
         if (!nota3.getText().isEmpty()) {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            lblDataOra3.setText("Vendosur më: " + dtf.format(LocalDateTime.now()));
+            LocalDateTime now = LocalDateTime.now();
+            lblDataOra3.setText("Nota 3 u vendos më: " + dtf.format(now));
         }
     }
 
-    // Llogarit Mesataren dhe e shfaq atë
     @FXML
     private void llogaritMesataren() {
         try {
@@ -107,33 +107,22 @@ public class NotatController {
         }
     }
 
-    // Regjistron në ListView të gjitha notat
-    @FXML
-    private void regjistroNota() {
-        String raport = "Nxënësi: " + txtEmriNxenesit.getText() +
-                " | Lënda: " + txtLenda.getText() +
-                " | Mesuesi: " + txtMesuesi.getText() +
-                " | Periudha: " + comboPeriudha.getValue() +
-                " | Nota 1: " + nota1.getText() +
-                " | Nota 2: " + nota2.getText() +
-                " | Nota 3: " + nota3.getText();
-        notat.add(raport);
-    }
-
-    // Pastron fushat dhe etiketat
     @FXML
     private void pastroFushat() {
         txtEmriNxenesit.clear();
         txtLenda.clear();
-        txtMesuesi.clear();
-        comboPeriudha.getSelectionModel().clearSelection();
         nota1.clear();
         nota2.clear();
         nota3.clear();
+        txtMesuesi.clear();
+        comboPeriudha.getSelectionModel().clearSelection();
         lblDataOra1.setText("");
         lblDataOra2.setText("");
         lblDataOra3.setText("");
         lblMesatarja.setText("");
         lblNotaFinale.setText("");
+    }
+
+    public void regjistroNota(ActionEvent actionEvent) {
     }
 }
