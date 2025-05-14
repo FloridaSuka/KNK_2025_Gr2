@@ -1,10 +1,9 @@
 package models;
 
-import models.Adresa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Punonjesit {
+public class Mesuesi {
     private int id;
     private String emri;
     private String mbiemri;
@@ -13,7 +12,7 @@ public class Punonjesit {
     private String roli;
     private Adresa adresa;
 
-    private Punonjesit(int id,String emri, String mbiemri,String email,String tel,String roli,Adresa adresa) {
+    private Mesuesi(int id, String emri, String mbiemri, String email, String tel, String roli, Adresa adresa) {
       this.id = id;
       this.emri = emri;
       this.mbiemri = mbiemri;
@@ -24,7 +23,7 @@ public class Punonjesit {
 
     }
 
-    public static Punonjesit getInstance(ResultSet result) throws SQLException {
+    public static Mesuesi getInstance(ResultSet result) throws SQLException {
         int id = result.getInt("id");
         String emri = result.getString("emri");
         String mbiemri = result.getString("mbiemri");
@@ -33,7 +32,7 @@ public class Punonjesit {
         String roli = result.getString("roli");
         Adresa adresa = Adresa.getInstance(result);
 
-        return new Punonjesit(id,emri,mbiemri,email,tel,roli,adresa);
+        return new Mesuesi(id,emri,mbiemri,email,tel,roli,adresa);
     }
 
     public int getId() {
