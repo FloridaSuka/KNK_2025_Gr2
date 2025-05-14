@@ -37,3 +37,12 @@
     -fx-padding: 5px;
 }
 
+.button-close {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 19px;
+    -fx-font-family: "Bookman Old Style Bold";
+    -fx-cursor: hand;
+}
+
