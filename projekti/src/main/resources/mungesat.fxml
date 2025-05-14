@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllers.MungesatController" spacing="10" alignment="CENTER">
+      fx:controller="controllers.MungesaController" spacing="10" alignment="CENTER">
 
     <TableView fx:id="tableMungesat" prefWidth="700">
         <columns>
