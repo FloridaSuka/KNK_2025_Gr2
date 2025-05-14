@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.layout.*?>
+        <?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NotatController" style="-fx-background-color: #f7f9fc;">
+    <children>
+        <VBox spacing="15" layoutX="30.0" layoutY="30.0">
+            <Label text="Menaxhimi i Notave" style="-fx-font-size: 24px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+            <GridPane hgap="15" vgap="15">
+                <Label text="Lënda:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #34495e;"/>
+                <ComboBox fx:id="comboLenda" prefWidth="250.0" GridPane.rowIndex="0" GridPane.columnIndex="1" style="-fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7;"/>
+                <Label text="Nxënësi:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #34495e;"/>
+                <ComboBox fx:id="comboNxenesi" prefWidth="250.0" GridPane.rowIndex="1" GridPane.columnIndex="1" style="-fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7;"/>
+                <Label text="Periudha:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #34495e;"/>
+                <ComboBox fx:id="comboPeriudha" prefWidth="250.0" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="1"/>
+                            <String fx:value="2"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label text="Nota 1:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-text-fill: #34495e;"/>
+                <TextField fx:id="nota1" prefWidth="250.0" GridPane.rowIndex="3" GridPane.columnIndex="1" style="-fx-background-color: #ffffff; -fx-border-color: #bdc3c7;"/>
+                <Label text="Nota 2:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-text-fill: #34495e;"/>
+                <TextField fx:id="nota2" prefWidth="250.0" GridPane.rowIndex="4" GridPane.columnIndex="1" style="-fx-background-color: #ffffff; -fx-border-color: #bdc3c7;"/>
+                <Label text="Nota 3:" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-text-fill: #34495e;"/>
+                <TextField fx:id="nota3" prefWidth="250.0" GridPane.rowIndex="5" GridPane.columnIndex="1" style="-fx-background-color: #ffffff; -fx-border-color: #bdc3c7;"/>
+                <Button text="Llogarit Mesataren" GridPane.rowIndex="6" GridPane.columnIndex="1" onAction="#llogaritMesataren" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </GridPane>
+            <Label text="Nota Finale:" style="-fx-font-size: 18px; -fx-text-fill: #2c3e50;" />
+            <TextField fx:id="notaFinale" prefWidth="250.0" editable="false" style="-fx-background-color: #dfe6e9; -fx-border-color: #bdc3c7;"/>
+        </VBox>
+    </children>
+</AnchorPane>
+

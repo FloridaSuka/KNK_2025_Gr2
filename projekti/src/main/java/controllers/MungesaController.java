@@ -126,14 +126,6 @@ public class MungesaController {
         }
     }
 
-    public void shfaqGrafikun(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Grafiku");
-        alert.setHeaderText(null);
-        alert.setContentText("Grafiku i mungesave është duke u ndërtuar.");
-        alert.showAndWait();
-    }
-
     // Metoda për të përditësuar orën dhe datën
     private void startClock() {
         Timer timer = new Timer();
@@ -159,7 +151,25 @@ public class MungesaController {
         }
         pieChart.setData(chartData);
     }
+    @FXML
+    private void kerkoStudent(ActionEvent event) {
+        String query = txtKerkim.getText().toLowerCase();
+        ObservableList<String> filtruar = FXCollections.observableArrayList();
 
-    public void kerkoStudent(ActionEvent actionEvent) {
+        // Kalon nëpër të gjitha mungesat dhe i filtron sipas emrit
+        for (String raport : mungesat) {
+            if (raport.toLowerCase().contains(query)) {
+                filtruar.add(raport);
+            }
+        }
+
+        // Nëse ka rezultat, e vendos në ListView, përndryshe e lë bosh
+        if (filtruar.isEmpty()) {
+            listaMungesave.setItems(mungesat);
+        } else {
+            listaMungesave.setItems(filtruar);
+        }
     }
+
+
 }

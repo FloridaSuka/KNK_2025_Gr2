@@ -6,58 +6,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-        import javafx.stage.Stage;
+import javafx.stage.Stage;
 import models.User;
 import services.UserService;
 
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class LoginController {
 
-    @FXML
-    private TextField txtUsername;
-
-    @FXML
-    private PasswordField txtPassword;
-
-    @FXML
-    private Label lblError;
-
-    @FXML
-    private Hyperlink linkForgotPassword;
-
-    @FXML
-    private Button btnLogin;
-
-    @FXML
-    private MenuButton menuLanguage;
-
-    @FXML
-    private MenuItem menuAL;
-
-    @FXML
-    private MenuItem menuEN;
-
-    private ResourceBundle bundle;
-    private Locale locale;
+    @FXML private TextField txtUsername;
+    @FXML private PasswordField txtPassword;
+    @FXML private Label lblError;
+    @FXML private Hyperlink linkForgotPassword;
+    @FXML private Button btnLogin;
 
     private final UserService userService = new UserService();
-
-   @FXML
-public void initialize() {
-    // Vendosim gjuhën fillestare në Shqip
-    setLanguage("al");
-
-    // Ndërrimi i gjuhës në Shqip
-    menuAL.setOnAction(event -> setLanguage("al"));
-
-    // Ndërrimi i gjuhës në Anglisht
-    menuEN.setOnAction(event -> setLanguage("en"));
-}
-
 
     @FXML
     private static final String ADMIN_FXML   = "/fxml/admin_dashboard.fxml";
@@ -91,34 +55,9 @@ public void initialize() {
         }
     }
 
-    private void setLanguage(String lang) {
-    locale = new Locale(lang);
-    bundle = ResourceBundle.getBundle("bundles.Messages", locale, getClass().getClassLoader());
-
-    // Ndërro tekstet në mënyrë manuale
-    menuLanguage.setText(bundle.getString("login.language"));
-    txtUsername.setPromptText(bundle.getString("login.username"));
-    txtPassword.setPromptText(bundle.getString("login.password"));
-    linkForgotPassword.setText(bundle.getString("login.forgot_password"));
-    btnLogin.setText(bundle.getString("login.button"));
-    lblError.setText(""); // Pastrimi i gabimeve nëse ka
-
-    // Ndryshim i skenës
-    javafx.application.Platform.runLater(() -> {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"), bundle);
-            Parent root = loader.load();
-
-            Stage stage = (Stage) txtUsername.getScene().getWindow();
-            stage.getScene().setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    });
-    }
-
     @FXML
     private void onForgotPassword() {
+        // Hap një dialog për të vendosur fjalëkalimin e ri
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Rivendos Fjalëkalimin");
         dialog.setHeaderText("Vendos fjalëkalimin e ri:");
@@ -126,9 +65,13 @@ public void initialize() {
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(newPassword -> {
+            // Këtu e ruajmë fjalëkalimin e ri
+            // Për shembull mund të ruhet në databazë ose në fajll
             System.out.println("Fjalëkalimi u ndryshua në: " + newPassword);
 
+            // Tregon një mesazh për konfirmim
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sukses");
             alert.setHeaderText("Fjalëkalimi u ndryshua me sukses!");
             alert.setContentText("Mund të kyçesh me fjalëkalimin e ri.");
             alert.showAndWait();
