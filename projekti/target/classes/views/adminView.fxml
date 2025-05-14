@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AdminView">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css" />
-      <AnchorPane layoutX="125.0" layoutY="145.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="nav-tile" stylesheets="@style.css" />
-      <AnchorPane layoutX="325.0" layoutY="145.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
-      <AnchorPane layoutX="522.0" layoutY="145.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
-      <AnchorPane layoutX="125.0" layoutY="314.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
-      <AnchorPane layoutX="325.0" layoutY="321.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
-      <AnchorPane layoutX="522.0" layoutY="321.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 10px;" styleClass="nav-tile" stylesheets="@style.css" />
+      <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
+         <children>
+            <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Miresevini admin!">
+               <font>
+                  <Font name="Arial" size="36.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="41.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/ikona.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <Button layoutX="165.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Shkollat" />
+      <Button layoutX="468.0" layoutY="204.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Cilesime" />
    </children>
 </AnchorPane>
