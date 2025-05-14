@@ -6,20 +6,70 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
+        import javafx.stage.Stage;
 import models.User;
 import services.UserService;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class LoginController {
 
-    @FXML private TextField txtUsername;
-    @FXML private PasswordField txtPassword;
-    @FXML private Label lblError;
+    @FXML
+    private TextField txtUsername;
+
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private Label lblError;
+
+    @FXML
+    private Hyperlink linkForgotPassword;
+
+    @FXML
+    private Button btnLogin;
+
+    @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
+    private MenuItem menuAL;
+
+    @FXML
+    private MenuItem menuEN;
+
+    private ResourceBundle bundle;
+    private Locale locale;
 
     private final UserService userService = new UserService();
+
+    @FXML
+    public void initialize() {
+        // Vendosim gjuhën fillestare në Shqip
+        setLanguage("al");
+
+        // Ndërrimi i gjuhës në Shqip
+        menuAL.setOnAction(event -> setLanguage("al"));
+
+        // Ndërrimi i gjuhës në Anglisht
+        menuEN.setOnAction(event -> setLanguage("en"));
+    }
+
+    private void setLanguage(String lang) {
+        locale = new Locale(lang);
+        bundle = ResourceBundle.getBundle("bundles.Messages", locale, getClass().getClassLoader());
+
+        // Ndërro tekstet
+        menuLanguage.setText(bundle.getString("login.language"));
+        txtUsername.setPromptText(bundle.getString("login.username"));
+        txtPassword.setPromptText(bundle.getString("login.password"));
+        linkForgotPassword.setText(bundle.getString("login.forgot_password"));
+        btnLogin.setText(bundle.getString("login.button"));
+    }
+
 
     @FXML
     private static final String ADMIN_FXML   = "/fxml/admin_dashboard.fxml";
