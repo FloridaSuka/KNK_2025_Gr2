@@ -5,87 +5,114 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class NotatController {
 
     @FXML
-    private TextField txtStudenti, txtLenda, txtNota, txtViti, txtPeriudha, txtKerkim;
+    private TextField txtEmriNxenesit;
+
     @FXML
-    private DatePicker datePicker;
+    private TextField txtLenda;
+
+    @FXML
+    private ComboBox<String> comboPeriudha;
+
+    @FXML
+    private TextField nota1;
+
+    @FXML
+    private TextField nota2;
+
+    @FXML
+    private TextField nota3;
+
+    @FXML
+    private Label lblMesatarja;
+
+    @FXML
+    private Label lblNotaFinale;
+
     @FXML
     private ListView<String> listaNotave;
-    @FXML
-    private Label lblMesatarja, lblNumriNotave, lblStudentiMeNotaMeTeLarta;
-    @FXML
-    private LineChart<String, Number> lineChart;
 
-    // Lista që do të përmbajë notat dhe statistikat
+    @FXML
+    private Label lblDataOra1;
+
+    @FXML
+    private Label lblDataOra2;
+
     private ObservableList<String> notat = FXCollections.observableArrayList();
-    private Map<String, Integer> statistika = new HashMap<>();
-    private XYChart.Series<String, Number> notaSeries = new XYChart.Series<>();
 
     @FXML
     public void initialize() {
-        startClock();
         listaNotave.setItems(notat);
-        lineChart.setTitle("Progresi i Notave");
-        lineChart.getData().add(notaSeries);
-        notaSeries.setName("Notat gjatë vitit akademik");
+        comboPeriudha.setItems(FXCollections.observableArrayList("1", "2"));
     }
 
     @FXML
     private void regjistroNota(ActionEvent actionEvent) {
-        String emri = txtStudenti.getText();
+        String emri = txtEmriNxenesit.getText();
         String lenda = txtLenda.getText();
-        String nota = txtNota.getText();
-        String viti = txtViti.getText();
-        String periudha = txtPeriudha.getText();
-        LocalDate data = datePicker.getValue();
+        String periudha = comboPeriudha.getValue();
+        String n1 = nota1.getText();
+        String n2 = nota2.getText();
+        String n3 = nota3.getText();
 
-        if (!emri.isEmpty() && data != null && !nota.isEmpty() && (periudha.equals("1") || periudha.equals("2"))) {
-            String raport = "Nxënësi: " + emri + " | Lënda: " + lenda + " | Nota: " + nota + " | Viti: " + viti + " | Periudha: " + periudha + " | Data: " + data;
+        if (!emri.isEmpty() && !lenda.isEmpty() && periudha != null && !n1.isEmpty() && !n2.isEmpty() && !n3.isEmpty()) {
+            // Data dhe ora aktuale
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+
+            // Krijimi i raportit me datë dhe orë
+            String raport = "Nxënësi: " + emri + " | Lënda: " + lenda + " | Periudha: " + periudha +
+                    " | Nota 1: " + n1 + " | Nota 2: " + n2 + " | Nota 3: " + n3 +
+                    " | Regjistruar më: " + dtf.format(now);
             notat.add(raport);
             listaNotave.setItems(notat);
 
-            // Përditëso statistikat
-            int notaVlera = Integer.parseInt(nota);
-            statistika.put(emri, statistika.getOrDefault(emri, 0) + notaVlera);
-            lblNumriNotave.setText("Total Nota: " + notat.size());
-
-            // Shto në LineChart
-            notaSeries.getData().add(new XYChart.Data<>(data.toString(), notaVlera));
-
-            // Gjetja e nxënësit me notat më të larta
-            String maxStudent = statistika.entrySet().stream()
-                    .max(Map.Entry.comparingByValue())
-                    .map(Map.Entry::getKey)
-                    .orElse("-");
-            lblStudentiMeNotaMeTeLarta.setText("Nxënësi me notat më të larta: " + maxStudent);
+            // Vendosja në Label-a
+            lblDataOra1.setText("Nota 1 dhe 2 u regjistruan më: " + dtf.format(now));
+            lblDataOra2.setText("Nota 3 u regjistrua më: " + dtf.format(now));
 
             pastroFushat();
         } else {
-            showError("Ju lutem plotësoni të gjitha fushat, datën dhe periudha duhet të jetë 1 ose 2!");
+            showError("Ju lutem plotësoni të gjitha fushat!");
+        }
+    }
+
+    @FXML
+    private void llogaritMesataren() {
+        try {
+            double n1 = Double.parseDouble(nota1.getText());
+            double n2 = Double.parseDouble(nota2.getText());
+            double n3 = Double.parseDouble(nota3.getText());
+
+            double mesatarja = (n1 + n2 + n3) / 3;
+            mesatarja = Math.round(mesatarja * 100.0) / 100.0;
+
+            lblMesatarja.setText("Mesatarja: " + mesatarja);
+
+            int notaFinale = (int) Math.round(mesatarja);
+            lblNotaFinale.setText("Nota Finale: " + notaFinale);
+        } catch (NumberFormatException e) {
+            lblMesatarja.setText("Gabim në formatin e notave!");
+            lblNotaFinale.setText("-");
         }
     }
 
     @FXML
     private void pastroFushat() {
-        txtStudenti.clear();
+        txtEmriNxenesit.clear();
         txtLenda.clear();
-        txtNota.clear();
-        txtViti.clear();
-        txtPeriudha.clear();
-        datePicker.setValue(null);
+        nota1.clear();
+        nota2.clear();
+        nota3.clear();
+        comboPeriudha.getSelectionModel().clearSelection();
     }
 
     private void showError(String message) {
@@ -94,23 +121,5 @@ public class NotatController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-    // Metoda për të përditësuar orën dhe datën
-    private void startClock() {
-        Timer timer = new Timer();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(() -> {
-                    lblMesatarja.setText("Ora: " + LocalTime.now().format(timeFormatter));
-                });
-            }
-        }, 0, 1000);
-    }
-
-    public void llogaritMesataren(ActionEvent actionEvent) {
     }
 }
