@@ -46,29 +46,17 @@ public class LoginController {
 
     private final UserService userService = new UserService();
 
-    @FXML
-    public void initialize() {
-        // Vendosim gjuhën fillestare në Shqip
-        setLanguage("al");
+   @FXML
+public void initialize() {
+    // Vendosim gjuhën fillestare në Shqip
+    setLanguage("al");
 
-        // Ndërrimi i gjuhës në Shqip
-        menuAL.setOnAction(event -> setLanguage("al"));
+    // Ndërrimi i gjuhës në Shqip
+    menuAL.setOnAction(event -> setLanguage("al"));
 
-        // Ndërrimi i gjuhës në Anglisht
-        menuEN.setOnAction(event -> setLanguage("en"));
-    }
-
-    private void setLanguage(String lang) {
-        locale = new Locale(lang);
-        bundle = ResourceBundle.getBundle("bundles.Messages", locale, getClass().getClassLoader());
-
-        // Ndërro tekstet
-        menuLanguage.setText(bundle.getString("login.language"));
-        txtUsername.setPromptText(bundle.getString("login.username"));
-        txtPassword.setPromptText(bundle.getString("login.password"));
-        linkForgotPassword.setText(bundle.getString("login.forgot_password"));
-        btnLogin.setText(bundle.getString("login.button"));
-    }
+    // Ndërrimi i gjuhës në Anglisht
+    menuEN.setOnAction(event -> setLanguage("en"));
+}
 
 
     @FXML
@@ -101,6 +89,32 @@ public class LoginController {
             lblError.setText("Nuk u hap faqja kryesore");
             ex.printStackTrace();
         }
+    }
+
+    private void setLanguage(String lang) {
+    locale = new Locale(lang);
+    bundle = ResourceBundle.getBundle("bundles.Messages", locale, getClass().getClassLoader());
+
+    // Ndërro tekstet në mënyrë manuale
+    menuLanguage.setText(bundle.getString("login.language"));
+    txtUsername.setPromptText(bundle.getString("login.username"));
+    txtPassword.setPromptText(bundle.getString("login.password"));
+    linkForgotPassword.setText(bundle.getString("login.forgot_password"));
+    btnLogin.setText(bundle.getString("login.button"));
+    lblError.setText(""); // Pastrimi i gabimeve nëse ka
+
+    // Ndryshim i skenës
+    javafx.application.Platform.runLater(() -> {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"), bundle);
+            Parent root = loader.load();
+
+            Stage stage = (Stage) txtUsername.getScene().getWindow();
+            stage.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    });
     }
 
     @FXML
