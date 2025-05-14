@@ -151,4 +151,25 @@ public class MungesaController {
         }
         pieChart.setData(chartData);
     }
+    @FXML
+    private void kerkoStudent(ActionEvent event) {
+        String query = txtKerkim.getText().toLowerCase();
+        ObservableList<String> filtruar = FXCollections.observableArrayList();
+
+        // Kalon nëpër të gjitha mungesat dhe i filtron sipas emrit
+        for (String raport : mungesat) {
+            if (raport.toLowerCase().contains(query)) {
+                filtruar.add(raport);
+            }
+        }
+
+        // Nëse ka rezultat, e vendos në ListView, përndryshe e lë bosh
+        if (filtruar.isEmpty()) {
+            listaMungesave.setItems(mungesat);
+        } else {
+            listaMungesave.setItems(filtruar);
+        }
+    }
+
+
 }
