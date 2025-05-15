@@ -102,8 +102,8 @@ public class NotatController {
                 " | Mesuesi: " + txtMesuesi.getText() +
                 " | Periudha: " + comboPeriudha.getValue() +
                 " | Nota 1: " + nota1.getText() +
-                " | Nota 2: " + nota2.getText() ;
-
+                " | Nota 2: " + nota2.getText() +
+                
         notat.add(raport);
     }
 
