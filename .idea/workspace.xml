@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/DrejtorViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +22,35 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "FloridaSuka"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/FloridaSuka/KNK_2025_Gr2.git",
+    "accountId": "f3bcfded-a1a7-4c46-b5c1-704890a57d13"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2x99HHReDYgUrttLrJKa16gmemY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.TestDb.executor": "Run",
+    "Application.shtouser.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "com.codeium.enabled": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -44,6 +67,13 @@
     </option>
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="" />
+      <created>1747339337291</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747339337291</updated>
+    </task>
     <servers />
   </component>
 </project>
