@@ -1,4 +1,70 @@
 package utils;
 
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class SceneLocator {
+
+    public final static String LOGIN_PAGE = "/views/login.fxml";
+    public final static String ADMIN_PAGE = "/views/adminView.fxml";
+    public final static String PRINCIPAL_PAGE = "/views/drejtorView.fxml";
+    public final static String GRADE_MANAGEMENT_PAGE = "/views/MenaxhimiINotave.fxml";
+    public final static String SCHOOL_MANAGEMENT_PAGE = "/views/menaxhimiShkolles.fxml";
+    public final static String ABSENCES_PAGE = "/views/mungesa.fxml";
+    public final static String ADD_USER_PAGE = "/views/shtoUser.fxml";
+
+    public static void locate(Event event, String form) {
+        Node eventNode = (Node) event.getSource();
+        Stage stage = (Stage) eventNode.getScene().getWindow();
+        locate(stage, form);
+    }
+
+    public static void locate(javafx.scene.input.MouseEvent event, String form) {
+        Node eventNode = (Node) event.getSource();
+        Stage stage = (Stage) eventNode.getScene().getWindow();
+        locate(stage, form);
+    }
+
+    public static void locate(Stage stage, String form) {
+        Locale locale = Locale.getDefault();
+        ResourceBundle bundle = ResourceBundle.getBundle("bundles.Messages", locale);
+
+        FXMLLoader loader = new FXMLLoader(SceneLocator.class.getResource(form), bundle);
+
+        try {
+            Pane formPane = loader.load();
+            Scene newScene = new Scene(formPane);
+            stage.setScene(newScene);
+            stage.show();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+    public static void locate(Pane pane, String form) {
+        Pane formPane = loadPane(form, Locale.getDefault());
+        pane.getChildren().clear();
+        pane.getChildren().add(formPane);
+    }
+
+
+
+    private static Pane loadPane(String form, Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("bundles.Messages", locale);
+        FXMLLoader loader = new FXMLLoader(SceneLocator.class.getResource(form), bundle);
+        try {
+            return loader.load();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -9,8 +9,10 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.User;
 import services.UserService;
-
+import utils.SceneLocator;
+import javafx.scene.control.Button;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Optional;
 
 public class LoginController {
@@ -19,7 +21,10 @@ public class LoginController {
     @FXML private PasswordField txtPassword;
     @FXML private Label lblError;
     @FXML private Hyperlink linkForgotPassword;
-    @FXML private Button btnLogin;
+
+    @FXML private Button btnAlbanian;
+    @FXML private Button btnEnglish;
+    @FXML private MenuButton menuLanguage;
 
     private final UserService userService = new UserService();
 
@@ -76,5 +81,24 @@ public class LoginController {
             alert.setContentText("Mund të kyçesh me fjalëkalimin e ri.");
             alert.showAndWait();
         });
+    }
+
+
+    @FXML
+    void handleEnglishLanguage(ActionEvent event) {
+        Locale.setDefault(new Locale("en"));
+
+        // ✅ E marrim skenën nga MenuButton
+        Stage stage = (Stage) menuLanguage.getScene().getWindow();
+        SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
+    }
+
+    @FXML
+    void handleAlbanianLanguage(ActionEvent event) {
+        Locale.setDefault(new Locale("sq"));
+
+        // ✅ E marrim skenën nga MenuButton
+        Stage stage = (Stage) menuLanguage.getScene().getWindow();
+        SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
     }
 }

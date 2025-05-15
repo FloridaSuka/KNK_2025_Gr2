@@ -35,7 +35,7 @@ public class Main extends Application {
             Parent root = loader.load();
 
             // Titulli dhe skena
-            primaryStage.setTitle(bundle.getString("login.title"));
+            primaryStage.setTitle(bundle.getString("loginTitle"));
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (Exception e) {
