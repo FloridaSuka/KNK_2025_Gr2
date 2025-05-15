@@ -18,7 +18,7 @@ public class UserService {
     public User authenticate(String username, String rawPassword) {
         User u = users.get(username);
         if (u == null) return null;
-        return rawPassword.equals(u.getPasswordHash()) ? u : null;
+        return rawPassword.equals(u.getPassword()) ? u : null;
     }
 
     public void register(User u) {

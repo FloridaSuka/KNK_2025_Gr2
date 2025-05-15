@@ -8,16 +8,16 @@ public class User {
     public enum Role {ADMIN, MESUES}
     private int id;
     private String username;
-    private String passwordHash;
+    private String password;
     private String email;
     private String emer;
     private String mbiemer;
     private Role role = Role.MESUES;
 
-    public User(int id, String username, String passwordHash, String email, String emer, String mbiemer, Role role) {
+    public User(int id, String username, String password, String email, String emer, String mbiemer, Role role) {
         this.id = id;
         this.username = username;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.email = email;
         this.emer = emer;
         this.mbiemer = mbiemer;
@@ -35,8 +35,8 @@ public class User {
     public String getUsername(){
         return username;
     }
-    public String getPasswordHash(){
-        return passwordHash;
+    public String getPassword(){
+        return password;
     }
     public String getEmail(){
         return email;

@@ -16,28 +16,35 @@
             </Label>
          </children>
       </HBox>
-      <TextField layoutX="400.0" layoutY="190.0" prefHeight="30.0" prefWidth="310.0" />
-      <TextField layoutX="400.0" layoutY="230.0" prefHeight="30.0" prefWidth="310.0" />
-      <TextField layoutX="400.0" layoutY="110.0" prefHeight="30.0" prefWidth="310.0" />
-      <TextField layoutX="400.0" layoutY="150.0" prefHeight="30.0" prefWidth="310.0" />
-      <Label layoutX="90.0" layoutY="110.0" prefHeight="30.0" prefWidth="240.0" text="Emri:" />
+      <TextField fx:id="txtEmri" layoutX="400.0" layoutY="110.0" prefHeight="30.0" prefWidth="310.0" promptText="Shkruaj Emrin"/>
+      <TextField fx:id="txtMbiemri" layoutX="400.0" layoutY="150.0" prefHeight="30.0" prefWidth="310.0" promptText="Shkruaj Mbiemrin"/>
+      <TextField fx:id="txtEmail" layoutX="400.0" layoutY="190.0" prefHeight="30.0" prefWidth="310.0" promptText="Shkruaj Emailin"/>
+      <TextField fx:id="txtPerdoruesi" layoutX="400.0" layoutY="230.0" prefHeight="30.0" prefWidth="310.0" promptText="Shkruaj Emrin e Perdoruesit"/>
+      <PasswordField fx:id="txtFjalekalimi" layoutX="400.0" layoutY="270.0" prefHeight="30.0" prefWidth="310.0" promptText="Shkruaj Fjalekalimin"/>
+      <PasswordField fx:id="txtFjalekalimi2" layoutX="400.0" layoutY="310.0" prefHeight="30.0" prefWidth="310.0" promptText="Rishkruaj Fjalekalimin"/>
+
+      <Label layoutX="90.0" layoutY="110.0" prefHeight="30.0" prefWidth="240.0" text="Emri:"  />
       <Label layoutX="90.0" layoutY="150.0" prefHeight="30.0" prefWidth="240.0" text="Mbiemri:" />
       <Label layoutX="90.0" layoutY="230.0" prefHeight="30.0" prefWidth="240.0" text="Emri i perdoruesit:" />
       <Label layoutX="90.0" layoutY="190.0" prefHeight="30.0" prefWidth="240.0" text="Email:" />
       <Label layoutX="90.0" layoutY="270.0" prefHeight="30.0" prefWidth="240.0" text="Fjalekalimi:" />
+      <Label layoutX="90.0" layoutY="310.0" prefHeight="30.0" prefWidth="240.0" text="Rishkruaj fjalekalim-in:" />
       <Label layoutX="90.0" layoutY="350.0" prefHeight="30.0" prefWidth="240.0" text="Roli:" />
+
+      <Button layoutX="482.0" layoutY="417.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="150.0"
+              styleClass="record-button" text="Regjistro" textFill="WHITE"
+              onAction="#handleRegister" />
+
+      <RadioButton fx:id="radioDrejtor" layoutX="400.0" layoutY="350.0" mnemonicParsing="false" text="Drejtor" textFill="WHITE" />
+      <RadioButton fx:id="radioMesues" layoutX="524.0" layoutY="350.0" mnemonicParsing="false" text="Mesues" textFill="WHITE" />
+      <RadioButton fx:id="radioNxenes" layoutX="642.0" layoutY="350.0" mnemonicParsing="false" text="Nxenes" textFill="WHITE" />
+
       <ImageView fitHeight="56.0" fitWidth="76.0" layoutX="472.0" layoutY="21.0">
          <image>
             <Image url="@../images/ikona.png" />
          </image>
       </ImageView>
-      <Button layoutX="482.0" layoutY="417.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="150.0" styleClass="record-button" text="Regjistro" textFill="WHITE" />
-      <Label layoutX="90.0" layoutY="310.0" prefHeight="30.0" prefWidth="240.0" text="Rishkruaj fjalekalim-in:" />
-      <PasswordField layoutX="400.0" layoutY="270.0" prefHeight="30.0" prefWidth="310.0" />
-      <PasswordField layoutX="400.0" layoutY="310.0" prefHeight="30.0" prefWidth="310.0" />
-      <RadioButton layoutX="400.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Administrator" textFill="WHITE" />
-      <RadioButton layoutX="642.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" text="Nxenes" textFill="WHITE" />
-      <RadioButton layoutX="524.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="Mesues" textFill="WHITE" />
+
       <Button layoutX="720.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="52.0" styleClass="button-close" text="X" textFill="#db1616" />
 
    </children>
