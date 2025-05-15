@@ -26,8 +26,6 @@ public class NotatController {
     @FXML
     private TextField nota2;
 
-    @FXML
-    private TextField nota3;
 
     @FXML
     private TextField txtMesuesi;
@@ -44,8 +42,6 @@ public class NotatController {
     @FXML
     private Label lblDataOra2;
 
-    @FXML
-    private Label lblDataOra3;
 
     @FXML
     private ListView<String> listaNotave;
@@ -76,14 +72,6 @@ public class NotatController {
         }
     }
 
-    // Regjistrimi i datës kur vendoset Nota 3
-    @FXML
-    private void onKeyReleasedNota3(KeyEvent event) {
-        if (!nota3.getText().isEmpty()) {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            lblDataOra3.setText("Vendosur më: " + dtf.format(LocalDateTime.now()));
-        }
-    }
 
     // Llogarit Mesataren dhe e shfaq atë
     @FXML
@@ -91,9 +79,8 @@ public class NotatController {
         try {
             double n1 = Double.parseDouble(nota1.getText());
             double n2 = Double.parseDouble(nota2.getText());
-            double n3 = Double.parseDouble(nota3.getText());
 
-            double mesatarja = (n1 + n2 + n3) / 3;
+            double mesatarja = (n1 + n2 ) / 2;
             mesatarja = Math.round(mesatarja * 100.0) / 100.0;
 
             lblMesatarja.setText("Mesatarja: " + mesatarja);
@@ -115,8 +102,8 @@ public class NotatController {
                 " | Mesuesi: " + txtMesuesi.getText() +
                 " | Periudha: " + comboPeriudha.getValue() +
                 " | Nota 1: " + nota1.getText() +
-                " | Nota 2: " + nota2.getText() +
-                " | Nota 3: " + nota3.getText();
+                " | Nota 2: " + nota2.getText() ;
+
         notat.add(raport);
     }
 
@@ -129,10 +116,10 @@ public class NotatController {
         comboPeriudha.getSelectionModel().clearSelection();
         nota1.clear();
         nota2.clear();
-        nota3.clear();
+
         lblDataOra1.setText("");
         lblDataOra2.setText("");
-        lblDataOra3.setText("");
+
         lblMesatarja.setText("");
         lblNotaFinale.setText("");
     }
