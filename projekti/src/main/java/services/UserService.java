@@ -13,9 +13,12 @@ public class UserService {
 
     public User authenticate(String username, String password) {
         String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet result = null;
 
-        try (Connection connection = DBConnector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+            connection = DBConnector.getConnection();
 
             if (connection == null) {
                 System.out.println("❌ Lidhja me databazën dështoi!");
@@ -24,23 +27,39 @@ public class UserService {
 
             System.out.println("✅ Lidhja u krijua me sukses!");
 
+            statement = connection.prepareStatement(query);
+
+            // 👉 Kontrollojmë nëse username dhe password janë bosh
+            if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
+                System.out.println("❌ Username ose Password janë bosh.");
+                return null;
+            }
+
             statement.setString(1, username);
             statement.setString(2, password);
 
-            try (ResultSet result = statement.executeQuery()) {
-                if (result.next()) {
-                    System.out.println("✅ Përdoruesi u gjet!");
-                    return User.getInstance(result); // Ruan instancën e përdoruesit nga result
-                } else {
-                    System.out.println("❌ Përdoruesi nuk u gjet.");
-                    return null;
-                }
-            } catch (SQLException e) {
-                System.out.println("❌ Gabim gjatë ekzekutimit të query: " + e.getMessage());
+            result = statement.executeQuery();
+
+            if (result.next()) {
+                System.out.println("✅ Përdoruesi u gjet!");
+                return User.getInstance(result);
+            } else {
+                System.out.println("❌ Përdoruesi nuk u gjet.");
+                return null;
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Gabim gjatë lidhjes me databazën: " + e.getMessage());
+            System.out.println("❌ Gabim gjatë ekzekutimit të query: " + e.getMessage());
+        } finally {
+            // 👉 Këtu mbyllim vetëm ResultSet dhe PreparedStatement, por jo Connection
+            try {
+                if (result != null) result.close();
+                if (statement != null) statement.close();
+                // **Lidhja me databazën nuk mbyllet këtu!**
+                System.out.println("⚠️ ResultSet dhe PreparedStatement u mbyllën. Lidhja mbetet e hapur.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

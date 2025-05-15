@@ -48,6 +48,11 @@ public class LoginController {
         User u = userService.authenticate(username, password);
 
         if (u == null) {
+            // 👉 Rifreskojmë fushat pas gabimit
+            txtUsername.clear();
+            txtPassword.clear();
+            txtUsername.requestFocus();
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Kredenciale të pasakta");
             alert.setHeaderText("Kyçja dështoi!");
@@ -82,8 +87,6 @@ public class LoginController {
             ex.printStackTrace();
         }
     }
-
-
 
 
     @FXML
