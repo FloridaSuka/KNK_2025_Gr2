@@ -27,7 +27,7 @@
     </AnchorPane>
 
 
-        <Button fx:id="btnMesuesit" layoutX="124.0" layoutY="145.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Mësuesit" />
+        <Button fx:id="btnMesuesit" layoutX="124.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Mësuesit" />
         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="145.0">
             <image>
                 <Image url="@../images/Mesuesit.png" />
@@ -35,7 +35,7 @@
         </ImageView>
 
 
-        <Button fx:id="btnKlaset" layoutX="324.0" layoutY="145.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Klasët" />
+        <Button fx:id="btnKlaset" layoutX="324.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Klasët" />
         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="145.0">
             <image>
                 <Image url="@../images/Klasat.png" />
@@ -43,7 +43,7 @@
         </ImageView>
 
 
-        <Button fx:id="btnStatistikat" layoutX="524.0" layoutY="145.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Statistikat" />
+        <Button fx:id="btnStatistikat" layoutX="524.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Statistikat" />
         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="145.0">
             <image>
                 <Image url="@../images/Statistikat.png" />
@@ -51,7 +51,7 @@
         </ImageView>
 
 
-        <Button fx:id="btnLendet" layoutX="124.0" layoutY="315.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Lëndët" />
+        <Button fx:id="btnLendet" layoutX="124.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Lëndët" />
         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="315.0">
             <image>
                 <Image url="@../images/Lendet.png" />
@@ -59,7 +59,7 @@
         </ImageView>
 
 
-        <Button fx:id="btnProfile" layoutX="324.0" layoutY="315.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Profile Settings" />
+        <Button fx:id="btnProfile" layoutX="324.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Profile Settings" />
         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="315.0">
             <image>
                 <Image url="@../images/ProfileSettings.png" />
@@ -67,7 +67,7 @@
         </ImageView>
 
 
-        <Button fx:id="btnSignOut" layoutX="524.0" layoutY="315.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Sign Out" />
+        <Button fx:id="btnSignOut" layoutX="524.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Sign Out" />
         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="315.0">
             <image>
                 <Image url="@../images/SignOut.png" />

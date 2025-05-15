@@ -69,6 +69,7 @@ public class LoginController {
                     SceneLocator.locate(stage, SceneLocator.ADMIN_PAGE);
                     break;
                 case DREJTOR:
+                case Drejtor:
                     SceneLocator.locate(stage, SceneLocator.PRINCIPAL_PAGE);
                     break;
                 default:
@@ -78,6 +79,7 @@ public class LoginController {
                     alert.setContentText("Kontrolloni të dhënat e përdoruesit ose kontaktoni administratorin.");
                     alert.showAndWait();
             }
+
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Gabim gjatë hapjes së faqes");

@@ -41,14 +41,17 @@ public class SceneLocator {
         FXMLLoader loader = new FXMLLoader(SceneLocator.class.getResource(form), bundle);
 
         try {
+            System.out.println("👉 Ngarkimi i pamjes: " + form);
             Pane formPane = loader.load();
             Scene newScene = new Scene(formPane);
             stage.setScene(newScene);
             stage.show();
         } catch (IOException ioe) {
+            System.out.println("❌ Nuk mund të ngarkohet pamja: " + form);
             ioe.printStackTrace();
         }
     }
+
 
     public static void locate(Pane pane, String form) {
         Pane formPane = loadPane(form, Locale.getDefault());
