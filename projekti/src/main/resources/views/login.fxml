@@ -11,9 +11,9 @@
       <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
          <children>
             <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" fx:id="btnLogin" text="%btnlogin" />
-            <TextField fx:id="txtUsername" layoutX="32.0" layoutY="84.0"  prefHeight="39.0" prefWidth="224.0" promptText="emri i perdoruesit"/>
-            <PasswordField fx:id="txtPassword" layoutX="32.0" layoutY="175.0" prefHeight="39.0" prefWidth="224.0" promptText="fjalekalimi" />
-            <Hyperlink layoutX="31.0" layoutY="220.0" onAction="#onForgotPassword" text="Harrova Fjalëkalimin" styleClass="password-field"/>
+            <TextField fx:id="txtUsername" layoutX="32.0" layoutY="84.0"  prefHeight="39.0" prefWidth="224.0" promptText="%promptUsername"/>
+            <PasswordField fx:id="txtPassword" layoutX="32.0" layoutY="175.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptPassword" />
+            <Hyperlink layoutX="31.0" layoutY="220.0" onAction="#onForgotPassword" text="%promptForgotPass" styleClass="password-field"/>
          </children>
       </AnchorPane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="131.0" prefHeight="70.0" prefWidth="300.0" fx:id="loginTitle" text="%loginTitle" textFill="WHITE">
@@ -29,7 +29,7 @@
       <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="50.0" layoutY="27.0"
                   mnemonicParsing="false" popupSide="TOP"
                   prefHeight="41.0" prefWidth="119.0"
-                  styleClass="language" text="Language">
+                  styleClass="language" text="%txtLang">
          <items>
             <MenuItem fx:id="menuAL" onAction="#handleAlbanianLanguage" mnemonicParsing="false" text="ALB" />
             <MenuItem fx:id="menuEN" onAction="#handleEnglishLanguage" mnemonicParsing="false" text="ENG" />
