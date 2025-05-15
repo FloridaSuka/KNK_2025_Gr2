@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class User {
 
-    public enum Role {ADMIN, MESUES}
+    public enum Role {ADMIN, DREJTOR, MESUES, NXENES, PRINCIPAL, STUDENT, TEACHER}
     private int id;
     private String username;
     private String password;
@@ -67,18 +67,18 @@ public class User {
 
     public static User getInstance(ResultSet result) throws SQLException {
         int id              = result.getInt("id");
+        String name         = result.getString("name");
+        String surname     = result.getString("surname");
         String username     = result.getString("username");
-        String passwordHash = result.getString("password_hash");
+        String password = result.getString("password");
         String email        = result.getString("email");
-        String emer         = result.getString("emer");
-        String mbiemer      = result.getString("mbiemer");
 
         String roleStr = result.getString("role");
         User.Role role = roleStr != null
                 ? User.Role.valueOf(roleStr.trim().toUpperCase())
                 : User.Role.MESUES;
 
-        return new User(id, username, passwordHash, email, emer, mbiemer, role);
+        return new User(id, name, surname,username, password, email, role);
     }
 
 

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 public class UserService {
 
+    // ✅ Autentikimi i përdoruesit
     public User authenticate(String username, String password) {
         String query = "SELECT * FROM users WHERE username = ? AND password = ?";
 
@@ -30,7 +31,7 @@ public class UserService {
             try (ResultSet result = statement.executeQuery()) {
                 if (result.next()) {
                     System.out.println("✅ Përdoruesi u gjet!");
-                    return User.getInstance(result); // Ruan instancën e përdoruesit nga result
+                    return User.getInstance(result);
                 } else {
                     System.out.println("❌ Përdoruesi nuk u gjet.");
                     return null;

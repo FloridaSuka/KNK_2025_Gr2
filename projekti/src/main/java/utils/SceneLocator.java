@@ -33,6 +33,7 @@ public class SceneLocator {
         locate(stage, form);
     }
 
+
     public static void locate(Stage stage, String form) {
         Locale locale = Locale.getDefault();
         ResourceBundle bundle = ResourceBundle.getBundle("bundles.Messages", locale);
