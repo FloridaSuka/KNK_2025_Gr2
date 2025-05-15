@@ -5,77 +5,73 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.DrejtorViewController"
-            style="-fx-background-color: linear-gradient(to right, #2e728d, #264653);">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right, #2e728d, #264653);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DrejtorController">
 
-    <!-- Header -->
+
     <AnchorPane prefHeight="120.0" prefWidth="800.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-        <children>
-            <!-- Foto e Profilit (placeholder në formë rrethi) -->
+
+
             <Pane layoutX="700" layoutY="30" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #2a9d8f; -fx-background-radius: 30px;">
-                <children>
-                    <Label layoutX="15.0" layoutY="15.0" text="P" textFill="white" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
-                </children>
+<!--                <children>-->
+<!--                    <Label layoutX="15.0" layoutY="15.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="P" textFill="white" />-->
+<!--                </children>-->
             </Pane>
 
-            <!-- Label për EduMetrics -->
+
             <Label layoutX="20.0" layoutY="30.0" text="EduMetrics" textFill="WHITE">
                 <font>
                     <Font name="Colonna MT" size="40.0" />
                 </font>
             </Label>
-        </children>
+
     </AnchorPane>
 
-    <!-- Kategoritë -->
-    <children>
-        <!-- Mësuesit -->
-        <Button fx:id="btnMesuesit" layoutX="126.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Mësuesit" onAction="#handleNavigation"/>
-        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="126.0" layoutY="145.0">
+
+        <Button fx:id="btnMesuesit" layoutX="124.0" layoutY="145.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Mësuesit" />
+        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="145.0">
             <image>
                 <Image url="@../images/Mesuesit.png" />
             </image>
         </ImageView>
 
-        <!-- Klasët -->
-        <Button fx:id="btnKlaset" layoutX="324.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Klasët" onAction="#handleNavigation"/>
-        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="324.0" layoutY="145.0">
+
+        <Button fx:id="btnKlaset" layoutX="324.0" layoutY="145.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Klasët" />
+        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="145.0">
             <image>
                 <Image url="@../images/Klasat.png" />
             </image>
         </ImageView>
 
-        <!-- Statistikat -->
-        <Button fx:id="btnStatistikat" layoutX="523.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Statistikat" onAction="#handleNavigation"/>
-        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="523.0" layoutY="145.0">
+
+        <Button fx:id="btnStatistikat" layoutX="524.0" layoutY="145.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Statistikat" />
+        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="145.0">
             <image>
                 <Image url="@../images/Statistikat.png" />
             </image>
         </ImageView>
 
-        <!-- Lëndët -->
-        <Button fx:id="btnLendet" layoutX="126.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Lëndët" onAction="#handleNavigation"/>
-        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="126.0" layoutY="315.0">
+
+        <Button fx:id="btnLendet" layoutX="124.0" layoutY="315.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Lëndët" />
+        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="315.0">
             <image>
                 <Image url="@../images/Lendet.png" />
             </image>
         </ImageView>
 
-        <!-- Profile Settings -->
-        <Button fx:id="btnProfile" layoutX="324.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Profile Settings" onAction="#handleNavigation"/>
-        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="324.0" layoutY="315.0">
+
+        <Button fx:id="btnProfile" layoutX="324.0" layoutY="315.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Profile Settings" />
+        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="315.0">
             <image>
                 <Image url="@../images/ProfileSettings.png" />
             </image>
         </ImageView>
 
-        <!-- Sign Out -->
-        <Button fx:id="btnSignOut" layoutX="523.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Sign Out" onAction="#handleNavigation"/>
-        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="523.0" layoutY="315.0">
+
+        <Button fx:id="btnSignOut" layoutX="524.0" layoutY="315.0" onAction="#handleNavigation" prefHeight="150.0" prefWidth="152.0" text="Sign Out" />
+        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="315.0">
             <image>
                 <Image url="@../images/SignOut.png" />
             </image>
         </ImageView>
-    </children>
+
 </AnchorPane>

@@ -89,7 +89,7 @@ public class ShtoUser {
         String roli = ((RadioButton) roleGroup.getSelectedToggle()).getText();
 
         // ✅ Regjistrimi në databazë
-        String query = "INSERT INTO users (emri, mbiemri, email, emri_perdoruesit, fjalekalimi, roli) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users (name, surname, email, username, password, role) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DBConnector.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -129,7 +129,7 @@ public class ShtoUser {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sukses");
                 alert.setHeaderText("Regjistrimi u krye me sukses!");
-                alert.setContentText("Përdoruesi është ruajtur në databazë.");
+                alert.setContentText("Përdoruesi është ruajtur në sistem.");
                 alert.showAndWait();
             } else {
                 System.out.println("❌ Asnjë rresht nuk u ruajt në databazë.");

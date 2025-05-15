@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class User {
 
-    public enum Role {ADMIN, DREJTOR, MESUES, NXENES, PRINCIPAL, STUDENT, TEACHER}
+    public enum Role {ADMIN, DREJTOR, Drejtor, MESUES, NXENES, PRINCIPAL, STUDENT, TEACHER}
     private int id;
     private String username;
     private String password;
