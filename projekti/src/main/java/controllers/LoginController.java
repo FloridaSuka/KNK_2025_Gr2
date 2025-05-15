@@ -88,7 +88,7 @@ public class LoginController {
     void handleEnglishLanguage(ActionEvent event) {
         Locale.setDefault(new Locale("en"));
 
-        // ✅ E marrim skenën nga MenuButton
+        //  E marrim skenën nga MenuButton
         Stage stage = (Stage) menuLanguage.getScene().getWindow();
         SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
     }
@@ -97,7 +97,7 @@ public class LoginController {
     void handleAlbanianLanguage(ActionEvent event) {
         Locale.setDefault(new Locale("sq"));
 
-        // ✅ E marrim skenën nga MenuButton
+        //  E marrim skenën nga MenuButton
         Stage stage = (Stage) menuLanguage.getScene().getWindow();
         SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
     }
