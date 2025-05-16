@@ -6,21 +6,41 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        // Ngarkon skedarin FXML
-        Parent root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
+    public void start(Stage primaryStage) {
+        try {
+            // Vendosim gjuhën fillestare
+            Locale locale = new Locale("al");
+            ResourceBundle bundle = ResourceBundle.getBundle("bundles.Messages", locale, getClass().getClassLoader());
 
-        // Vendos titullin e dritares
-        primaryStage.setTitle("EduMetrics - Login");
+            // ✅ Kontrollo nëse ekziston login.fxml
+            URL fxmlLocation = getClass().getResource("/views/login.fxml");
+            if (fxmlLocation == null) {
+                System.out.println("❌ login.fxml nuk u gjet! Kontrollo rrugën.");
+                return; // ndal ekzekutimin nëse nuk gjendet
+            } else {
+                System.out.println("✅ login.fxml u gjet me sukses: " + fxmlLocation);
+            }
 
-        // Krijon skenën me përmasat 800x500 (ashtu siç e ke në FXML)
-        primaryStage.setScene(new Scene(root, 800, 500));
+            // Ngarkojmë skedarin FXML
+            FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
 
-        // Shfaq dritaren
-        primaryStage.show();
+            // Ngarkojmë pamjen
+            Parent root = loader.load();
+
+            // Titulli dhe skena
+            primaryStage.setTitle(bundle.getString("loginTitle"));
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

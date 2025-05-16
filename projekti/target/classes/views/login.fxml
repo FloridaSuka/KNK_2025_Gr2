@@ -10,13 +10,13 @@
    <children>
       <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
          <children>
-            <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="Kyçu" />
-            <TextField layoutX="32.0" layoutY="84.0" promptText="email" />
-            <PasswordField layoutX="32.0" layoutY="175.0" promptText="fjalekalimi" />
-            <Hyperlink layoutX="31.0" layoutY="220.0" onAction="#onForgotPassword" text="Harrova Fjalëkalimin" />
+            <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" fx:id="btnLogin" text="%btnlogin" onAction="#handleLogin"/>
+            <TextField fx:id="txtUsername" layoutX="32.0" layoutY="84.0"  prefHeight="39.0" prefWidth="224.0" promptText="%promptUsername"/>
+            <PasswordField fx:id="txtPassword" layoutX="32.0" layoutY="175.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptPassword" />
+            <Hyperlink layoutX="31.0" layoutY="220.0" onAction="#onForgotPassword" text="%promptForgotPass" styleClass="password-field"/>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="131.0" prefHeight="70.0" prefWidth="300.0" text="EduMetrics" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="131.0" prefHeight="70.0" prefWidth="300.0" fx:id="loginTitle" text="%loginTitle" textFill="WHITE">
          <font>
             <Font name="Colonna MT" size="56.0" />
          </font>
@@ -26,11 +26,15 @@
             <Image url="@../images/ikona.png" />
          </image>
       </ImageView>
-      <MenuButton contentDisplay="TEXT_ONLY" layoutX="50.0" layoutY="27.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="129.0" style="-fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 1px;" styleClass="language" stylesheets="@style.css" text="Language">
-        <items>
-          <MenuItem mnemonicParsing="true" text="ALB" />
-          <MenuItem mnemonicParsing="false" text="ENG" />
-        </items>
+      <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="50.0" layoutY="27.0"
+                  mnemonicParsing="false" popupSide="TOP"
+                  prefHeight="41.0" prefWidth="119.0"
+                  styleClass="language" text="%txtLang">
+         <items>
+            <MenuItem fx:id="menuAL" onAction="#handleAlbanianLanguage" mnemonicParsing="false" text="ALB" />
+            <MenuItem fx:id="menuEN" onAction="#handleEnglishLanguage" mnemonicParsing="false" text="ENG" />
+         </items>
       </MenuButton>
+
    </children>
 </AnchorPane>

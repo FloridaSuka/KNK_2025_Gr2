@@ -1,14 +1,23 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MungesaController {
 
@@ -17,39 +26,26 @@ public class MungesaController {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private ListView<String> listaStudentet, listaMungesave;
+    private ListView<String> listaMungesave;
     @FXML
-    private Label lblTotalJave, lblTotalMuaj, lblNxenesiMeShumeMungesa;
+    private Label lblTotalJave, lblTotalMuaj, lblNxenesiMeShumeMungesa, lblOra, lblData;
+    @FXML
+    private PieChart pieChart;
 
-    // Lista që do të përmbajë studentët
-    private ObservableList<String> studentet = FXCollections.observableArrayList("Arben Selimi", "Blerta Gashi", "Dion Bytyqi");
+    // Lista që do të përmbajë mungesat dhe statistikat
     private ObservableList<String> mungesat = FXCollections.observableArrayList();
     private Map<String, Integer> statistika = new HashMap<>();
 
     @FXML
     public void initialize() {
-        // Vendos listën e studentëve në ListView
-        listaStudentet.setItems(studentet);
+        // Orë dhe Datë që përditësohen automatikisht
+        startClock();
 
-        // Event Listener për klikimin në listë
-        listaStudentet.setOnMouseClicked((MouseEvent event) -> {
-            String emri = listaStudentet.getSelectionModel().getSelectedItem();
-            if (emri != null) {
-                txtStudenti.setText(emri);
-            }
-        });
-    }
+        // Vendos listën e mungesave në ListView
+        listaMungesave.setItems(mungesat);
 
-    @FXML
-    private void kerkoStudent() {
-        String query = txtKerkim.getText().toLowerCase();
-        ObservableList<String> filtruar = FXCollections.observableArrayList();
-        for (String student : studentet) {
-            if (student.toLowerCase().contains(query)) {
-                filtruar.add(student);
-            }
-        }
-        listaStudentet.setItems(filtruar);
+        // Inicimi i PieChart
+        pieChart.setTitle("Statistikat e Mungesave");
     }
 
     @FXML
@@ -69,6 +65,9 @@ public class MungesaController {
             statistika.put(emri, statistika.getOrDefault(emri, 0) + 1);
             lblTotalJave.setText("Total Mungesa (Javore): " + mungesat.size());
             lblTotalMuaj.setText("Total Mungesa (Mujore): " + mungesat.size());
+
+            // Përditëso grafikun
+            updateChart();
 
             // Gjetja e nxënësit me më shumë mungesa
             String maxStudent = statistika.entrySet().stream()
@@ -111,13 +110,66 @@ public class MungesaController {
 
     @FXML
     public void eksportoExcel(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Eksportim në Excel");
-        alert.setHeaderText(null);
-        alert.setContentText("Lista e mungesave u eksportua me sukses në Excel!");
-        alert.showAndWait();
+        try (FileWriter writer = new FileWriter("Mungesat.csv")) {
+            writer.append("Emri, Lënda, Klasa, Data, Arsyeja\n");
+            for (String raport : mungesat) {
+                writer.append(raport.replace(" | ", ", ").replace("Nxënësi: ", "").replace("Lënda: ", "").replace("Klasa: ", "").replace("Data: ", "").replace("Arsyeja: ", ""));
+                writer.append("\n");
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Eksportim në Excel");
+            alert.setHeaderText(null);
+            alert.setContentText("Lista e mungesave u eksportua me sukses në Mungesat.csv!");
+            alert.showAndWait();
+        } catch (IOException e) {
+            showError("Gabim gjatë eksportimit në Excel!");
+        }
     }
 
-    public void shfaqGrafikun(ActionEvent actionEvent) {
+    // Metoda për të përditësuar orën dhe datën
+    private void startClock() {
+        Timer timer = new Timer();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    lblOra.setText("Ora: " + LocalTime.now().format(timeFormatter));
+                    lblData.setText("Data: " + LocalDate.now().format(dateFormatter));
+                });
+            }
+        }, 0, 1000);
     }
+
+    // Metoda për përditësimin e grafikut
+    private void updateChart() {
+        ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();
+        for (Map.Entry<String, Integer> entry : statistika.entrySet()) {
+            chartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
+        }
+        pieChart.setData(chartData);
+    }
+    @FXML
+    private void kerkoStudent(ActionEvent event) {
+        String query = txtKerkim.getText().toLowerCase();
+        ObservableList<String> filtruar = FXCollections.observableArrayList();
+
+        // Kalon nëpër të gjitha mungesat dhe i filtron sipas emrit
+        for (String raport : mungesat) {
+            if (raport.toLowerCase().contains(query)) {
+                filtruar.add(raport);
+            }
+        }
+
+        // Nëse ka rezultat, e vendos në ListView, përndryshe e lë bosh
+        if (filtruar.isEmpty()) {
+            listaMungesave.setItems(mungesat);
+        } else {
+            listaMungesave.setItems(filtruar);
+        }
+    }
+
+
 }
