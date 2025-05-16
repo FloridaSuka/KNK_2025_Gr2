@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right, #2e728d, #264653);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NxenesController">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.NxenesiController">
 
     <!-- Header -->
-    <AnchorPane prefHeight="120.0" prefWidth="800.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-        <Pane layoutX="700" layoutY="30" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #2a9d8f; -fx-background-radius: 30px;" />
-        <Label layoutX="20.0" layoutY="30.0" text="EduMetrics" textFill="WHITE">
+    <top>
+        <Label text="Menaxhimi i Nxënësve" BorderPane.alignment="CENTER">
             <font>
-                <Font name="Colonna MT" size="40.0" />
+                <Font name="Arial Bold" size="24"/>
             </font>
+            <padding>
+                <Insets top="20" bottom="20"/>
+            </padding>
         </Label>
-    </AnchorPane>
+    </top>
 
-    <!-- Butonat dhe imazhet -->
-    <Button fx:id="btnNotat" layoutX="124.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Notat" />
-    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="145.0">
-        <image>
-            <Image url="@../images/Notat.png" />
-        </image>
-    </ImageView>
+    <!-- Qendra: Tabela -->
+    <center>
+        <TableView fx:id="tableViewNxenesit" prefHeight="400.0" prefWidth="800.0">
+            <columns>
+                <TableColumn fx:id="colId" text="ID"/>
+                <TableColumn fx:id="colEmri" text="Emri"/>
+                <TableColumn fx:id="colMbiemri" text="Mbiemri"/>
+                <TableColumn fx:id="colGrupi" text="Grupi"/>
+                <TableColumn fx:id="colFakulteti" text="Fakulteti"/>
+            </columns>
+        </TableView>
+    </center>
 
-    <Button fx:id="btnOrari" layoutX="324.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Orari" />
-    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="145.0">
-        <image>
-            <Image url="@../images/Orari.png" />
-        </image>
-    </ImageView>
+    <!-- Fundi: Forma + Butonat -->
+    <bottom>
+        <VBox spacing="10" alignment="CENTER" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="20" left="30" right="30"/>
+            </padding>
 
-    <Button fx:id="btnLajmet" layoutX="524.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Lajmet" />
-    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="145.0">
-        <image>
-            <Image url="@../images/Lajmet.png" />
-        </image>
-    </ImageView>
+            <!-- Forma e inputeve -->
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
 
-    <Button fx:id="btnMesimet" layoutX="124.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Mësimet" />
-    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="315.0">
-        <image>
-            <Image url="@../images/Mesimet.png" />
-        </image>
-    </ImageView>
+                <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="idField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-    <Button fx:id="btnProfili" layoutX="324.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Profili" />
-    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="315.0">
-        <image>
-            <Image url="@../images/ProfileSettings.png" />
-        </image>
-    </ImageView>
+                <Label text="Emri:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="emriField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-    <Button fx:id="btnDil" layoutX="524.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Dil" />
-    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="315.0">
-        <image>
-            <Image url="@../images/SignOut.png" />
-        </image>
-    </ImageView>
+                <Label text="Mbiemri:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="mbiemriField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-</AnchorPane>
+                <Label text="Klasë:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="klasaField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
+            </GridPane>
 
+            <!-- Butonat -->
+            <HBox spacing="20" alignment="CENTER">
+                <Button fx:id="shtoButton" text="Shto"/>
+                <Button fx:id="perditesoButton" text="Përditëso"/>
+                <Button fx:id="fshijButton" text="Fshij"/>
+                <Button fx:id="pastroButton" text="Pastro"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

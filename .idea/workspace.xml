@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/nxenesitView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/NxenesiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/adminView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/adminView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/nxenesitView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/nxenesitView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747421301119</updated>
-      <workItem from="1747421303963" duration="337000" />
+      <workItem from="1747421303963" duration="1462000" />
     </task>
     <servers />
   </component>
