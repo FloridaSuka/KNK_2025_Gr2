@@ -9,7 +9,7 @@
     <children>
         <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
             <children>
-                <Button fx:id="btnLogin" layoutX="59.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleChange" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="%btnlogin" />
+                <Button fx:id="btnLogin" layoutX="59.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleChange" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="%btnChangePass" />
                 <TextField fx:id="txtUsername" layoutX="32.0" layoutY="65.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptUsername" />
                 <TextField fx:id="txtPassword" layoutX="32.0" layoutY="115.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptOldPass" />
             <PasswordField fx:id="txtPassword1" layoutX="32.0" layoutY="165.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptNewPass" />
