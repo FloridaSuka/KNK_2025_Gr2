@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controllers.RivendosFjalekaliminController">
+    <children>
+        <Label layoutX="200.0" layoutY="50.0" text="Ndërro Fjalëkalimin" />
+        <TextField fx:id="txtUsername" layoutX="150.0" layoutY="100.0" promptText="Username" />
+        <PasswordField fx:id="txtNewPassword" layoutX="150.0" layoutY="150.0" promptText="New Password" />
+        <PasswordField fx:id="txtConfirmPassword" layoutX="150.0" layoutY="200.0" promptText="Confirm Password" />
+        <Button layoutX="200.0" layoutY="250.0" text="Ndërro Fjalëkalimin" onAction="#handlePasswordChange"/>
+    </children>
+</AnchorPane>

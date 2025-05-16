@@ -12,6 +12,7 @@ import services.UserService;
 import utils.SceneLocator;
 import javafx.scene.control.Button;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -26,10 +27,6 @@ public class LoginController {
     @FXML private MenuButton menuLanguage;
 
     private final UserService userService = new UserService();
-
-    @FXML
-    private static final String ADMIN_FXML   = "/fxml/admin_dashboard.fxml";
-    private static final String TEACHER_FXML = "/fxml/teacher_dashboard.fxml";
 
     @FXML
     private void handleLogin() {
@@ -92,25 +89,32 @@ public class LoginController {
 
 
     @FXML
-    private void onForgotPassword() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Rivendos Fjalëkalimin");
-        dialog.setHeaderText("Vendos fjalëkalimin e ri:");
-        dialog.setContentText("Fjalëkalimi i ri:");
+    private void onForgotPassword(ActionEvent event) {
+        try {
+            System.out.println("🔍 Po kontrollohet rruga e skedarit...");
+            URL url = SceneLocator.class.getResource(SceneLocator.RESET_PASSWORD);
 
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(newPassword -> {
-            System.out.println("Fjalëkalimi u ndryshua në: " + newPassword);
+            if (url == null) {
+                System.out.println("❌ Pamja 'rivendosFjalekalimin.fxml' nuk u gjet! Kontrollo rrugën në SceneLocator.");
+                return;
+            } else {
+                System.out.println("✅ Pamja u gjet me sukses: " + url.toString());
+            }
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Rivendos Fjalëkalimin");
+            stage.show();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sukses");
-            alert.setHeaderText("Fjalëkalimi u ndryshua me sukses!");
-            alert.setContentText("Mund të kyçesh me fjalëkalimin e ri.");
-            alert.showAndWait();
-        });
+            System.out.println("✅ U ridrejtua në Rivendos Fjalëkalimin");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("❌ Gabim gjatë ngarkimit të RivendosFjalekalimin.fxml");
+        }
     }
-
-
+    
     @FXML
     void handleEnglishLanguage(ActionEvent event) {
         Locale.setDefault(new Locale("en"));
