@@ -97,15 +97,26 @@ public class UserService {
         }
     }
 
-    // ✅ 1. Metoda për të verifikuar përdoruesin dhe fjalëkalimin aktual
-    public boolean verifyUser(String username, String oldPassword) {
-        String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+    public boolean verifyUser(String username, String verificationCode) {
+        String query;
+        boolean isNumeric = verificationCode.matches("\\d+"); // Kontrollo nëse është numerik
+
+        if (isNumeric) {
+            query = "SELECT * FROM users WHERE username = ? AND id = ?";
+        } else {
+            query = "SELECT * FROM users WHERE username = ? AND password = ?";
+        }
 
         try (Connection connection = DBConnector.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, username);
-            statement.setString(2, oldPassword);
+
+            if (isNumeric) {
+                statement.setInt(2, Integer.parseInt(verificationCode)); // Kthehet në integer
+            } else {
+                statement.setString(2, verificationCode);
+            }
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 return resultSet.next(); // Kthen true nëse ekziston, false nëse jo
@@ -115,6 +126,7 @@ public class UserService {
             return false;
         }
     }
+
 
     // ✅ 2. Metoda për të përditësuar fjalëkalimin e përdoruesit
     public boolean updatePassword(String username, String newPassword) {

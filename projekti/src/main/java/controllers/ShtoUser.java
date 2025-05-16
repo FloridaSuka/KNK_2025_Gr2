@@ -56,27 +56,43 @@ public class ShtoUser {
 
     @FXML
     private void handleRegister() {
-        // ✅ Validimi bazik
         if (txtEmri.getText().isEmpty() || txtMbiemri.getText().isEmpty() ||
                 txtEmail.getText().isEmpty() || txtPerdoruesi.getText().isEmpty() ||
                 txtFjalekalimi.getText().isEmpty() || txtFjalekalimi2.getText().isEmpty() ||
                 roleGroup.getSelectedToggle() == null) {
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Gabim");
-            alert.setHeaderText("Të dhëna të paplotësuara");
-            alert.setContentText("Ju lutem plotësoni të gjitha fushat!");
-            alert.showAndWait();
+            showAlert("Gabim", "Të dhëna të paplotësuara", "Ju lutem plotësoni të gjitha fushat!");
             return;
         }
 
-        // ✅ Kontrolli i fjalëkalimit
+        // ✅ Validimi me RegEx
+        if (!txtEmri.getText().matches("[A-Za-z\\s]+")) {
+            showAlert("Gabim", "Emri është i pavlefshëm", "Emri duhet të përmbajë vetëm shkronja dhe hapësira.");
+            return;
+        }
+
+        if (!txtMbiemri.getText().matches("[A-Za-z\\s]+")) {
+            showAlert("Gabim", "Mbiemri është i pavlefshëm", "Mbiemri duhet të përmbajë vetëm shkronja dhe hapësira.");
+            return;
+        }
+
+        if (!txtEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            showAlert("Gabim", "Email i pavlefshëm", "Ju lutem vendosni një email të vlefshëm.");
+            return;
+        }
+
+        if (!txtPerdoruesi.getText().matches("[A-Za-z0-9_]+")) {
+            showAlert("Gabim", "Username i pavlefshëm", "Username duhet të përmbajë vetëm shkronja, numra ose '_'.");
+            return;
+        }
+
         if (!txtFjalekalimi.getText().equals(txtFjalekalimi2.getText())) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Gabim");
-            alert.setHeaderText("Fjalëkalimet nuk përputhen");
-            alert.setContentText("Ju lutem kontrolloni fjalëkalimet!");
-            alert.showAndWait();
+            showAlert("Gabim", "Fjalëkalimet nuk përputhen", "Ju lutem kontrolloni fjalëkalimet!");
+            return;
+        }
+
+        if (!txtFjalekalimi.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")) {
+            showAlert("Gabim", "Fjalëkalimi i pavlefshëm", "Fjalëkalimi duhet të përmbajë të paktën një shkronjë të madhe, një të vogël, një numër dhe të jetë të paktën 8 karaktere.");
             return;
         }
 
@@ -115,35 +131,36 @@ public class ShtoUser {
 
             if (rows > 0) {
                 System.out.println("✅ Të dhënat u ruajtën me sukses.");
-
-                // ✅ Pastrimi i fushave pas regjistrimit
-                txtEmri.clear();
-                txtMbiemri.clear();
-                txtEmail.clear();
-                txtPerdoruesi.clear();
-                txtFjalekalimi.clear();
-                txtFjalekalimi2.clear();
-                roleGroup.selectToggle(null);
-
-                // ✅ Shfaq mesazh suksesi
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sukses");
-                alert.setHeaderText("Regjistrimi u krye me sukses!");
-                alert.setContentText("Përdoruesi është ruajtur në sistem.");
-                alert.showAndWait();
+                clearFields();
+                showAlert("Sukses", "Regjistrimi u krye me sukses!", "Përdoruesi është ruajtur në sistem.");
             } else {
                 System.out.println("❌ Asnjë rresht nuk u ruajt në databazë.");
             }
 
         } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Gabim");
-            alert.setHeaderText("Regjistrimi dështoi");
-            alert.setContentText("Ka ndodhur një gabim gjatë regjistrimit: " + e.getMessage());
-            alert.showAndWait();
+            showAlert("Gabim", "Regjistrimi dështoi", "Ka ndodhur një gabim gjatë regjistrimit: " + e.getMessage());
             System.out.println("❌ Gabim gjatë ruajtjes: " + e.getMessage());
             e.printStackTrace();
         }
 
     }
+
+    private void showAlert(String title, String header, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void clearFields() {
+        txtEmri.clear();
+        txtMbiemri.clear();
+        txtEmail.clear();
+        txtPerdoruesi.clear();
+        txtFjalekalimi.clear();
+        txtFjalekalimi2.clear();
+        roleGroup.selectToggle(null);
+    }
+
 }
