@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right, #2e728d, #264653);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NxenesController">
+
+    <!-- Header -->
+    <AnchorPane prefHeight="120.0" prefWidth="800.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+        <Pane layoutX="700" layoutY="30" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #2a9d8f; -fx-background-radius: 30px;" />
+        <Label layoutX="20.0" layoutY="30.0" text="EduMetrics" textFill="WHITE">
+            <font>
+                <Font name="Colonna MT" size="40.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+
+    <!-- Butonat dhe imazhet -->
+    <Button fx:id="btnNotat" layoutX="124.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Notat" />
+    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="145.0">
+        <image>
+            <Image url="@../images/Notat.png" />
+        </image>
+    </ImageView>
+
+    <Button fx:id="btnOrari" layoutX="324.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Orari" />
+    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="145.0">
+        <image>
+            <Image url="@../images/Orari.png" />
+        </image>
+    </ImageView>
+
+    <Button fx:id="btnLajmet" layoutX="524.0" layoutY="145.0" prefHeight="150.0" prefWidth="152.0" text="Lajmet" />
+    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="145.0">
+        <image>
+            <Image url="@../images/Lajmet.png" />
+        </image>
+    </ImageView>
+
+    <Button fx:id="btnMesimet" layoutX="124.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Mësimet" />
+    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="315.0">
+        <image>
+            <Image url="@../images/Mesimet.png" />
+        </image>
+    </ImageView>
+
+    <Button fx:id="btnProfili" layoutX="324.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Profili" />
+    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="325.0" layoutY="315.0">
+        <image>
+            <Image url="@../images/ProfileSettings.png" />
+        </image>
+    </ImageView>
+
+    <Button fx:id="btnDil" layoutX="524.0" layoutY="315.0" prefHeight="150.0" prefWidth="152.0" text="Dil" />
+    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="525.0" layoutY="315.0">
+        <image>
+            <Image url="@../images/SignOut.png" />
+        </image>
+    </ImageView>
+
+</AnchorPane>
+
+
