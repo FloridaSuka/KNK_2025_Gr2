@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 public class UserService {
 
+    // ✅ Metoda për autentikim (ekzistuese)
     public User authenticate(String username, String password) {
         String query = "SELECT * FROM users WHERE username = ? AND password = ?";
         Connection connection = null;
@@ -51,11 +52,9 @@ public class UserService {
         } catch (SQLException e) {
             System.out.println("❌ Gabim gjatë ekzekutimit të query: " + e.getMessage());
         } finally {
-            // 👉 Këtu mbyllim vetëm ResultSet dhe PreparedStatement, por jo Connection
             try {
                 if (result != null) result.close();
                 if (statement != null) statement.close();
-                // **Lidhja me databazën nuk mbyllet këtu!**
                 System.out.println("⚠️ ResultSet dhe PreparedStatement u mbyllën. Lidhja mbetet e hapur.");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -64,7 +63,7 @@ public class UserService {
         return null;
     }
 
-    // ✅ Regjistrimi i përdoruesit në databazë
+    // ✅ Regjistrimi i përdoruesit në databazë (ekzistuese)
     public boolean register(User user) {
         String query = "INSERT INTO users (username, password, email, name, surname, role) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -91,6 +90,44 @@ public class UserService {
                 System.out.println("❌ Regjistrimi dështoi.");
                 return false;
             }
+
+        } catch (SQLException e) {
+            System.out.println("❌ Gabim gjatë ekzekutimit të query: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // ✅ 1. Metoda për të verifikuar përdoruesin dhe fjalëkalimin aktual
+    public boolean verifyUser(String username, String oldPassword) {
+        String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+
+        try (Connection connection = DBConnector.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, username);
+            statement.setString(2, oldPassword);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next(); // Kthen true nëse ekziston, false nëse jo
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Gabim gjatë ekzekutimit të query: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // ✅ 2. Metoda për të përditësuar fjalëkalimin e përdoruesit
+    public boolean updatePassword(String username, String newPassword) {
+        String query = "UPDATE users SET password = ? WHERE username = ?";
+
+        try (Connection connection = DBConnector.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, newPassword);
+            statement.setString(2, username);
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
 
         } catch (SQLException e) {
             System.out.println("❌ Gabim gjatë ekzekutimit të query: " + e.getMessage());
