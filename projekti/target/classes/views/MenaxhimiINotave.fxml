@@ -3,50 +3,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+    <AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NotatController">
+        <children>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NotatController">
-    <children>
+            <!-- Header -->
+            <HBox layoutX="30.0" layoutY="20.0" spacing="20">
+                <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/ikona.png" />
+                    </image>
+                </ImageView>
+                <Label style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" text=" Menaxhimi i Notave" />
+            </HBox>
 
-        <!-- Header -->
-        <HBox layoutX="30.0" layoutY="20.0" spacing="20">
-            <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../images/ikona.png" />
-                </image>
-            </ImageView>
-            <Label style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" text=" Menaxhimi i Notave" />
-        </HBox>
+            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="Gjuha" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+                <items>
+                    <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                    <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+                </items>
+            </MenuButton>
 
-        <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="Gjuha" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
-            <items>
-                <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
-                <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
-            </items>
-        </MenuButton>
+            <!-- Raporti i Notave -->
+            <Label layoutX="30.0" layoutY="227.0" style="-fx-font-size: 18px; -fx-text-fill: white;" text="📋 Raporti i Notave të Vendosura" />
+            <ListView fx:id="listaNotave" layoutX="18.0" layoutY="260.0" prefHeight="219.0" prefWidth="740.0" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtLenda" layoutX="372.0" layoutY="106.0" prefHeight="25.0" prefWidth="209.0" promptText="Lënda" style="-fx-background-color: white; -fx-text-fill: black;" />
+            <TextField fx:id="nota1" layoutX="588.0" layoutY="106.0" prefWidth="150.0" promptText="Nota 1" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="nota2" layoutX="588.0" layoutY="142.0" prefWidth="150.0" promptText="Nota 2" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <Button layoutX="483.0" layoutY="177.0" onAction="#pastroFushat" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Pastro Fushat" />
+            <Button layoutX="588.0" layoutY="177.0" onAction="#regjistroNota" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Regjistro Notat" />
+            <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="Llogarit Mesataren" />
+            <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="209.0" promptText="Periudha" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtEmriNxenesit" layoutX="56.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtIdNxenesit" layoutX="222.0" layoutY="106.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtEmriMesuesit" layoutX="56.0" layoutY="142.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Mësuesit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtIdMesuesit" layoutX="222.0" layoutY="142.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Mësuesit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
 
-        <!-- Raporti i Notave -->
-        <Label layoutX="30.0" layoutY="227.0" style="-fx-font-size: 18px; -fx-text-fill: white;" text="📋 Raporti i Notave të Vendosura" />
-        <ListView fx:id="listaNotave" layoutX="18.0" layoutY="260.0" prefHeight="219.0" prefWidth="740.0" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-        <TextField fx:id="txtLenda" layoutX="372.0" layoutY="106.0" prefHeight="25.0" prefWidth="209.0" promptText="Lënda" style="-fx-background-color: white; -fx-text-fill: black;" />
-        <TextField fx:id="nota1" layoutX="588.0" layoutY="106.0" prefWidth="150.0" promptText="Nota 1" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-        <TextField fx:id="nota2" layoutX="588.0" layoutY="142.0" prefWidth="150.0" promptText="Nota 2" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-        <Button layoutX="483.0" layoutY="177.0" onAction="#pastroFushat" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Pastro Fushat" />
-        <Button layoutX="588.0" layoutY="177.0" onAction="#regjistroNota" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Regjistro Notat" />
-        <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="Llogarit Mesataren" />
-        <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="209.0" promptText="Periudha" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-        <TextField fx:id="txtEmriNxenesit" layoutX="56.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
-        <TextField fx:id="txtIdNxenesit" layoutX="222.0" layoutY="106.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
-        <TextField fx:id="txtEmriMesuesit" layoutX="56.0" layoutY="142.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Mësuesit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
-        <TextField fx:id="txtIdMesuesit" layoutX="222.0" layoutY="142.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Mësuesit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
+            <HBox layoutX="58.0" layoutY="180.0" spacing="20">
+                <Label style="-fx-text-fill: white;" text="Mesatarja: " />
+                <Label fx:id="lblMesatarja" style="-fx-text-fill: white;" />
+            </HBox>
 
-        <HBox layoutX="58.0" layoutY="180.0" spacing="20">
-            <Label style="-fx-text-fill: white;" text="Mesatarja: " />
-            <Label fx:id="lblMesatarja" style="-fx-text-fill: white;" />
-        </HBox>
-
-        <HBox layoutX="228.0" layoutY="180.0" spacing="20">
-            <Label style="-fx-text-fill: white;" text="Nota Finale: " />
-            <Label fx:id="lblNotaFinale" style="-fx-text-fill: white;" />
-        </HBox>
-    </children>
-</AnchorPane>
+            <HBox layoutX="228.0" layoutY="180.0" spacing="20">
+                <Label style="-fx-text-fill: white;" text="Nota Finale: " />
+                <Label fx:id="lblNotaFinale" style="-fx-text-fill: white;" />
+            </HBox>
+        </children>
+    </AnchorPane>
