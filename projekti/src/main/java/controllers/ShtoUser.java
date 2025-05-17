@@ -1,13 +1,17 @@
 package controllers;
 
 import database.DBConnector;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import utils.SceneLocator;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Locale;
 
 public class ShtoUser {
 
@@ -39,6 +43,9 @@ public class ShtoUser {
     private RadioButton radioNxenes;
 
     private ToggleGroup roleGroup;
+
+    @FXML private MenuButton menuLanguage;
+
 
     @FXML
     public void initialize() {
@@ -161,6 +168,22 @@ public class ShtoUser {
         txtFjalekalimi.clear();
         txtFjalekalimi2.clear();
         roleGroup.selectToggle(null);
+    }
+
+    @FXML
+    void handleEnglishLanguage(ActionEvent event) {
+        Locale.setDefault(new Locale("en"));
+
+        Stage stage = (Stage) menuLanguage.getScene().getWindow();
+        SceneLocator.locate(stage, SceneLocator.ADD_USER_PAGE);
+    }
+
+    @FXML
+    void handleAlbanianLanguage(ActionEvent event) {
+        Locale.setDefault(new Locale("sq"));
+
+        Stage stage = (Stage) menuLanguage.getScene().getWindow();
+        SceneLocator.locate(stage, SceneLocator.ADD_USER_PAGE);
     }
 
 }
