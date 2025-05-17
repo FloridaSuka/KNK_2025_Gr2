@@ -66,9 +66,17 @@ public class LoginController {
                 case ADMIN:
                     SceneLocator.locate(stage, SceneLocator.ADMIN_PAGE);
                     break;
-                case DREJTOR:
+                case Principal:
                 case Drejtor:
                     SceneLocator.locate(stage, SceneLocator.PRINCIPAL_PAGE);
+                    break;
+                case Mesues:
+                case Teacher:
+                    SceneLocator.locate(stage, SceneLocator.PRINCIPAL_PAGE);
+                    break;
+                case Nxenes:
+                case Student:
+                    SceneLocator.locate(stage, SceneLocator.STUDENT_PAGE);
                     break;
                 default:
                     Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -21,6 +21,8 @@ public class SceneLocator {
     public final static String ABSENCES_PAGE = "/views/mungesa.fxml";
     public final static String ADD_USER_PAGE = "/views/shtoUser.fxml";
     public final static String RESET_PASSWORD = "/views/rivendosFjalekalimin.fxml";
+    public final static String TEACHER_PAGE = "/views/rivendosFjalekalimin.fxml";
+    public final static String STUDENT_PAGE = "/views/nxenesitView.fxml";
 
 
     public static void locate(Event event, String form) {
