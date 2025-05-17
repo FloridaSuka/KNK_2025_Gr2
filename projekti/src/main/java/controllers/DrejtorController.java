@@ -7,50 +7,57 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class DrejtorController {
 
     @FXML
-    private void btnMesuesit(ActionEvent event) {
-        loadFXML(event, "/views/mesuesiView.fxml");
-    }
+    private Button btnMesuesit;
 
     @FXML
-    private void btnKlaset(ActionEvent event) {
-        loadFXML(event, "/views/klasaView.fxml");
-    }
+    private Button btnKlaset;
 
     @FXML
-    private void btnStatistikat(ActionEvent event) {
-        loadFXML(event, "/views/StatistikaView.fxml");
-    }
+    private Button btnStatistikat;
 
     @FXML
-    private void btnLendet(ActionEvent event) {
-        loadFXML(event, "/views/LendetView.fxml");
-    }
+    private Button btnLendet;
 
     @FXML
-    private void btnProfile(ActionEvent event) {
-        loadFXML(event, "/views/ProfileView.fxml");
-    }
+    private Button btnProfile;
 
     @FXML
-    private void btnSignOut(ActionEvent event) {
-        loadFXML(event, "/views/login.fxml");
+    private Button btnSignOut;
+
+    @FXML
+    private void initialize() {
+        System.out.println("✅ DrejtorController u inicializua!");
+
+        btnMesuesit.setOnAction(event -> switchScene(event, "/views/nxenesitView.fxml"));
+        btnKlaset.setOnAction(event -> switchScene(event, "/views/menaxhimiShkolles.fxml"));
+        btnStatistikat.setOnAction(event -> switchScene(event, "/views/MenaxhimiNotave.fxml"));
+        btnLendet.setOnAction(event -> switchScene(event, "/views/shtoUser.fxml"));
+        btnProfile.setOnAction(event -> switchScene(event, "/views/rivendosFjalekalimin.fxml"));
+        btnSignOut.setOnAction(event -> switchScene(event, "/views/login.fxml"));
     }
 
-    private void loadFXML(ActionEvent event, String fxmlPath) {
+    private void switchScene(ActionEvent event, String fxmlPath) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+            System.out.println("📌 Duke tentuar të hapet: " + fxmlPath);
+            System.out.println("📌 Rruga absolute: " + getClass().getClassLoader().getResource(fxmlPath));
+
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(fxmlPath));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+            System.out.println("✅ Skedari u hap me sukses: " + fxmlPath);
         } catch (IOException e) {
             System.out.println("❌ Nuk u gjet skedari: " + fxmlPath);
             e.printStackTrace();
         }
     }
+
 }
+
+
