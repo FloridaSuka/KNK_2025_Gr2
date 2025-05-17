@@ -14,7 +14,7 @@ public class NotatApp extends Application {
             // Ngarkimi i skedarit FXML
             Parent root = FXMLLoader.load(getClass().getResource("/views/MenaxhimiINotave.fxml"));
             primaryStage.setTitle("Sistemi i Vendosjes së Notave");
-            primaryStage.setScene(new Scene(root, 1200, 800));
+            primaryStage.setScene(new Scene(root, 800, 500));
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

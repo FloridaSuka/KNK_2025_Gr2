@@ -28,22 +28,20 @@ public class NotatController {
     @FXML
     private TextField nota2;
 
+    @FXML
+    private TextField txtIdNxenesit;
 
     @FXML
-    private TextField txtMesuesi;
+    private TextField txtIdMesuesit;
+
+    @FXML
+    private TextField txtEmriMesuesit;
 
     @FXML
     private Label lblMesatarja;
 
     @FXML
     private Label lblNotaFinale;
-
-    @FXML
-    private Label lblDataOra1;
-
-    @FXML
-    private Label lblDataOra2;
-
 
     @FXML
     private ListView<String> listaNotave;
@@ -61,52 +59,40 @@ public class NotatController {
 
     }
 
-    // Regjistrimi i datës kur vendoset Nota 1
-    @FXML
-    private void onKeyReleasedNota1(KeyEvent event) {
-        if (!nota1.getText().isEmpty()) {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            lblDataOra1.setText("Vendosur më: " + dtf.format(LocalDateTime.now()));
-        }
-    }
-
-    // Regjistrimi i datës kur vendoset Nota 2
-    @FXML
-    private void onKeyReleasedNota2(KeyEvent event) {
-        if (!nota2.getText().isEmpty()) {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            lblDataOra2.setText("Vendosur më: " + dtf.format(LocalDateTime.now()));
-        }
-    }
-
-
     // Llogarit Mesataren dhe e shfaq atë
     @FXML
     private void llogaritMesataren() {
+        System.out.println("Butoni u shtyp!");  // Test
+
         try {
             double n1 = Double.parseDouble(nota1.getText());
             double n2 = Double.parseDouble(nota2.getText());
 
-            double mesatarja = (n1 + n2 ) / 2;
+            double mesatarja = (n1 + n2) / 2;
             mesatarja = Math.round(mesatarja * 100.0) / 100.0;
 
-            lblMesatarja.setText("Mesatarja: " + mesatarja);
+            System.out.println("Mesatarja e llogaritur: " + mesatarja);  // Test
 
+            lblMesatarja.setText(String.valueOf(mesatarja)); // Vendoset direkt në Label
             int notaFinale = (int) Math.round(mesatarja);
-            lblNotaFinale.setText("Nota Finale: " + notaFinale);
+            lblNotaFinale.setText(String.valueOf(notaFinale)); // Vendoset direkt në Label
 
         } catch (NumberFormatException e) {
+            System.out.println("Gabim në formatin e notave!");
             lblMesatarja.setText("Gabim në formatin e notave!");
             lblNotaFinale.setText("-");
         }
     }
 
+
     // Regjistron në ListView të gjitha notat
     @FXML
     private void regjistroNota() {
         String raport = "Nxënësi: " + txtEmriNxenesit.getText() +
+                " | ID: " + txtIdNxenesit.getText() +
                 " | Lënda: " + txtLenda.getText() +
-                " | Mesuesi: " + txtMesuesi.getText() +
+                " | Mesuesi: " + txtEmriMesuesit.getText() +
+                " | Id: " + txtIdMesuesit.getText() +
                 " | Periudha: " + comboPeriudha.getValue() +
                 " | Nota 1: " + nota1.getText() +
                 " | Nota 2: " + nota2.getText() ;
@@ -118,14 +104,13 @@ public class NotatController {
     @FXML
     private void pastroFushat() {
         txtEmriNxenesit.clear();
+        txtIdNxenesit.clear();
         txtLenda.clear();
-        txtMesuesi.clear();
+        txtEmriMesuesit.clear();
+        txtIdMesuesit.clear();
         comboPeriudha.getSelectionModel().clearSelection();
         nota1.clear();
         nota2.clear();
-
-        lblDataOra1.setText("");
-        lblDataOra2.setText("");
 
         lblMesatarja.setText("");
         lblNotaFinale.setText("");
