@@ -6,7 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 import utils.SceneNavigator;
 
 import java.io.IOException;
@@ -54,7 +57,11 @@ public class MesuesiController {
 //            e.printStackTrace();
 //        }
 //    }
+    @FXML private MenuButton menuLanguage;
 
+    @FXML public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.TEACHER_PAGE);
+    }
     @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());

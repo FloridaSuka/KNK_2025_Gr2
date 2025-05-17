@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -29,6 +31,8 @@ public class MungesaController {
     private Label lblTotalJave, lblTotalMuaj, lblNxenesiMeShumeMungesa, lblOra, lblData;
     @FXML
     private PieChart pieChart;
+    @FXML private MenuButton menuLanguage;
+
 
     // Lista që do të përmbajë mungesat dhe statistikat
     private ObservableList<String> mungesat = FXCollections.observableArrayList();
@@ -44,6 +48,9 @@ public class MungesaController {
 
         // Inicimi i PieChart
         pieChart.setTitle("Statistikat e Mungesave");
+
+        //Zgjedhja e gjuhes
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ABSENCES_PAGE);
     }
 
     @FXML

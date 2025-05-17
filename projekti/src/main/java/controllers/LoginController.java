@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.User;
 import services.UserService;
+import utils.LanguageHandler;
 import utils.SceneLocator;
 import javafx.scene.control.Button;
 import java.io.IOException;
@@ -22,11 +23,6 @@ public class LoginController {
     @FXML private TextField txtUsername;
     @FXML private PasswordField txtPassword;
     @FXML private Hyperlink linkForgotPassword;
-
-    @FXML private Button btnAlbanian;
-    @FXML private Button btnEnglish;
-    @FXML private MenuButton menuLanguage;
-
     private final UserService userService = new UserService();
 
     @FXML

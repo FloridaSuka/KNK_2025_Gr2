@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import services.UserService;
+import utils.LanguageHandler;
 import utils.SceneLocator;
 
 import java.sql.Connection;
@@ -36,6 +37,10 @@ public class RivendosFjalekaliminController {
 
     @FXML
     private MenuButton menuLanguage;
+
+    @FXML public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.RESET_PASSWORD);
+    }
 
     @FXML
     void handleChange(ActionEvent event) {

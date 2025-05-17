@@ -6,9 +6,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 import utils.SceneNavigator;
 
 public class NxenesiController {
+    @FXML private MenuButton menuLanguage;
+
+    @FXML public void initialize() {
+        // Configure language menu
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.STUDENT_PAGE);
+    }
     @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());

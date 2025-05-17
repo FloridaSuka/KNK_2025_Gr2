@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -48,10 +50,15 @@ public class NotatController {
 
     private ObservableList<String> notat = FXCollections.observableArrayList();
 
+    @FXML private MenuButton menuLanguage;
+
     @FXML
     public void initialize() {
         listaNotave.setItems(notat);
         comboPeriudha.setItems(FXCollections.observableArrayList("1", "2"));
+
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.GRADE_MANAGEMENT_PAGE);
+
     }
 
     // Regjistrimi i datës kur vendoset Nota 1

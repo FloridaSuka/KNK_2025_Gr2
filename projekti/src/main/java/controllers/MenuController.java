@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 public class MenuController {
 
+
     public void openHelloView() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/com/example/demo/hello-view.fxml"));
