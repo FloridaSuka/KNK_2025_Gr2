@@ -37,6 +37,7 @@ public class RivendosFjalekaliminController {
     @FXML
     private MenuButton menuLanguage;
 
+    // 🔹 Metoda që ekzekutohet kur klikohet "Ndërro Fjalëkalimin"
     @FXML
     void handleChange(ActionEvent event) {
         // ✅ Marrim të dhënat nga fushat në formë
@@ -45,44 +46,14 @@ public class RivendosFjalekaliminController {
         String newPassword = txtPassword1.getText().trim();
         String confirmPassword = txtPassword2.getText().trim();
 
-        if (username.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Kujdes!", "Fusha për emrin e përdoruesit është e zbrazët!");
-            txtUsername.requestFocus();
-            return;
-        }
-
-        if (oldPassword.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Kujdes!", "Fusha për fjalëkalimin e vjetër është e zbrazët!");
-            txtPassword.requestFocus();
-            return;
-        }
-
-        if (newPassword.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Kujdes!", "Fusha për fjalëkalimin e ri është e zbrazët!");
-            txtPassword1.requestFocus();
-            return;
-        }
-
-        if (confirmPassword.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Kujdes!", "Fusha për konfirmimin e fjalëkalimit është e zbrazët!");
-            txtPassword2.requestFocus();
+        // ✅ 1. Validimi bazik
+        if (username.isEmpty() || oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Kujdes!", "Të gjitha fushat duhet të plotësohen!");
             return;
         }
 
         if (!newPassword.equals(confirmPassword)) {
             showAlert(Alert.AlertType.ERROR, "Gabim!", "Fjalëkalimet nuk përputhen!");
-            txtPassword1.clear();
-            txtPassword2.clear();
-            txtPassword1.requestFocus();
-            return;
-        }
-
-        if (!newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")) {
-            showAlert(Alert.AlertType.ERROR, "Fjalëkalimi i pavlefshëm",
-                    "Fjalëkalimi duhet të përmbajë:\n- Të paktën një shkronjë të madhe\n- Të paktën një shkronjë të vogël\n- Të paktën një numër\n- Të jetë të paktën 8 karaktere.");
-            txtPassword1.clear();
-            txtPassword2.clear();
-            txtPassword1.requestFocus();
             return;
         }
 
@@ -126,7 +97,7 @@ public class RivendosFjalekaliminController {
 
     @FXML
     void handleAlbanianLanguage(ActionEvent event) {
-        Locale.setDefault(new Locale("al"));
+        Locale.setDefault(new Locale("sq"));
 
         Stage stage = (Stage) menuLanguage.getScene().getWindow();
         SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
