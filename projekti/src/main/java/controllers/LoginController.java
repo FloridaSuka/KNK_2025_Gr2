@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class LoginController {
 
@@ -91,30 +92,31 @@ public class LoginController {
     @FXML
     private void onForgotPassword(ActionEvent event) {
         try {
-            System.out.println("🔍 Po kontrollohet rruga e skedarit...");
-            URL url = SceneLocator.class.getResource(SceneLocator.RESET_PASSWORD);
+            // 🔹 Ngarkojmë burimet (ResourceBundle)
+            Locale locale = Locale.getDefault();
+            ResourceBundle bundle = ResourceBundle.getBundle("bundles.Messages", locale);
 
-            if (url == null) {
-                System.out.println("❌ Pamja 'rivendosFjalekalimin.fxml' nuk u gjet! Kontrollo rrugën në SceneLocator.");
-                return;
-            } else {
-                System.out.println("✅ Pamja u gjet me sukses: " + url.toString());
-            }
-            FXMLLoader loader = new FXMLLoader(url);
+            // 🔹 Ngarkojmë view-in duke përdorur path-in e centralizuar nga SceneLocator
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/rivendosFjalekalimin.fxml"), bundle);
+
+            // 🔹 Ngarkojmë pamjen (view-in)
             Parent root = loader.load();
+
+            // 🔹 Marrim skenën aktuale dhe vendosim pamjen e re
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Rivendos Fjalëkalimin");
             stage.show();
 
-            System.out.println("✅ U ridrejtua në Rivendos Fjalëkalimin");
+            System.out.println("✅ U ridrejtua në RivendosFjalekalimin.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("❌ Gabim gjatë ngarkimit të RivendosFjalekalimin.fxml");
         }
     }
-    
+
+
     @FXML
     void handleEnglishLanguage(ActionEvent event) {
         Locale.setDefault(new Locale("en"));
