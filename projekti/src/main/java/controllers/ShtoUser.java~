@@ -68,38 +68,38 @@ public class ShtoUser {
                 txtFjalekalimi.getText().isEmpty() || txtFjalekalimi2.getText().isEmpty() ||
                 roleGroup.getSelectedToggle() == null) {
 
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Të dhëna të paplotësuara", "Ju lutem plotësoni të gjitha fushat!");
+            showAlert("Gabim", "Të dhëna të paplotësuara", "Ju lutem plotësoni të gjitha fushat!");
             return;
         }
 
         // ✅ Validimi me RegEx
         if (!txtEmri.getText().matches("[A-Za-z\\s]+")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Emri është i pavlefshëm", "Emri duhet të përmbajë vetëm shkronja dhe hapësira.");
+            showAlert("Gabim", "Emri është i pavlefshëm", "Emri duhet të përmbajë vetëm shkronja dhe hapësira.");
             return;
         }
 
         if (!txtMbiemri.getText().matches("[A-Za-z\\s]+")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Mbiemri është i pavlefshëm", "Mbiemri duhet të përmbajë vetëm shkronja dhe hapësira.");
+            showAlert("Gabim", "Mbiemri është i pavlefshëm", "Mbiemri duhet të përmbajë vetëm shkronja dhe hapësira.");
             return;
         }
 
         if (!txtEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Email i pavlefshëm", "Ju lutem vendosni një email të vlefshëm.");
+            showAlert("Gabim", "Email i pavlefshëm", "Ju lutem vendosni një email të vlefshëm.");
             return;
         }
 
         if (!txtPerdoruesi.getText().matches("[A-Za-z0-9_]+")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Username i pavlefshëm", "Username duhet të përmbajë vetëm shkronja, numra ose '_'.");
+            showAlert("Gabim", "Username i pavlefshëm", "Username duhet të përmbajë vetëm shkronja, numra ose '_'.");
             return;
         }
 
         if (!txtFjalekalimi.getText().equals(txtFjalekalimi2.getText())) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Fjalëkalimet nuk përputhen", "Ju lutem kontrolloni fjalëkalimet!");
+            showAlert("Gabim", "Fjalëkalimet nuk përputhen", "Ju lutem kontrolloni fjalëkalimet!");
             return;
         }
 
         if (!txtFjalekalimi.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Fjalëkalimi i pavlefshëm", "Fjalëkalimi duhet të përmbajë të paktën një shkronjë të madhe, një të vogël, një numër dhe të jetë të paktën 8 karaktere.");
+            showAlert("Gabim", "Fjalëkalimi i pavlefshëm", "Fjalëkalimi duhet të përmbajë të paktën një shkronjë të madhe, një të vogël, një numër dhe të jetë të paktën 8 karaktere.");
             return;
         }
 
@@ -139,27 +139,26 @@ public class ShtoUser {
             if (rows > 0) {
                 System.out.println("✅ Të dhënat u ruajtën me sukses.");
                 clearFields();
-                showAlert(Alert.AlertType.INFORMATION,"Sukses", "Regjistrimi u krye me sukses!", "Përdoruesi është ruajtur në sistem.");
+                showAlert("Sukses", "Regjistrimi u krye me sukses!", "Përdoruesi është ruajtur në sistem.");
             } else {
                 System.out.println("❌ Asnjë rresht nuk u ruajt në databazë.");
             }
 
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Regjistrimi dështoi", "Ka ndodhur një gabim gjatë regjistrimit: " + e.getMessage());
+            showAlert("Gabim", "Regjistrimi dështoi", "Ka ndodhur një gabim gjatë regjistrimit: " + e.getMessage());
             System.out.println("❌ Gabim gjatë ruajtjes: " + e.getMessage());
             e.printStackTrace();
         }
 
     }
 
-    private void showAlert(Alert.AlertType alertType, String title, String header, String message) {
-        Alert alert = new Alert(alertType);
+    private void showAlert(String title, String header, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(message);
         alert.showAndWait();
     }
-
 
     private void clearFields() {
         txtEmri.clear();
@@ -181,7 +180,7 @@ public class ShtoUser {
 
     @FXML
     void handleAlbanianLanguage(ActionEvent event) {
-        Locale.setDefault(new Locale("al"));
+        Locale.setDefault(new Locale("sq"));
 
         Stage stage = (Stage) menuLanguage.getScene().getWindow();
         SceneLocator.locate(stage, SceneLocator.ADD_USER_PAGE);
