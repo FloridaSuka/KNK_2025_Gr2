@@ -2,10 +2,17 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import utils.SceneNavigator;
 
 public class NxenesiController {
+    @FXML
+    private void handleLogout(ActionEvent event) {
+        SceneNavigator.logout((Node) event.getSource());
+    }
 
 //    @FXML
 //    private TextField txtEmri;
