@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import utils.LanguageHandler;
 import utils.SceneLocator;
 
 import java.sql.Connection;
@@ -58,6 +59,9 @@ public class ShtoUserController {
 
         // Mos selekto asnjë si default
         roleGroup.selectToggle(null);
+
+        // Konfigurimi i gjuhes per menun
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADD_USER_PAGE);
     }
 
     @FXML
@@ -170,20 +174,6 @@ public class ShtoUserController {
         roleGroup.selectToggle(null);
     }
 
-    @FXML
-    void handleEnglishLanguage(ActionEvent event) {
-        Locale.setDefault(new Locale("en"));
 
-        Stage stage = (Stage) menuLanguage.getScene().getWindow();
-        SceneLocator.locate(stage, SceneLocator.ADD_USER_PAGE);
-    }
-
-    @FXML
-    void handleAlbanianLanguage(ActionEvent event) {
-        Locale.setDefault(new Locale("al"));
-
-        Stage stage = (Stage) menuLanguage.getScene().getWindow();
-        SceneLocator.locate(stage, SceneLocator.ADD_USER_PAGE);
-    }
 
 }
