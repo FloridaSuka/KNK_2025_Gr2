@@ -9,8 +9,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -99,33 +97,6 @@ public class MungesaController {
         alert.showAndWait();
     }
 
-    @FXML
-    public void printoRaportin(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Printim i Raportit");
-        alert.setHeaderText(null);
-        alert.setContentText("Raporti i mungesave u printua me sukses!");
-        alert.showAndWait();
-    }
-
-    @FXML
-    public void eksportoExcel(ActionEvent actionEvent) {
-        try (FileWriter writer = new FileWriter("Mungesat.csv")) {
-            writer.append("Emri, Lënda, Klasa, Data, Arsyeja\n");
-            for (String raport : mungesat) {
-                writer.append(raport.replace(" | ", ", ").replace("Nxënësi: ", "").replace("Lënda: ", "").replace("Klasa: ", "").replace("Data: ", "").replace("Arsyeja: ", ""));
-                writer.append("\n");
-            }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Eksportim në Excel");
-            alert.setHeaderText(null);
-            alert.setContentText("Lista e mungesave u eksportua me sukses në Mungesat.csv!");
-            alert.showAndWait();
-        } catch (IOException e) {
-            showError("Gabim gjatë eksportimit në Excel!");
-        }
-    }
-
     // Metoda për të përditësuar orën dhe datën
     private void startClock() {
         Timer timer = new Timer();
@@ -151,19 +122,19 @@ public class MungesaController {
         }
         pieChart.setData(chartData);
     }
+
+    // Kërkimi në ListView
     @FXML
     private void kerkoStudent(ActionEvent event) {
         String query = txtKerkim.getText().toLowerCase();
         ObservableList<String> filtruar = FXCollections.observableArrayList();
 
-        // Kalon nëpër të gjitha mungesat dhe i filtron sipas emrit
         for (String raport : mungesat) {
             if (raport.toLowerCase().contains(query)) {
                 filtruar.add(raport);
             }
         }
 
-        // Nëse ka rezultat, e vendos në ListView, përndryshe e lë bosh
         if (filtruar.isEmpty()) {
             listaMungesave.setItems(mungesat);
         } else {
@@ -171,5 +142,21 @@ public class MungesaController {
         }
     }
 
+    // Fshirja e një mungese
+    @FXML
+    private void fshiMungese(ActionEvent event) {
+        String selectedItem = listaMungesave.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            listaMungesave.getItems().remove(selectedItem);
 
+            // Marrim emrin e nxënësit dhe e heqim nga statistikat
+            String emri = selectedItem.split("\\|")[0].replace("Nxënësi:", "").trim();
+            statistika.remove(emri);
+
+            // Përditësojmë ListView dhe PieChart
+            updateChart();
+        } else {
+            showError("Ju lutem zgjidhni një mungesë për ta fshirë.");
+        }
+    }
 }
