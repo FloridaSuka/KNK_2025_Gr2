@@ -82,7 +82,7 @@
     -fx-text-fill: white;
     -fx-border-color: white;
     -fx-border-width: 1px;
-    -fx-font-weight: regular;
+    /*-fx-font-weight: regular;*/
 }
 
 
