@@ -5,14 +5,14 @@ import java.sql.SQLException;
 
 public class User {
 
-    public enum Role {ADMIN, Drejtor, Mesues, Nxenes, Principal, Student, Teacher}
+    public enum Role {ADMIN, DREJTOR, MESUES, NXENES, PRINCIPAL, STUDENT, TEACHER}
     private int id;
     private String username;
     private String password;
     private String email;
     private String emer;
     private String mbiemer;
-    private Role role = Role.Mesues;
+    private Role role = Role.MESUES;
 
     public User(int id, String username, String password, String email, String emer, String mbiemer, Role role) {
         this.id = id;
@@ -76,7 +76,7 @@ public class User {
         String roleStr = result.getString("role");
         User.Role role = roleStr != null
                 ? User.Role.valueOf(roleStr.trim().toUpperCase())
-                : User.Role.Mesues;
+                : User.Role.MESUES;
 
         return new User(id, name, surname,username, password, email, role);
     }
