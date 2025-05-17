@@ -13,7 +13,7 @@ public class AdminController {
     @FXML private MenuButton menuLanguage;
 
     @FXML public void initialize() {
-        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.LOGIN_PAGE);
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
     }
 
     @FXML
