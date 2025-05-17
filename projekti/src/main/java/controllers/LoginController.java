@@ -24,7 +24,11 @@ public class LoginController {
     @FXML private PasswordField txtPassword;
     @FXML private Hyperlink linkForgotPassword;
     private final UserService userService = new UserService();
+    @FXML private MenuButton menuLanguage;
 
+    @FXML public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.LOGIN_PAGE);
+    }
     @FXML
     private void handleLogin() {
         String username = txtUsername.getText().trim();
