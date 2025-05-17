@@ -4,7 +4,6 @@ import database.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import utils.SceneLocator;
 
@@ -13,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Locale;
 
-public class ShtoUser {
+public class ShtoUserController {
 
     @FXML
     private TextField txtEmri;
