@@ -85,7 +85,7 @@
                   <children>
                       <AnchorPane layoutY="-1.0">
                           <children>
-                              <TableView blendMode="SRC_ATOP" cache="true" layoutX="4.0" layoutY="-15.0" prefWidth="423.0" scaleShape="false" style="-fx-background-color: #;" styleClass="tabela" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="-15.0">
+                              <TableView blendMode="SRC_ATOP" cache="true" layoutX="4.0" layoutY="-15.0" prefWidth="423.0" scaleShape="false"  styleClass="tabela" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="-15.0">
                                   <columns>
                                       <TableColumn prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="Shkolla Id" />
                                       <TableColumn prefWidth="94.00005340576172" style="-fx-background-color: #264653;;" styleClass="column-header" text="Emri i shkolles" />
