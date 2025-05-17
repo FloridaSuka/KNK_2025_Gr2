@@ -9,7 +9,7 @@ public class Lenda {
     private int idMesuesi;
 
     // Konstruktor privat
-    private Lenda(int idLenda, String emri, int idMesimi, int idDrejtimi, int idPerioda, int idMesuesi) {
+    public Lenda(int idLenda, String emri, int idMesimi, int idDrejtimi, int idPerioda, int idMesuesi) {
         this.id = idLenda;
         this.emri = emri;
         this.idMesimi = idMesimi;
