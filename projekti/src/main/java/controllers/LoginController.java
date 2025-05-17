@@ -66,16 +66,16 @@ public class LoginController {
                 case ADMIN:
                     SceneLocator.locate(stage, SceneLocator.ADMIN_PAGE);
                     break;
-                case Principal:
-                case Drejtor:
+                case PRINCIPAL:
+                case DREJTOR:
                     SceneLocator.locate(stage, SceneLocator.PRINCIPAL_PAGE);
                     break;
-                case Mesues:
-                case Teacher:
+                case MESUES:
+                case TEACHER:
                     SceneLocator.locate(stage, SceneLocator.PRINCIPAL_PAGE);
                     break;
-                case Nxenes:
-                case Student:
+                case STUDENT:
+                case NXENES:
                     SceneLocator.locate(stage, SceneLocator.STUDENT_PAGE);
                     break;
                 default:

@@ -84,7 +84,7 @@
         </graphic>
     </Button>
 
-    <Button fx:id="btnSignOut" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Dil" onAction="#handleLogout">
+    <Button fx:id="btnSignOut" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Dil">
         <graphic>
             <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                 <image>
