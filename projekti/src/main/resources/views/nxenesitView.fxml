@@ -25,7 +25,7 @@
                         <Image url="@../images/ikona.png" />
                     </image>
                 </ImageView>
-                <MenuButton fx:id="menuLanguage" layoutX="641.0" layoutY="32.0" prefHeight="41.0" prefWidth="119.0" text="Gjuha" styleClass="language">
+                <MenuButton fx:id="menuLanguage" layoutX="641.0" layoutY="32.0" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="Gjuha">
                     <items>
                         <MenuItem fx:id="menuAL" text="ALB" />
                         <MenuItem fx:id="menuEN" text="ENG" />
@@ -35,11 +35,11 @@
         </AnchorPane>
 
         <!-- Butonat -->
-        <Button layoutX="70.0" layoutY="204.0" prefHeight="150.0" prefWidth="150.0" text="Statistika" contentDisplay="TOP" graphicTextGap="20.0">
+        <Button contentDisplay="TOP" graphicTextGap="20.0" layoutX="70.0" layoutY="204.0" prefHeight="127.0" prefWidth="133.0" text="Statistika">
             <graphic>
-                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/chart-pie-solid.png" />
+                        <Image url="@../images/statistike.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -51,11 +51,11 @@
             </padding>
         </Button>
 
-        <Button layoutX="240.0" layoutY="204.0" prefHeight="150.0" prefWidth="150.0" text="Mungesat" contentDisplay="TOP" graphicTextGap="20.0">
+        <Button contentDisplay="TOP" graphicTextGap="20.0" layoutX="240.0" layoutY="204.0" prefHeight="127.0" prefWidth="133.0" text="Mungesat">
             <graphic>
-                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="105.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/list-ul-solid.png" />
+                        <Image url="@../images/mungesat.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -64,11 +64,11 @@
             </font>
         </Button>
 
-        <Button layoutX="410.0" layoutY="204.0" prefHeight="150.0" prefWidth="150.0" text="Notat" contentDisplay="TOP" graphicTextGap="20.0">
+        <Button contentDisplay="TOP" graphicTextGap="20.0" layoutX="410.0" layoutY="204.0" prefHeight="127.0" prefWidth="133.0" text="Notat">
             <graphic>
-                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="71.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/clipboard-list-solid.png" />
+                        <Image url="@../images/nota.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -77,7 +77,7 @@
             </font>
         </Button>
 
-        <Button layoutX="580.0" layoutY="204.0" prefHeight="150.0" prefWidth="150.0" text="Dil" contentDisplay="TOP" graphicTextGap="20.0">
+        <Button contentDisplay="TOP" graphicTextGap="20.0" layoutX="580.0" layoutY="204.0" prefHeight="127.0" prefWidth="133.0" text="Dil">
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -91,12 +91,3 @@
         </Button>
     </children>
 </AnchorPane>
-
-
-
-
-
-
-
-
-
