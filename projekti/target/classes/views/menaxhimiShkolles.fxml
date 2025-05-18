@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fillWidth="false" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AdminView">
+<VBox fillWidth="false" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiShkollesController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -85,7 +85,7 @@
                   <children>
                       <AnchorPane layoutY="-1.0">
                           <children>
-                              <TableView blendMode="SRC_ATOP" cache="true" layoutX="4.0" layoutY="-15.0" prefWidth="423.0" scaleShape="false" style="-fx-background-color: #;" styleClass="tabela" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="-15.0">
+                              <TableView blendMode="SRC_ATOP" cache="true" layoutX="4.0" layoutY="-15.0" prefWidth="423.0" scaleShape="false"  styleClass="tabela" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="-15.0">
                                   <columns>
                                       <TableColumn prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="Shkolla Id" />
                                       <TableColumn prefWidth="94.00005340576172" style="-fx-background-color: #264653;;" styleClass="column-header" text="Emri i shkolles" />
@@ -124,7 +124,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/arrow-left-solid%20(1).png" />
+                        <Image url="@../images/arrow-left-solid (1).png" />
                      </image>
                   </ImageView>
                </graphic>

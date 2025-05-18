@@ -33,7 +33,7 @@ public class MesuesiController {
 //
 //    @FXML
 //    private void btnMungesat(ActionEvent event) {
-//        loadFXML(event, "/views/mungesa.fxml");
+//        loadFXML(event, "/views/MenaxhimiMungesave.fxml");
 //    }
 //
 //    @FXML

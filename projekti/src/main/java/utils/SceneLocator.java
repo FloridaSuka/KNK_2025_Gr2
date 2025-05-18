@@ -18,7 +18,7 @@ public class SceneLocator {
     public final static String PRINCIPAL_PAGE = "/views/drejtorView.fxml";
     public final static String GRADE_MANAGEMENT_PAGE = "/views/MenaxhimiINotave.fxml";
     public final static String SCHOOL_MANAGEMENT_PAGE = "/views/menaxhimiShkolles.fxml";
-    public final static String ABSENCES_PAGE = "/views/mungesa.fxml";
+    public final static String ABSENCES_PAGE = "/views/MenaxhimiMungesave.fxml";
     public final static String ADD_USER_PAGE = "/views/shtoUser.fxml";
     public final static String RESET_PASSWORD = "/views/rivendosFjalekalimin.fxml";
     public final static String TEACHER_PAGE = "/views/mesuesiView.fxml";
