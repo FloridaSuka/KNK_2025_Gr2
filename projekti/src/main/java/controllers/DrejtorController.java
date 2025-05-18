@@ -72,6 +72,49 @@ public class DrejtorController {
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
     }
+
+    @FXML
+    private void handleSubject(ActionEvent event) {
+        try {
+            String path = SceneLocator.SUBJECT_MANAGEMENT_PAGE;
+
+            // ✅ Ngarkojmë skenën e re nga path-i
+            Parent lendetView = FXMLLoader.load(getClass().getResource(path));
+            Scene lendetScene = new Scene(lendetView);
+
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            window.setScene(lendetScene);
+            window.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("❌ Gabim gjatë ngarkimit të skenës!");
+        }
+    }
+
+    @FXML
+    private void handleClass(ActionEvent event) {
+        try {
+            // 🔄 Marrim path-in nga SceneLocator
+            String path = SceneLocator.CLASS_MANAGEMENT_PAGE;
+
+            // ✅ Ngarkojmë skenën e re nga path-i
+            Parent klasatView = FXMLLoader.load(getClass().getResource(path));
+            Scene klasatScene = new Scene(klasatView);
+
+            // 🔄 Marrim Stage aktual
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // 🔄 Ndryshojmë skenën në window
+            window.setScene(klasatScene);
+            window.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("❌ Gabim gjatë ngarkimit të skenës KlasatView.fxml");
+        }
+    }
 }
 
 
