@@ -14,10 +14,13 @@ import utils.SceneLocator;
 import utils.SceneNavigator;
 
 import java.io.IOException;
+import java.net.URL;
+
+import static utils.SceneLocator.CLASS_MANAGEMENT_PAGE;
 
 public class DrejtorController {
 
-//    @FXML
+    //    @FXML
 //    private Button btnMesuesit;
 //
 //    @FXML
@@ -63,11 +66,14 @@ public class DrejtorController {
 //        }
 //    }
     //PJESA E GJUHES
-    @FXML private MenuButton menuLanguage;
+    @FXML
+    private MenuButton menuLanguage;
 
-        @FXML public void initialize() {
-            LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
-        }
+    @FXML
+    public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
+    }
+
     @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
@@ -75,45 +81,12 @@ public class DrejtorController {
 
     @FXML
     private void handleSubject(ActionEvent event) {
-        try {
-            String path = SceneLocator.SUBJECT_MANAGEMENT_PAGE;
-
-            // ✅ Ngarkojmë skenën e re nga path-i
-            Parent lendetView = FXMLLoader.load(getClass().getResource(path));
-            Scene lendetScene = new Scene(lendetView);
-
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            window.setScene(lendetScene);
-            window.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("❌ Gabim gjatë ngarkimit të skenës!");
-        }
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SUBJECT_MANAGEMENT_PAGE);
     }
 
     @FXML
     private void handleClass(ActionEvent event) {
-        try {
-            // 🔄 Marrim path-in nga SceneLocator
-            String path = SceneLocator.CLASS_MANAGEMENT_PAGE;
-
-            // ✅ Ngarkojmë skenën e re nga path-i
-            Parent klasatView = FXMLLoader.load(getClass().getResource(path));
-            Scene klasatScene = new Scene(klasatView);
-
-            // 🔄 Marrim Stage aktual
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // 🔄 Ndryshojmë skenën në window
-            window.setScene(klasatScene);
-            window.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("❌ Gabim gjatë ngarkimit të skenës KlasatView.fxml");
-        }
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.CLASS_MANAGEMENT_PAGE);
     }
 }
 

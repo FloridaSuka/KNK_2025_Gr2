@@ -2,18 +2,38 @@ package utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SceneNavigator {
+    public static void switchScene(Node node, String path) {
+        try {
 
+            URL resource = SceneNavigator.class.getResource(path);
+
+            Parent view = FXMLLoader.load(resource);
+            Scene scene = new Scene(view);
+
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+            System.out.println("✅ U kalua me sukses në skenën: " + path);
+
+        } catch (IOException e) {
+            System.out.println("❌ Gabim gjatë ngarkimit të skenës: " + path);
+            e.printStackTrace();
+        }
+    }
     public static final String LOGIN_PAGE = "/views/login.fxml";
 
     /**
