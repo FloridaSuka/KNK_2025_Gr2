@@ -73,7 +73,7 @@
                 </AnchorPane>
 
                 <!-- Butonat -->
-                <Button fx:id="btnNxenesit" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="124.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Nxenesit">
+                <Button fx:id="btnNxenesit" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="124.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Nxenesit" onAction="#handleStudents">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -83,7 +83,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnNotat"  contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="324.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Notat">
+                <Button fx:id="btnNotat"  contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="324.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Notat" onAction="#handleGrades">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -93,7 +93,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnStatistikat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Statistikat">
+                <Button fx:id="btnStatistikat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Statistikat" >
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -103,7 +103,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnMungesat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="124.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Mungesat">
+                <Button fx:id="btnMungesat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="124.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Mungesat" onAction="#handleAbsence">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -134,6 +134,6 @@
                 </Button>
 
             </children>
-        </AnchorPane>`
+        </AnchorPane>
     </children>
 </VBox>
