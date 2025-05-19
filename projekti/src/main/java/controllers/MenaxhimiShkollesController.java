@@ -24,7 +24,8 @@ public class MenaxhimiShkollesController {
     private TableView<Shkolla> tableSchools;
 
     @FXML
-    private TableColumn<Shkolla, Integer> columnSchoolId;
+    private TableColumn<?, ?> columnSchoolId;
+
 
     @FXML
     private TableColumn<Shkolla, String> columnSchoolName;
