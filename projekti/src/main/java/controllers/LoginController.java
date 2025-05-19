@@ -72,7 +72,7 @@ public class LoginController {
                     break;
                 case MESUES:
                 case TEACHER:
-                    SceneLocator.locate(stage, SceneLocator.PRINCIPAL_PAGE);
+                    SceneLocator.locate(stage, SceneLocator.TEACHER_PAGE);
                     break;
                 case STUDENT:
                 case NXENES:
