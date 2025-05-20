@@ -108,7 +108,7 @@
 
             <!-- Paralelja -->
             <Label layoutX="83.0" layoutY="315.0" text="Paralelja:" />
-            <ComboBox fx:id="cmbParalelja" layoutX="564.0" layoutY="142.0" prefHeight="25.0" prefWidth="78.0" promptText="Klasa">
+            <ComboBox fx:id="cmbParalelja" layoutX="564.0" layoutY="142.0" prefHeight="25.0" prefWidth="78.0" promptText="Paralelja">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="A" />
@@ -123,7 +123,7 @@
 
             <!-- Klasa -->
             <Label layoutX="83.0" layoutY="350.0" text="Klasa:" />
-            <ComboBox fx:id="cmbKlasa" layoutX="656.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="Paralele">
+            <ComboBox fx:id="cmbKlasa" layoutX="656.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="Klasa">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="10" />

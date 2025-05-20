@@ -82,11 +82,12 @@ public class NotatController {
             int notaFinale = (int) Math.round(mesatarja);
             lblNotaFinale.setText(String.valueOf(notaFinale)); // Vendoset direkt në Label
 
-        } catch (NumberFormatException e) {
-            System.out.println("Gabim në formatin e notave!");
-            lblMesatarja.setText("Gabim në formatin e notave!");
+        }catch (NumberFormatException e) {
+            shfaqAlert("Gabim në Formatin e Notave", "Ju lutemi shkruani vetëm numra të vlefshëm për notat.");
+            lblMesatarja.setText("Gabim");
             lblNotaFinale.setText("-");
         }
+
     }
 
 
@@ -132,6 +133,14 @@ public class NotatController {
         cmbKlasa.getSelectionModel().clearSelection();
         lblMesatarja.setText("");
         lblNotaFinale.setText("");
+    }
+
+    private void shfaqAlert(String titulli, String mesazhi) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulli);
+        alert.setHeaderText(null);
+        alert.setContentText(mesazhi);
+        alert.showAndWait();
     }
 
 }

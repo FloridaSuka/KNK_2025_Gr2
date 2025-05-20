@@ -103,19 +103,17 @@
                             <children>
                                 <Label layoutX="9.0" layoutY="18.0" text="Emri i mesimdhenesit:" AnchorPane.rightAnchor="200.0" />
                                 <TextField layoutX="217.0" layoutY="14.0" AnchorPane.rightAnchor="43.66666666666666" />
-                                <Label layoutX="83.0" layoutY="63.0" text="Mbiemri i mesimdhenesit:" AnchorPane.rightAnchor="200.0" />
+                                <Label layoutX="83.0" layoutY="63.0" text="Shkolla:" AnchorPane.rightAnchor="200.0" />
                                 <TextField layoutX="217.0" layoutY="59.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Label layoutX="72.0" layoutY="108.0" text="Username i mesimdhenesit:" AnchorPane.rightAnchor="200.0" />
+                                <Label layoutX="72.0" layoutY="108.0" text="Adresa:" AnchorPane.rightAnchor="200.0" />
                                 <TextField layoutX="217.0" layoutY="104.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Label layoutX="61.0" layoutY="153.0" text="Password i mesimdhenesit:" AnchorPane.rightAnchor="200.0" />
-                                <TextField layoutX="217.0" layoutY="149.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Label layoutX="55.0" layoutY="198.0" text="Username i mesimdhenesit: " AnchorPane.rightAnchor="195.0" />
-                                <TextField layoutX="217.0" layoutY="194.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Label layoutX="58.0" layoutY="243.0" text="Password i mesimdhenesit:" AnchorPane.rightAnchor="200.0" />
-                                <PasswordField layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
-                                <Button layoutX="83.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
-                                <Button layoutX="159.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
-                                <Button layoutX="302.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" />
+                                <Label layoutX="62.0" layoutY="150.0" text="Username i mesimdhenesit: " AnchorPane.rightAnchor="198.66666666666666" />
+                                <TextField layoutX="217.0" layoutY="146.0" AnchorPane.rightAnchor="43.66666666666663" />
+                                <Label layoutX="64.0" layoutY="196.0" text="Passwordi i mesimdhenesit:" AnchorPane.rightAnchor="200.66666666666666" />
+                                <PasswordField layoutX="217.0" layoutY="192.0" AnchorPane.rightAnchor="43.66666666666663" />
+                                <Button layoutX="79.0" layoutY="246.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
+                                <Button layoutX="158.0" layoutY="246.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
+                                <Button layoutX="303.0" layoutY="246.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" />
                             </children>
                         </AnchorPane>
                     </children>
