@@ -19,11 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MenaxhimiIMesuesitController {
-    @FXML
-    private void handleGoBack(ActionEvent event) {
-        System.out.println("🔄 Duke u kthyer prapa...");
-        SceneNavigator.goBack((Node) event.getSource());
-    }
+
 //
 //    @FXML
 //    private TableView<Mesuesi> tableTeachers;

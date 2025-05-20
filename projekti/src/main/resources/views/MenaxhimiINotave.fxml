@@ -89,6 +89,7 @@
                 <Label style="-fx-text-fill: white;" text="Nota Finale: " />
                 <Label fx:id="lblNotaFinale" style="-fx-text-fill: white;" />
             </HBox>
+            <fx:include source="globalView.fxml" />
         </children>
     </AnchorPane>
     </children>
