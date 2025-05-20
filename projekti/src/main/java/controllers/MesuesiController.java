@@ -44,5 +44,9 @@ public class MesuesiController {
         SceneNavigator.logout((Node) event.getSource());
     }
 
+    @FXML
+    private void onOpenSettings(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
+    }
 
 }
