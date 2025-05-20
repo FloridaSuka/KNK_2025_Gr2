@@ -27,10 +27,9 @@ addUserPlaceholderUsername = Shkruaj Emrin e përdoruesit
 addUserPlaceholderEmail = Shkruaj Emailin
 addUserPlaceholderPassword = Shkruaj Fjalëkalimin
 addUserPlaceholderRepeatPassword = Shkruaj përsëri Fjalëkalimin
-
 ##pjesa e adminview
 help.menu =  Ndihmë 
 help.about =  Rreth EduMetrics
-_school.button =  Shkolla 
-_settings.button =  Cilësime 
-_logout =  Shkyçu 
+school.button =  Shkolla 
+settings.button =  Cilësime 
+logout =  Shkyçu 
