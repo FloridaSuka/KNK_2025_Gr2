@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiShkollesController">
+<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NxenesiController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -101,24 +101,24 @@
                         <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="336.0" prefWidth="410.0">
                             <children>
                                 <Label layoutX="83.0" layoutY="0.0" text="ID e Nxënësit:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="-4.0" AnchorPane.rightAnchor="43.66666666666666" />
+                                <TextField fx:id="txtId" layoutX="217.0" layoutY="-4.0" AnchorPane.rightAnchor="43.66666666666666" />
                                 <Label layoutX="83.0" layoutY="35.0" text="Emri:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="31.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtEmri" layoutX="217.0" layoutY="31.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="70.0" text="Mbiemri:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="66.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtMbiemri" layoutX="217.0" layoutY="66.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="105.0" text="Datelindja:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="101.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtDatelindja" layoutX="217.0" layoutY="101.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="140.0" text="Gjinia: " AnchorPane.rightAnchor="228.0" />
-                                <TextField layoutX="217.0" layoutY="136.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtGjinia" layoutX="217.0" layoutY="136.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="175.0" text="Email: " AnchorPane.rightAnchor="228.0" />
-                                <TextField layoutX="217.0" layoutY="171.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtEmail" layoutX="217.0" layoutY="171.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="210.0" text="Phone: " AnchorPane.rightAnchor="228.0" />
-                                <TextField layoutX="217.0" layoutY="206.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtPhone" layoutX="217.0" layoutY="206.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="245.0" text="Adresa: " AnchorPane.rightAnchor="228.0" />
-                                <TextField layoutX="217.0" layoutY="241.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Button layoutX="83.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="Fshij" />
-                                <Button layoutX="159.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Perditso" />
-                                <Button layoutX="302.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Shto" />
+                                <TextField fx:id="txtAdresa" layoutX="217.0" layoutY="241.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Button layoutX="83.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="Fshij" onAction="#fshijNxenes"/>
+                                <Button layoutX="159.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Perditso" onAction="#perditesoNxenes"/>
+                                <Button layoutX="302.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Shto" onAction="#shtoNxenes"/>
                             </children>
                         </AnchorPane>
                     </children>

@@ -1,6 +1,7 @@
-package models.dto.create;
+package models.dto.update;
 
-public class CreateNxenesit {
+public class UpdateNxenesit {
+    private int id;
     private String emri;
     private String mbiemri;
     private String datelindja;
@@ -9,7 +10,8 @@ public class CreateNxenesit {
     private String phone;
     private int adresaId;
 
-    public CreateNxenesit(String emri, String mbiemri, String datelindja, char gjinia, String email, String phone, int adresaId) {
+    public UpdateNxenesit(int id, String emri, String mbiemri, String datelindja, char gjinia, String email, String phone, int adresaId) {
+        this.id = id;
         this.emri = emri;
         this.mbiemri = mbiemri;
         this.datelindja = datelindja;
@@ -17,6 +19,10 @@ public class CreateNxenesit {
         this.email = email;
         this.phone = phone;
         this.adresaId = adresaId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getEmri() {
@@ -47,5 +53,4 @@ public class CreateNxenesit {
         return adresaId;
     }
 
-    // Getters ...
 }

@@ -3,7 +3,6 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.dto.create.CreateKlasa;
-import models.dto.update.UpdateKlasa;
 import services.KlasaService;
 
 public class MenaxhimiKlaseveController {

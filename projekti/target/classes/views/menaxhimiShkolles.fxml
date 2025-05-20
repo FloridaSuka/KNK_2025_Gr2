@@ -101,9 +101,7 @@
                               <TextField layoutX="217.0" layoutY="194.0" AnchorPane.rightAnchor="43.333333333333314" />
                         <Label layoutX="83.0" layoutY="243.0" text="Password drejtorit:" AnchorPane.rightAnchor="228.33333333333331" />
                         <PasswordField layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
-                        <Button layoutX="83.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="Fshij" />
-                              <Button layoutX="159.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Perditso" />
-                        <Button layoutX="302.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Shto" />
+                        <Button layoutX="260.0" layoutY="286.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Shto" />
                           </children>
                       </AnchorPane>
                   </children>

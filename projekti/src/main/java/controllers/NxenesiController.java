@@ -1,11 +1,12 @@
 package controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import models.dto.create.CreateNxenesit;
+import models.dto.update.UpdateNxenesit;
+import services.NxenesitService;
 import utils.LanguageHandler;
 import utils.SceneLocator;
 import utils.SceneNavigator;
@@ -22,74 +23,67 @@ public class NxenesiController {
         SceneNavigator.logout((Node) event.getSource());
     }
 
-//    @FXML
-//    private TextField txtEmri;
-//
-//    @FXML
-//    private TextField txtMbiemri;
-//
-//    @FXML
-//    private TextField txtID;
-//
-//    @FXML
-//    private ComboBox<String> comboKlasa;
-//
-//    @FXML
-//    private ListView<String> listaNxenesve;
-//
-//    private ObservableList<String> nxenesit = FXCollections.observableArrayList();
-//
-//    @FXML
-//    public void initialize() {
-//        listaNxenesve.setItems(nxenesit);
-//        comboKlasa.setItems(FXCollections.observableArrayList("10", "11", "12"));
-//    }
-//
-//    @FXML
-//    private void regjistroNxenesin() {
-//        String emri = txtEmri.getText();
-//        String mbiemri = txtMbiemri.getText();
-//        String id = txtID.getText();
-//        String klasa = comboKlasa.getValue();
-//
-//        if (emri.isEmpty() || mbiemri.isEmpty() || id.isEmpty() || klasa == null) {
-//            showAlert("Të gjitha fushat janë të detyrueshme!");
-//            return;
-//        }
-//
-//        String info = "ID: " + id +
-//                " | Emri: " + emri +
-//                " " + mbiemri +
-//                " | Klasa: " + klasa;
-//
-//        nxenesit.add(info);
-//        pastroFushat();
-//    }
-//
-//    @FXML
-//    private void fshijNxenesin() {
-//        String selected = listaNxenesve.getSelectionModel().getSelectedItem();
-//        if (selected != null) {
-//            nxenesit.remove(selected);
-//        } else {
-//            showAlert("Zgjidh një nxënës për ta fshirë.");
-//        }
-//    }
-//
-//    @FXML
-//    private void pastroFushat() {
-//        txtEmri.clear();
-//        txtMbiemri.clear();
-//        txtID.clear();
-//        comboKlasa.getSelectionModel().clearSelection();
-//    }
-//
-//    private void showAlert(String mesazhi) {
-//        Alert alert = new Alert(Alert.AlertType.WARNING);
-//        alert.setTitle("Paralajmërim");
-//        alert.setHeaderText(null);
-//        alert.setContentText(mesazhi);
-//        alert.showAndWait();
-//    }
+        @FXML private TextField txtId, txtEmri, txtMbiemri, txtDatelindja, txtGjinia, txtEmail, txtPhone, txtAdresa;
+        private final NxenesitService service = new NxenesitService();
+
+        @FXML
+        private void shtoNxenes() {
+            int adresaId = service.getAdresaId(txtAdresa.getText());
+            CreateNxenesit nx = new CreateNxenesit(
+                    txtEmri.getText(),
+                    txtMbiemri.getText(),
+                    txtDatelindja.getText(),
+                    txtGjinia.getText().charAt(0),
+                    txtEmail.getText(),
+                    txtPhone.getText(),
+                    adresaId
+            );
+
+            if (service.shto(nx)) {
+                showAlert("Sukses", "Nxënësi u shtua me sukses.");
+            } else {
+                showAlert("Gabim", "Nxënësi nuk u shtua.");
+            }
+        }
+
+        @FXML
+        private void fshijNxenes() {
+            int id = Integer.parseInt(txtId.getText());
+            if (service.fshij(id)) {
+                showAlert("Sukses", "Nxënësi u fshi me sukses.");
+            } else {
+                showAlert("Gabim", "Nxënësi nuk u fshi.");
+            }
+        }
+
+        @FXML
+        private void perditesoNxenes() {
+            int adresaId = service.getAdresaId(txtAdresa.getText());
+            UpdateNxenesit nx = new UpdateNxenesit(
+                    Integer.parseInt(txtId.getText()),
+                    txtEmri.getText(),
+                    txtMbiemri.getText(),
+                    txtDatelindja.getText(),
+                    txtGjinia.getText().charAt(0),
+                    txtEmail.getText(),
+                    txtPhone.getText(),
+                    adresaId
+            );
+
+            if (service.perditeso(nx)) {
+                showAlert("Sukses", "Nxënësi u përditësua me sukses.");
+            } else {
+                showAlert("Gabim", "Përditësimi dështoi.");
+            }
+        }
+
+        private void showAlert(String title, String content) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(content);
+            alert.showAndWait();
+        }
+
 }
 

@@ -1,7 +1,6 @@
 package services;
 
 import models.dto.create.CreateKlasa;
-import models.dto.update.UpdateKlasa;
 import repositories.KlasaRepository;
 
 public class KlasaService {

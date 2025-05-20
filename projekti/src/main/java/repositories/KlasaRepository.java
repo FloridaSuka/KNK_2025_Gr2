@@ -2,7 +2,6 @@ package repositories;
 
 import database.DBConnector;
 import models.dto.create.CreateKlasa;
-import models.dto.update.UpdateKlasa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
