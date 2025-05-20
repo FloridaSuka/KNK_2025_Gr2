@@ -19,7 +19,7 @@ public class SceneNavigator {
 
     private static final Stack<String> history = new Stack<>();
 
-    public static final String SETTINGS_PAGE = "/views/settings.fxml";
+
     public static final String LOGIN_PAGE = "/views/login.fxml";
 
     public static void initializeHistory(String initialPath) {

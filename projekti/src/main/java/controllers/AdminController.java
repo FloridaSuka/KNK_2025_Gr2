@@ -11,11 +11,7 @@ import utils.SceneNavigator;
 import java.util.ResourceBundle;
 
 public class AdminController {
-    @FXML
-    private void onOpenSettings(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        SceneNavigator.switchScene(source, SceneNavigator.SETTINGS_PAGE);
-    }
+
 
 
     @FXML
@@ -24,6 +20,10 @@ public class AdminController {
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
+    }
+    @FXML
+    private void onOpenSettings(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
     }
 
     @FXML

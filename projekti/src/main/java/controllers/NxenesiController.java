@@ -12,17 +12,19 @@ import utils.SceneLocator;
 import utils.SceneNavigator;
 
 public class NxenesiController {
-    @FXML
-    private void onOpenSettings(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        SceneNavigator.switchScene(source, SceneNavigator.SETTINGS_PAGE);
-    }
+
+
+
 
     @FXML private MenuButton menuLanguage;
 
     @FXML public void initialize() {
         // Configure language menu
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.STUDENT_PAGE);
+    }
+    @FXML
+    private void onOpenSettings(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
     }
     @FXML
     private void handleLogout(ActionEvent event) {
