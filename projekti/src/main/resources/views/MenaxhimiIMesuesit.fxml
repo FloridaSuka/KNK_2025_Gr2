@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fillWidth="false" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiIMesuesitController">
+<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiIMesuesitController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -87,10 +75,20 @@
                             <children>
                                 <TableView blendMode="SRC_ATOP" cache="true" layoutX="14.0" prefHeight="313.0" prefWidth="423.0" scaleShape="false" styleClass="tabela" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="0.0">
                                     <columns>
-                                        <TableColumn prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="ID e mesimdhenesit" />
-                                        <TableColumn prefWidth="94.00005340576172" style="-fx-background-color: #264653;;" styleClass="column-header" text="Mesimdhenes" />
-                                        <TableColumn prefWidth="82.00003051757812" style="-fx-background-color: #264653;;" styleClass="column-header" text="Lenda" />
-                                        <TableColumn prefWidth="98.66664123535156" style="-fx-background-color: #264653;;" styleClass="column-header" text="Nr.telefonit" />
+                                        <!--                                        private int id;-->
+                                        <!--                                        private String emri;-->
+                                        <!--                                        private String mbiemri;-->
+                                        <!--                                        private Date datelindja;-->
+                                        <!--                                        private char gjinia;-->
+                                        <!--                                        private String email;-->
+                                        <!--                                        private String phone;-->
+                                        <!--                                        private Adresa adresa;-->
+                                        <TableColumn prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="Mesimedhenesi Id" />
+                                        <TableColumn prefWidth="94.00005340576172" style="-fx-background-color: #264653;;" styleClass="column-header" text="Emri" />
+                                        <TableColumn prefWidth="82.00003051757812" style="-fx-background-color: #264653;;" styleClass="column-header" text="Mbiemri" />
+                                        <TableColumn prefWidth="98.66664123535156" style="-fx-background-color: #264653;;" styleClass="column-header" text="Email" />
+                                        <TableColumn prefWidth="68.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="Phone" />
+                                        <TableColumn prefWidth="68.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="Roli" />
                                         <TableColumn prefWidth="68.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="Adresa" />
                                     </columns>
                                     <columnResizePolicy>
@@ -101,19 +99,23 @@
                         </AnchorPane>
                         <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="336.0" prefWidth="410.0">
                             <children>
-                                <Label layoutX="9.0" layoutY="18.0" text="Emri i mesimdhenesit:" AnchorPane.rightAnchor="200.0" />
-                                <TextField layoutX="217.0" layoutY="14.0" AnchorPane.rightAnchor="43.66666666666666" />
-                                <Label layoutX="83.0" layoutY="63.0" text="Shkolla:" AnchorPane.rightAnchor="200.0" />
-                                <TextField layoutX="217.0" layoutY="59.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Label layoutX="72.0" layoutY="108.0" text="Adresa:" AnchorPane.rightAnchor="200.0" />
-                                <TextField layoutX="217.0" layoutY="104.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Label layoutX="62.0" layoutY="150.0" text="Username i mesimdhenesit: " AnchorPane.rightAnchor="198.66666666666666" />
-                                <TextField layoutX="217.0" layoutY="146.0" AnchorPane.rightAnchor="43.66666666666663" />
-                                <Label layoutX="64.0" layoutY="196.0" text="Passwordi i mesimdhenesit:" AnchorPane.rightAnchor="200.66666666666666" />
-                                <PasswordField layoutX="217.0" layoutY="192.0" AnchorPane.rightAnchor="43.66666666666663" />
-                                <Button layoutX="79.0" layoutY="246.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
-                                <Button layoutX="158.0" layoutY="246.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
-                                <Button layoutX="303.0" layoutY="246.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" />
+                                <Label layoutX="83.0" layoutY="0.0" prefHeight="17.0" prefWidth="119.0" text="ID e Mesimdhnesit:" AnchorPane.rightAnchor="216.0" />
+                                <TextField fx:id="txtId" layoutX="217.0" layoutY="-4.0" AnchorPane.rightAnchor="43.66666666666666" />
+                                <Label layoutX="83.0" layoutY="35.0" text="Emri:" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtEmri" layoutX="217.0" layoutY="31.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="70.0" text="Mbiemri:" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtMbiemri" layoutX="217.0" layoutY="66.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="105.0" text="Email:" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtEmail" layoutX="217.0" layoutY="101.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="140.0" text="Phone:" AnchorPane.rightAnchor="228.0" />
+                                <TextField fx:id="txtTel" layoutX="217.0" layoutY="136.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="175.0" text="Roli" AnchorPane.rightAnchor="228.0" />
+                                <TextField fx:id="txtRoli" layoutX="217.0" layoutY="171.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="210.0" prefHeight="17.0" prefWidth="47.0" text="Adresa:" AnchorPane.rightAnchor="218.0" />
+                                <TextField fx:id="txtAdresa" layoutX="217.0" layoutY="206.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Button layoutX="83.0" layoutY="288.0" onAction="#fshijMesues" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
+                                <Button layoutX="159.0" layoutY="288.0" onAction="#perditesoMesues" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
+                                <Button layoutX="302.0" layoutY="288.0" onAction="#shtoMesues" prefHeight="25.0" prefWidth="63.0" text="_Shto" />
                             </children>
                         </AnchorPane>
                     </children>
