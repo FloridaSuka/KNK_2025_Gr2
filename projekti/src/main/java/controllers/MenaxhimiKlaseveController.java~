@@ -29,8 +29,6 @@ public class MenaxhimiKlaseveController {
 
         if (klasaService.shtoKlasa(klasa)) {
             showAlert(Alert.AlertType.INFORMATION, "Sukses", "Klasa u shtua me sukses!");
-        } else {
-            showAlert(Alert.AlertType.ERROR, "Gabim", "Klasa nuk u shtua!");
         }
     }
     private void showAlert(Alert.AlertType alertType, String title, String header) {

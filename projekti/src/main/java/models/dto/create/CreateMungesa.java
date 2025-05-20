@@ -1,29 +1,19 @@
 package models.dto.create;
 
-public class CreateMungesa {
-    private String student;
-    private int lendaId;
-    private int periodaId;
-    private String dataMungeses;
-    private String arsyeja;
+import java.sql.Date;
 
-    public CreateMungesa(String student, int lendaId, int periodaId, String dataMungeses, String arsyeja) {
-        this.student = student;
-        this.lendaId = lendaId;
-        this.periodaId = periodaId;
-        this.dataMungeses = dataMungeses;
+public class CreateMungesa {
+    public String emriNxenesi;
+    public String emriLendes;
+    public String emriPerioda;
+    public Date data;
+    public String arsyeja;
+
+    public CreateMungesa(String emriNxenesi, String emriLendes, String emriPerioda, Date data, String arsyeja) {
+        this.emriNxenesi = emriNxenesi;
+        this.emriLendes = emriLendes;
+        this.emriPerioda = emriPerioda;
+        this.data = data;
         this.arsyeja = arsyeja;
     }
-
-    public String getStudent() { return student; }
-    public int getLendaId() { return lendaId; }
-    public int getPeriodaId() { return periodaId; }
-    public String getDataMungeses() { return dataMungeses; }
-    public String getArsyeja() { return arsyeja; }
-
-    public void setStudent(String student) { this.student = student; }
-    public void setLendaId(int lendaId) { this.lendaId = lendaId; }
-    public void setPeriodaId(int periodaId) { this.periodaId = periodaId; }
-    public void setDataMungeses(String dataMungeses) { this.dataMungeses = dataMungeses; }
-    public void setArsyeja(String arsyeja) { this.arsyeja = arsyeja; }
 }

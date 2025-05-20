@@ -66,4 +66,20 @@ public class NxenesitRepository {
         }
         return -1;
     }
+    public Integer getNxenesiIdByName(String emri) {
+        String sql = "SELECT id FROM nxenesit WHERE LOWER(emri) = LOWER(?)";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, emri.trim());
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }

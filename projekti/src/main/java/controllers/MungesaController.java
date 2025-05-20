@@ -1,169 +1,97 @@
 package controllers;
 
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import utils.LanguageHandler;
-import utils.SceneLocator;
+import models.Mungesa;
+import repositories.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.sql.Date;
 
 public class MungesaController {
 
-    @FXML
-    private TextField txtKerkim, txtStudenti, txtLenda, txtKlasa, txtArsyeja;
-    @FXML
-    private DatePicker datePicker;
-    @FXML
-    private ListView<String> listaMungesave;
-    @FXML
-    private Label lblTotalJave, lblTotalMuaj, lblNxenesiMeShumeMungesa, lblOra, lblData;
-    @FXML
-    private PieChart pieChart;
-    @FXML private MenuButton menuLanguage;
+    @FXML private TextField txtId;
+    @FXML private TextField txtNxenesi;
+    @FXML private TextField txtLenda;
+    @FXML private TextField txtPerioda;
+    @FXML private DatePicker txtData;
+    @FXML private TextField txtArsyeja;
 
-
-    // Lista që do të përmbajë mungesat dhe statistikat
-    private ObservableList<String> mungesat = FXCollections.observableArrayList();
-    private Map<String, Integer> statistika = new HashMap<>();
+    private final MungesatRepository mungesaRepo = new MungesatRepository();
+    private final NxenesitRepository nxenesiRepo = new NxenesitRepository();
+    private final LendaRepository lendaRepo = new LendaRepository();
+    private final PeriodaRepository periodaRepo = new PeriodaRepository();
 
     @FXML
-    public void initialize() {
-        // Orë dhe Datë që përditësohen automatikisht
-        startClock();
+    private void shtoMungese() {
+        Integer studentId = nxenesiRepo.getNxenesiIdByName(txtNxenesi.getText().trim());
+        Integer lendaId = lendaRepo.getLendaIdByName(txtLenda.getText().trim());
+        Integer periodaId = periodaRepo.getPeriodaIdByName(txtPerioda.getText().trim());
 
-        // Vendos listën e mungesave në ListView
-        listaMungesave.setItems(mungesat);
+        if (studentId == null || lendaId == null || periodaId == null || txtData.getValue() == null) {
+            shfaqAlert("Gabim", "Të dhënat janë të paplota", "Sigurohuni që emrat ekzistojnë dhe data është zgjedhur.", Alert.AlertType.ERROR);
+            return;
+        }
 
-        // Inicimi i PieChart
-        pieChart.setTitle("Statistikat e Mungesave");
+        Mungesa m = new Mungesa(studentId, lendaId, periodaId, Date.valueOf(txtData.getValue()), txtArsyeja.getText());
+        boolean success = mungesaRepo.perditeso(m.getId(), studentId, lendaId, periodaId, Date.valueOf(txtData.getValue()), txtArsyeja.getText());
 
-        //Zgjedhja e gjuhes
-        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ABSENCES_PAGE);
-    }
 
-    @FXML
-    private void regjistroMungese(ActionEvent actionEvent) {
-        String emri = txtStudenti.getText();
-        String lenda = txtLenda.getText();
-        String klasa = txtKlasa.getText();
-        LocalDate data = datePicker.getValue();
-        String arsyeja = txtArsyeja.getText();
-
-        if (!emri.isEmpty() && data != null) {
-            String raport = "Nxënësi: " + emri + " | Lënda: " + lenda + " | Klasa: " + klasa + " | Data: " + data + " | Arsyeja: " + arsyeja;
-            mungesat.add(raport);
-            listaMungesave.setItems(mungesat);
-
-            // Përditëso statistikat
-            statistika.put(emri, statistika.getOrDefault(emri, 0) + 1);
-            lblTotalJave.setText("Total Mungesa (Javore): " + mungesat.size());
-            lblTotalMuaj.setText("Total Mungesa (Mujore): " + mungesat.size());
-
-            // Përditëso grafikun
-            updateChart();
-
-            // Gjetja e nxënësit me më shumë mungesa
-            String maxStudent = statistika.entrySet().stream()
-                    .max(Map.Entry.comparingByValue())
-                    .map(Map.Entry::getKey)
-                    .orElse("-");
-            lblNxenesiMeShumeMungesa.setText("Nxënësi me më shumë mungesa: " + maxStudent);
-
-            pastroFushat();
+        if (success) {
+            shfaqAlert("Sukses", "Mungesa u shtua", "Të dhënat u ruajtën me sukses.", Alert.AlertType.INFORMATION);
         } else {
-            showError("Ju lutem plotësoni të gjitha fushat dhe datën!");
+            shfaqAlert("Gabim", "Dështoi ruajtja", "Nuk u arrit të ruhet mungesa.", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
-    private void pastroFushat() {
-        txtStudenti.clear();
-        txtLenda.clear();
-        txtKlasa.clear();
-        txtArsyeja.clear();
-        datePicker.setValue(null);
+    private void perditesoMungese() {
+        if (txtId.getText().isEmpty()) {
+            shfaqAlert("Gabim", "ID mungon", "Ju lutem shkruani ID për të përditësuar.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        Integer studentId = nxenesiRepo.getNxenesiIdByName(txtNxenesi.getText().trim());
+        Integer lendaId = lendaRepo.getLendaIdByName(txtLenda.getText().trim());
+        Integer periodaId = periodaRepo.getPeriodaIdByName(txtPerioda.getText().trim());
+
+        if (studentId == null || lendaId == null || periodaId == null || txtData.getValue() == null) {
+            shfaqAlert("Gabim", "Të dhënat janë të paplota", "Sigurohuni që emrat ekzistojnë dhe data është zgjedhur.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        int id = Integer.parseInt(txtId.getText());
+        Mungesa m = new Mungesa(id, studentId, lendaId, periodaId, Date.valueOf(txtData.getValue()), txtArsyeja.getText());
+        boolean success = mungesaRepo.perditeso(id, studentId, lendaId, periodaId, Date.valueOf(txtData.getValue()), txtArsyeja.getText());
+
+        if (success) {
+            shfaqAlert("Sukses", "U përditësua", "Të dhënat u përditësuan me sukses.", Alert.AlertType.INFORMATION);
+        } else {
+            shfaqAlert("Gabim", "Dështoi përditësimi", "Nuk u arrit të përditësohen të dhënat.", Alert.AlertType.ERROR);
+        }
     }
 
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Gabim");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
+    @FXML
+    private void fshijMungese() {
+        if (txtId.getText().isEmpty()) {
+            shfaqAlert("Gabim", "ID mungon", "Ju lutem shkruani ID për të fshirë.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        int id = Integer.parseInt(txtId.getText());
+        boolean success = mungesaRepo.fshij(id);
+
+        if (success) {
+            shfaqAlert("Sukses", "Fshirja u krye", "Mungesa u fshi me sukses.", Alert.AlertType.INFORMATION);
+        } else {
+            shfaqAlert("Gabim", "Dështoi fshirja", "Nuk u arrit të fshihet mungesa.", Alert.AlertType.ERROR);
+        }
+    }
+
+    private void shfaqAlert(String titulli, String header, String mesazhi, Alert.AlertType tipi) {
+        Alert alert = new Alert(tipi);
+        alert.setTitle(titulli);
+        alert.setHeaderText(header);
+        alert.setContentText(mesazhi);
         alert.showAndWait();
-    }
-
-    // Metoda për të përditësuar orën dhe datën
-    private void startClock() {
-        Timer timer = new Timer();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(() -> {
-                    lblOra.setText("Ora: " + LocalTime.now().format(timeFormatter));
-                    lblData.setText("Data: " + LocalDate.now().format(dateFormatter));
-                });
-            }
-        }, 0, 1000);
-    }
-
-    // Metoda për përditësimin e grafikut
-    private void updateChart() {
-        ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();
-        for (Map.Entry<String, Integer> entry : statistika.entrySet()) {
-            chartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
-        }
-        pieChart.setData(chartData);
-    }
-
-    // Kërkimi në ListView
-    @FXML
-    private void kerkoStudent(ActionEvent event) {
-        String query = txtKerkim.getText().toLowerCase();
-        ObservableList<String> filtruar = FXCollections.observableArrayList();
-
-        for (String raport : mungesat) {
-            if (raport.toLowerCase().contains(query)) {
-                filtruar.add(raport);
-            }
-        }
-
-        if (filtruar.isEmpty()) {
-            listaMungesave.setItems(mungesat);
-        } else {
-            listaMungesave.setItems(filtruar);
-        }
-    }
-
-    // Fshirja e një mungese
-    @FXML
-    private void fshiMungese(ActionEvent event) {
-        String selectedItem = listaMungesave.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            listaMungesave.getItems().remove(selectedItem);
-
-            // Marrim emrin e nxënësit dhe e heqim nga statistikat
-            String emri = selectedItem.split("\\|")[0].replace("Nxënësi:", "").trim();
-            statistika.remove(emri);
-
-            // Përditësojmë ListView dhe PieChart
-            updateChart();
-        } else {
-            showError("Ju lutem zgjidhni një mungesë për ta fshirë.");
-        }
     }
 }
