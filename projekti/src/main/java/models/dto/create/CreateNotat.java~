@@ -10,7 +10,7 @@ public class CreateNotat {
     public int notaPare;
     public int notaDyte;
 
-    public CreateNotat(int nxenesiId, int lendaId, int mesuesiId, int drejtimiId, int klasaId, int paraleljaId, int notaPare, int notaDyte) {
+    public CreateNota(int nxenesiId, int lendaId, int mesuesiId, int drejtimiId, int klasaId, int paraleljaId, int notaPare, int notaDyte) {
         this.nxenesiId = nxenesiId;
         this.lendaId = lendaId;
         this.mesuesiId = mesuesiId;
