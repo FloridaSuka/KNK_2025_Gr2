@@ -6,7 +6,7 @@ import models.dto.update.UpdateUser;
 import repositories.UserRepository;
 
 public class UserService {
-
+    private static User currentUser;
     private final UserRepository userRepository = new UserRepository();
 
     // 🔹 Thirrja për regjistrimin e përdoruesit
@@ -16,7 +16,11 @@ public class UserService {
 
     // 🔹 Thirrja për autentikim
     public User authenticate(String username, String password) {
-        return userRepository.authenticate(username, password);
+        User user = userRepository.authenticate(username, password);
+        if (user != null) {
+            currentUser = user;
+        }
+        return user;
     }
 
     public boolean verifyUser(String username, String verificationCode) {
@@ -26,5 +30,10 @@ public class UserService {
     // ✅ Përditësimi i fjalëkalimit
     public boolean updatePassword(UpdateUser updateUser) {
         return userRepository.updatePassword(updateUser);
+    }
+
+    // ✅ Metoda që mungon
+    public static User getCurrentUser() {
+        return currentUser;
     }
 }
