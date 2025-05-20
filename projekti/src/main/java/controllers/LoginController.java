@@ -12,25 +12,29 @@ import models.User;
 import services.UserService;
 import utils.LanguageHandler;
 import utils.SceneLocator;
-import javafx.scene.control.Button;
 import utils.SceneNavigator;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 import static utils.SceneLocator.*;
 
 public class LoginController {
 
-    @FXML private TextField txtUsername;
-    @FXML private PasswordField txtPassword;
-    private final UserService userService = new UserService();
-    @FXML private MenuButton menuLanguage;
+    @FXML
+    private TextField txtUsername;
 
-    @FXML public void initialize() {
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private MenuButton menuLanguage;
+
+    private final UserService userService = new UserService();
+
+    @FXML
+    public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.LOGIN_PAGE);
     }
 
@@ -54,34 +58,29 @@ public class LoginController {
             return;
         }
 
-        // ✅ Kontrollo cili rol është dhe ridrejto te skena përkatëse
+        // Printo për verifikim
+        System.out.println("🔄 Roli i përdoruesit: " + u.getRole());
+
         try {
             Node source = txtUsername;
 
-            // Printimi për verifikim
-            System.out.println("🔄 Roli i përdoruesit: " + u.getRole());
-
             switch (u.getRole()) {
                 case ADMIN:
-                    System.out.println("🔄 Duke kaluar në Admin View...");
                     SceneNavigator.switchScene(source, ADMIN_PAGE);
                     break;
 
                 case PRINCIPAL:
                 case DREJTOR:
-                    System.out.println("🔄 Duke kaluar në Drejtor View...");
                     SceneNavigator.switchScene(source, PRINCIPAL_PAGE);
                     break;
 
                 case MESUES:
                 case TEACHER:
-                    System.out.println("🔄 Duke kaluar në Teacher View...");
                     SceneNavigator.switchScene(source, TEACHER_PAGE);
                     break;
 
                 case STUDENT:
                 case NXENES:
-                    System.out.println("🔄 Duke kaluar në Student View...");
                     SceneNavigator.switchScene(source, STUDENT_PAGE);
                     break;
 
@@ -90,11 +89,10 @@ public class LoginController {
             }
 
         } catch (Exception ex) {
-            showAlert(Alert.AlertType.ERROR, "Gabim gjatë hapjes së faqes", "Ndodhi një gabim gjatë ngarkimit të pamjes kryesore.", "Kontrolloni lidhjen dhe provoni përsëri.");
             ex.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Gabim gjatë hapjes së faqes", "Ndodhi një gabim gjatë ngarkimit të pamjes kryesore.", "Kontrolloni lidhjen dhe provoni përsëri.");
         }
     }
-
 
     @FXML
     private void onForgotPassword(ActionEvent event) {
@@ -102,12 +100,9 @@ public class LoginController {
         SceneLocator.locate(event, SceneLocator.RESET_PASSWORD);
     }
 
-
-
     @FXML
     void handleEnglishLanguage(ActionEvent event) {
         Locale.setDefault(new Locale("en"));
-
         Stage stage = (Stage) menuLanguage.getScene().getWindow();
         SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
     }
@@ -115,11 +110,9 @@ public class LoginController {
     @FXML
     void handleAlbanianLanguage(ActionEvent event) {
         Locale.setDefault(new Locale("sq"));
-
         Stage stage = (Stage) menuLanguage.getScene().getWindow();
         SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
     }
-
 
     private void showAlert(Alert.AlertType alertType, String title, String header, String message) {
         Alert alert = new Alert(alertType);

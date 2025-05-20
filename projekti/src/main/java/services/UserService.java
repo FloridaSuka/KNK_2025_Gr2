@@ -6,15 +6,14 @@ import models.dto.update.UpdateUser;
 import repositories.UserRepository;
 
 public class UserService {
-    private static User currentUser;
+
+    private static User currentUser;  // Përdoruesi i kyçur aktualisht
     private final UserRepository userRepository = new UserRepository();
 
-    // 🔹 Thirrja për regjistrimin e përdoruesit
     public boolean register(CreateUser user) {
         return userRepository.shtoUser(user);
     }
 
-    // 🔹 Thirrja për autentikim
     public User authenticate(String username, String password) {
         User user = userRepository.authenticate(username, password);
         if (user != null) {
@@ -27,13 +26,15 @@ public class UserService {
         return userRepository.verifyUser(username, verificationCode);
     }
 
-    // ✅ Përditësimi i fjalëkalimit
     public boolean updatePassword(UpdateUser updateUser) {
         return userRepository.updatePassword(updateUser);
     }
 
-    // ✅ Metoda që mungon
     public static User getCurrentUser() {
         return currentUser;
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
     }
 }
