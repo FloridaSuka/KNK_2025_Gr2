@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiKlaseveController">
+<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiKlaseveController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -105,7 +116,7 @@
                                 <TextField fx:id="txtProfesori" layoutX="217.0" layoutY="194.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="243.0" text="Drejtimi:" AnchorPane.rightAnchor="231.0" />
                                 <TextField fx:id="txtDrejtimi" layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
-                                <Button layoutX="251.0" layoutY="286.0" mnemonicParsing="false" onAction="#shtoKlasa" prefHeight="25.0" prefWidth="82.0" text="Shto" />
+                                <Button layoutX="251.0" layoutY="286.0" onAction="#shtoKlasa" prefHeight="25.0" prefWidth="82.0" text="_Shto" />
                             </children>
                         </AnchorPane>
                     </children>

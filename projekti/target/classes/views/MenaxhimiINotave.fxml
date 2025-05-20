@@ -71,9 +71,10 @@
             <TextField fx:id="txtLenda" layoutX="372.0" layoutY="106.0" prefHeight="25.0" prefWidth="209.0" promptText="Lënda" style="-fx-background-color: white; -fx-text-fill: black;" />
             <TextField fx:id="nota1" layoutX="588.0" layoutY="106.0" prefWidth="150.0" promptText="Nota 1" style="-fx-background-color: white; -fx-text-fill: #000000;" />
             <TextField fx:id="nota2" layoutX="588.0" layoutY="142.0" prefWidth="150.0" promptText="Nota 2" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-            <Button layoutX="483.0" layoutY="177.0" onAction="#pastroFushat" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Pastro Fushat" />
-            <Button layoutX="588.0" layoutY="177.0" onAction="#regjistroNota" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Regjistro Notat" />
-            <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="Llogarit Mesataren" />
+            <Button layoutX="483.0" layoutY="177.0" onAction="#pastroFushat" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="_Pastro Fushat" />
+            <Button layoutX="588.0" layoutY="177.0" onAction="#regjistroNota" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="_Regjistro Notat" />
+
+            <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="_Llogarit Mesataren" />
             <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="209.0" promptText="Periudha" style="-fx-background-color: white; -fx-text-fill: #000000;" />
             <TextField fx:id="txtEmriNxenesit" layoutX="56.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
             <TextField fx:id="txtIdNxenesit" layoutX="222.0" layoutY="106.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
@@ -89,6 +90,7 @@
                 <Label style="-fx-text-fill: white;" text="Nota Finale: " />
                 <Label fx:id="lblNotaFinale" style="-fx-text-fill: white;" />
             </HBox>
+            <fx:include source="globalView.fxml" />
         </children>
     </AnchorPane>
     </children>
