@@ -4,31 +4,66 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Mesimi {
-    private int lendaId;
-    private int profesoriId;
-    private int klasaId;
-    private int drejtimiId;
+    private Lenda lenda;
+    private Mesuesi profesori;
+    private Klasa klasa;
+    private Drejtimi drejtimi;
 
-   public Mesimi(int lendaId, int profesoriId, int klasaId, int drejtimiId) {
-        this.lendaId = lendaId;
-        this.profesoriId = profesoriId;
-        this.klasaId = klasaId;
-        this.drejtimiId = drejtimiId;
+    public Mesimi(Lenda lenda, Mesuesi profesori, Klasa klasa, Drejtimi drejtimi) {
+        this.lenda = lenda;
+        this.profesori = profesori;
+        this.klasa = klasa;
+        this.drejtimi = drejtimi;
     }
 
-    public static Mesimi getInstance(ResultSet result) throws SQLException {
-        int lendaId = result.getInt("lid");
-        int profesoriId = result.getInt("pid");
-        int klasaId = result.getInt("klid");
-        int drejtimiId = result.getInt("did");
+    public static Mesimi fromResultSet(ResultSet result) throws SQLException {
+        Lenda lenda = Lenda.fromResultSet(result);
+        Mesuesi profesori = Mesuesi.fromResultSet(result);
+        Klasa klasa = Klasa.fromResultSet(result);
+        Drejtimi drejtimi = Drejtimi.fromResultSet(result);
 
-        return new Mesimi(lendaId, profesoriId, klasaId, drejtimiId);
+        return new Mesimi(lenda, profesori, klasa, drejtimi);
     }
 
-    public int getLendaId() { return lendaId; }
-    public int getProfesoriId() { return profesoriId; }
-    public int getKlasaId() { return klasaId; }
-    public int getDrejtimiId() { return drejtimiId; }
+    public Lenda getLenda() {
+        return lenda;
+    }
+
+    public Mesuesi getProfesori() {
+        return profesori;
+    }
+
+    public Klasa getKlasa() {
+        return klasa;
+    }
+
+    public Drejtimi getDrejtimi() {
+        return drejtimi;
+    }
+
+    public void setLenda(Lenda lenda) {
+        this.lenda = lenda;
+    }
+
+    public void setProfesori(Mesuesi profesori) {
+        this.profesori = profesori;
+    }
+
+    public void setKlasa(Klasa klasa) {
+        this.klasa = klasa;
+    }
+
+    public void setDrejtimi(Drejtimi drejtimi) {
+        this.drejtimi = drejtimi;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesimi {" +
+                "Lenda = " + lenda +
+                ", Profesori = " + profesori +
+                ", Klasa = " + klasa +
+                ", Drejtimi = " + drejtimi +
+                '}';
+    }
 }
-
-

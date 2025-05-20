@@ -28,7 +28,6 @@ public class User {
         this(0, username, passwordHash, null, null, null, role);
     }
 
-    // ===== GETTERS =====
     public int getId() {
         return id;
     }
@@ -51,7 +50,6 @@ public class User {
         return role;
     }
 
-    // ===== SETTERS =====
     public void setEmail(String email) {
         this.email = email;
     }

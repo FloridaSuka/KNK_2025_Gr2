@@ -1,37 +1,44 @@
 package models;
 
-import models.Adresa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 public class Klasa {
     private int id;
     private int niveli;
-    private int shkollaId;
-    private int paraleljaId;
-    private int profesoriId;
-    private int drejtimiId;
+    private Shkolla shkolla;
+    private Paralelja paralelja;
+    private Mesuesi mesuesi;
+    private Drejtimi drejtimi;
 
-
-    private Klasa(int id, int niveli, int shkollaId, int paraleljaId, int profesoriId, int drejtimiId) {
+    public Klasa(int id, int niveli, Shkolla shkolla, Paralelja paralelja, Mesuesi mesuesi, Drejtimi drejtimi) {
         this.id = id;
         this.niveli = niveli;
-        this.shkollaId = shkollaId;
-        this.paraleljaId = paraleljaId;
-        this.profesoriId = profesoriId;
-        this.drejtimiId = drejtimiId;
+        this.shkolla = shkolla;
+        this.paralelja = paralelja;
+        this.mesuesi = mesuesi;
+        this.drejtimi = drejtimi;
     }
 
-    public static Klasa getInstance(ResultSet result) throws SQLException {
+    public Klasa(int niveli, Shkolla shkolla, Paralelja paralelja, Mesuesi mesuesi, Drejtimi drejtimi) {
+        this.niveli = niveli;
+        this.shkolla = shkolla;
+        this.paralelja = paralelja;
+        this.mesuesi = mesuesi;
+        this.drejtimi = drejtimi;
+    }
+
+    public static Klasa fromResultSet(ResultSet result) throws SQLException {
         int id = result.getInt("id");
         int niveli = result.getInt("niveli");
-        int shkollaId = result.getInt("shkolla_id");
-        int paraleljaId = result.getInt("paralelja_id");
-        int profesoriId = result.getInt("profesori_id");
-        int drejtimiId = result.getInt("drejtimi_id");
 
-        return new Klasa(id, niveli, shkollaId, paraleljaId, profesoriId, drejtimiId);
+        // Marrim objektet referencë nga ResultSet
+        Shkolla shkolla = Shkolla.fromResultSet(result);
+        Paralelja paralelja = Paralelja.fromResultSet(result);
+        Mesuesi mesuesi = Mesuesi.fromResultSet(result);
+        Drejtimi drejtimi = Drejtimi.fromResultSet(result);
+
+        return new Klasa(id, niveli, shkolla, paralelja, mesuesi, drejtimi);
     }
 
     public int getId() {
@@ -42,19 +49,51 @@ public class Klasa {
         return niveli;
     }
 
-    public int getShkollaId() {
-        return shkollaId;
+    public Shkolla getShkolla() {
+        return shkolla;
     }
 
-    public int getParaleljaId() {
-        return paraleljaId;
+    public Paralelja getParalelja() {
+        return paralelja;
     }
 
-    public int getProfesoriId() {
-        return profesoriId;
+    public Mesuesi getMesuesi() {
+        return mesuesi;
     }
 
-    public int getDrejtimiId() {
-        return drejtimiId;
+    public Drejtimi getDrejtimi() {
+        return drejtimi;
+    }
+
+    public void setNiveli(int niveli) {
+        this.niveli = niveli;
+    }
+
+    public void setShkolla(Shkolla shkolla) {
+        this.shkolla = shkolla;
+    }
+
+    public void setParalelja(Paralelja paralelja) {
+        this.paralelja = paralelja;
+    }
+
+    public void setMesuesi(Mesuesi mesuesi) {
+        this.mesuesi = mesuesi;
+    }
+
+    public void setDrejtimi(Drejtimi drejtimi) {
+        this.drejtimi = drejtimi;
+    }
+
+    @Override
+    public String toString() {
+        return "Klasa {" +
+                "ID = " + id +
+                ", Niveli = " + niveli +
+                ", Shkolla = " + shkolla +
+                ", Paralelja = " + paralelja +
+                ", Mesuesi = " + mesuesi +
+                ", Drejtimi = " + drejtimi +
+                '}';
     }
 }

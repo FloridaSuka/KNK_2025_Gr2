@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class Paralelja {
     private int id;
     private String emri;
-
+    
     public Paralelja(int id, String emri) {
         this.id = id;
         this.emri = emri;

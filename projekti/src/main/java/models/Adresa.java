@@ -9,8 +9,14 @@ public class Adresa {
     private String rruga;
     private String kodiPostar;
 
-   public Adresa(int id, String qyteti, String rruga, String kodiPostar) {
+    public Adresa(int id, String qyteti, String rruga, String kodiPostar) {
         this.id = id;
+        this.qyteti = qyteti;
+        this.rruga = rruga;
+        this.kodiPostar = kodiPostar;
+    }
+
+    public Adresa(String qyteti, String rruga, String kodiPostar) {
         this.qyteti = qyteti;
         this.rruga = rruga;
         this.kodiPostar = kodiPostar;
@@ -40,5 +46,26 @@ public class Adresa {
     public String getKodiPostar() {
         return kodiPostar;
     }
-}
 
+    public void setQyteti(String qyteti) {
+        this.qyteti = qyteti;
+    }
+
+    public void setRruga(String rruga) {
+        this.rruga = rruga;
+    }
+
+    public void setKodiPostar(String kodiPostar) {
+        this.kodiPostar = kodiPostar;
+    }
+
+    @Override
+    public String toString() {
+        return "Adresa {" +
+                "ID = " + id +
+                ", Qyteti = '" + qyteti + '\'' +
+                ", Rruga = '" + rruga + '\'' +
+                ", Kodi Postar = '" + kodiPostar + '\'' +
+                '}';
+    }
+}

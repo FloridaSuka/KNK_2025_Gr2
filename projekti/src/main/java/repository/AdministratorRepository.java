@@ -1,8 +1,6 @@
 package repository;
 
 import database.DBConnector;
-import models.Administratori;
-import models.User;
 import models.dto.create.CreateAdministratori;
 import models.dto.update.UpdateAdministratori;
 import models.dto.delete.DeleteAdministratori;

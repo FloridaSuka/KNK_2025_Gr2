@@ -11,8 +11,9 @@ public class Drejtor {
     private String tel;
     private String roli;
     private Adresa adresa;
+    private Shkolla shkolla;
 
-    private Drejtor(int id, String emri, String mbiemri, String email, String tel, String roli, Adresa adresa) {
+    public Drejtor(int id, String emri, String mbiemri, String email, String tel, String roli, Adresa adresa, Shkolla shkolla) {
         this.id = id;
         this.emri = emri;
         this.mbiemri = mbiemri;
@@ -20,19 +21,31 @@ public class Drejtor {
         this.tel = tel;
         this.roli = roli;
         this.adresa = adresa;
-
+        this.shkolla = shkolla;
     }
 
-    public static Drejtor getInstance(ResultSet result) throws SQLException {
+    public Drejtor(String emri, String mbiemri, String email, String tel, String roli, Adresa adresa, Shkolla shkolla) {
+        this.emri = emri;
+        this.mbiemri = mbiemri;
+        this.email = email;
+        this.tel = tel;
+        this.roli = roli;
+        this.adresa = adresa;
+        this.shkolla = shkolla;
+    }
+
+    public static Drejtor fromResultSet(ResultSet result) throws SQLException {
         int id = result.getInt("id");
         String emri = result.getString("emri");
         String mbiemri = result.getString("mbiemri");
         String email = result.getString("email");
         String tel = result.getString("tel");
         String roli = result.getString("roli");
-        Adresa adresa = Adresa.getInstance(result);
 
-        return new Drejtor(id,emri,mbiemri,email,tel,roli,adresa);
+        Adresa adresa = Adresa.getInstance(result);
+        Shkolla shkolla = Shkolla.fromResultSet(result);
+
+        return new Drejtor(id, emri, mbiemri, email, tel, roli, adresa, shkolla);
     }
 
     public int getId() {
@@ -61,5 +74,51 @@ public class Drejtor {
 
     public Adresa getAdresa() {
         return adresa;
+    }
+
+    public Shkolla getShkolla() {
+        return shkolla;
+    }
+
+    public void setEmri(String emri) {
+        this.emri = emri;
+    }
+
+    public void setMbiemri(String mbiemri) {
+        this.mbiemri = mbiemri;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public void setRoli(String roli) {
+        this.roli = roli;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
+    public void setShkolla(Shkolla shkolla) {
+        this.shkolla = shkolla;
+    }
+
+    @Override
+    public String toString() {
+        return "Drejtor {" +
+                "ID = " + id +
+                ", Emri = '" + emri + '\'' +
+                ", Mbiemri = '" + mbiemri + '\'' +
+                ", Email = '" + email + '\'' +
+                ", Tel = '" + tel + '\'' +
+                ", Roli = '" + roli + '\'' +
+                ", Adresa = " + adresa +
+                ", Shkolla = " + shkolla +
+                '}';
     }
 }

@@ -8,7 +8,7 @@ public class Drejtimi {
     private String emri;
     private int shkollaId;
     private int paraleljaId;
-
+    
     public Drejtimi(int id, String emri, int shkollaId, int paraleljaId) {
         this.id = id;
         this.emri = emri;
