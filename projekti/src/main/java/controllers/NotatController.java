@@ -1,146 +1,136 @@
 package controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import utils.LanguageHandler;
-import utils.SceneLocator;
-
-
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javafx.scene.input.MouseEvent;
+import models.dto.create.CreateNotat;
+import services.NotatService;
 
 public class NotatController {
 
-    @FXML
-    private TextField txtEmriNxenesit;
+    @FXML private TextField txtIdNxenesit, txtIdMesuesit, txtLenda, nota1, nota2;
+    @FXML private ComboBox<String> cmbKlasa, cmbParalelja, cmbDrejtimi;
+    @FXML private Label lblMesatarja, lblNotaFinale;
+    @FXML private ListView<String> listaNotave;
 
-    @FXML
-    private TextField txtLenda;
+    private final NotatService notatService = new NotatService();
 
-    @FXML
-    private ComboBox<String> comboPeriudha;
-
-    @FXML
-    private TextField nota1;
-
-    @FXML
-    private TextField nota2;
-
-    @FXML
-    private TextField txtIdNxenesit;
-
-    @FXML
-    private TextField txtIdMesuesit;
-
-    @FXML
-    private TextField txtEmriMesuesit;
-
-    @FXML
-    private Label lblMesatarja;
-
-    @FXML
-    private Label lblNotaFinale;
-    @FXML private ComboBox<String> cmbDrejtimi;
-    @FXML private ComboBox<String> cmbParalelja;
-    @FXML private ComboBox<String> cmbKlasa;
-
-    @FXML
-    private ListView<String> listaNotave;
-
-    private ObservableList<String> notat = FXCollections.observableArrayList();
-
-    @FXML private MenuButton menuLanguage;
-
-    @FXML
-    public void initialize() {
-        listaNotave.setItems(notat);
-        comboPeriudha.setItems(FXCollections.observableArrayList("1", "2"));
-
-        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.GRADE_MANAGEMENT_PAGE);
-
-    }
-
-    // Llogarit Mesataren dhe e shfaq atë
-    @FXML
-    private void llogaritMesataren() {
-        System.out.println("Butoni u shtyp!");  // Test
-
-        try {
-            double n1 = Double.parseDouble(nota1.getText());
-            double n2 = Double.parseDouble(nota2.getText());
-
-            double mesatarja = (n1 + n2) / 2;
-            mesatarja = Math.round(mesatarja * 100.0) / 100.0;
-
-            System.out.println("Mesatarja e llogaritur: " + mesatarja);  // Test
-
-            lblMesatarja.setText(String.valueOf(mesatarja)); // Vendoset direkt në Label
-            int notaFinale = (int) Math.round(mesatarja);
-            lblNotaFinale.setText(String.valueOf(notaFinale)); // Vendoset direkt në Label
-
-        }catch (NumberFormatException e) {
-            shfaqAlert("Gabim në Formatin e Notave", "Ju lutemi shkruani vetëm numra të vlefshëm për notat.");
-            lblMesatarja.setText("Gabim");
-            lblNotaFinale.setText("-");
-        }
-
-    }
-
-
-    // Regjistron në ListView të gjitha notat
     @FXML
     private void regjistroNota() {
-        String emriNxenesit = txtEmriNxenesit.getText();
-        String idNxenesi = txtIdNxenesit.getText();
-        String emriMesuesit = txtEmriMesuesit.getText();
-        String idMesuesi = txtIdMesuesit.getText();
-        String lenda = txtLenda.getText();
-        String nota1Str = nota1.getText();
-        String nota2Str = nota2.getText();
-        String periudha = comboPeriudha.getValue();
-        String drejtimi = cmbDrejtimi.getValue();
-        String paralelja = cmbParalelja.getValue();
-        String klasa = cmbKlasa.getValue();
+        // Kontrollo nëse ndonjë fushë është bosh
+        if (txtIdNxenesit.getText().isEmpty() || txtIdMesuesit.getText().isEmpty() ||
+                txtLenda.getText().isEmpty() || nota1.getText().isEmpty() || nota2.getText().isEmpty() ||
+                cmbDrejtimi.getValue() == null || cmbParalelja.getValue() == null || cmbKlasa.getValue() == null) {
+            showAlert("Gabim", "Ju lutem plotësoni të gjitha fushat!");
+            return;
+        }
 
-        // Krijo përmbledhje si shembull (ose ruaji në DB)
-        String raport = String.format("Nxënësi: %s (%s)\nMësuesi: %s (%s)\nLënda: %s\nNota1: %s | Nota2: %s\nPeriudha: %s\nDrejtimi: %s | Paralelja: %s | Klasa: %s",
-                emriNxenesit, idNxenesi,
-                emriMesuesit, idMesuesi,
-                lenda, nota1Str, nota2Str,
-                periudha, drejtimi, paralelja, klasa);
+        try {
+            int nxenesiId = Integer.parseInt(txtIdNxenesit.getText().trim());
+            int mesuesiId = Integer.parseInt(txtIdMesuesit.getText().trim());
+            int lendaId = Integer.parseInt(txtLenda.getText().trim());
+            int notaPare = Integer.parseInt(nota1.getText().trim());
+            int notaDyte = Integer.parseInt(nota2.getText().trim());
 
+            int drejtimiId = convertDrejtimiToId(cmbDrejtimi.getValue());
+            int paraleljaId = convertParaleljaToId(cmbParalelja.getValue());
+            int klasaId = Integer.parseInt(cmbKlasa.getValue().trim());
+
+            if (drejtimiId == 0 || paraleljaId == 0 || klasaId == 0) {
+                showAlert("Gabim", "Vlerat e drejtimit, paraleles apo klasës janë të pavlefshme.");
+                return;
+            }
+
+            // ✅ Krijimi i objektit për ruajtje
+            CreateNotat nota = new CreateNotat(nxenesiId, lendaId, mesuesiId, drejtimiId, klasaId, paraleljaId, notaPare, notaDyte);
+            boolean sukses = notatService.regjistroNota(nota);
+
+            if (sukses) {
+                showAlert("Sukses!", "Nota u ruajt me sukses!");
+                shtoNeRaport(); // shton notën në raportin ListView
+                pastroFushat();
+            } else {
+                showAlert("Gabim!", "Dështoi ruajtja e notës.");
+            }
+
+        } catch (NumberFormatException e) {
+            showAlert("Gabim në format", "Sigurohu që ID-të dhe notat janë numra të vlefshëm.");
+        }
+    }
+
+    private void shtoNeRaport() {
+        String raport = "Nxënësi ID: " + txtIdNxenesit.getText() +
+                " | Lënda ID: " + txtLenda.getText() +
+                " | Nota 1: " + nota1.getText() +
+                " | Nota 2: " + nota2.getText();
         listaNotave.getItems().add(raport);
     }
 
+    @FXML
+    private void llogaritMesataren() {
+        try {
+            double n1 = Double.parseDouble(nota1.getText().trim());
+            double n2 = Double.parseDouble(nota2.getText().trim());
+            double mesatarja = (n1 + n2) / 2.0;
 
-    // Pastron fushat dhe etiketat
+            lblMesatarja.setText(String.format("%.2f", mesatarja));
+
+            String notaFinale;
+            if (mesatarja >= 9) notaFinale = "10";
+            else if (mesatarja >= 8) notaFinale = "9";
+            else if (mesatarja >= 7) notaFinale = "8";
+            else if (mesatarja >= 6) notaFinale = "7";
+            else if (mesatarja >= 5) notaFinale = "6";
+            else notaFinale = "5";
+
+            lblNotaFinale.setText(notaFinale);
+
+        } catch (NumberFormatException e) {
+            showAlert("Gabim", "Ju lutem shkruani nota valide për të llogaritur mesataren.");
+        }
+    }
+
     @FXML
     private void pastroFushat() {
-        txtEmriNxenesit.clear();
         txtIdNxenesit.clear();
-        txtEmriMesuesit.clear();
         txtIdMesuesit.clear();
         txtLenda.clear();
         nota1.clear();
         nota2.clear();
-        comboPeriudha.getSelectionModel().clearSelection();
-        cmbDrejtimi.getSelectionModel().clearSelection();
-        cmbParalelja.getSelectionModel().clearSelection();
-        cmbKlasa.getSelectionModel().clearSelection();
+        cmbDrejtimi.setValue(null);
+        cmbParalelja.setValue(null);
+        cmbKlasa.setValue(null);
         lblMesatarja.setText("");
         lblNotaFinale.setText("");
     }
 
-    private void shfaqAlert(String titulli, String mesazhi) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titulli);
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText(mesazhi);
+        alert.setContentText(content);
         alert.showAndWait();
     }
 
+    private int convertDrejtimiToId(String drejtimi) {
+        return switch (drejtimi) {
+            case "Shoqëror" -> 1;
+            case "Natyror" -> 2;
+            case "Ekonomik" -> 3;
+            case "Teknik" -> 4;
+            default -> 0;
+        };
+    }
+
+    private int convertParaleljaToId(String paralelja) {
+        return switch (paralelja) {
+            case "A" -> 1;
+            case "B" -> 2;
+            case "C" -> 3;
+            case "D" -> 4;
+            case "E" -> 5;
+            case "F" -> 6;
+            default -> 0;
+        };
+    }
 }

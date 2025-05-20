@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -89,7 +88,6 @@
                                   <columns>
                                       <TableColumn prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="Shkolla Id" />
                                       <TableColumn prefWidth="94.00005340576172" style="-fx-background-color: #264653;;" styleClass="column-header" text="Emri i shkolles" />
-                                      <TableColumn prefWidth="82.00003051757812" style="-fx-background-color: #264653;;" styleClass="column-header" text="Drejtor" />
                                       <TableColumn prefWidth="98.66664123535156" style="-fx-background-color: #264653;;" styleClass="column-header" text="Nr. telefonit" />
                                       <TableColumn prefWidth="68.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="Adresa" />
                                   </columns>
@@ -99,28 +97,23 @@
                               </TableView>
                           </children>
                       </AnchorPane>
-                      <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="336.0" prefWidth="410.0">
+                      <AnchorPane layoutX="384.0" layoutY="-47.0" prefHeight="382.0" prefWidth="410.0">
                           <children>
-                              <Label layoutX="83.0" layoutY="18.0" text="Emri i shkolles:" AnchorPane.rightAnchor="249.0" />
-                              <TextField layoutX="217.0" layoutY="14.0" AnchorPane.rightAnchor="43.66666666666666" />
-                              <Label layoutX="83.0" layoutY="63.0" text="Adresa e shkolles:" AnchorPane.rightAnchor="233.0" />
-                              <TextField layoutX="217.0" layoutY="59.0" AnchorPane.rightAnchor="43.333333333333314" />
-                              <Label layoutX="85.0" layoutY="108.0" text="Emri drejtorit:" AnchorPane.rightAnchor="255.0" />
-                              <TextField layoutX="217.0" layoutY="104.0" AnchorPane.rightAnchor="43.333333333333314" />
-                              <Label layoutX="83.0" layoutY="153.0" text="Mbiemri drejtorit:" AnchorPane.rightAnchor="233.66666666666669" />
-                              <TextField layoutX="217.0" layoutY="149.0" AnchorPane.rightAnchor="43.333333333333314" />
-                              <Label layoutX="83.0" layoutY="198.0" text="Username drejtorit: " AnchorPane.rightAnchor="221.66666666666669" />
-                              <TextField layoutX="217.0" layoutY="194.0" AnchorPane.rightAnchor="43.333333333333314" />
-                        <Label layoutX="83.0" layoutY="243.0" text="Password drejtorit:" AnchorPane.rightAnchor="228.33333333333331" />
-                        <PasswordField layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
+                              <Label layoutX="80.0" layoutY="124.0" text="Id shkolles:" AnchorPane.rightAnchor="271.33333333333337" />
+                              <TextField layoutX="215.0" layoutY="120.0" AnchorPane.rightAnchor="45.66666666666663" />
+                              <Label layoutX="80.0" layoutY="193.0" text="Adresa e shkolles:" AnchorPane.rightAnchor="236.0" />
+                              <TextField layoutX="215.0" layoutY="189.0" AnchorPane.rightAnchor="45.66666666666663" />
+                              <Label layoutX="82.0" layoutY="226.0" text="Nr. telefonit:" AnchorPane.rightAnchor="262.0" />
+                              <TextField layoutX="215.0" layoutY="222.0" AnchorPane.rightAnchor="45.66666666666663" />
                         <Button layoutX="83.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
                               <Button layoutX="159.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
                         <Button layoutX="302.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" />
+                        <Label layoutX="80.0" layoutY="158.0" text="Emri i shkolles:" />
+                        <TextField layoutX="215.0" layoutY="154.0" />
                           </children>
                       </AnchorPane>
                   </children>
               </AnchorPane>
-              <fx:include source="globalView.fxml" />
           </children>
          <VBox.margin>
             <Insets />

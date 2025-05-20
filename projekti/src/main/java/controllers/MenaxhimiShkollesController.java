@@ -1,24 +1,24 @@
-//package controllers;
-//
-//import database.DBConnector;
-//import javafx.collections.FXCollections;
-//import javafx.collections.ObservableList;
-//import javafx.event.ActionEvent;
-//import javafx.fxml.FXML;
-//import javafx.scene.control.*;
-//import javafx.scene.control.cell.PropertyValueFactory;
-//import models.Shkolla;
-//import models.Drejtor;
-//import models.Adresa;
-//import utils.LanguageHandler;
-//import utils.SceneLocator;
-//
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//
-//public class MenaxhimiShkollesController {
+package controllers;
+
+import database.DBConnector;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import models.Shkolla;
+import models.Drejtor;
+import models.Adresa;
+import utils.LanguageHandler;
+import utils.SceneLocator;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class MenaxhimiShkollesController {
 //
 //    @FXML
 //    private TableView<Shkolla> tableSchools;
@@ -130,4 +130,4 @@
 //    private void handleDeleteSchool(ActionEvent event) {
 //        System.out.println("Fshij shkollën");
 //    }
-//}
+}

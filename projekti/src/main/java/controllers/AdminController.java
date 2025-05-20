@@ -18,9 +18,11 @@ public class AdminController {
     }
 
 
-    @FXML private MenuButton menuLanguage;
+    @FXML
+    private MenuButton menuLanguage;
 
-    @FXML public void initialize() {
+    @FXML
+    public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
     }
 
@@ -28,6 +30,5 @@ public class AdminController {
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
     }
-
 
 }
