@@ -108,15 +108,7 @@
                       </AnchorPane>
                   </children>
               </AnchorPane>
-              <Button id="btn-back" layoutX="14.0" layoutY="111.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: transparent;" stylesheets="@style.css" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="111.0">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/arrow-left-solid (1).png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+              <fx:include source="globalView.fxml" />
           </children>
          <VBox.margin>
             <Insets />

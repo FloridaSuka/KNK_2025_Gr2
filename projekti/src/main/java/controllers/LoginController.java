@@ -75,6 +75,7 @@ public class LoginController {
             switch (u.getRole()) {
                 case ADMIN:
                     System.out.println("🔄 Duke kaluar në Admin View...");
+
                     SceneNavigator.switchScene(source, ADMIN_PAGE);
                     break;
 

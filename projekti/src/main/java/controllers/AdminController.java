@@ -8,6 +8,8 @@ import utils.LanguageHandler;
 import utils.SceneLocator;
 import utils.SceneNavigator;
 
+import java.util.ResourceBundle;
+
 public class AdminController {
 
     @FXML private MenuButton menuLanguage;
@@ -20,4 +22,6 @@ public class AdminController {
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
     }
+
+
 }
