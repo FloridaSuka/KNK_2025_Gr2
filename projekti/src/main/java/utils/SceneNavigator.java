@@ -18,8 +18,6 @@ import java.util.Stack;
 public class SceneNavigator {
 
     private static final Stack<String> history = new Stack<>();
-
-
     public static final String LOGIN_PAGE = "/views/login.fxml";
 
     public static void initializeHistory(String initialPath) {
