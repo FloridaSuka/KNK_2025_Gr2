@@ -1,35 +1,48 @@
-//package services;
-//
-//import database.DBConnector;
-//import models.Mungesa;
-//
-//import java.sql.*;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class MungesaService {
-//    public List<Mungesa> getMungesat() {
-//        List<Mungesa> lista = new ArrayList<>();
-//        String query = "SELECT * FROM mungesat";
-//
-//        try (Connection conn = DBConnector.getConnection();
-//             Statement stmt = conn.createStatement();
-//             ResultSet rs = stmt.executeQuery(query)) {
-//
-//            while (rs.next()) {
-//                lista.add(Mungesa.getInstance(
-//                        rs.getInt("id"),
-//                        rs.getString("student"),
-//                        rs.getInt("lenda_id"),
-//                        rs.getInt("perioda_id"),
-//                        rs.getString("data_mungeses"),
-//                        rs.getString("arsyeja")
-//                ));
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return lista;
-//    }
-//}
+package services;
+
+import database.DBConnector;
+import models.dto.create.CreateMungesa;
+import repositories.MungesatRepository;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class MungesaService {
+    private final MungesatRepository repository = new MungesatRepository();
+
+    public boolean shto(int studentId, int lendaId, int periodaId, Date data, String arsyeja) {
+        String sql = "INSERT INTO Mungesa(student_id, lenda_id, perioda_id, data_mungeses, arsyeja) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, lendaId);
+            stmt.setInt(3, periodaId);
+            stmt.setDate(4, data);
+            stmt.setString(5, arsyeja);
+
+            return stmt.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("❌ Gabim gjatë shtimit të mungesës: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean perditeso(int id, CreateMungesa mungesa) {
+        Integer studentId = repository.gjejId(mungesa.emriNxenesi, "Nxenesit");
+        Integer lendaId = repository.gjejId(mungesa.emriLendes, "Lenda");
+        Integer periodaId = repository.gjejId(mungesa.emriPerioda, "Perioda");
+
+        if (studentId == null || lendaId == null || periodaId == null) return false;
+        return repository.perditeso(id, studentId, lendaId, periodaId, mungesa.data, mungesa.arsyeja);
+    }
+
+    public boolean fshij(int id) {
+        return repository.fshij(id);
+    }
+}
