@@ -23,7 +23,7 @@ public class MesuesiController {
     }
     @FXML
     private void handleStudents(ActionEvent event) {
-        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.STUDENT_PAGE);
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.STUDENT_MANAGEMENT_PAGE);
     }
     @FXML
     private void handleGrades(ActionEvent event) {
@@ -37,4 +37,6 @@ public class MesuesiController {
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
     }
+
+
 }

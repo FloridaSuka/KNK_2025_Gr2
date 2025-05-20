@@ -5,11 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Mesuesi;
 import utils.LanguageHandler;
 import utils.SceneLocator;
+import utils.SceneNavigator;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +19,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MenaxhimiIMesuesitController {
+    @FXML
+    private void handleGoBack(ActionEvent event) {
+        System.out.println("🔄 Duke u kthyer prapa...");
+        SceneNavigator.goBack((Node) event.getSource());
+    }
 //
 //    @FXML
 //    private TableView<Mesuesi> tableTeachers;
