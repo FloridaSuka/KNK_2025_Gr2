@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.MesuesiStatistikatController"
+            prefWidth="800" prefHeight="500"
+            styleClass="login" stylesheets="@style.css">
+
+    <children>
+        <!-- Header me ngjyrë dhe titull si në MesuesiView -->
+        <AnchorPane layoutY="0" prefHeight="105" prefWidth="800" style="-fx-background-color: #264653;" styleClass="header">
+            <children>
+                <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistikat e Nxënësve" >
+                    <font>
+                        <Font name="Arial" size="36.0" />
+                    </font>
+                </Text>
+                <ImageView fitHeight="63" fitWidth="63" layoutX="41" layoutY="21" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/ikona.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+
+        <!-- HBox për dy grafiqet me përshkrimet -->
+        <HBox spacing="40" layoutX="50" layoutY="130" prefWidth="700" prefHeight="340" style="-fx-padding: 10;">
+            <children>
+                <!-- VBox për grafikun sipas klasave -->
+                <VBox spacing="8" alignment="CENTER">
+                    <LineChart fx:id="lineChartKlasa" prefWidth="320" prefHeight="300" style="-fx-background-color: white;">
+                        <xAxis>
+                            <CategoryAxis label="Klasa"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Numri i Nxënësve"/>
+                        </yAxis>
+                    </LineChart>
+                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: white;">
+                        Statistika e nxënësve sipas klasave ekzistuese në shkollë.
+                    </Text>
+                </VBox>
+
+                <!-- VBox për grafikun sipas gjinise -->
+                <VBox spacing="8" alignment="CENTER">
+                    <LineChart fx:id="lineChartGjinia" prefWidth="320" prefHeight="300" style="-fx-background-color: white;">
+                        <xAxis>
+                            <CategoryAxis label="Gjinia"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Numri i Nxënësve"/>
+                        </yAxis>
+                    </LineChart>
+                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: white;">
+                        Shpërndarja e nxënësve sipas gjinive Mashkull dhe Femër.
+                    </Text>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
+
+
+
+
+
+

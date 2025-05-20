@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 public class NotatRepository {
     public boolean regjistroNota(CreateNotat nota) {
-        String query = "INSERT INTO Notat (nxenesi_id, lenda_id, mesuesi_id, drejtimi_id, klasa_id, paralelja_id, nota_pare, nota_dyte) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Notat (nxenesi_id, lenda_id, mesuesi_id, drejtimi_id, klasa_id, paralelja_id,periudha_id, nota_pare, nota_dyte) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
 
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -21,8 +21,9 @@ public class NotatRepository {
             stmt.setInt(4, nota.drejtimiId);
             stmt.setInt(5, nota.klasaId);
             stmt.setInt(6, nota.paraleljaId);
-            stmt.setInt(7, nota.notaPare);
-            stmt.setInt(8, nota.notaDyte);
+            stmt.setInt(7,nota.periudhaId);
+            stmt.setInt(8, nota.notaPare);
+            stmt.setInt(9, nota.notaDyte);
 
             return stmt.executeUpdate() > 0;
 

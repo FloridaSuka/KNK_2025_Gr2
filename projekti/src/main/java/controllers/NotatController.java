@@ -1,17 +1,20 @@
 package controllers;
 
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import models.dto.create.CreateNotat;
+import repositories.LendaRepository;
 import services.NotatService;
 
 public class NotatController {
 
     @FXML private TextField txtIdNxenesit, txtIdMesuesit, txtLenda, nota1, nota2;
-    @FXML private ComboBox<String> cmbKlasa, cmbParalelja, cmbDrejtimi;
+    @FXML private ComboBox<String> cmbKlasa, cmbParalelja, cmbDrejtimi,comboPeriudha;
     @FXML private Label lblMesatarja, lblNotaFinale;
     @FXML private ListView<String> listaNotave;
+    private final LendaRepository lendaRepository = new LendaRepository();
 
     private final NotatService notatService = new NotatService();
 
@@ -28,13 +31,20 @@ public class NotatController {
         try {
             int nxenesiId = Integer.parseInt(txtIdNxenesit.getText().trim());
             int mesuesiId = Integer.parseInt(txtIdMesuesit.getText().trim());
-            int lendaId = Integer.parseInt(txtLenda.getText().trim());
+            String emriLendes = txtLenda.getText().trim();
+            int lendaId = lendaRepository.getLendaIdByName(emriLendes);
+
+            if (lendaId == 0) {
+                showAlert("Gabim", "Lënda nuk u gjet në databazë.");
+                return;
+            }
+
             int notaPare = Integer.parseInt(nota1.getText().trim());
             int notaDyte = Integer.parseInt(nota2.getText().trim());
-
+            int periudha = Integer.parseInt(comboPeriudha.getValue().trim());
             int drejtimiId = convertDrejtimiToId(cmbDrejtimi.getValue());
             int paraleljaId = convertParaleljaToId(cmbParalelja.getValue());
-            int klasaId = Integer.parseInt(cmbKlasa.getValue().trim());
+            int klasaId =convertKlasaToId(cmbKlasa.getValue());
 
             if (drejtimiId == 0 || paraleljaId == 0 || klasaId == 0) {
                 showAlert("Gabim", "Vlerat e drejtimit, paraleles apo klasës janë të pavlefshme.");
@@ -42,7 +52,7 @@ public class NotatController {
             }
 
             // ✅ Krijimi i objektit për ruajtje
-            CreateNotat nota = new CreateNotat(nxenesiId, lendaId, mesuesiId, drejtimiId, klasaId, paraleljaId, notaPare, notaDyte);
+            CreateNotat nota = new CreateNotat(nxenesiId, lendaId, mesuesiId, drejtimiId,klasaId, paraleljaId, periudha,notaPare, notaDyte);
             boolean sukses = notatService.regjistroNota(nota);
 
             if (sukses) {
@@ -133,4 +143,14 @@ public class NotatController {
             default -> 0;
         };
     }
+    private int convertKlasaToId(String klasa) {
+        return switch (klasa) {
+            case "10" -> 1;
+            case "11" -> 2;
+            case "12" -> 3;
+            default -> 0;
+        };
+    }
+
+
 }
