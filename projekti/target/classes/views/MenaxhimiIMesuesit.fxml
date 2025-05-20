@@ -113,6 +113,8 @@
                                 <TextField fx:id="txtRoli" layoutX="217.0" layoutY="171.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="210.0" prefHeight="17.0" prefWidth="47.0" text="Adresa:" AnchorPane.rightAnchor="218.0" />
                                 <TextField fx:id="txtAdresa" layoutX="217.0" layoutY="206.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextArea fx:id="raportiMesuesve" prefWidth="500" prefHeight="200" editable="false" wrapText="true" />
+
                                 <Button layoutX="83.0" layoutY="288.0" onAction="#fshijMesues" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
                                 <Button layoutX="159.0" layoutY="288.0" onAction="#perditesoMesues" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
                                 <Button layoutX="302.0" layoutY="288.0" onAction="#shtoMesues" prefHeight="25.0" prefWidth="63.0" text="_Shto" />

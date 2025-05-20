@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.DrejtoriStatistikaController" prefWidth="1000" prefHeight="600">
+    <children>
+        <Label layoutX="30" layoutY="20" text="📊 Paneli i Statistikave të Shkollës"
+               style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+        <!-- Rrethi që përmban të dy grafikët -->
+        <AnchorPane layoutX="30" layoutY="60" prefWidth="940" prefHeight="500"
+                    style="-fx-border-color: #2a9d8f; -fx-border-width: 3px; -fx-border-radius: 20px; -fx-background-radius: 20px;">
+            <children>
+                <!-- BarChart majtas -->
+                <BarChart fx:id="barChart" layoutX="20" layoutY="20" prefWidth="440" prefHeight="440">
+                    <xAxis>
+                        <CategoryAxis fx:id="xAxis" label="Kategoria" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxis" label="Vlera" />
+                    </yAxis>
+                </BarChart>
+
+                <!-- PieChart djathtas -->
+                <PieChart fx:id="pieChart" layoutX="490" layoutY="20" prefWidth="430" prefHeight="440" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
