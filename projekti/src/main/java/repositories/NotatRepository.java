@@ -1,11 +1,15 @@
 package repositories;
 
 import database.DBConnector;
+import models.Notat;
 import models.dto.create.CreateNotat;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NotatRepository {
     public boolean regjistroNota(CreateNotat nota) {
@@ -32,4 +36,27 @@ public class NotatRepository {
             return false;
         }
     }
+
+    public int numronNotat(int nota) {
+        String query = "SELECT COUNT(*) AS total FROM Notat WHERE nota_pare = ?";
+        int total = 0;
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, nota);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt("total");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return total;
+    }
+
+
 }
