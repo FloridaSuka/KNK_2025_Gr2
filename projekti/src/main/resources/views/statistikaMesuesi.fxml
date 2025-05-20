@@ -47,7 +47,7 @@
                             <NumberAxis label="Numri i Nxënësve"/>
                         </yAxis>
                     </LineChart>
-                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: #333;">
+                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: white;">
                         Statistika e nxënësve sipas klasave ekzistuese në shkollë.
                     </Text>
                 </VBox>
@@ -62,7 +62,7 @@
                             <NumberAxis label="Numri i Nxënësve"/>
                         </yAxis>
                     </LineChart>
-                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: #333;">
+                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: white;">
                         Shpërndarja e nxënësve sipas gjinive Mashkull dhe Femër.
                     </Text>
                 </VBox>
