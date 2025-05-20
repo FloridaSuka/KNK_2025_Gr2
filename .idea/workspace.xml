@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/adminView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/adminView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/drejtorView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/drejtorView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/mesuesiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/mesuesiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/nxenesitView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/nxenesitView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +30,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -37,6 +46,7 @@
   "keyToString": {
     "Application.DrejtorApp.executor": "Run",
     "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.MesuesiApp.executor": "Run",
     "Application.TestDb.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",

@@ -57,6 +57,12 @@
         </MenuBar>
         <AnchorPane maxHeight="500.0" maxWidth="800.0" prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@style.css">
             <children>
+                <!-- Butoni për settings -->
+                <Button layoutX="500.0" layoutY="100.0" onAction="#onOpenSettings" text="Settings" />
+
+                <!-- Elementë të tjerë këtu -->
+            </children>
+            <children>
                 <!-- Header -->
                 <AnchorPane layoutY="0.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header">
                     <children>
