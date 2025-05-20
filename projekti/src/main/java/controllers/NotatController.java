@@ -93,31 +93,45 @@ public class NotatController {
     // Regjistron në ListView të gjitha notat
     @FXML
     private void regjistroNota() {
-        String raport = "Nxënësi: " + txtEmriNxenesit.getText() +
-                " | ID: " + txtIdNxenesit.getText() +
-                " | Lënda: " + txtLenda.getText() +
-                " | Mesuesi: " + txtEmriMesuesit.getText() +
-                " | Id: " + txtIdMesuesit.getText() +
-                " | Periudha: " + comboPeriudha.getValue() +
-                " | Nota 1: " + nota1.getText() +
-                " | Nota 2: " + nota2.getText() ;
+        String emriNxenesit = txtEmriNxenesit.getText();
+        String idNxenesi = txtIdNxenesit.getText();
+        String emriMesuesit = txtEmriMesuesit.getText();
+        String idMesuesi = txtIdMesuesit.getText();
+        String lenda = txtLenda.getText();
+        String nota1Str = nota1.getText();
+        String nota2Str = nota2.getText();
+        String periudha = comboPeriudha.getValue();
+        String drejtimi = cmbDrejtimi.getValue();
+        String paralelja = cmbParalelja.getValue();
+        String klasa = cmbKlasa.getValue();
 
-        notat.add(raport);
+        // Krijo përmbledhje si shembull (ose ruaji në DB)
+        String raport = String.format("Nxënësi: %s (%s)\nMësuesi: %s (%s)\nLënda: %s\nNota1: %s | Nota2: %s\nPeriudha: %s\nDrejtimi: %s | Paralelja: %s | Klasa: %s",
+                emriNxenesit, idNxenesi,
+                emriMesuesit, idMesuesi,
+                lenda, nota1Str, nota2Str,
+                periudha, drejtimi, paralelja, klasa);
+
+        listaNotave.getItems().add(raport);
     }
+
 
     // Pastron fushat dhe etiketat
     @FXML
     private void pastroFushat() {
         txtEmriNxenesit.clear();
         txtIdNxenesit.clear();
-        txtLenda.clear();
         txtEmriMesuesit.clear();
         txtIdMesuesit.clear();
-        comboPeriudha.getSelectionModel().clearSelection();
+        txtLenda.clear();
         nota1.clear();
         nota2.clear();
-
+        comboPeriudha.getSelectionModel().clearSelection();
+        cmbDrejtimi.getSelectionModel().clearSelection();
+        cmbParalelja.getSelectionModel().clearSelection();
+        cmbKlasa.getSelectionModel().clearSelection();
         lblMesatarja.setText("");
         lblNotaFinale.setText("");
     }
+
 }
