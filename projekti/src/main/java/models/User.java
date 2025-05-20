@@ -49,7 +49,9 @@ public class User {
     public Role getRole(){
         return role;
     }
-
+    public String setUsername(String username){
+        return this.username = username;
+    }
     public void setEmail(String email) {
         this.email = email;
     }
@@ -64,19 +66,19 @@ public class User {
     }
 
     public static User getInstance(ResultSet result) throws SQLException {
-        int id              = result.getInt("id");
-        String name         = result.getString("name");
-        String surname     = result.getString("surname");
-        String username     = result.getString("username");
+        int id = result.getInt("id");
+        String username = result.getString("username");
         String password = result.getString("password");
-        String email        = result.getString("email");
+        String email = result.getString("email");
+        String emer = result.getString("name");         // kolona për emër
+        String mbiemer = result.getString("surname");   // kolona për mbiemër
 
         String roleStr = result.getString("role");
         User.Role role = roleStr != null
                 ? User.Role.valueOf(roleStr.trim().toUpperCase())
                 : User.Role.MESUES;
 
-        return new User(id, name, surname,username, password, email, role);
+        return new User(id, username, password, email, emer, mbiemer, role);
     }
 
 
