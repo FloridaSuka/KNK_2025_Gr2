@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DBConnector;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -13,19 +14,19 @@ import java.sql.SQLException;
 
 public class SettingsController {
     @FXML
-    private TextField txtId;
+    private TextField Id;
 
     @FXML
-    private TextField txtEmri;
+    private TextField Emri;
 
     @FXML
-    private TextField txtMbiemri;
+    private TextField Mbiemri;
 
     @FXML
-    private TextField txtEmail;
+    private TextField Email;
 
     @FXML
-    private TextField txtUsername;
+    private TextField Username;
 
     private final UserService userService = new UserService();
 
@@ -33,11 +34,11 @@ public class SettingsController {
         User user = UserService.getCurrentUser();
 
         if (user != null) {
-            txtId.setText(String.valueOf(user.getId()));
-            txtEmri.setText(user.getEmer());
-            txtMbiemri.setText(user.getMbiemer());
-            txtEmail.setText(user.getEmail());
-            txtUsername.setText(user.getUsername());
+            Id.setText(String.valueOf(user.getId()));
+            Emri.setText(user.getEmer());
+            Mbiemri.setText(user.getMbiemer());
+            Email.setText(user.getEmail());
+            Username.setText(user.getUsername());
         } else {
             System.out.println("User not found!");
         }
@@ -45,7 +46,7 @@ public class SettingsController {
 
     @FXML
     private void handleFshijLlogarine() {
-        if (txtId.getText().isEmpty()) {
+        if (Id.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Fushë e Zbrazët");
             alert.setHeaderText(null);
@@ -61,7 +62,7 @@ public class SettingsController {
 
         confirm.showAndWait().ifPresent(response -> {
             if (response.getText().equals("OK")) {
-                int userId = Integer.parseInt(txtId.getText());
+                int userId = Integer.parseInt(Id.getText());
 
                 try {
                     String query = "DELETE FROM users WHERE id = ?";
@@ -71,11 +72,11 @@ public class SettingsController {
 
                     int result = preparedStatement.executeUpdate();
                     if (result > 0) {
-                        txtId.clear();
-                        txtEmri.clear();
-                        txtMbiemri.clear();
-                        txtEmail.clear();
-                        txtUsername.clear();
+                        Id.clear();
+                        Emri.clear();
+                        Mbiemri.clear();
+                        Email.clear();
+                        Username.clear();
 
                         Alert success = new Alert(Alert.AlertType.INFORMATION);
                         success.setTitle("Llogaria u fshi");
@@ -99,6 +100,24 @@ public class SettingsController {
                 }
             }
         });
+    }
+
+    public void fshiLlogarine(ActionEvent actionEvent) {
+    }
+
+    public void onForgotPassword(ActionEvent actionEvent) {
+    }
+
+    public void ndryshoEmri(ActionEvent actionEvent) {
+    }
+
+    public void ndryshoMbiemri(ActionEvent actionEvent) {
+    }
+
+    public void ndryshoEmail(ActionEvent actionEvent) {
+    }
+
+    public void ndryshoUsername(ActionEvent actionEvent) {
     }
 }
 
