@@ -80,7 +80,7 @@
                 </AnchorPane>
 
                 <!-- Butonat -->
-                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="80.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="_Statistikat" onAction="#onOpenStatistics">
+                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="80.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="_Statistikat">
                     <graphic>
                         <ImageView fitHeight="38.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                             <image>
