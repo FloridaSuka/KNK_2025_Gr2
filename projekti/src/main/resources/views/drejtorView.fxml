@@ -63,7 +63,8 @@
            <children>
                <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
                    <children>
-                       <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Miresevini drejtor!">
+                       <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                             text="%welcomeDrejtor">
                            <font>
                                <Font name="Arial" size="36.0" />
                            </font>
