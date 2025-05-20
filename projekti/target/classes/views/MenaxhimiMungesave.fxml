@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MungesaController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -103,20 +103,18 @@
                         <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="336.0" prefWidth="410.0">
                             <children>
                                 <Label layoutX="83.0" layoutY="18.0" text="ID e Mungeses:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="14.0" AnchorPane.rightAnchor="43.66666666666666" />
+                                <TextField fx:id="txtId" layoutX="217.0" layoutY="14.0" AnchorPane.rightAnchor="43.66666666666666" />
                                 <Label layoutX="83.0" layoutY="63.0" text="Nxënësi:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="59.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtNxenesi" layoutX="217.0" layoutY="59.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="108.0" text="Lënda:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="104.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtLenda" layoutX="217.0" layoutY="104.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="153.0" text="Perioda:" AnchorPane.rightAnchor="230.0" />
-                                <TextField layoutX="217.0" layoutY="149.0" AnchorPane.rightAnchor="43.333333333333314" />
-                                <Label layoutX="83.0" layoutY="198.0" text="Data Mungesës: " AnchorPane.rightAnchor="228.0" />
-                                <TextField layoutX="217.0" layoutY="194.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <TextField fx:id="txtPerioda" layoutX="217.0" layoutY="149.0" AnchorPane.rightAnchor="43.333333333333314" />
                                 <Label layoutX="83.0" layoutY="243.0" text="Arsyeja:" AnchorPane.rightAnchor="231.0" />
-                                <PasswordField layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
-                                <Button layoutX="83.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
-                                <Button layoutX="159.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
-                                <Button layoutX="302.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" />
+                                <TextField fx:id="txtArsyeja" layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
+                                <Button layoutX="83.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" onAction="#fshijMungese" />
+                                <Button layoutX="159.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" onAction="#perditesoMungese"/>
+                                <Button layoutX="302.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" onAction="#shtoMungese"/>
                             </children>
                         </AnchorPane>
                     </children>
