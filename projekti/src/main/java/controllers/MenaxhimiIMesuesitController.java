@@ -1,40 +1,32 @@
+
 package controllers;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import models.dto.create.CreateMesuesi;
 import models.dto.update.UpdateMesuesi;
 import repositories.AdresaRepository;
 import services.MesuesiService;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-
 public class MenaxhimiIMesuesitController {
     @FXML private TextField txtId, txtEmri, txtMbiemri, txtEmail, txtTel, txtRoli, txtAdresa;
+    @FXML private TableView<CreateMesuesi> tabelaMesuesit;
+    @FXML private TableColumn<CreateMesuesi, String> kolEmri, kolMbiemri, kolEmail, kolTel, kolRoli, kolAdresa;
 
     private final MesuesiService mesuesiService = new MesuesiService();
     private final AdresaRepository adresaRepository = new AdresaRepository();
 
-    // ✅ Ruajtja në fajll
-    private void ruajNeRaport(CreateMesuesi m) {
-        String rruga = txtAdresa.getText();
-        String data = String.format("Emri: %s, Mbiemri: %s, Email: %s, Tel: %s, Roli: %s, Adresa: %s%n",
-                m.emri, m.mbiemri, m.email, m.tel, m.roli, rruga);
-        try (FileWriter writer = new FileWriter("raporti_mesuesve.txt", true)) {
-            writer.write(data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @FXML
+    public void initialize() {
+        kolEmri.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().emri));
+        kolMbiemri.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().mbiemri));
+        kolEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().email));
+        kolTel.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tel));
+        kolRoli.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().roli));
+        kolAdresa.setCellValueFactory(cellData -> new SimpleStringProperty(txtAdresa.getText()));
     }
 
-    // ✅ Shto mësues
     @FXML
     private void shtoMesues() {
         String emriAdresa = txtAdresa.getText();
@@ -52,16 +44,13 @@ public class MenaxhimiIMesuesitController {
 
         boolean success = mesuesiService.shto(m);
         if (success) {
-            shfaqAlert("Sukses", "Mësuesi u shtua!", "Të dhënat janë ruajtur në databazë dhe raport.", Alert.AlertType.INFORMATION);
-            ruajNeRaport(m);
-
+            shfaqAlert("Sukses", "Mësuesi u shtua!", "Të dhënat janë ruajtur me sukses.", Alert.AlertType.INFORMATION);
+            tabelaMesuesit.getItems().add(m);
         } else {
             shfaqAlert("Gabim", "Dështoi shtimi!", "Nuk u arrit të ruhet mësuesi në databazë.", Alert.AlertType.ERROR);
         }
-
     }
 
-    // ✅ Përditëso mësues
     @FXML
     private void perditesoMesues() {
         if (txtId.getText().isEmpty()) {
@@ -89,7 +78,6 @@ public class MenaxhimiIMesuesitController {
         }
     }
 
-    // ✅ Fshij mësues
     @FXML
     private void fshijMesues() {
         if (txtId.getText().isEmpty()) {
@@ -106,7 +94,6 @@ public class MenaxhimiIMesuesitController {
         }
     }
 
-    // ✅ Funksion ndihmës për të shfaqur alertat
     private void shfaqAlert(String titulli, String headeri, String mesazhi, Alert.AlertType tipi) {
         Alert alert = new Alert(tipi);
         alert.setTitle(titulli);
