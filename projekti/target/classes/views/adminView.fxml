@@ -65,7 +65,7 @@
                         <Image url="@../images/ikona.png" />
                      </image>
                   </ImageView>
-                  <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="txtLang">
+                  <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang">
                      <items>
                         <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
                         <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />

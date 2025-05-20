@@ -1,112 +1,47 @@
 package controllers;
 
-import database.DBConnector;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import utils.LanguageHandler;
-import utils.SceneLocator;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Locale;
+import models.User;
+import models.dto.create.CreateUser;
+import services.UserService;
 
 public class ShtoUserController {
 
     @FXML
     private TextField txtEmri;
-
     @FXML
     private TextField txtMbiemri;
-
     @FXML
     private TextField txtEmail;
-
     @FXML
     private TextField txtPerdoruesi;
-
     @FXML
     private PasswordField txtFjalekalimi;
-
     @FXML
     private PasswordField txtFjalekalimi2;
-
     @FXML
     private RadioButton radioDrejtor;
-
     @FXML
     private RadioButton radioMesues;
-
     @FXML
     private RadioButton radioNxenes;
 
-    private ToggleGroup roleGroup;
-
-    @FXML private MenuButton menuLanguage;
-
+    private final ToggleGroup roleGroup = new ToggleGroup();
+    private final UserService userService = new UserService();
 
     @FXML
     public void initialize() {
-        // Inicializimi i grupit
-        roleGroup = new ToggleGroup();
-
-        // Shtimi i butonave në grup
         radioDrejtor.setToggleGroup(roleGroup);
         radioMesues.setToggleGroup(roleGroup);
         radioNxenes.setToggleGroup(roleGroup);
-
-        // Mos selekto asnjë si default
         roleGroup.selectToggle(null);
-
-        // Konfigurimi i gjuhes per menun
-        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADD_USER_PAGE);
     }
 
     @FXML
     private void handleRegister() {
-        if (txtEmri.getText().isEmpty() || txtMbiemri.getText().isEmpty() ||
-                txtEmail.getText().isEmpty() || txtPerdoruesi.getText().isEmpty() ||
-                txtFjalekalimi.getText().isEmpty() || txtFjalekalimi2.getText().isEmpty() ||
-                roleGroup.getSelectedToggle() == null) {
+        if (!validateInputs()) return;
 
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Të dhëna të paplotësuara", "Ju lutem plotësoni të gjitha fushat!");
-            return;
-        }
-
-        // ✅ Validimi me RegEx
-        if (!txtEmri.getText().matches("[A-Za-z\\s]+")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Emri është i pavlefshëm", "Emri duhet të përmbajë vetëm shkronja dhe hapësira.");
-            return;
-        }
-
-        if (!txtMbiemri.getText().matches("[A-Za-z\\s]+")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Mbiemri është i pavlefshëm", "Mbiemri duhet të përmbajë vetëm shkronja dhe hapësira.");
-            return;
-        }
-
-        if (!txtEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Email i pavlefshëm", "Ju lutem vendosni një email të vlefshëm.");
-            return;
-        }
-
-        if (!txtPerdoruesi.getText().matches("[A-Za-z0-9_]+")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Username i pavlefshëm", "Username duhet të përmbajë vetëm shkronja, numra ose '_'.");
-            return;
-        }
-
-        if (!txtFjalekalimi.getText().equals(txtFjalekalimi2.getText())) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Fjalëkalimet nuk përputhen", "Ju lutem kontrolloni fjalëkalimet!");
-            return;
-        }
-
-        if (!txtFjalekalimi.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Fjalëkalimi i pavlefshëm", "Fjalëkalimi duhet të përmbajë të paktën një shkronjë të madhe, një të vogël, një numër dhe të jetë të paktën 8 karaktere.");
-            return;
-        }
-
-        // ✅ Marrja e të dhënave
         String emri = txtEmri.getText();
         String mbiemri = txtMbiemri.getText();
         String email = txtEmail.getText();
@@ -114,55 +49,53 @@ public class ShtoUserController {
         String fjalekalimi = txtFjalekalimi.getText();
         String roli = ((RadioButton) roleGroup.getSelectedToggle()).getText();
 
-        // ✅ Regjistrimi në databazë
-        String query = "INSERT INTO users (name, surname, email, username, password, role) VALUES (?, ?, ?, ?, ?, ?)";
+        // Mapimi i roleve saktë
+        User.Role role = switch (roli) {
+            case "Principal" -> User.Role.PRINCIPAL;
+            case "Teacher" -> User.Role.TEACHER;
+            case "Student" -> User.Role.STUDENT;
+            case "Drejtor" -> User.Role.DREJTOR;
+            default -> User.Role.ADMIN;
+        };
 
-        try (Connection connection = DBConnector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        // Krijimi i UserDTO
+        CreateUser user = new CreateUser(perdoruesi, fjalekalimi, email, emri, mbiemri, role);
 
-            if (connection == null) {
-                System.out.println("❌ Lidhja me databazën nuk u realizua.");
-                return;
-            }
+        // Regjistrimi në databazë
+        boolean uShtua = userService.register(user);
 
-            System.out.println("✅ Lidhja me databazën u realizua me sukses.");
-
-            // Vendos të dhënat për ruajtje
-            statement.setString(1, emri);
-            statement.setString(2, mbiemri);
-            statement.setString(3, email);
-            statement.setString(4, perdoruesi);
-            statement.setString(5, fjalekalimi);
-            statement.setString(6, roli);
-
-            // Ekzekuto query-n
-            System.out.println("📝 Po regjistrohet në databazë...");
-            int rows = statement.executeUpdate();
-
-            if (rows > 0) {
-                System.out.println("✅ Të dhënat u ruajtën me sukses.");
-                clearFields();
-                showAlert(Alert.AlertType.INFORMATION,"Sukses", "Regjistrimi u krye me sukses!", "Përdoruesi është ruajtur në sistem.");
-            } else {
-                System.out.println("❌ Asnjë rresht nuk u ruajt në databazë.");
-            }
-
-        } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR,"Gabim", "Regjistrimi dështoi", "Ka ndodhur një gabim gjatë regjistrimit: " + e.getMessage());
-            System.out.println("❌ Gabim gjatë ruajtjes: " + e.getMessage());
-            e.printStackTrace();
+        if (uShtua) {
+            showAlert(Alert.AlertType.INFORMATION, "Sukses", "Përdoruesi u regjistrua me sukses!");
+            clearFields();
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Dështim", "Përdoruesi nuk u regjistrua!");
         }
-
     }
 
-    private void showAlert(Alert.AlertType alertType, String title, String header, String message) {
+
+    private boolean validateInputs() {
+        if (txtEmri.getText().isEmpty() || txtMbiemri.getText().isEmpty() ||
+                txtEmail.getText().isEmpty() || txtPerdoruesi.getText().isEmpty() ||
+                txtFjalekalimi.getText().isEmpty() || txtFjalekalimi2.getText().isEmpty() ||
+                roleGroup.getSelectedToggle() == null) {
+            showAlert(Alert.AlertType.ERROR, "Gabim", "Të dhëna të paplotësuara");
+            return false;
+        }
+
+        if (!txtFjalekalimi.getText().equals(txtFjalekalimi2.getText())) {
+            showAlert(Alert.AlertType.ERROR, "Gabim", "Fjalëkalimet nuk përputhen");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String header) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(header);
-        alert.setContentText(message);
         alert.showAndWait();
     }
-
 
     private void clearFields() {
         txtEmri.clear();
@@ -173,7 +106,4 @@ public class ShtoUserController {
         txtFjalekalimi2.clear();
         roleGroup.selectToggle(null);
     }
-
-
-
 }
