@@ -34,13 +34,13 @@ public class LoginController {
     @FXML public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.LOGIN_PAGE);
     }
-    @FXML
 
+    @FXML
     private void handleLogin() {
         String username = txtUsername.getText().trim();
         String password = txtPassword.getText();
 
-
+        // ✅ 1️⃣ Verifikimi i inputeve
         if (username.isEmpty() || password.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Kredenciale të Zbrazëta");
@@ -50,11 +50,11 @@ public class LoginController {
             return;
         }
 
-
+        // ✅ 2️⃣ Autentifikimi i përdoruesit
         User u = userService.authenticate(username, password);
 
         if (u == null) {
-
+            // 👉 Rifreskojmë fushat pas gabimit
             txtUsername.clear();
             txtPassword.clear();
             txtUsername.requestFocus();
@@ -68,30 +68,32 @@ public class LoginController {
         }
 
         try {
+            // ✅ 3️⃣ Marrim event source dhe e kalojmë te skena përkatëse
             Node source = txtUsername;
 
+            // ✅ 4️⃣ Thirrja e skenës përkatëse me SceneNavigator
             switch (u.getRole()) {
                 case ADMIN:
                     System.out.println("🔄 Duke kaluar në Admin View...");
-                    SceneNavigator.switchScene(source, ADMIN_PAGE);
+                    SceneNavigator.switchScene(source, "/views/AdminView.fxml");
                     break;
 
                 case PRINCIPAL:
                 case DREJTOR:
                     System.out.println("🔄 Duke kaluar në Drejtor View...");
-                    SceneNavigator.switchScene(source, PRINCIPAL_PAGE);
+                    SceneNavigator.switchScene(source, "/views/DrejtorView.fxml");
                     break;
 
                 case MESUES:
                 case TEACHER:
                     System.out.println("🔄 Duke kaluar në Teacher View...");
-                    SceneNavigator.switchScene(source, TEACHER_PAGE);
+                    SceneNavigator.switchScene(source, "/views/TeacherView.fxml");
                     break;
 
                 case STUDENT:
                 case NXENES:
                     System.out.println("🔄 Duke kaluar në Student View...");
-                    SceneNavigator.switchScene(source, STUDENT_PAGE);
+                    SceneNavigator.switchScene(source, "/views/StudentView.fxml");
                     break;
 
                 default:
@@ -111,7 +113,6 @@ public class LoginController {
             ex.printStackTrace();
         }
     }
-
 
 
     @FXML
