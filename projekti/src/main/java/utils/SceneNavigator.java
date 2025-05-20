@@ -21,7 +21,12 @@ public class SceneNavigator {
     // Stack për të ruajtur historinë e skenave
     // Stack për të ruajtur historinë e skenave
     private static final Stack<String> history = new Stack<>();
-
+    public static void initializeHistory(String initialPath) {
+        if (!history.contains(initialPath)) {
+            System.out.println("✅ Ruajtja e path-it fillestar në histori: " + initialPath);
+            history.push(initialPath);
+        }
+    }
     // Ndërrimi i skenës dhe ruajtja në histori
     public static void switchScene(Node node, String path) {
         try {

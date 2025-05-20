@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.SceneNavigator;
 
 import java.net.URL;
 import java.util.Locale;
@@ -38,6 +39,8 @@ public class Main extends Application {
             primaryStage.setTitle(bundle.getString("loginTitle"));
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
+            SceneNavigator.initializeHistory("/views/Login.fxml");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

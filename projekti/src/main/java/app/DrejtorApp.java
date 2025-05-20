@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.SceneNavigator;
 
 public class DrejtorApp extends Application {
 
@@ -15,6 +16,8 @@ public class DrejtorApp extends Application {
             primaryStage.setTitle("EduMetrics - Drejtori");
             primaryStage.setScene(new Scene(root, 800, 500));
             primaryStage.show();
+            SceneNavigator.initializeHistory("/views/drejtorView.fxml");
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("❌ Gabim gjatë hapjes së drejtorView.fxml");

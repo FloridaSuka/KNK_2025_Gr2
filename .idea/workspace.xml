@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiIMesuesitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiIMesuesitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/app/DrejtorApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/app/DrejtorApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/app/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneNavigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiIMesuesit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiIMesuesit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiIMesuesit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiIMesuesit.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
