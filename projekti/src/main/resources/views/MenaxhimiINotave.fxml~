@@ -89,10 +89,10 @@
 
             <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="_Llogarit Mesataren" />
             <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="Periudha" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-            <TextField fx:id="txtEmriNxenesit" layoutX="56.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Nxënësit" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-            <TextField fx:id="txtIdNxenesit" layoutX="222.0" layoutY="106.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Nxënësit" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-            <TextField fx:id="txtEmriMesuesit" layoutX="56.0" layoutY="142.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Mësuesit" style="-fx-background-color: white; -fx-text-fill: #000000;" />
-            <TextField fx:id="txtIdMesuesit" layoutX="222.0" layoutY="142.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Mësuesit" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtEmriNxenesit" layoutX="56.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtIdNxenesit" layoutX="222.0" layoutY="106.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Nxënësit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtEmriMesuesit" layoutX="56.0" layoutY="142.0" prefHeight="25.0" prefWidth="150.0" promptText="Emri i Mësuesit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtIdMesuesit" layoutX="222.0" layoutY="142.0" prefHeight="25.0" prefWidth="129.0" promptText="ID e Mësuesit" style="-fx-background-color: #white; -fx-text-fill: #000000;" />
             <!-- Drejtimi -->
             <Label layoutX="83.0" layoutY="280.0" text="Drejtimi:" />
             <ComboBox fx:id="cmbDrejtimi" layoutX="470.0" layoutY="142.0" prefHeight="25.0" prefWidth="78.0" promptText="Drejtimi">
@@ -108,7 +108,7 @@
 
             <!-- Paralelja -->
             <Label layoutX="83.0" layoutY="315.0" text="Paralelja:" />
-            <ComboBox fx:id="cmbParalelja" layoutX="564.0" layoutY="142.0" prefHeight="25.0" prefWidth="78.0" promptText="Paralelja">
+            <ComboBox fx:id="cmbParalelja" layoutX="564.0" layoutY="142.0" prefHeight="25.0" prefWidth="78.0" promptText="Klasa">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="A" />
@@ -123,7 +123,7 @@
 
             <!-- Klasa -->
             <Label layoutX="83.0" layoutY="350.0" text="Klasa:" />
-            <ComboBox fx:id="cmbKlasa" layoutX="656.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="Klasa">
+            <ComboBox fx:id="cmbKlasa" layoutX="656.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="Paralele">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="10" />

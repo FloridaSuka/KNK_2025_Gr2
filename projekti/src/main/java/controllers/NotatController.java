@@ -8,6 +8,8 @@ import javafx.scene.input.KeyEvent;
 import utils.LanguageHandler;
 import utils.SceneLocator;
 
+
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -42,6 +44,9 @@ public class NotatController {
 
     @FXML
     private Label lblNotaFinale;
+    @FXML private ComboBox<String> cmbDrejtimi;
+    @FXML private ComboBox<String> cmbParalelja;
+    @FXML private ComboBox<String> cmbKlasa;
 
     @FXML
     private ListView<String> listaNotave;
