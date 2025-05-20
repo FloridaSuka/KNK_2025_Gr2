@@ -21,6 +21,8 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static utils.SceneLocator.*;
+
 public class LoginController {
 
     @FXML private TextField txtUsername;
@@ -71,25 +73,25 @@ public class LoginController {
             switch (u.getRole()) {
                 case ADMIN:
                     System.out.println("🔄 Duke kaluar në Admin View...");
-                    SceneNavigator.switchScene(source, "/views/AdminView.fxml");
+                    SceneNavigator.switchScene(source, ADMIN_PAGE);
                     break;
 
                 case PRINCIPAL:
                 case DREJTOR:
                     System.out.println("🔄 Duke kaluar në Drejtor View...");
-                    SceneNavigator.switchScene(source, "/views/DrejtorView.fxml");
+                    SceneNavigator.switchScene(source, PRINCIPAL_PAGE);
                     break;
 
                 case MESUES:
                 case TEACHER:
                     System.out.println("🔄 Duke kaluar në Teacher View...");
-                    SceneNavigator.switchScene(source, "/views/TeacherView.fxml");
+                    SceneNavigator.switchScene(source, TEACHER_PAGE);
                     break;
 
                 case STUDENT:
                 case NXENES:
                     System.out.println("🔄 Duke kaluar në Student View...");
-                    SceneNavigator.switchScene(source, "/views/StudentView.fxml");
+                    SceneNavigator.switchScene(source, STUDENT_PAGE);
                     break;
 
                 default:
