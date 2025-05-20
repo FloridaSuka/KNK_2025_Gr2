@@ -3,6 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,6 +13,8 @@ import services.UserService;
 import utils.LanguageHandler;
 import utils.SceneLocator;
 import javafx.scene.control.Button;
+import utils.SceneNavigator;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
@@ -30,9 +33,11 @@ public class LoginController {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.LOGIN_PAGE);
     }
     @FXML
+
     private void handleLogin() {
         String username = txtUsername.getText().trim();
         String password = txtPassword.getText();
+
 
         if (username.isEmpty() || password.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -43,10 +48,11 @@ public class LoginController {
             return;
         }
 
+
         User u = userService.authenticate(username, password);
 
         if (u == null) {
-            // 👉 Rifreskojmë fushat pas gabimit
+
             txtUsername.clear();
             txtPassword.clear();
             txtUsername.requestFocus();
@@ -60,24 +66,32 @@ public class LoginController {
         }
 
         try {
-            Stage stage = (Stage) txtUsername.getScene().getWindow();
+            Node source = txtUsername;
 
             switch (u.getRole()) {
                 case ADMIN:
-                    SceneLocator.locate(stage, SceneLocator.ADMIN_PAGE);
+                    System.out.println("🔄 Duke kaluar në Admin View...");
+                    SceneNavigator.switchScene(source, "/views/AdminView.fxml");
                     break;
+
                 case PRINCIPAL:
                 case DREJTOR:
-                    SceneLocator.locate(stage, SceneLocator.PRINCIPAL_PAGE);
+                    System.out.println("🔄 Duke kaluar në Drejtor View...");
+                    SceneNavigator.switchScene(source, "/views/DrejtorView.fxml");
                     break;
+
                 case MESUES:
                 case TEACHER:
-                    SceneLocator.locate(stage, SceneLocator.TEACHER_PAGE);
+                    System.out.println("🔄 Duke kaluar në Teacher View...");
+                    SceneNavigator.switchScene(source, "/views/TeacherView.fxml");
                     break;
+
                 case STUDENT:
                 case NXENES:
-                    SceneLocator.locate(stage, SceneLocator.STUDENT_PAGE);
+                    System.out.println("🔄 Duke kaluar në Student View...");
+                    SceneNavigator.switchScene(source, "/views/StudentView.fxml");
                     break;
+
                 default:
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Roli i panjohur");
@@ -95,6 +109,7 @@ public class LoginController {
             ex.printStackTrace();
         }
     }
+
 
 
     @FXML
