@@ -88,7 +88,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnNotat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="324.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" onAction="#handleGrades" prefHeight="150.0" prefWidth="150.0" text="Notat">
+                <Button fx:id="btnNotat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="324.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" onAction="#handleGrades" prefHeight="150.0" prefWidth="150.0" text="N_otat">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -98,7 +98,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnStatistikat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Statistikat">
+                <Button fx:id="btnStatistikat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="_Statistikat">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -108,7 +108,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnMungesat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="124.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" onAction="#handleAbsence" prefHeight="150.0" prefWidth="150.0" text="Mungesat">
+                <Button fx:id="btnMungesat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="124.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" onAction="#handleAbsence" prefHeight="150.0" prefWidth="150.0" text="_Mungesat">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -118,7 +118,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnProfile" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="324.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Cilesime">
+                <Button fx:id="btnProfile" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="324.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="_Cilesime">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -128,7 +128,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnSignOut" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="150.0" prefWidth="150.0" text="Dil">
+                <Button fx:id="btnSignOut" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="315.0" maxHeight="150.0" maxWidth="150.0" onAction="#handleLogout" prefHeight="150.0" prefWidth="150.0" text="_Dil">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>

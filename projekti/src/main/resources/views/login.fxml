@@ -60,7 +60,7 @@
    <children>
       <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
          <children>
-            <Button fx:id="btnLogin" layoutX="59.0" layoutY="274.0" onAction="#handleLogin" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="%btn_login" />
+            <Button fx:id="btnLogin" layoutX="59.0" layoutY="274.0" onAction="#handleLogin" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="%btnlogin" />
             <TextField fx:id="txtUsername" layoutX="32.0" layoutY="84.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptUsername" />
             <PasswordField fx:id="txtPassword" layoutX="32.0" layoutY="155.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptPassword" />
             <Button layoutX="31.0" layoutY="220.0" onAction="#onForgotPassword" styleClass="password-field" text="%promptForgotPass" />
