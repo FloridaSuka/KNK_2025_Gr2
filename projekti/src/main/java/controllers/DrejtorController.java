@@ -19,11 +19,7 @@ import java.net.URL;
 import static utils.SceneLocator.CLASS_MANAGEMENT_PAGE;
 
 public class DrejtorController {
-    @FXML
-    private void onOpenSettings(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        SceneNavigator.switchScene(source, SceneNavigator.SETTINGS_PAGE);
-    }
+
 
 
     //PJESA E GJUHES
@@ -54,6 +50,10 @@ public class DrejtorController {
         SceneNavigator.logout((Node) event.getSource());
     }
 
+    @FXML
+    private void onOpenSettings(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
+    }
 }
 
 
