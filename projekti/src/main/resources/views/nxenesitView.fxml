@@ -60,7 +60,7 @@
                 <!-- Header -->
                 <AnchorPane layoutY="0.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header">
                     <children>
-                        <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mirësevini nxënës!">
+                        <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%mireseviniNxenes">
                             <font>
                                 <Font name="Arial" size="36.0" />
                             </font>
@@ -70,7 +70,7 @@
                                 <Image url="@../images/ikona.png" />
                             </image>
                         </ImageView>
-                        <MenuButton fx:id="menuLanguage" layoutX="641.0" layoutY="32.0" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="Gjuha">
+                        <MenuButton fx:id="menuLanguage" layoutX="641.0" layoutY="32.0" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang">
                             <items>
                                 <MenuItem fx:id="menuAL" text="ALB" />
                                 <MenuItem fx:id="menuEN" text="ENG" />
@@ -80,7 +80,7 @@
                 </AnchorPane>
 
                 <!-- Butonat -->
-                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="80.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="_Statistikat">
+                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="80.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%btnStatistikat">
                     <graphic>
                         <ImageView fitHeight="38.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -96,7 +96,7 @@
                     </padding>
                 </Button>
 
-                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="250.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="_Mungesat">
+                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="250.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%btnMungesat">
                     <graphic>
                         <ImageView fitHeight="38.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -112,7 +112,7 @@
                     </padding>
                 </Button>
 
-                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="420.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="_Notat">
+                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="420.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%btnNotat">
                     <graphic>
                         <ImageView fitHeight="38.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -127,7 +127,7 @@
                         <Insets bottom="10.0" />
                     </padding>
                 </Button>
-                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="590.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" onAction="#handleLogout" prefHeight="150.0" prefWidth="150.0" text="_Dil">
+                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="590.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" onAction="#handleLogout" prefHeight="150.0" prefWidth="150.0" text="%_logout">
                     <graphic>
                         <ImageView fitHeight="38.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                             <image>
