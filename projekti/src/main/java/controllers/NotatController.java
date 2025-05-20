@@ -8,6 +8,8 @@ import javafx.scene.input.KeyEvent;
 import utils.LanguageHandler;
 import utils.SceneLocator;
 
+
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -42,6 +44,9 @@ public class NotatController {
 
     @FXML
     private Label lblNotaFinale;
+    @FXML private ComboBox<String> cmbDrejtimi;
+    @FXML private ComboBox<String> cmbParalelja;
+    @FXML private ComboBox<String> cmbKlasa;
 
     @FXML
     private ListView<String> listaNotave;
@@ -77,42 +82,65 @@ public class NotatController {
             int notaFinale = (int) Math.round(mesatarja);
             lblNotaFinale.setText(String.valueOf(notaFinale)); // Vendoset direkt në Label
 
-        } catch (NumberFormatException e) {
-            System.out.println("Gabim në formatin e notave!");
-            lblMesatarja.setText("Gabim në formatin e notave!");
+        }catch (NumberFormatException e) {
+            shfaqAlert("Gabim në Formatin e Notave", "Ju lutemi shkruani vetëm numra të vlefshëm për notat.");
+            lblMesatarja.setText("Gabim");
             lblNotaFinale.setText("-");
         }
+
     }
 
 
     // Regjistron në ListView të gjitha notat
     @FXML
     private void regjistroNota() {
-        String raport = "Nxënësi: " + txtEmriNxenesit.getText() +
-                " | ID: " + txtIdNxenesit.getText() +
-                " | Lënda: " + txtLenda.getText() +
-                " | Mesuesi: " + txtEmriMesuesit.getText() +
-                " | Id: " + txtIdMesuesit.getText() +
-                " | Periudha: " + comboPeriudha.getValue() +
-                " | Nota 1: " + nota1.getText() +
-                " | Nota 2: " + nota2.getText() ;
+        String emriNxenesit = txtEmriNxenesit.getText();
+        String idNxenesi = txtIdNxenesit.getText();
+        String emriMesuesit = txtEmriMesuesit.getText();
+        String idMesuesi = txtIdMesuesit.getText();
+        String lenda = txtLenda.getText();
+        String nota1Str = nota1.getText();
+        String nota2Str = nota2.getText();
+        String periudha = comboPeriudha.getValue();
+        String drejtimi = cmbDrejtimi.getValue();
+        String paralelja = cmbParalelja.getValue();
+        String klasa = cmbKlasa.getValue();
 
-        notat.add(raport);
+        // Krijo përmbledhje si shembull (ose ruaji në DB)
+        String raport = String.format("Nxënësi: %s (%s)\nMësuesi: %s (%s)\nLënda: %s\nNota1: %s | Nota2: %s\nPeriudha: %s\nDrejtimi: %s | Paralelja: %s | Klasa: %s",
+                emriNxenesit, idNxenesi,
+                emriMesuesit, idMesuesi,
+                lenda, nota1Str, nota2Str,
+                periudha, drejtimi, paralelja, klasa);
+
+        listaNotave.getItems().add(raport);
     }
+
 
     // Pastron fushat dhe etiketat
     @FXML
     private void pastroFushat() {
         txtEmriNxenesit.clear();
         txtIdNxenesit.clear();
-        txtLenda.clear();
         txtEmriMesuesit.clear();
         txtIdMesuesit.clear();
-        comboPeriudha.getSelectionModel().clearSelection();
+        txtLenda.clear();
         nota1.clear();
         nota2.clear();
-
+        comboPeriudha.getSelectionModel().clearSelection();
+        cmbDrejtimi.getSelectionModel().clearSelection();
+        cmbParalelja.getSelectionModel().clearSelection();
+        cmbKlasa.getSelectionModel().clearSelection();
         lblMesatarja.setText("");
         lblNotaFinale.setText("");
     }
+
+    private void shfaqAlert(String titulli, String mesazhi) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulli);
+        alert.setHeaderText(null);
+        alert.setContentText(mesazhi);
+        alert.showAndWait();
+    }
+
 }
