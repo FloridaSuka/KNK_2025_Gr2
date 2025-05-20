@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SceneLocator {
-
+    public final static String SETTINGS_PAGE = "/views/settings.fxml";
     public final static String LOGIN_PAGE = "/views/login.fxml";
     public final static String ADMIN_PAGE = "/views/adminView.fxml";
     public final static String PRINCIPAL_PAGE = "/views/drejtorView.fxml";
