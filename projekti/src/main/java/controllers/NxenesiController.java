@@ -22,10 +22,7 @@ public class NxenesiController {
         // Configure language menu
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.STUDENT_PAGE);
     }
-    @FXML
-    private void onOpenSettings(ActionEvent event) {
-        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
-    }
+
     @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
@@ -92,7 +89,9 @@ public class NxenesiController {
             alert.setContentText(content);
             alert.showAndWait();
         }
-
+    private void onOpenStatistics(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.NXENESIT_PAGE);
+    }
 
 }
 
