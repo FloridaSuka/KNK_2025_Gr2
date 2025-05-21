@@ -96,4 +96,15 @@ public class Klasa {
                 ", Drejtimi = " + drejtimi +
                 '}';
     }
+    public String toReportLine() {
+        return String.format("ID: %d | Niveli: %d | Shkolla: %s | Paralelja: %s | Mësuesi: %s %s | Drejtimi: %s",
+                id,
+                niveli,
+                shkolla.getEmri(),
+                paralelja.getEmri(),
+                mesuesi.getEmri(),
+                mesuesi.getMbiemri(),
+                drejtimi.getEmri());
+    }
+
 }

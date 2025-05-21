@@ -2,15 +2,19 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import models.Klasa;
 import models.dto.create.CreateKlasa;
 import services.KlasaService;
 import utils.LanguageHandler;
 import utils.SceneLocator;
 
+import java.util.List;
+
 public class MenaxhimiKlaseveController {
 
     @FXML
     private TextField txtNiveli, txtShkolla ,txtParalelja, txtProfesori, txtDrejtimi, txtId;
+    @FXML private ListView<String> raportiKlasave;
 
     @FXML
     private Button btnShto;
@@ -23,6 +27,7 @@ public class MenaxhimiKlaseveController {
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.CLASS_MANAGEMENT_PAGE);
+        mbushRaportin();
     }
 
     @FXML
@@ -38,9 +43,14 @@ public class MenaxhimiKlaseveController {
         );
 
         if (klasaService.shtoKlasa(klasa)) {
-            showAlert(Alert.AlertType.INFORMATION, "Sukses", "Klasa u shtua me sukses!");
+            raportiKlasave.getItems().add(" Shtuar " );
+
+
+            mbushRaportin();
         } else {
-            showAlert(Alert.AlertType.ERROR, "Gabim", "Klasa nuk u shtua!");
+            raportiKlasave.getItems().add(" Deshtoj " );
+
+
         }
     }
     private void showAlert(Alert.AlertType alertType, String title, String header) {
@@ -49,5 +59,16 @@ public class MenaxhimiKlaseveController {
         alert.setHeaderText(header);
         alert.showAndWait();
     }
+
+
+    @FXML
+    private void mbushRaportin() {
+        raportiKlasave.getItems().clear();
+        List<Klasa> klasat = klasaService.gjejTeGjitha();
+        for (Klasa klasa : klasat) {
+            raportiKlasave.getItems().add(klasa.toReportLine());
+        }
+    }
+
 
 }
