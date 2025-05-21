@@ -70,8 +70,8 @@ public class User {
         String username = result.getString("username");
         String password = result.getString("password");
         String email = result.getString("email");
-        String emer = result.getString("name");         // kolona për emër
-        String mbiemer = result.getString("surname");   // kolona për mbiemër
+        String emer = result.getString("name");
+        String mbiemer = result.getString("surname");
 
         String roleStr = result.getString("role");
         User.Role role = roleStr != null

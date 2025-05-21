@@ -105,9 +105,16 @@
                   <TextField fx:id="txtAdresa" layoutX="355.0" layoutY="221.0" prefHeight="25.0" prefWidth="147.0" />
                   <Label layoutX="234.0" layoutY="255.0" text="%zip" AnchorPane.leftAnchor="237.0" />
                   <TextField fx:id="txtzip" layoutX="355.0" layoutY="251.0" prefHeight="25.0" prefWidth="147.0" />
-
                </children>
             </AnchorPane>
+
+            <Label fx:id="statusLabel"
+                   layoutX="0.0"
+                   layoutY="500.0"
+                   prefHeight="25.0"
+                   prefWidth="800.0"
+                   style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-font-size: 13px; -fx-padding: 4px;"
+            />
 
          </children>
          <VBox.margin>

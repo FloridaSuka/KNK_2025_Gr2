@@ -39,7 +39,8 @@ public class MenaxhimiKlaseveController {
     @FXML private VBox root;
     @FXML private Menu menuOpen;
     @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-
+    @FXML
+    private Label statusLabel;
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.CLASS_MANAGEMENT_PAGE);
@@ -92,6 +93,7 @@ public class MenaxhimiKlaseveController {
             boolean success = klasaService.shtoKlasa(klasa);
             if (success) {
                 mbushTabelen();
+                statusLabel.setText("✅Klasa u shtua me sukses.");
                 showAlert(Alert.AlertType.INFORMATION, "Sukses", "Klasa u shtua me sukses.");
             } else {
                 showAlert(Alert.AlertType.ERROR, "Gabim", "Nuk u arrit të ruhet klasa.");
@@ -111,6 +113,7 @@ public class MenaxhimiKlaseveController {
             boolean success = repo.fshij(id);
             showAlert(Alert.AlertType.INFORMATION,"Sukses" ,"Fshirja u krye!");
             if (success) mbushTabelen();
+            statusLabel.setText(" Klasa u fshi me sukses.");
         } catch (NumberFormatException e) {
             showAlert(Alert.AlertType.ERROR,"Gabim", "Fshirja dështoi!");
         }

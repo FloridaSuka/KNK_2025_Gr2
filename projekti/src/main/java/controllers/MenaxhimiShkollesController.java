@@ -33,8 +33,6 @@ public class MenaxhimiShkollesController {
     @FXML private TextField txtTel;
     @FXML private TextField txtAdresa;
     @FXML private TextField txtZip;
-    @FXML
-    private ListView<String> raportiShkollave;
     @FXML private TableView<Shkolla> tabelaShkollave;
     @FXML private TableColumn<Shkolla, Integer> colId;
     @FXML private TableColumn<Shkolla, String> colEmri;
@@ -48,7 +46,8 @@ public class MenaxhimiShkollesController {
     @FXML private VBox root;
     @FXML private Menu menuOpen;
     @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-
+    @FXML
+    private Label statusLabel;
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SCHOOL_MANAGEMENT_PAGE);
@@ -91,6 +90,7 @@ public class MenaxhimiShkollesController {
         boolean success = shkollarepo.shtoShkollen(shkolla);
         if (success) {
             mbushTabelen();
+            statusLabel.setText("✅Shkolla u shtua me sukses.");
         }
 
 
@@ -119,6 +119,7 @@ public class MenaxhimiShkollesController {
         boolean success = repo.perditesoShkollen(shkolla);
         if(success){
             mbushTabelen();
+            statusLabel.setText("Shkolla u perditesua me sukses.");
         }
         showAlert(success, "Përditësim", "Shkolla u përditësua me sukses!", "Përditësimi dështoi.");
     }
@@ -129,8 +130,8 @@ public class MenaxhimiShkollesController {
         boolean success = repo.fshijShkollen(id);
 
         if (success) {
-            raportiShkollave.getItems().add(" Fshirje: ID " + id + " | Emri: " + txtEmri.getText());
             mbushTabelen();
+            statusLabel.setText("Shkolla u fshi me sukses.");
         }
 
     }

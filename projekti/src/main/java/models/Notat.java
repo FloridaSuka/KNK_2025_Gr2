@@ -13,6 +13,7 @@ public class Notat {
     private Paralelja paralelja;
     private int notaPare;
     private int notaDyte;
+    private String emri;
 
     public Notat(int id, Nxenesit nxenesi, Lenda lenda, Mesuesi mesuesi, Drejtimi drejtimi, Klasa klasa, Paralelja paralelja, int notaPare, int notaDyte) {
         this.id = id;
@@ -53,6 +54,11 @@ public class Notat {
 
         return new Notat(id, nxenesi, lenda, mesuesi, drejtimi, klasa, paralelja, notaPare, notaDyte);
     }
+    public void Nxenesit(int id, String emri) {
+        this.id = id;
+        this.emri = emri;
+    }
+
 
     public int getId() {
         return id;

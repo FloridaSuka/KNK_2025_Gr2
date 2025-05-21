@@ -42,11 +42,9 @@ public class MungesaController {
     @FXML private TableColumn<Mungesa, Integer> colPeriodaId;
     @FXML private TableColumn<Mungesa, Date> colData;
     @FXML private TableColumn<Mungesa, String> colArsyeja;
-
     @FXML
-    private Label lblStatus;
+    private Label statusLabel;
 
-    @FXML private ListView<String> raportiMungesave;
 
     @FXML
     private MenuButton menuLanguage;
@@ -57,7 +55,6 @@ public class MungesaController {
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ABSENCES_PAGE);
-        mbushRaportinMungesave();
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colLendaId.setCellValueFactory(new PropertyValueFactory<>("lendaId"));
@@ -103,6 +100,8 @@ public class MungesaController {
         if (success) {
             shfaqAlert("Sukses", "Mungesa u ruajt", "Të dhënat u ruajtën me sukses.", Alert.AlertType.INFORMATION);
             mbushTabelaMungesave();
+            statusLabel.setText("✅ Mungesa u shtua me sukses.");
+
 
         } else {
             shfaqAlert("Gabim", "Dështoi ruajtja", "Nuk u arrit të ruhet mungesa.", Alert.AlertType.ERROR);
@@ -120,7 +119,6 @@ public class MungesaController {
         Integer periodaId = periodaRepo.getPeriodaIdByName(txtPerioda.getText().trim());
 
         if (studentId == null || lendaId == null || periodaId == null) {
-            lblStatus.setText("Dështoi përditësimi i mungesës.");
             return;
         }
 
@@ -131,6 +129,8 @@ public class MungesaController {
         if (success) {
             shfaqAlert("Sukses", "U përditësua", "Të dhënat u përditësuan me sukses.", Alert.AlertType.INFORMATION);
             mbushTabelaMungesave();
+            statusLabel.setText("🔄 Mungesa u përditësua.");
+
 
         } else {
             shfaqAlert("Gabim", "Dështoi përditësimi", "Nuk u arrit të përditësohen të dhënat.", Alert.AlertType.ERROR);
@@ -148,11 +148,12 @@ public class MungesaController {
         boolean success = mungesaRepo.fshij(id);
 
         if (success) {
-            lblStatus.setText("Mungesa u ruajt me sukses më: " + java.time.LocalDateTime.now());
+
             mbushTabelaMungesave();
+            statusLabel.setText("🗑️ Mungesa u fshi.");
 
         } else {
-            lblStatus.setText(" Dështoi ruajtja e mungesës.");
+            shfaqAlert("Gabim", "ID mungon", "Ju lutem shkruani ID për të fshirë.", Alert.AlertType.WARNING);
         }
     }
 
@@ -162,13 +163,6 @@ public class MungesaController {
         alert.setHeaderText(header);
         alert.setContentText(mesazhi);
         alert.showAndWait();
-    }
-    private void mbushRaportinMungesave() {
-        raportiMungesave.getItems().clear();
-        List<Mungesa> mungesat = mungesaRepo.gjejTeGjithaMungesat();
-        for (Mungesa m : mungesat) {
-            raportiMungesave.getItems().add(m.toString());
-        }
     }
     @FXML public void handleLogout(ActionEvent event) {
         Stage stage = (Stage) root.getScene().getWindow();
@@ -208,7 +202,5 @@ public class MungesaController {
     public void handleSelectAll(ActionEvent actionEvent) {
         MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
     }
-
-
 
 }

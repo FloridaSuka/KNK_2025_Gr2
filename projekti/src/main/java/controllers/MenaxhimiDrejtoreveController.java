@@ -51,7 +51,8 @@ public class MenaxhimiDrejtoreveController {
     @FXML private VBox root;
     @FXML private Menu menuOpen;
     @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-
+    @FXML
+    private Label statusLabel;
     @FXML
     public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -100,8 +101,10 @@ public class MenaxhimiDrejtoreveController {
 
         DrejtoriRepository drejtoriRepo = new DrejtoriRepository();
         boolean success = drejtoriRepo.shtoDrejtor(d);
-        if(success)
+        if(success){
             mbushTabelen();
+            statusLabel.setText("✅ Drejtor u shtua me sukses.");
+        }
         showAlert(success, "Shtim", "Drejtori u shtua me sukses!", "Shtimi dështoi.");
     }
     @FXML
@@ -129,8 +132,10 @@ public class MenaxhimiDrejtoreveController {
 
 
         boolean success = drejtoriRepo.perditesoDrejtor(d);
-        if(success)
+        if(success){
             mbushTabelen();
+            statusLabel.setText("✅ Drejtor u perditesua me sukses.");
+        }
         showAlert(success, "Përditësim", "Drejtori u përditësua me sukses!", "Përditësimi dështoi.");
     }
 
@@ -138,8 +143,10 @@ public class MenaxhimiDrejtoreveController {
     private void fshijDrejtor() {
         int id = Integer.parseInt(txtId.getText());
         boolean success = drejtoriRepo.fshijDrejtor(id);
-        if(success)
+        if(success) {
             mbushTabelen();
+            statusLabel.setText("✅ Drejtor u fshi me sukses.");
+        }
         showAlert(success, "Fshirje", "Drejtori u fshi me sukses!", "Fshirja dështoi.");
     }
     private void showAlert(boolean success, String title, String msgSuccess, String msgFail) {

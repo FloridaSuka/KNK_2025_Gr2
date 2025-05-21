@@ -1,16 +1,18 @@
 package repositories;
 
 import database.DBConnector;
-import java.sql.*;
 
-public class PeriodaRepository {
-    public static Integer getPeriodaIdByName(String emri) {
-        String sql = "SELECT id FROM perioda WHERE TRIM(emri) = ?";
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class DrejtimiRepository {
+    public int getDrejtimiIdByName(String name) {
+        String sql = "SELECT id FROM drejtimi WHERE LOWER(emri) = LOWER(?)";
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            System.out.println("🔍 Po kërkoj periudhën me emri: " + emri);
-
-            stmt.setString(1, emri.trim());
+            stmt.setString(1, name.trim());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getInt("id");
@@ -18,8 +20,7 @@ public class PeriodaRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return 0;
     }
-
 
 }

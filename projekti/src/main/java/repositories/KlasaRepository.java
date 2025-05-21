@@ -103,5 +103,24 @@ public class KlasaRepository {
 
         return klasat;
     }
+    public int getKlasaIdByNiveli(int niveli) {
+        String sql = "SELECT id FROM klasa WHERE niveli = ?";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, niveli);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
 
 }

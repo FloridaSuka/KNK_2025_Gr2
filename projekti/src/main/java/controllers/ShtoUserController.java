@@ -14,7 +14,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import models.User.Role;
 import javafx.application.Platform;
-import services.UserService;
 import javafx.stage.Stage;
 import utils.MenuUtils;
 import utils.SceneNavigator;
@@ -59,9 +58,16 @@ public class ShtoUserController {
 
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADD_USER_PAGE);
         Platform.runLater(() -> {
-            Role role = UserService.getCurrentUser().getRole();
+            User currentUser = UserService.getCurrentUser();
             Stage stage = (Stage) root.getScene().getWindow();
-            MenuUtils.populateOpenSubMenu(menuOpen, role, stage);
+
+            if (currentUser != null) {
+                Role role = currentUser.getRole();
+                MenuUtils.populateOpenSubMenu(menuOpen, role, stage);
+            } else {
+                System.err.println("❌ Gabim: Përdoruesi nuk është i kyçur!");
+                SceneNavigator.switchScene(stage, SceneLocator.LOGIN_PAGE);
+            }
         });
     }
 
@@ -77,16 +83,17 @@ public class ShtoUserController {
         String fjalekalimi = txtFjalekalimi.getText();
         String roli = ((RadioButton) roleGroup.getSelectedToggle()).getText();
 
-        // Mapimi i roleve saktë
         User.Role role = switch (roli) {
             case "Principal" -> User.Role.PRINCIPAL;
             case "Teacher" -> User.Role.TEACHER;
             case "Student" -> User.Role.STUDENT;
             case "Drejtor" -> User.Role.DREJTOR;
+            case "Mësues" -> User.Role.MESUES;
+            case "Nxënës" -> User.Role.NXENES;
             default -> User.Role.ADMIN;
         };
 
-        CreateUser user = new CreateUser(perdoruesi, fjalekalimi, email, emri, mbiemri, role);
+        CreateUser user = new CreateUser(emri, mbiemri, email, perdoruesi, fjalekalimi, role);
 
         boolean uShtua = userService.register(user);
 

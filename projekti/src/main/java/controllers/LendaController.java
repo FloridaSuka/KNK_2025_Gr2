@@ -45,7 +45,8 @@ public class LendaController {
     @FXML private VBox root;
     @FXML private Menu menuOpen;
     @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-
+    @FXML
+    private Label statusLabel;
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SUBJECT_MANAGEMENT_PAGE);
@@ -78,6 +79,7 @@ public class LendaController {
             boolean success = service.shto(lenda);
             if (success) {
                 mbushTabelen();
+                statusLabel.setText("✅Lenda u shtua me sukses.");
             } else {
                 showAlert(success, "Shtim", "Lënda u shtua me sukses!", "Shtimi dështoi!");
             }
@@ -96,6 +98,7 @@ public class LendaController {
             boolean success = repo.fshij(id);
             showAlert(success, "Fshirje", "Lënda u fshi me sukses!", "Fshirja dështoi!");
             if (success) mbushTabelen();
+            statusLabel.setText("✅Lenda u fshij me sukses.");
         } catch (NumberFormatException e) {
             showAlert(false, "Gabim", "ID e pavlefshme", "Ju lutem shkruani një ID të saktë.");
         }

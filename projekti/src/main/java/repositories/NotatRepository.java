@@ -1,7 +1,9 @@
 package repositories;
 
 import database.DBConnector;
+import models.Lenda;
 import models.Notat;
+import models.Nxenesit;
 import models.dto.create.CreateNotat;
 
 import java.sql.Connection;
@@ -59,15 +61,50 @@ public class NotatRepository {
     }
     public List<Notat> gjejTeGjithaNotat() {
         List<Notat> lista = new ArrayList<>();
-        String query = "SELECT * FROM Notat";
+        String query = "SELECT n.*, " +
+                "nx.id AS nx_id, nx.emri AS nx_emri, nx.mbiemri AS nx_mbiemri, nx.datelindja, nx.gjinia, nx.email AS nx_email, nx.phone AS nx_phone, " +
+                "l.id AS l_id, l.emri AS l_emri " +
+                "FROM notat n " +
+                "JOIN nxenesit nx ON n.nxenesi_id = nx.id " +
+                "JOIN lenda l ON n.lenda_id = l.id";
+
 
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
 
-            while (rs.next()) {
-                Notat n = Notat.fromResultSet(rs);
-                lista.add(n);
+            while (rs.next()) { Nxenesit nxenesi = new Nxenesit(
+                    rs.getInt("nx_id"),
+                    rs.getString("nx_emri"),
+                    rs.getString("nx_mbiemri"),
+                    rs.getDate("datelindja"),
+                    rs.getString("gjinia").charAt(0),
+                    rs.getString("nx_email"),
+                    rs.getString("nx_phone"),
+                    null
+            );
+
+                Lenda lenda = new Lenda(
+                        rs.getInt("l_id"),
+                        rs.getString("l_emri"),
+                        null,
+                        null,
+                        null
+                );
+
+                Notat nota = new Notat(
+                        rs.getInt("id"),
+                        nxenesi,
+                        lenda,
+                        null,
+                        null,
+                        null,
+                        null,
+                        rs.getInt("nota_pare"),
+                        rs.getInt("nota_dyte")
+                );
+
+                lista.add(nota);
             }
 
         } catch (SQLException e) {

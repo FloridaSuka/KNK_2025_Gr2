@@ -1,12 +1,16 @@
 package controllers;
 
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.Notat;
 import models.dto.create.CreateNotat;
-import repositories.LendaRepository;
+import repositories.*;
 import services.NotatService;
 import utils.LanguageHandler;
 import utils.SceneLocator;
@@ -21,13 +25,19 @@ import javafx.stage.Stage;
 import utils.MenuUtils;
 import utils.SceneNavigator;
 
+import java.util.List;
+
 public class NotatController {
 
     @FXML private TextField txtIdNxenesit, txtIdMesuesit, txtLenda, nota1, nota2;
     @FXML private ComboBox<String> cmbKlasa, cmbParalelja, cmbDrejtimi,comboPeriudha;
     @FXML private Label lblMesatarja, lblNotaFinale;
     @FXML private ListView<String> listaNotave;
-    @FXML private ListView<String> raportiStatistik;
+    @FXML private Label statusLabel;
+    @FXML private TableView<Notat> tabelaNotave;
+    @FXML private TableColumn<Notat, String> colNxenesiEmri;
+    @FXML private TableColumn<Notat, Integer> colNota1;
+    @FXML private TableColumn<Notat, Integer> colNota2;
 
     private final LendaRepository lendaRepository = new LendaRepository();
 
@@ -37,9 +47,21 @@ public class NotatController {
     @FXML private VBox root;
     @FXML private Menu menuOpen;
     @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
+    @FXML
+    private TableColumn<Notat, String> colLenda;
+
 
     @FXML
     public void initialize() {
+
+        colLenda.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getLenda().getEmri())
+        );
+
+        colNota1.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getNotaPare()).asObject());
+        colNota2.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getNotaDyte()).asObject());
+        colNxenesiEmri.setCellValueFactory(cellData -> new SimpleStringProperty(
+                cellData.getValue().getNxenesi().getEmri() + " " + cellData.getValue().getNxenesi().getMbiemri()));
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.GRADE_MANAGEMENT_PAGE);
         mbushRaportinMeNotatNgaDatabaza();
         Platform.runLater(() -> {
@@ -47,66 +69,76 @@ public class NotatController {
             Stage stage = (Stage) root.getScene().getWindow();
             MenuUtils.populateOpenSubMenu(menuOpen, role, stage);
         });
-    }
 
+    }
     @FXML
     private void regjistroNota() {
+        // Kontrolli i fushave bosh
         if (txtIdNxenesit.getText().isEmpty() || txtIdMesuesit.getText().isEmpty() ||
                 txtLenda.getText().isEmpty() || nota1.getText().isEmpty() || nota2.getText().isEmpty() ||
-                cmbDrejtimi.getValue() == null || cmbParalelja.getValue() == null || cmbKlasa.getValue() == null) {
+                cmbDrejtimi.getValue() == null || cmbParalelja.getValue() == null ||
+                cmbKlasa.getValue() == null || comboPeriudha.getValue() == null) {
+
             showAlert("Gabim", "Ju lutem plotësoni të gjitha fushat!");
             return;
         }
 
         try {
+            // Leximi dhe validimi i ID-ve dhe notave
             int nxenesiId = Integer.parseInt(txtIdNxenesit.getText().trim());
             int mesuesiId = Integer.parseInt(txtIdMesuesit.getText().trim());
-            String emriLendes = txtLenda.getText().trim();
-            int lendaId = lendaRepository.getLendaIdByName(emriLendes);
-
-            if (lendaId == 0) {
-                showAlert("Gabim", "Lënda nuk u gjet në databazë.");
-                return;
-            }
-
             int notaPare = Integer.parseInt(nota1.getText().trim());
             int notaDyte = Integer.parseInt(nota2.getText().trim());
-            int periudha = Integer.parseInt(comboPeriudha.getValue().trim());
-            int drejtimiId = convertDrejtimiToId(cmbDrejtimi.getValue());
-            int paraleljaId = convertParaleljaToId(cmbParalelja.getValue());
-            int klasaId =convertKlasaToId(cmbKlasa.getValue());
 
-            if (drejtimiId == 0 || paraleljaId == 0 || klasaId == 0) {
-                showAlert("Gabim", "Vlerat e drejtimit, paraleles apo klasës janë të pavlefshme.");
+            // Leximi i emrave nga ComboBox-et
+            String emriLendes = txtLenda.getText().trim();
+            String drejtimiEmri = cmbDrejtimi.getValue();
+            String paraleljaEmri = cmbParalelja.getValue();
+            Integer klasaEmri = Integer.valueOf(cmbKlasa.getValue());
+            String periudhaEmri = comboPeriudha.getValue();
+
+            // Kërkimi i ID-ve përmes emrave
+            int lendaId = lendaRepository.getLendaIdByName(emriLendes);
+            int drejtimiId = new DrejtimiRepository().getDrejtimiIdByName(drejtimiEmri);
+            int paraleljaId = new ParaleljaRepository().getParaleljaIdByName(paraleljaEmri);
+            int klasaId = new KlasaRepository().getKlasaIdByNiveli(klasaEmri);
+            Integer periudhaId = PeriodaRepository.getPeriodaIdByName(periudhaEmri);
+
+            // Kontrollo nëse ndonjë ID nuk është gjetur
+            if (lendaId <= 0 || drejtimiId <= 0 || paraleljaId <= 0 || klasaId <= 0 || periudhaId == null || periudhaId <= 0) {
+                showAlert("Gabim", "Një nga ID-të nuk u gjet në databazë. Kontrolloni saktësinë e të dhënave.");
                 return;
             }
 
-            CreateNotat nota = new CreateNotat(nxenesiId, lendaId, mesuesiId, drejtimiId,klasaId, paraleljaId, periudha,notaPare, notaDyte);
+
+            // Krijimi i objektit të notës për regjistrim
+            CreateNotat nota = new CreateNotat(
+                    nxenesiId, lendaId, mesuesiId,
+                    drejtimiId, klasaId, paraleljaId,
+                    periudhaId, notaPare, notaDyte
+            );
+
             boolean sukses = notatService.regjistroNota(nota);
 
             if (sukses) {
-                showAlert("Sukses!", "Nota u ruajt me sukses!");
-
-                shtoNeRaport();
-                raportiStatistik.getItems().add("✅ U regjistrua nota për nxënësin ID: " + txtIdNxenesit.getText());
-
+                showAlert("Sukses", "Nota u regjistrua me sukses!");
+                mbushRaportinMeNotatNgaDatabaza();
+                statusLabel.setText("✅Nota u shtua me sukses.");
                 pastroFushat();
             } else {
-                showAlert("Gabim!", "Dështoi ruajtja e notës.");
+                showAlert("Gabim", "Dështoi ruajtja e notës në databazë.");
             }
 
         } catch (NumberFormatException e) {
             showAlert("Gabim në format", "Sigurohu që ID-të dhe notat janë numra të vlefshëm.");
+        } catch (Exception e) {
+            showAlert("Gabim i papritur", "Ndodhi një gabim: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    private void shtoNeRaport() {
-        String raport = "Nxënësi ID: " + txtIdNxenesit.getText() +
-                " | Lënda ID: " + txtLenda.getText() +
-                " | Nota 1: " + nota1.getText() +
-                " | Nota 2: " + nota2.getText();
-        listaNotave.getItems().add(raport);
-    }
+
+
 
     @FXML
     private void llogaritMesataren() {
@@ -118,12 +150,11 @@ public class NotatController {
             lblMesatarja.setText(String.format("%.2f", mesatarja));
 
             String notaFinale;
-            if (mesatarja >= 9) notaFinale = "10";
-            else if (mesatarja >= 8) notaFinale = "9";
-            else if (mesatarja >= 7) notaFinale = "8";
-            else if (mesatarja >= 6) notaFinale = "7";
-            else if (mesatarja >= 5) notaFinale = "6";
-            else notaFinale = "5";
+            if (mesatarja >= 4) notaFinale = "5";
+            else if (mesatarja >= 3) notaFinale = "4";
+            else if (mesatarja >= 2) notaFinale = "3";
+            else if (mesatarja >= 1) notaFinale = "2";
+            else notaFinale = "1";
 
             lblNotaFinale.setText(notaFinale);
 
@@ -154,48 +185,20 @@ public class NotatController {
         alert.showAndWait();
     }
 
-    private int convertDrejtimiToId(String drejtimi) {
-        return switch (drejtimi) {
-            case "Shoqëror" -> 1;
-            case "Natyror" -> 2;
-            case "Ekonomik" -> 3;
-            case "Teknik" -> 4;
-            default -> 0;
-        };
-    }
 
-    private int convertParaleljaToId(String paralelja) {
-        return switch (paralelja) {
-            case "A" -> 1;
-            case "B" -> 2;
-            case "C" -> 3;
-            case "D" -> 4;
-            case "E" -> 5;
-            case "F" -> 6;
-            default -> 0;
-        };
-    }
-    private int convertKlasaToId(String klasa) {
-        return switch (klasa) {
-            case "10" -> 1;
-            case "11" -> 2;
-            case "12" -> 3;
-            default -> 0;
-        };
-    }
+
 
 
     private void mbushRaportinMeNotatNgaDatabaza() {
-        listaNotave.getItems().clear();
-
-        for (Notat nota : notatService.merrTeGjithaNotat()) {
-            String raport = "📄 Nxënës ID: " + nota.getNxenesi().getId() +
-                    " | Lënda: " + nota.getLenda().getEmri() +
-                    " | Nota 1: " + nota.getNotaPare() +
-                    " | Nota 2: " + nota.getNotaDyte();
-            listaNotave.getItems().add(raport);
+        List<Notat> notat = notatService.merrTeGjithaNotat();
+        System.out.println("✅ Numri i notave nga databaza: " + notat.size());
+        for (Notat n : notat) {
+            System.out.println(" -> " + n.getNxenesi().getId() + ", " + n.getLenda().getEmri());
         }
+        tabelaNotave.setItems(FXCollections.observableArrayList(notat));
     }
+
+
     @FXML public void handleLogout(ActionEvent event) {
         Stage stage = (Stage) root.getScene().getWindow();
         SceneNavigator.switchScene(stage, SceneLocator.LOGIN_PAGE);

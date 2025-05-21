@@ -48,8 +48,8 @@ public class NxenesiController {
     private final NxenesitService service = new NxenesitService();
 
     @FXML
-    private void onOpenMungesat(ActionEvent event) {
-        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.MUNGESAT_PAGE);
+    private void onOpenSettings(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
     }
     @FXML
     private void onOpenNotat(ActionEvent event) {

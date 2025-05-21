@@ -44,7 +44,8 @@ public class MenaxhimiIMesuesitController {
     @FXML private Menu menuOpen;
     @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
 
-
+    @FXML
+    private Label statusLabel;
     @FXML
     public void initialize() {
         kolId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -82,7 +83,7 @@ public class MenaxhimiIMesuesitController {
         if (success) {
             mbushTabelen();
             shfaqAlert("Sukses", "Mësuesi u shtua!", "Të dhënat janë ruajtur me sukses.", Alert.AlertType.INFORMATION);
-
+            statusLabel.setText("✅ Mësuesi u shtua me sukses.");
         } else {
             shfaqAlert("Gabim", "Dështoi shtimi!", "Nuk u arrit të ruhet mësuesi në databazë.", Alert.AlertType.ERROR);
         }
@@ -111,7 +112,7 @@ public class MenaxhimiIMesuesitController {
         if (success) {
             shfaqAlert("Sukses", "Përditësimi u krye!", "Të dhënat u përditësuan me sukses.", Alert.AlertType.INFORMATION);
             mbushTabelen();
-
+            statusLabel.setText("✅ Mesuesi u perditesua me sukses.");
         } else {
             shfaqAlert("Gabim", "Dështoi përditësimi!", "Nuk u arrit të përditësohen të dhënat në databazë.", Alert.AlertType.ERROR);
         }
@@ -125,6 +126,7 @@ public class MenaxhimiIMesuesitController {
             boolean success = repo.fshij(id);
             shfaqAlert("Sukses", "Fshirja u krye!", "Mësuesi me ID " + id + " u fshi me sukses.", Alert.AlertType.INFORMATION);
             if (success) mbushTabelen();
+            statusLabel.setText("Mesuesi u fshi me sukses.");
         } catch (NumberFormatException e) {
             shfaqAlert("Gabim", "Dështoi fshirja!", "Nuk u arrit të fshihet mësuesi me ID " + id + ".", Alert.AlertType.ERROR);
         }
