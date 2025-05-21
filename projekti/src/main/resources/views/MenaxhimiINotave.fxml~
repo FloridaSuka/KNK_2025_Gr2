@@ -71,7 +71,8 @@
                 <Label style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" text="%menaxhimiNotave" />
             </HBox>
 
-            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language"
+                        text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
                 <items>
                     <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
                     <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
@@ -88,9 +89,8 @@
             <Button layoutX="588.0" layoutY="177.0" onAction="#regjistroNota" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="%regjistroNotat" />
 
             <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="%llogaritMesataren" />
-            <ListView fx:id="raportiStatistik" layoutX="-4.0" layoutY="481.0" prefHeight="17.0" prefWidth="800.0" />
-
-            <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="%periudha" style="-fx-background-color: white; -fx-text-fill: #000000;">
+            <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="%periudha"
+                      style="-fx-background-color: white; -fx-text-fill: #000000;">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="1" />

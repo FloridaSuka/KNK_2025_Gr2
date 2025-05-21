@@ -57,35 +57,6 @@ public class NotatRepository {
 
         return total;
     }
-    public List<Notat> gjejTeGjithaNotat() {
-        List<Notat> lista = new ArrayList<>();
-        String query = "SELECT * FROM Notat";
-
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                Notat n = new Notat(
-                        rs.getInt("nxenesi_id"),
-                        rs.getInt("lenda_id"),
-                        rs.getInt("mesuesi_id"),
-                        rs.getInt("drejtimi_id"),
-                        rs.getInt("klasa_id"),
-                        rs.getInt("paralelja_id"),
-                        rs.getInt("periudha_id"),
-                        rs.getInt("nota_pare"),
-                        rs.getInt("nota_dyte")
-                );
-                lista.add(n);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return lista;
-    }
 
 
 }

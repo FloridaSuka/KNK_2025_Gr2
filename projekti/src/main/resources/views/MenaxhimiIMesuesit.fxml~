@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiIMesuesitController">
+<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiIMesuesitController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -101,7 +89,7 @@
 
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="336.0" prefWidth="0.0">
+                        <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="17.0" prefWidth="0.0">
                             <children>
                                 <Label layoutX="83.0" layoutY="0.0" prefHeight="17.0" prefWidth="119.0" text="%mesuesId" AnchorPane.rightAnchor="216.0" />
                                 <TextField fx:id="txtId" layoutX="217.0" layoutY="-4.0" AnchorPane.rightAnchor="43.66666666666666" />
@@ -123,7 +111,7 @@
                                 <Button layoutX="302.0" layoutY="288.0" onAction="#shtoMesues" prefHeight="25.0" prefWidth="63.0" text="%_shto" />
                             </children>
                         </AnchorPane>
-                          <TextArea fx:id="raportiMesuesve" editable="false" layoutX="-1.0" layoutY="316.0" prefHeight="35.0" prefWidth="819.0" wrapText="true" />
+                          <TextArea fx:id="raportiMesuesve" editable="false" layoutX="-12.0" layoutY="398.0" maxHeight="17.0" maxWidth="800.0" prefHeight="5.0" prefWidth="800.0" wrapText="true" />
                     </children>
                 </AnchorPane>
                 <fx:include source="globalView.fxml" />
