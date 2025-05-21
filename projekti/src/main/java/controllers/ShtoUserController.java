@@ -5,6 +5,8 @@ import javafx.scene.control.*;
 import models.User;
 import models.dto.create.CreateUser;
 import services.UserService;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class ShtoUserController {
 
@@ -31,11 +33,17 @@ public class ShtoUserController {
     private final UserService userService = new UserService();
 
     @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
     public void initialize() {
         radioDrejtor.setToggleGroup(roleGroup);
         radioMesues.setToggleGroup(roleGroup);
         radioNxenes.setToggleGroup(roleGroup);
         roleGroup.selectToggle(null);
+
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADD_USER_PAGE);
+
     }
 
     @FXML

@@ -8,6 +8,8 @@ import models.dto.create.CreateMesuesi;
 import models.dto.update.UpdateMesuesi;
 import repositories.AdresaRepository;
 import services.MesuesiService;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class MenaxhimiIMesuesitController {
     @FXML private TextField txtId, txtEmri, txtMbiemri, txtEmail, txtTel, txtRoli, txtAdresa;
@@ -16,6 +18,9 @@ public class MenaxhimiIMesuesitController {
 
     private final MesuesiService mesuesiService = new MesuesiService();
     private final AdresaRepository adresaRepository = new AdresaRepository();
+    @FXML
+    private MenuButton menuLanguage;
+
 
     @FXML
     public void initialize() {
@@ -25,6 +30,9 @@ public class MenaxhimiIMesuesitController {
         kolTel.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tel));
         kolRoli.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().roli));
         kolAdresa.setCellValueFactory(cellData -> new SimpleStringProperty(txtAdresa.getText()));
+
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.TEACHER_MANAGEMENT_PAGE);
+
     }
 
     @FXML

@@ -1,12 +1,22 @@
 package controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class HelpController {
 
     @FXML
     private TextArea txtContent;
+    @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
+    public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.HELP_PAGE);
+    }
 
     @FXML
     private void showPerdorimi() {

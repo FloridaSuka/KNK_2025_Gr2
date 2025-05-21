@@ -5,6 +5,9 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.MenuButton;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class MesuesiStatistikatController {
 
@@ -15,9 +18,14 @@ public class MesuesiStatistikatController {
     private LineChart<String, Number> lineChartGjinia;
 
     @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
     public void initialize() {
         setupKlasaChart();
         setupGjiniaChart();
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.HELP_PAGE);
+
     }
 
     private void setupKlasaChart() {

@@ -62,7 +62,7 @@
             <children>
                 <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
                     <children>
-                        <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="Gjuha" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+                        <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
                             <items>
                                 <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
                                 <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
@@ -84,11 +84,11 @@
                     <children>
                         <AnchorPane layoutX="218.0" prefHeight="336.0" prefWidth="364.0">
                             <children>
-                                <Label layoutX="53.0" layoutY="0.0" text="ID:" />
-                                <Label layoutX="53.0" layoutY="45.0" text="Emri: " />
-                                <Label layoutX="53.0" layoutY="90.0" text="Mbiemri" />
-                                <Label layoutX="53.0" layoutY="135.0" text="Email: " />
-                                <Label layoutX="53.0" layoutY="180.0" text="Emri i perdoruesit:" />
+                                <Label layoutX="53.0" layoutY="0.0" text="%settingsId" />
+                                <Label layoutX="53.0" layoutY="45.0" text="%settingsEmri" />
+                                <Label layoutX="53.0" layoutY="90.0" text="%settingsMbiemri" />
+                                <Label layoutX="53.0" layoutY="135.0" text="%settingsEmail" />
+                                <Label layoutX="53.0" layoutY="180.0" text="%settingsUsername" />
 
 
                                 <Label fx:id="txtId" layoutX="161.0" layoutY="0.0" text="TEXT" textFill="#a1a1a1" />
@@ -98,10 +98,10 @@
                                 <TextField fx:id="txtUsername" layoutX="161.0" layoutY="170.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: #a1a1a1; -fx-font-size: 14px;"/>
 
 
-                                <Button layoutX="203.0" layoutY="270.0" mnemonicParsing="false" onAction="#fshiLlogarine" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: crimson;" text="Fshij llogarine" />
-                                <Button layoutX="37.0" layoutY="270.0" mnemonicParsing="false" onAction="#onForgotPassword" prefHeight="25.0" prefWidth="149.0" text="Ndrysho fjalekalimin " />
-                                <Button layoutX="288.0" layoutY="125.0" mnemonicParsing="false" onAction="#ndryshoEmail" text="Ndrysho" />
-                                <Button layoutX="288.0" layoutY="170.0" mnemonicParsing="false" onAction="#ndryshoUsername" text="Ndrysho" />
+                                <Button layoutX="203.0" layoutY="270.0" mnemonicParsing="false" onAction="#fshiLlogarine" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: crimson;" text="%fshiLlogarine" />
+                                <Button layoutX="37.0" layoutY="270.0" mnemonicParsing="false" onAction="#onForgotPassword" prefHeight="25.0" prefWidth="149.0" text="%btnChangePass" />
+                                <Button layoutX="288.0" layoutY="125.0" mnemonicParsing="false" onAction="#ndryshoEmail" text="%ndrysho" />
+                                <Button layoutX="288.0" layoutY="170.0" mnemonicParsing="false" onAction="#ndryshoUsername" text="%ndrysho" />
 
 
                                 <Line endX="100.0" layoutX="177.0" layoutY="17.0" opacity="0.3" startX="-131.0" stroke="#a8a3a3" />

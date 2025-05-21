@@ -7,6 +7,8 @@ import javafx.scene.input.MouseEvent;
 import models.dto.create.CreateNotat;
 import repositories.LendaRepository;
 import services.NotatService;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class NotatController {
 
@@ -17,6 +19,14 @@ public class NotatController {
     private final LendaRepository lendaRepository = new LendaRepository();
 
     private final NotatService notatService = new NotatService();
+
+    @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
+    public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.GRADE_MANAGEMENT_PAGE);
+    }
 
     @FXML
     private void regjistroNota() {

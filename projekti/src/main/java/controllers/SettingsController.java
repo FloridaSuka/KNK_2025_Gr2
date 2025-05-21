@@ -7,13 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.User;
 import services.UserService;
+import utils.LanguageHandler;
 import utils.SceneLocator;
 import utils.SceneNavigator;
 
@@ -42,6 +40,10 @@ public class SettingsController {
 
     private final UserService userService = new UserService();
 
+    @FXML
+    private MenuButton menuLanguage;
+
+
     public void initialize() {
         User user = UserService.getCurrentUser();
 
@@ -54,6 +56,7 @@ public class SettingsController {
         } else {
             System.out.println("User not found!");
         }
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.HELP_PAGE);
     }
 
     @FXML

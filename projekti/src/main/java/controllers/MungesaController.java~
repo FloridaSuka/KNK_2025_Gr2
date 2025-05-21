@@ -23,25 +23,29 @@ public class MungesaController {
     private final LendaRepository lendaRepo = new LendaRepository();
     private final PeriodaRepository periodaRepo = new PeriodaRepository();
 
-     @FXML
-    public boolean shtoMungese(Mungesa m) {
-        String sql = "INSERT INTO Mungesa(student_id, lenda_id, perioda_id, data_mungeses, arsyeja) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    @FXML
+    private void shtoMungese() {
+        Integer studentId = nxenesiRepo.getNxenesiIdByName(txtNxenesi.getText().trim());
+        Integer lendaId = lendaRepo.getLendaIdByName(txtLenda.getText().trim());
+        Integer periodaId = periodaRepo.getPeriodaIdByName(txtPerioda.getText().trim());
 
-            stmt.setInt(1, m.getStudentId());
-            stmt.setInt(2, m.getLendaId());
-            stmt.setInt(3, m.getPeriodaId());
-            stmt.setDate(4, m.getDataMungeses());
-            stmt.setString(5, m.getArsyeja());
+        if (studentId == null || lendaId == null || periodaId == null) {
+            shfaqAlert("Gabim", "ID nuk u gjet", "Kontrolloni emrat e futur.", Alert.AlertType.ERROR);
+            return;
+        }
 
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+        Date data = new Date(System.currentTimeMillis()); // përdor datën aktuale
+
+        Mungesa m = new Mungesa(studentId, lendaId, periodaId, data, txtArsyeja.getText());
+
+        boolean success = mungesaRepo.shto(studentId, lendaId, periodaId, data, txtArsyeja.getText());
+
+        if (success) {
+            shfaqAlert("Sukses", "Mungesa u ruajt", "Të dhënat u ruajtën me sukses.", Alert.AlertType.INFORMATION);
+        } else {
+            shfaqAlert("Gabim", "Dështoi ruajtja", "Nuk u arrit të ruhet mungesa.", Alert.AlertType.ERROR);
         }
     }
-
     @FXML
     private void perditesoMungese() {
         if (txtId.getText().isEmpty()) {

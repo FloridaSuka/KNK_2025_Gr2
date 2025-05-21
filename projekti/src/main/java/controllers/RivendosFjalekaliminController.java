@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.dto.update.UpdateUser;
 import services.UserService;
+import utils.LanguageHandler;
 import utils.SceneLocator;
 
 import java.util.Locale;
@@ -28,6 +29,11 @@ public class RivendosFjalekaliminController {
     private MenuButton menuLanguage;
 
     private final UserService userService = new UserService();
+
+    @FXML
+    public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.RESET_PASSWORD);
+    }
 
     @FXML
     void handleChange(ActionEvent event) {

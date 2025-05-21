@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.Mungesa;
 import repositories.*;
+import utils.LanguageHandler;
+import utils.SceneLocator;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -22,6 +25,14 @@ public class MungesaController {
     private final NxenesitRepository nxenesiRepo = new NxenesitRepository();
     private final LendaRepository lendaRepo = new LendaRepository();
     private final PeriodaRepository periodaRepo = new PeriodaRepository();
+
+    @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
+    public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ABSENCES_PAGE);
+    }
 
     @FXML
     private void shtoMungese() {
