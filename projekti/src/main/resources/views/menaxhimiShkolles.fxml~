@@ -99,14 +99,14 @@
                                 <Button layoutX="159.0" layoutY="288.0" onAction="#perditeso" prefHeight="25.0" prefWidth="63.0" text="%_perditso" />
 
                                 <Button layoutX="302.0" layoutY="288.0" onAction="#shto" prefHeight="25.0" prefWidth="63.0" text="%_shto" />
-                                <ListView fx:id="raportiShkollave" layoutX="14.0" layoutY="370.0" prefHeight="120.0" prefWidth="770.0" />
+
                                 <Label layoutX="80.0" layoutY="136.0" text="%drejtorEmri" />
                                 <TextField fx:id="txtEmri" layoutX="215.0" layoutY="132.0" />
                                 <TextField fx:id="txtZip" layoutX="215.0" layoutY="241.0" />
                                 <Label layoutX="87.0" layoutY="245.0" text="%zip" />
                             </children>
                         </AnchorPane>
-                   
+                        <ListView fx:id="raportiShkollave" layoutX="1.3333333333333333" layoutY="463.3333333333333" prefHeight="17.0" prefWidth="800.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="463.0" />
                     </children>
                 </AnchorPane>
                 <fx:include source="globalView.fxml" />
