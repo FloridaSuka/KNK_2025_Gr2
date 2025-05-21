@@ -10,7 +10,9 @@ import models.Drejtor;
 import repositories.AdresaRepository;
 import repositories.DrejtoriRepository;
 import services.DrejtoriService;
+import utils.LanguageHandler;
 import utils.MenuUtils;
+import utils.SceneLocator;
 
 import java.util.List;
 
@@ -39,6 +41,9 @@ public class MenaxhimiDrejtoreveController {
     private final AdresaRepository adresaRepo = new AdresaRepository();
     private final DrejtoriService drejtoriService = new DrejtoriService();
     @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
     public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colEmri.setCellValueFactory(new PropertyValueFactory<>("emri"));
@@ -49,6 +54,9 @@ public class MenaxhimiDrejtoreveController {
         String name = this.getClass().getSimpleName();
         System.out.println("🔍 Controller aktiv: " + name);
         MenuUtils.populateOpenSubMenu(menuOpen, name);
+
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.PRINCIPAL_MANAGEMENT_PAGE);
+
     }
     @FXML
     public void handleNew(ActionEvent event) {

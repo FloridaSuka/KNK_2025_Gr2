@@ -5,10 +5,13 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.MenuButton;
 import models.User;
 import repositories.NotatRepository;
 import repositories.NxenesitRepository;
 import services.UserService;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class NotatNxenesiController {
 
@@ -22,6 +25,8 @@ public class NotatNxenesiController {
     private NotatRepository notaRepository = new NotatRepository();
 
     private long currentNxenesiId;
+    @FXML
+    private MenuButton menuLanguage;
 
     @FXML
     public void initialize() {
@@ -44,6 +49,8 @@ public class NotatNxenesiController {
                 loadPieChartData();
             }
         });
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.STUDENT_GRADES_PAGE);
+
     }
 
     private void loadPieChartData() {

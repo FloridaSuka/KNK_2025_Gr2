@@ -3,12 +3,16 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import models.Shkolla;
 import models.dto.create.CreateShkolla;
 import models.dto.update.UpdateShkolla;
 import repositories.AdresaRepository;
 import repositories.ShkollaRepository;
+import utils.LanguageHandler;
+import utils.SceneLocator;
+
 import static utils.ZipUtils.gjejQytetinNgaZip;
 import java.util.List;
 
@@ -24,6 +28,13 @@ public class MenaxhimiShkollesController {
 
     private final ShkollaRepository repo = new ShkollaRepository();
     private final AdresaRepository adresaRepo = new AdresaRepository();
+    @FXML
+    private MenuButton menuLanguage;
+
+    @FXML
+    public void initialize() {
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
+    }
     @FXML
     private void shto() {
         String rruga = txtAdresa.getText();
