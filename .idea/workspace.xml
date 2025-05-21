@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/Mungesat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/Mungesat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/NotatNxenesi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/NotatNxenesi.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/StatistikatDrejtor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/StatistikatDrejtor.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/statistikaMesuesi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/statistikaMesuesi.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/DrejtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/DrejtorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/drejtorView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/drejtorView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiLendeve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiLendeve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/StatistikatDrejtor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/StatistikatDrejtor.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

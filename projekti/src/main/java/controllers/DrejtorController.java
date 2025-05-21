@@ -3,29 +3,29 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Menu;
 import utils.LanguageHandler;
 import utils.MenuUtils;
 import utils.SceneLocator;
 import utils.SceneNavigator;
 
 public class DrejtorController {
-    //PJESA E GJUHES
-    @FXML
-    private MenuButton menuLanguage;
 
+    // Gjuha
+    @FXML private MenuButton menuLanguage;
+    @FXML private MenuItem menuAL, menuEN;
+
+    // Menu Items
+    @FXML private MenuItem menuNew, menuOpenItem, menuQuit;
+    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo, menuHelp;
 
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
+        System.out.println("🔍 Controller aktiv: " + getClass().getSimpleName());
     }
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
 
     @FXML
     public void handleNew(ActionEvent event) {
@@ -33,56 +33,57 @@ public class DrejtorController {
     }
 
     @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
+    public void handleOpen(ActionEvent event) {
         MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
     }
 
     @FXML
-    public void handleQuit() {
+    public void handleQuit(ActionEvent event) {
         System.exit(0);
     }
 
     @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
+    public void handleUndo(ActionEvent event) {
+        MenuUtils.performUndo(getSceneFrom(menuUndo));
     }
 
     @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
+    public void handleRedo(ActionEvent event) {
+        MenuUtils.performRedo(getSceneFrom(menuRedo));
     }
 
     @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
+    public void handleCut(ActionEvent event) {
+        MenuUtils.performCut(getSceneFrom(menuCut));
     }
 
     @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
+    public void handleCopy(ActionEvent event) {
+        MenuUtils.performCopy(getSceneFrom(menuCopy));
     }
 
     @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
+    public void handlePaste(ActionEvent event) {
+        MenuUtils.performPaste(getSceneFrom(menuPaste));
     }
 
     @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
+    public void handleSelectAll(ActionEvent event) {
+        MenuUtils.performSelectAll(getSceneFrom(menuSelectAll));
     }
 
     @FXML
-    public void handleHelp() {
+    public void handleHelp(ActionEvent event) {
         MenuUtils.openhelp();
     }
+
     @FXML
     private void handleTeacher(ActionEvent event) {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.TEACHER_MANAGEMENT_PAGE);
     }
+
     @FXML
-    private void handlePrincipalStatistics(ActionEvent event){
+    private void handlePrincipalStatistics(ActionEvent event) {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.PRINCIPAL_STATISTICS_PAGE);
     }
 
@@ -95,6 +96,7 @@ public class DrejtorController {
     private void handleClass(ActionEvent event) {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.CLASS_MANAGEMENT_PAGE);
     }
+
     @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
@@ -104,6 +106,12 @@ public class DrejtorController {
     private void onOpenSettings(ActionEvent event) {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
     }
+
+    // Ndihmëse për të marrë skenën
+    private javafx.scene.Scene getSceneFrom(MenuItem item) {
+        if (item.getParentPopup() != null && item.getParentPopup().getOwnerWindow() != null) {
+            return item.getParentPopup().getOwnerWindow().getScene();
+        }
+        return null;
+    }
 }
-
-
