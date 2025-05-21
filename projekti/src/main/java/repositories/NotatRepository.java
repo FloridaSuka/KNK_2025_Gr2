@@ -150,6 +150,23 @@ public class NotatRepository {
 
         return (double) total / notat.size();
     }
+    public int numriNotavePerNxenesin(int nota, long nxenesiId) {
+        String sql = "SELECT COUNT(*) AS total FROM notat WHERE nota_pare = ? AND nxenesi_id = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, nota);
+            stmt.setLong(2, nxenesiId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 
 
 

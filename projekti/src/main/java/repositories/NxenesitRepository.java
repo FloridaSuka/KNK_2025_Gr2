@@ -119,6 +119,22 @@ public class NxenesitRepository {
 
         return lista;
     }
+    public int getNxenesiIdByEmail(String email) {
+        String sql = "SELECT id FROM nxenesit WHERE email = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 
 
 

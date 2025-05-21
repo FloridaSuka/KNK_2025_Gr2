@@ -34,6 +34,10 @@ public class NxenesiController {
 private void onOpenMungesat(ActionEvent event) {
     SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.MUNGESAT_PAGE);
 }
+@FXML
+private void onOpenNotat(ActionEvent event) {
+    SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.STUDENT_GRADES_PAGE);
+}
     private void mbushRaportinENxenesve() {
         raportiNxenesve.getItems().clear();
         var nxenesit = service.merrTeGjitheNxenesit();
