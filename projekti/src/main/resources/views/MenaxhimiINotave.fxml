@@ -22,27 +22,39 @@
     <children>
         <MenuBar>
             <menus>
-                <Menu text="File">
+                <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem fx:id="menuNew" onAction="#handleNew" text="New" />
-                        <Menu fx:id="menuOpen" onAction="#handleOpen" text="Open…" />
-                        <SeparatorMenuItem />
-                        <MenuItem fx:id="menuQuit" onAction="#handleQuit" text="Quit" />
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
                     </items>
                 </Menu>
-                <Menu text="Edit">
+                <Menu mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem fx:id="menuUndo" onAction="#handleUndo" text="Undo" />
-                        <MenuItem fx:id="menuRedo" onAction="#handleRedo" text="Redo" />
-                        <MenuItem fx:id="menuCut" onAction="#handleCut" text="Cut" />
-                        <MenuItem fx:id="menuCopy" onAction="#handleCopy" text="Copy" />
-                        <MenuItem fx:id="menuPaste" onAction="#handlePaste" text="Paste" />
-                        <MenuItem fx:id="menuSelectAll" onAction="#handleSelectAll" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
                     </items>
                 </Menu>
-                <Menu text="Help">
+                <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem fx:id="menuHelp" onAction="#handleHelp" text="About" />
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
                     </items>
                 </Menu>
             </menus>
@@ -59,7 +71,8 @@
                 <Label style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" text="%menaxhimiNotave" />
             </HBox>
 
-            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language"
+                        text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
                 <items>
                     <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
                     <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
@@ -76,9 +89,10 @@
             <Button layoutX="588.0" layoutY="177.0" onAction="#regjistroNota" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="%regjistroNotat" />
 
             <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="%llogaritMesataren" />
-            <ListView fx:id="raportiStatistik" layoutX="-4.0" layoutY="481.0" prefHeight="17.0" prefWidth="800.0" />
+            <ListView fx:id="raportiStatistik" prefHeight="150.0" prefWidth="400.0" />
 
-            <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="%periudha" style="-fx-background-color: white; -fx-text-fill: #000000;">
+            <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="%periudha"
+                      style="-fx-background-color: white; -fx-text-fill: #000000;">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="1" />
