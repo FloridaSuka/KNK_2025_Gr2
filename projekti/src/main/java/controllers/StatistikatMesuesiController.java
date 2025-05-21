@@ -32,77 +32,80 @@ public class StatistikatMesuesiController {
     private void onBtnRifreskoClicked() {
         initialize();
     }
+
     @FXML
     public void initialize() {
         User user = UserService.getCurrentUser();
 
         if (user != null) {
             String email = user.getEmail();
-
             int mesuesiId = new MesuesiRepository().getMesuesiIdByEmail(email);
 
             if (mesuesiId > 0) {
-                // Numri i nxenesve
+                // Numri i nxënësve
                 int nxenesat = notatRepository.numriNxenesvePerMesuesin(mesuesiId);
                 lblTotalNxenesit.setText(String.valueOf(nxenesat));
 
-                // Mesatarja e notave per mesuesin
+                // Mesatarja e notave
                 double mesatarja = notatRepository.mesatarjaNotavePerMesuesin(mesuesiId);
                 lblMesatare.setText(String.format("%.2f", mesatarja));
+
+                // Grafikët për nota sipas gjinisë dhe mesuesit
+                XYChart.Series<String, Number> femaleSeries = new XYChart.Series<>();
+                femaleSeries.setName("F");
+
+                XYChart.Series<String, Number> maleSeries = new XYChart.Series<>();
+                maleSeries.setName("M");
+
+                for (int nota = 1; nota <= 5; nota++) {
+                    int countF = notatRepository.numriNotavePerGjinineDheNoten(nota, "F", mesuesiId);
+                    int countM = notatRepository.numriNotavePerGjinineDheNoten(nota, "M", mesuesiId);
+
+                    femaleSeries.getData().add(new XYChart.Data<>(String.valueOf(nota), countF));
+                    maleSeries.getData().add(new XYChart.Data<>(String.valueOf(nota), countM));
+                }
+
+                barChart.getData().clear();
+                barChart.getData().addAll(femaleSeries, maleSeries);
+
+                Platform.runLater(() -> {
+                    Node title = barChart.lookup(".chart-title");
+                    if (title != null) {
+                        title.setStyle("-fx-text-fill: white;");
+                    }
+
+                    CategoryAxis xAxis = (CategoryAxis) barChart.getXAxis();
+                    xAxis.setTickLabelFill(Color.WHITE);
+                    Node xAxisLabel = xAxis.lookup(".axis-label");
+                    if (xAxisLabel != null) {
+                        xAxisLabel.setStyle("-fx-text-fill: white;");
+                    }
+
+                    NumberAxis yAxis = (NumberAxis) barChart.getYAxis();
+                    yAxis.setTickLabelFill(Color.WHITE);
+                    Node yAxisLabel = yAxis.lookup(".axis-label");
+                    if (yAxisLabel != null) {
+                        yAxisLabel.setStyle("-fx-text-fill: white;");
+                    }
+
+                    applyBarColors(femaleSeries, "#f28482");
+                    applyBarColors(maleSeries, "#84a9f2");
+                    updateLegendColors();
+                });
+
             } else {
                 System.out.println("Mesuesi me email " + email + " nuk u gjet.");
                 lblTotalNxenesit.setText("0");
                 lblMesatare.setText("0.00");
+                barChart.getData().clear();
             }
+
         } else {
             System.out.println("User not found!");
             lblTotalNxenesit.setText("0");
             lblMesatare.setText("0.00");
+            barChart.getData().clear();
         }
-
-        // Grafikët (femrat dhe meshkujt)
-        XYChart.Series<String, Number> femaleSeries = new XYChart.Series<>();
-        femaleSeries.setName("F");
-
-        XYChart.Series<String, Number> maleSeries = new XYChart.Series<>();
-        maleSeries.setName("M");
-
-        for (int nota = 1; nota <= 5; nota++) {
-            int countF = notatRepository.numriNotavePerGjinineDheNoten(nota, "F");
-            int countM = notatRepository.numriNotavePerGjinineDheNoten(nota, "M");
-
-            femaleSeries.getData().add(new XYChart.Data<>(String.valueOf(nota), countF));
-            maleSeries.getData().add(new XYChart.Data<>(String.valueOf(nota), countM));
-        }
-
-        barChart.getData().clear();
-        barChart.getData().addAll(femaleSeries, maleSeries);
-
-        Platform.runLater(() -> {
-            Node title = barChart.lookup(".chart-title");
-            if (title != null) {
-                title.setStyle("-fx-text-fill: white;");
-            }
-
-            CategoryAxis xAxis = (CategoryAxis) barChart.getXAxis();
-            xAxis.setTickLabelFill(Color.WHITE);
-            Node xAxisLabel = xAxis.lookup(".axis-label");
-            if (xAxisLabel != null) {
-                xAxisLabel.setStyle("-fx-text-fill: white;");
-            }
-
-            NumberAxis yAxis = (NumberAxis) barChart.getYAxis();
-            yAxis.setTickLabelFill(Color.WHITE);
-            Node yAxisLabel = yAxis.lookup(".axis-label");
-            if (yAxisLabel != null) {
-                yAxisLabel.setStyle("-fx-text-fill: white;");
-            }
-
-            applyBarColors(femaleSeries, "#f28482");
-            applyBarColors(maleSeries, "#84a9f2");
-
-            updateLegendColors();
-        });
     }
 
     private void applyBarColors(XYChart.Series<String, Number> series, String color) {

@@ -76,16 +76,17 @@ public class NotatRepository {
 
         return lista;
     }
-    public int numriNotavePerGjinineDheNoten(int nota, String gjinia) {
+    public int numriNotavePerGjinineDheNoten(int nota, String gjinia, int mesuesiId) {
         String sql = "SELECT COUNT(*) AS total " +
                 "FROM notat n " +
                 "JOIN nxenesit nx ON n.nxenesi_id = nx.id " +
-                "WHERE n.nota_pare = ? AND nx.gjinia = ?";
+                "WHERE n.nota_pare = ? AND nx.gjinia = ? AND n.mesuesi_id = ?";
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, nota);
             stmt.setString(2, gjinia);
+            stmt.setInt(3, mesuesiId);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -96,6 +97,7 @@ public class NotatRepository {
         }
         return 0;
     }
+
     public int numriNxenesvePerMesuesin(int mesuesiId) {
         String sql = "SELECT COUNT(DISTINCT nxenesi_id) AS total " +
                 "FROM notat " +

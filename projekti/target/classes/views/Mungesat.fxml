@@ -18,7 +18,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/23.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllers.NxenesMungesaController">
+      fx:controller="controllers.MungesaController">
     <children>
         <MenuBar>
             <menus>
@@ -102,8 +102,10 @@
                         <TableColumn fx:id="colLenda" text="%lenda" prefWidth="180"/>
                     </columns>
                 </TableView>
+                <fx:include source="globalView.fxml" />
             </children>
         </AnchorPane>
+
     </children>
 </VBox>
 
