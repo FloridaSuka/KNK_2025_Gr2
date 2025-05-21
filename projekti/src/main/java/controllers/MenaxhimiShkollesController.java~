@@ -106,5 +106,17 @@ public class MenaxhimiShkollesController {
         alert.setContentText(success ? msgSuccess : msgFail);
         alert.showAndWait();
     }
+    @FXML
+    private void shfaqTeDhenatNeRaport() {
+        raportiShkollave.getItems().clear(); // pastron raportin ekzistues
+
+        ShkollaRepository repo = new ShkollaRepository();
+        List<Shkolla> shkollat = repo.gjejTeGjithaShkollat(); // duhet ta shtosh këtë metodë në repository
+
+        for (Shkolla s : shkollat) {
+            String rreshti = "ID: " + s.getId() + " | Emri: " + s.getEmri() + " | Tel: " + s.getTel();
+            raportiShkollave.getItems().add(rreshti);
+        }
+    }
 
 }

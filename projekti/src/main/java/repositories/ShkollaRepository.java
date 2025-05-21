@@ -74,25 +74,5 @@ public class ShkollaRepository {
         }
         return false;
     }
-    public List<Shkolla> gjejTeGjithaShkollat() {
-        List<Shkolla> lista = new ArrayList<>();
-        String sql = "SELECT * FROM shkolla";
-
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                Shkolla s = Shkolla.fromResultSet(rs);
-                lista.add(s);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return lista;
-    }
-
 
 }
