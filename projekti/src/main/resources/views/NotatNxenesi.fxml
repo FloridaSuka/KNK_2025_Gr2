@@ -11,24 +11,33 @@
 <VBox prefHeight="500.0" prefWidth="800.0" spacing="0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NotatNxenesiController">
 
     <!-- MenuBar -->
-    <MenuBar VBox.vgrow="NEVER">
+    <MenuBar>
         <menus>
             <Menu text="File">
                 <items>
-                    <MenuItem text="New" />
-                    <MenuItem text="Open…" />
-                    <MenuItem text="Save" />
-                    <MenuItem text="Quit" />
+                    <MenuItem fx:id="menuNew" onAction="#handleNew" text="New" />
+                    <Menu fx:id="menuOpen" onAction="#handleOpen" text="Open…" />
+                    <SeparatorMenuItem />
+                    <MenuItem fx:id="menuQuit" onAction="#handleQuit" text="Quit" />
+                </items>
+            </Menu>
+            <Menu text="Edit">
+                <items>
+                    <MenuItem fx:id="menuUndo" onAction="#handleUndo" text="Undo" />
+                    <MenuItem fx:id="menuRedo" onAction="#handleRedo" text="Redo" />
+                    <MenuItem fx:id="menuCut" onAction="#handleCut" text="Cut" />
+                    <MenuItem fx:id="menuCopy" onAction="#handleCopy" text="Copy" />
+                    <MenuItem fx:id="menuPaste" onAction="#handlePaste" text="Paste" />
+                    <MenuItem fx:id="menuSelectAll" onAction="#handleSelectAll" text="Select All" />
                 </items>
             </Menu>
             <Menu text="Help">
                 <items>
-                    <MenuItem text="About" />
+                    <MenuItem fx:id="menuHelp" onAction="#handleHelp" text="About" />
                 </items>
             </Menu>
         </menus>
     </MenuBar>
-
     <!-- Header / Navbar -->
     <AnchorPane prefHeight="80.0" style="-fx-background-color: #264653;">
         <children>
