@@ -80,7 +80,7 @@ public class MungesaController {
         Integer periodaId = periodaRepo.getPeriodaIdByName(txtPerioda.getText().trim());
 
         if (studentId == null || lendaId == null || periodaId == null) {
-            lblStatus.setText("Dështoi përditësimi i mungesës.");
+            shfaqAlert("Gabim", "Të dhënat janë të paplota", "Sigurohuni që emrat ekzistojnë dhe data është zgjedhur.", Alert.AlertType.ERROR);
             return;
         }
 

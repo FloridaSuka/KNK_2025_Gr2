@@ -1,11 +1,7 @@
 package repositories;
 
 import database.DBConnector;
-import models.Mungesa;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MungesatRepository {
     public boolean shto(int studentId, int lendaId, int periodaId, Date data, String arsyeja) {
@@ -89,24 +85,5 @@ public class MungesatRepository {
         }
         return 0;
     }
-    public List<Mungesa> gjejTeGjithaMungesat() {
-        List<Mungesa> mungesat = new ArrayList<>();
-        String sql = "SELECT * FROM Mungesa";
-
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                mungesat.add(Mungesa.fromResultSet(rs));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return mungesat;
-    }
-
 
 }
