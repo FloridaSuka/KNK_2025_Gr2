@@ -14,7 +14,6 @@ import java.util.List;
 public class KlasaRepository {
 
     public boolean shtoKlasa(CreateKlasa klasa) {
-        // Kontrollo që të gjitha ID-të janë të vlefshme
         if (klasa.getShkollaId() == -1) {
             System.out.println("❌ Shkolla nuk u gjet në databazë!");
             return false;
@@ -58,25 +57,17 @@ public class KlasaRepository {
         return false;
     }
 
-
-    public int lookupId(String table, String column, String value) {
-        String query = "SELECT id FROM " + table + " WHERE LOWER(" + column + ") = LOWER(?)";
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, value);
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return rs.getInt("id");
-            } else {
-                System.out.println("❌ Nuk u gjet " + value + " në tabelën " + table);
-            }
-        } catch (SQLException e) {
-            System.out.println("❌ Gabim gjatë kërkimit të ID-së: " + e.getMessage());
+    public boolean fshij(int id) {
+        String sql = "DELETE FROM klasa WHERE id=?";
+        try (Connection con = DBConnector.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return -1; // Nëse nuk gjendet
     }
+
     public List<Klasa> gjejTeGjitha() {
         List<Klasa> klasat = new ArrayList<>();
         String query = """

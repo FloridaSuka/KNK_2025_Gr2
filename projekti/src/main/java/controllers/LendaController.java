@@ -1,13 +1,19 @@
 package controllers;
 
-import javafx.event.ActionEvent;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import models.Lenda;
 import models.dto.create.CreateLenda;
 import repositories.LendaRepository;
+import services.LendaService;
 import utils.LanguageHandler;
-import utils.MenuUtils;
 import utils.SceneLocator;
+
+import java.util.List;
 
 public class LendaController {
 
@@ -16,89 +22,64 @@ public class LendaController {
     @FXML private TextField txtDrejtimi;
     @FXML private TextField txtPerioda;
     @FXML private TextField txtMesuesi;
+    @FXML private TableView<Lenda> tblLenda;
+    @FXML private TableColumn<Lenda, Integer> colId;
+    @FXML private TableColumn<Lenda, String> colEmri, colDrejtimi, colPeriudha, colMesuesi;
 
     private final LendaRepository repo = new LendaRepository();
+    private final LendaService service = new LendaService();
     @FXML
     private MenuButton menuLanguage;
 
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SUBJECT_MANAGEMENT_PAGE);
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
-    }
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
-
-    @FXML
-    public void handleNew(ActionEvent event) {
-        MenuUtils.handleNew();
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colEmri.setCellValueFactory(new PropertyValueFactory<>("emri"));
+        colDrejtimi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDrejtimi().getEmri()));
+        colPeriudha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPerioda().getEmri()));
+        colMesuesi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMesuesi().getEmri() + " " + cellData.getValue().getMesuesi().getMbiemri()));
+        mbushTabelen();
     }
 
-    @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
-        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
-    }
-
-    @FXML
-    public void handleQuit() {
-        System.exit(0);
-    }
-
-    @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleHelp() {
-        MenuUtils.openhelp();
-    }
     @FXML
     private void shtoLenda() {
-        CreateLenda lenda = new CreateLenda(
-                txtEmri.getText(),
-                txtDrejtimi.getText(),
-                txtPerioda.getText(),
-                txtMesuesi.getText()
-        );
-
-        boolean success = repo.shto(lenda);
-        showAlert(success, "Shtim", "Lënda u shtua me sukses!", "Shtimi dështoi!");
+        try {
+            if (txtEmri.getText().isEmpty() || txtDrejtimi.getText().isEmpty() || txtPerioda.getText().isEmpty() || txtMesuesi.getText().isEmpty()) {
+                showAlert(false,"Gabim","Të dhëna të paplotësuara", "Ju lutem plotësoni të gjitha fushat!");
+                return;
+            }
+            String emri = txtEmri.getText();
+            int drejtimiId = service.lookupId("drejtimi", "emri", txtDrejtimi.getText());
+            int periodaId = service.lookupId("perioda", "emri", txtPerioda.getText());
+            int mesuesiId = service.lookupId("mesuesi", "emri", txtMesuesi.getText());
+            CreateLenda lenda = new CreateLenda(emri, drejtimiId, periodaId, mesuesiId);
+            boolean success = service.shto(lenda);
+            if (success) {
+                mbushTabelen();
+            } else {
+                showAlert(success, "Shtim", "Lënda u shtua me sukses!", "Shtimi dështoi!");
+            }
+        }catch(NumberFormatException e){
+            showAlert(false,"Gabim", "Të dhëna", "Ju lutem shkruani numra!");
+        } catch (Exception e) {
+            showAlert(false, "Gabim", "Ndodhi një gabim gjatë ruajtjes: " + e.getMessage(), "Ruajtja dështoi!");
+        }
     }
+
     @FXML
     private void fshijLenda() {
-        int id = Integer.parseInt(txtId.getText());
-        boolean success = repo.fshij(id);
-        showAlert(success, "Fshirje", "Lënda u fshi me sukses!", "Fshirja dështoi!");
+        try {
+            int id = Integer.parseInt(txtId.getText());
+            System.out.println("📌 ID për fshirje: " + id);
+            boolean success = repo.fshij(id);
+            showAlert(success, "Fshirje", "Lënda u fshi me sukses!", "Fshirja dështoi!");
+            if (success) mbushTabelen();
+        } catch (NumberFormatException e) {
+            showAlert(false, "Gabim", "ID e pavlefshme", "Ju lutem shkruani një ID të saktë.");
+        }
     }
+
 
     private void showAlert(boolean success, String title, String msgSuccess, String msgFail) {
         Alert alert = new Alert(success ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
@@ -106,5 +87,10 @@ public class LendaController {
         alert.setHeaderText(null);
         alert.setContentText(success ? msgSuccess : msgFail);
         alert.showAndWait();
+    }
+    private void mbushTabelen(){
+        List<Lenda> lendat = service.gjejTeGjitha();
+        ObservableList<Lenda> listaObservable = FXCollections.observableArrayList(lendat);
+        tblLenda.setItems(listaObservable);
     }
 }

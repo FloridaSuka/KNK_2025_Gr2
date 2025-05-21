@@ -25,6 +25,7 @@ public class Lenda {
         this.mesuesi = mesuesi;
     }
 
+
     public static Lenda fromResultSet(ResultSet result) throws SQLException {
         int id = result.getInt("id");
         String emri = result.getString("emri");

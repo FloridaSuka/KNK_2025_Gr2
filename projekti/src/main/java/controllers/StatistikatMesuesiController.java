@@ -52,15 +52,12 @@ public class StatistikatMesuesiController {
             int mesuesiId = new MesuesiRepository().getMesuesiIdByEmail(email);
 
             if (mesuesiId > 0) {
-                // Numri i nxënësve
                 int nxenesat = notatRepository.numriNxenesvePerMesuesin(mesuesiId);
                 lblTotalNxenesit.setText(String.valueOf(nxenesat));
 
-                // Mesatarja e notave
                 double mesatarja = notatRepository.mesatarjaNotavePerMesuesin(mesuesiId);
                 lblMesatare.setText(String.format("%.2f", mesatarja));
 
-                // Grafikët për nota sipas gjinisë dhe mesuesit
                 XYChart.Series<String, Number> femaleSeries = new XYChart.Series<>();
                 femaleSeries.setName("F");
 
@@ -116,63 +113,8 @@ public class StatistikatMesuesiController {
             lblMesatare.setText("0.00");
             barChart.getData().clear();
         }
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
-    }
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
-
-    @FXML
-    public void handleNew(ActionEvent event) {
-        MenuUtils.handleNew();
     }
 
-    @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
-        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
-    }
-
-    @FXML
-    public void handleQuit() {
-        System.exit(0);
-    }
-
-    @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleHelp() {
-        MenuUtils.openhelp();
-    }
 
     private void applyBarColors(XYChart.Series<String, Number> series, String color) {
         for (XYChart.Data<String, Number> data : series.getData()) {

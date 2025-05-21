@@ -22,6 +22,11 @@ public class Adresa {
         this.kodiPostar = kodiPostar;
     }
 
+    public Adresa(int adresaId, String adresaEmri) {
+        this.id = adresaId;
+        this.rruga = adresaEmri;
+    }
+
     public static Adresa getInstance(ResultSet result) throws SQLException {
         int id = result.getInt("id");
         String qyteti = result.getString("qyteti");

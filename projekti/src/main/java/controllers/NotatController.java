@@ -1,16 +1,13 @@
 package controllers;
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import models.Notat;
 import models.dto.create.CreateNotat;
 import repositories.LendaRepository;
 import services.NotatService;
 import utils.LanguageHandler;
-import utils.MenuUtils;
 import utils.SceneLocator;
 
 public class NotatController {
@@ -32,67 +29,10 @@ public class NotatController {
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.GRADE_MANAGEMENT_PAGE);
         mbushRaportinMeNotatNgaDatabaza();
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
-    }
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
-
-    @FXML
-    public void handleNew(ActionEvent event) {
-        MenuUtils.handleNew();
-    }
-
-    @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
-        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
-    }
-
-    @FXML
-    public void handleQuit() {
-        System.exit(0);
-    }
-
-    @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleHelp() {
-        MenuUtils.openhelp();
     }
 
     @FXML
     private void regjistroNota() {
-        // Kontrollo nëse ndonjë fushë është bosh
         if (txtIdNxenesit.getText().isEmpty() || txtIdMesuesit.getText().isEmpty() ||
                 txtLenda.getText().isEmpty() || nota1.getText().isEmpty() || nota2.getText().isEmpty() ||
                 cmbDrejtimi.getValue() == null || cmbParalelja.getValue() == null || cmbKlasa.getValue() == null) {
@@ -123,14 +63,13 @@ public class NotatController {
                 return;
             }
 
-            // ✅ Krijimi i objektit për ruajtje
             CreateNotat nota = new CreateNotat(nxenesiId, lendaId, mesuesiId, drejtimiId,klasaId, paraleljaId, periudha,notaPare, notaDyte);
             boolean sukses = notatService.regjistroNota(nota);
 
             if (sukses) {
                 showAlert("Sukses!", "Nota u ruajt me sukses!");
 
-                shtoNeRaport(); // shton notën në raportin ListView
+                shtoNeRaport();
                 raportiStatistik.getItems().add("✅ U regjistrua nota për nxënësin ID: " + txtIdNxenesit.getText());
 
                 pastroFushat();

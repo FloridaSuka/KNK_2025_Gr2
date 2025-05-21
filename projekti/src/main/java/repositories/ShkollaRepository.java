@@ -1,7 +1,7 @@
 package repositories;
 
 import database.DBConnector;
-import models.Shkolla;
+import models.*;
 import models.dto.create.CreateShkolla;
 import models.dto.update.UpdateShkolla;
 
@@ -74,5 +74,27 @@ public class ShkollaRepository {
         }
         return false;
     }
+    public List<Shkolla> gjejTeGjitha() {
+        List<Shkolla> shkollat = new ArrayList<>();
+        String query = """
+        SELECT id, emri, tel FROM shkolla
+        """;
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Shkolla shkolla = new Shkolla(rs.getInt("id"), rs.getString("emri"), rs.getString("tel"), null);
+                shkollat.add(shkolla);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return shkollat;
+    }
+
 
 }

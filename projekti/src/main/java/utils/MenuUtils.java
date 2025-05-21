@@ -24,17 +24,13 @@ import java.util.Map;
 
 public class MenuUtils {
 
-//-------FILLIMI I MENU FILE
-    //NEW
     public static void handleNew() {
         Stage stage = new Stage();
         SceneLocator.locate(stage, SceneLocator.ADD_USER_PAGE);
         stage.setTitle("Shto Përdorues të Ri");
         stage.show();
     }
-    //Perfundimi NEW
 
-    //Opsioni OPEN
     private static final Map<String, List<String>> allowedViewsPerScene = Map.ofEntries(
             Map.entry("AdminController", List.of("menaxhimiShkolles.fxml", "menaxhimiDrejtoreve.fxml")),
             Map.entry("MenaxhimiShkollesController", List.of("menaxhimiDrejtoreve.fxml")),
@@ -92,14 +88,13 @@ public class MenuUtils {
         alert.showAndWait();
     }
     public static void populateOpenSubMenu(Menu openMenu, String controllerName) {
-        openMenu.getItems().clear(); // pastro menynë ekzistuese
+        openMenu.getItems().clear();
 
         List<String> views = allowedViewsPerScene.getOrDefault(controllerName, List.of());
 
         for (String view : views) {
             if (view == null || view.isBlank()) continue;
 
-            // Titulli i shfaqur në meny
             String title = formatTitleFromFxml(view);
 
             MenuItem item = new MenuItem(title);
@@ -117,51 +112,46 @@ public class MenuUtils {
                 .replaceAll("([A-Z])", " $1") // ndan fjalët në titull
                 .trim();
     }
-    //perfundimi OPEN
+    public static void registerShortcuts(Scene scene) {
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN),
+                () -> performUndo(scene)
+        );
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.F4, KeyCombination.ALT_DOWN),
+                () -> {
+                    System.exit(0);
+                }
+        );
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN),
+                () -> performRedo(scene)
+        );
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN),
+                () -> handleNew()
+        );
 
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN),
+                () -> performCut(scene)
+        );
 
-//PERFUNDIMI I MENUSE FILE
-//FILLIMI I EDIT
-public static void registerShortcuts(Scene scene) {
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN),
-            () -> performUndo(scene)
-    );
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.F4, KeyCombination.ALT_DOWN),
-            () -> {
-                System.exit(0);
-            }
-    );
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN),
-            () -> performRedo(scene)
-    );
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN),
-            () -> handleNew()
-    );
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN),
+                () -> performCopy(scene)
+        );
 
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN),
-            () -> performCut(scene)
-    );
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN),
+                () -> performPaste(scene)
+        );
 
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN),
-            () -> performCopy(scene)
-    );
-
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN),
-            () -> performPaste(scene)
-    );
-
-    scene.getAccelerators().put(
-            new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN),
-            () -> performSelectAll(scene)
-    );
-}
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN),
+                () -> performSelectAll(scene)
+        );
+    }
 
     private static TextInputControl getFocusedTextInput(Scene scene) {
         if (scene.getFocusOwner() instanceof TextInputControl input) {
@@ -202,7 +192,7 @@ public static void registerShortcuts(Scene scene) {
 //PERFUNDIMI I EDIT
 
 
-//MENUJA HELP
+    //MENUJA HELP
     public static void openhelp() {
         Stage stage = new Stage();
         SceneLocator.locate(stage, SceneLocator.HELP_PAGE);

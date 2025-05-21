@@ -12,7 +12,6 @@ import java.sql.SQLException;
 
 public class UserRepository {
 
-    // 🔹 INSERT në databazë
     public boolean shtoUser(CreateUser user) {
         String query = "INSERT INTO Users (name,surname,email,username, password,role) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -35,7 +34,6 @@ public class UserRepository {
         }
     }
 
-    // 🔹 SELECT për autentikim
     public User authenticate(String username, String password) {
         String query = "SELECT * FROM Users WHERE username = ? AND password = ?";
 
@@ -56,10 +54,9 @@ public class UserRepository {
         return null;
     }
 
-    // 🔹 Verifikimi i përdoruesit dhe kodit të verifikimit
     public boolean verifyUser(String username, String verificationCode) {
         String query;
-        boolean isNumeric = verificationCode.matches("\\d+"); // Kontrollo nëse është numerik
+        boolean isNumeric = verificationCode.matches("\\d+");
 
         if (isNumeric) {
             query = "SELECT * FROM users WHERE username = ? AND id = ?";
@@ -73,13 +70,13 @@ public class UserRepository {
             stmt.setString(1, username);
 
             if (isNumeric) {
-                stmt.setInt(2, Integer.parseInt(verificationCode)); // Kthehet në integer
+                stmt.setInt(2, Integer.parseInt(verificationCode));
             } else {
                 stmt.setString(2, verificationCode);
             }
 
             try (ResultSet result = stmt.executeQuery()) {
-                return result.next(); // Kthen true nëse ekziston, false nëse jo
+                return result.next();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,7 +84,6 @@ public class UserRepository {
         }
     }
 
-    // 🔹 Përditësimi i fjalëkalimit
     public boolean updatePassword(UpdateUser updateUser) {
         String query = "UPDATE users SET password = ? WHERE username = ?";
 

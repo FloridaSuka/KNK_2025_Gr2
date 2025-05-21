@@ -1,12 +1,7 @@
 package repositories;
 
 import database.DBConnector;
-import models.Perioda;
-import models.dto.create.CreatePerioda;
-import models.dto.update.UpdatePerioda;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PeriodaRepository {
     public Integer getPeriodaIdByName(String emri) {

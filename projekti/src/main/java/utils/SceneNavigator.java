@@ -1,5 +1,6 @@
 package utils;
 
+import database.DBConnector;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,6 +11,10 @@ import javafx.scene.control.ButtonType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -27,7 +32,6 @@ public class SceneNavigator {
         }
     }
 
-    // ✅ Ndërrimi i skenës me ResourceBundle përkrahur
     public static void switchScene(Node node, String path) {
         try {
             Locale locale = new Locale("al"); // ose Locale.getDefault()
@@ -139,6 +143,25 @@ public class SceneNavigator {
         } else {
             System.out.println("🔄 Logout u anulua.");
         }
+    }
+
+    public int lookupId(String table, String column, String value) {
+        String query = "SELECT id FROM " + table + " WHERE LOWER(" + column + ") = LOWER(?)";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, value);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            } else {
+                System.out.println("❌ Nuk u gjet " + value + " në tabelën " + table);
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Gabim gjatë kërkimit të ID-së: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return -1;
     }
 }
 

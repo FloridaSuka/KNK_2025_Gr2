@@ -9,6 +9,7 @@ import utils.SceneLocator;
 import utils.SceneNavigator;
 
 public class DrejtorController {
+    //PJESA E GJUHES
     @FXML
     private MenuButton menuLanguage;
 

@@ -28,6 +28,7 @@ public class Mesuesi {
         this.adresa = adresa;
     }
 
+
     // ✅ Krijimi i instancës nga ResultSet
     public static Mesuesi fromResultSet(ResultSet result) throws SQLException {
         int id = result.getInt("id");

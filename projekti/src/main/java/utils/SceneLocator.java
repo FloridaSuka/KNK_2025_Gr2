@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 
 public class SceneLocator {
     public final static String MUNGESAT_PAGE = "/views/mungesat.fxml";
-    public final static String NXENESIT_PAGE = "/views/nxenesit.fxml";
     public final static String SETTINGS_PAGE = "/views/settings.fxml";
     public final static String LOGIN_PAGE = "/views/login.fxml";
     public final static String ADMIN_PAGE = "/views/adminView.fxml";
@@ -34,7 +33,7 @@ public class SceneLocator {
     public final static String PRINCIPAL_STATISTICS_PAGE = "/views/StatistikatDrejtor.fxml";
     public static final String STUDENT_ABSENCES_PAGE = "/views/Mungesat.fxml";
     public final static String TEACHER_STATISTICS_PAGE = "/views/statistikaMesuesi.fxml";
-   public final static String  STUDENT_GRADES_PAGE = "/views/NotatNxenesi.fxml";
+    public final static String  STUDENT_GRADES_PAGE = "/views/NotatNxenesi.fxml";
 
     public static void locate(Event event, String form) {
         Node eventNode = (Node) event.getSource();

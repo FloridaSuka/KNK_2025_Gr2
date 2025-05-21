@@ -1,17 +1,18 @@
 package controllers;
 
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import models.Mesuesi;
 import models.Shkolla;
 import models.dto.create.CreateShkolla;
 import models.dto.update.UpdateShkolla;
 import repositories.AdresaRepository;
 import repositories.ShkollaRepository;
 import utils.LanguageHandler;
-import utils.MenuUtils;
 import utils.SceneLocator;
-
 import static utils.ZipUtils.gjejQytetinNgaZip;
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class MenaxhimiShkollesController {
     @FXML private TextField txtZip;
     @FXML
     private ListView<String> raportiShkollave;
+    @FXML private TableView<Shkolla> tabelaShkollave;
+    @FXML private TableColumn<Shkolla, Integer> colId;
+    @FXML private TableColumn<Shkolla, String> colEmri;
+    @FXML private TableColumn<Shkolla, String> colTel;
 
     private final ShkollaRepository repo = new ShkollaRepository();
     private final AdresaRepository adresaRepo = new AdresaRepository();
@@ -32,63 +37,11 @@ public class MenaxhimiShkollesController {
 
     @FXML
     public void initialize() {
-        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ADMIN_PAGE);
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
-    }
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
-
-    @FXML
-    public void handleNew(ActionEvent event) {
-        MenuUtils.handleNew();
-    }
-
-    @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
-        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
-    }
-
-    @FXML
-    public void handleQuit() {
-        System.exit(0);
-    }
-
-    @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleHelp() {
-        MenuUtils.openhelp();
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SCHOOL_MANAGEMENT_PAGE);
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colEmri.setCellValueFactory(new PropertyValueFactory<>("emri"));
+        colTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        mbushTabelen();
     }
     @FXML
     private void shto() {
@@ -141,6 +94,9 @@ public class MenaxhimiShkollesController {
         );
 
         boolean success = repo.perditesoShkollen(shkolla);
+        if(success){
+            mbushTabelen();
+        }
         showAlert(success, "Përditësim", "Shkolla u përditësua me sukses!", "Përditësimi dështoi.");
     }
 
@@ -151,6 +107,7 @@ public class MenaxhimiShkollesController {
 
         if (success) {
             raportiShkollave.getItems().add(" Fshirje: ID " + id + " | Emri: " + txtEmri.getText());
+            mbushTabelen();
         }
 
     }
@@ -162,4 +119,9 @@ public class MenaxhimiShkollesController {
         alert.showAndWait();
     }
 
+    private void mbushTabelen() {
+        List<Shkolla> shkollat = repo.gjejTeGjitha();
+        ObservableList<Shkolla> listaObservable = FXCollections.observableArrayList(shkollat);
+        tabelaShkollave.setItems(listaObservable);
+    }
 }

@@ -6,10 +6,102 @@
   <component name="ChangeListManager">
     <list default="true" id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/DrejtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/DrejtorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/HelpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/HelpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/LendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/LendaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiDrejtoreveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiDrejtoreveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiIMesuesitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiIMesuesitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiKlaseveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiKlaseveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiNxenesveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiNxenesveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiShkollesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MenaxhimiShkollesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiStatistikatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiStatistikatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MungesaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MungesaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/NotatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/NotatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/NotatNxenesiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/NotatNxenesiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/NxenesMungesaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/NxenesMungesaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/NxenesiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/NxenesiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/NxenesitStatistikatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/NxenesitStatistikatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/RivendosFjalekaliminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/RivendosFjalekaliminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/ShtoUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/ShtoUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/StatistikatDrejtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/StatistikatDrejtorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/StatistikatMesuesiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/StatistikatMesuesiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/database/DBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Adresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Adresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Drejtor.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Drejtor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Lenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Lenda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/Mesuesi.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/Mesuesi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateDrejtor.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateDrejtor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateLenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateLenda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateParalelja.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/models/dto/create/CreateParalelja.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/AdresaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/AdresaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/DrejtoriRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/DrejtoriRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/KlasaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/KlasaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/LendaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/LendaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/MesuesiRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/MesuesiRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/NotatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/NotatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/PeriodaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/PeriodaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/ShkollaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/ShkollaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/services/DrejtorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/services/DrejtorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/services/KlasaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/services/KlasaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/services/LendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/services/LendaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/services/MesuesiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/services/MesuesiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/LanguageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/LanguageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/MenuUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/MenuUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/bundles/Messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/bundles/Messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/bundles/Messages_al.properties" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/bundles/Messages_al.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/bundles/Messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/bundles/Messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiIMesuesit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiIMesuesit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiINotave.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiINotave.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiKlaseve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiKlaseve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiLendeve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiLendeve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiMungesave.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiMungesave.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiNxenesve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/MenaxhimiNxenesve.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/Mungesat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/Mungesat.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/NotatNxenesi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/NotatNxenesi.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/StatistikatDrejtor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/StatistikatDrejtor.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/statistikaMesuesi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/statistikaMesuesi.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/adminView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/adminView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/drejtorView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/drejtorView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/help.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/menaxhimiDrejtoreve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/menaxhimiDrejtoreve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/menaxhimiShkolles.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/menaxhimiShkolles.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/nxenesitView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/nxenesitView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/rivendosFjalekalimin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/rivendosFjalekalimin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/shtoUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/shtoUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/bundles/Messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/bundles/Messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/bundles/Messages_al.properties" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/bundles/Messages_al.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/bundles/Messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/bundles/Messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/sql/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiIMesuesit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiIMesuesit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiINotave.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiINotave.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiKlaseve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiKlaseve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiLendeve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiLendeve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiMungesave.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiMungesave.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiNxenesve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/MenaxhimiNxenesve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/Mungesat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/Mungesat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/NotatNxenesi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/NotatNxenesi.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/StatistikatDrejtor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/StatistikatDrejtor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/adminView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/adminView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/drejtorView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/drejtorView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/help.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/menaxhimiDrejtoreve.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/menaxhimiDrejtoreve.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/menaxhimiShkolles.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/menaxhimiShkolles.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/nxenesitView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/nxenesitView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/rivendosFjalekalimin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/rivendosFjalekalimin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/shtoUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/shtoUser.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +119,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "FloridaSuka"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/FloridaSuka/KNK_2025_Gr2.git",
+    "accountId": "f3bcfded-a1a7-4c46-b5c1-704890a57d13"
+  }
+}]]></component>
   <component name="IlluminatedCloudWorkspaceSettings">
     <option name="projectWorkspaceSettings">
       <ProjectWorkspaceSettings>
@@ -78,27 +182,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DrejtorApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MesuesiApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestDb.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/OneDrive/Desktop/New folder/KNK_2025_Gr2/projekti/src/main/resources/images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DrejtorApp.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Debug",
+    "Application.MesuesiApp.executor": "Run",
+    "Application.TestDb.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/DELL/OneDrive/Desktop/New folder/KNK_2025_Gr2/projekti/src/main/resources/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="QodanaHighlightedReportService">
     <option name="localReportPersistedInfo">
       <LocalReportPersistedInfo>
@@ -132,14 +237,6 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

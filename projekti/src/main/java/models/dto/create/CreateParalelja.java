@@ -1,4 +1,4 @@
-package main.java.models.dto.create;
+package models.dto.create;
 
 public class CreateParalelja {
     private int id;

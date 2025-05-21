@@ -10,7 +10,6 @@ import models.Mungesa;
 import repositories.*;
 import services.MungesaService;
 import utils.LanguageHandler;
-import utils.MenuUtils;
 import utils.SceneLocator;
 import utils.SceneNavigator;
 
@@ -60,72 +59,17 @@ public class MungesaController {
         colData.setCellValueFactory(new PropertyValueFactory<>("dataMungeses"));
         colArsyeja.setCellValueFactory(new PropertyValueFactory<>("arsyeja"));
 
-        mbushTabelaMungesave(); // e thirr metoda e mbushjes
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
+        mbushTabelaMungesave();
 
-    }
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
 
-    @FXML
-    public void handleNew(ActionEvent event) {
-        MenuUtils.handleNew();
-    }
-
-    @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
-        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
-    }
-
-    @FXML
-    public void handleQuit() {
-        System.exit(0);
-    }
-
-    @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleHelp() {
-        MenuUtils.openhelp();
     }
 
     private void mbushTabelaMungesave() {
 
-            List<Mungesa> lista = mungesaRepo.gjejTeGjithaMungesat();
-            tabelaMungesat.getItems().clear();
-            tabelaMungesat.getItems().addAll(lista);
-        }
+        List<Mungesa> lista = mungesaRepo.gjejTeGjithaMungesat();
+        tabelaMungesat.getItems().clear();
+        tabelaMungesat.getItems().addAll(lista);
+    }
 
 
 
@@ -211,7 +155,7 @@ public class MungesaController {
     }
     private void mbushRaportinMungesave() {
         raportiMungesave.getItems().clear();
-        List<Mungesa> mungesat = mungesaRepo.gjejTeGjithaMungesat(); // duhet ta shtosh këtë metodë në repository
+        List<Mungesa> mungesat = mungesaRepo.gjejTeGjithaMungesat();
         for (Mungesa m : mungesat) {
             raportiMungesave.getItems().add(m.toString());
         }

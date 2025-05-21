@@ -19,27 +19,39 @@
    <children>
       <MenuBar>
          <menus>
-            <Menu text="File">
+            <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="menuNew" onAction="#handleNew" text="New" />
-                  <Menu fx:id="menuOpen" onAction="#handleOpen" text="Open…" />
-                  <SeparatorMenuItem />
-                  <MenuItem fx:id="menuQuit" onAction="#handleQuit" text="Quit" />
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
                </items>
             </Menu>
-            <Menu text="Edit">
+            <Menu mnemonicParsing="false" text="Edit">
                <items>
-                  <MenuItem fx:id="menuUndo" onAction="#handleUndo" text="Undo" />
-                  <MenuItem fx:id="menuRedo" onAction="#handleRedo" text="Redo" />
-                  <MenuItem fx:id="menuCut" onAction="#handleCut" text="Cut" />
-                  <MenuItem fx:id="menuCopy" onAction="#handleCopy" text="Copy" />
-                  <MenuItem fx:id="menuPaste" onAction="#handlePaste" text="Paste" />
-                  <MenuItem fx:id="menuSelectAll" onAction="#handleSelectAll" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
                </items>
             </Menu>
-            <Menu text="Help">
+            <Menu mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem fx:id="menuHelp" onAction="#handleHelp" text="About" />
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
                </items>
             </Menu>
          </menus>
@@ -65,22 +77,22 @@
          </children>
       </AnchorPane>
       <AnchorPane maxHeight="500.0" maxWidth="800.0" styleClass="login" stylesheets="@style.css">
-      
-          <children>
-      
-              <!-- Paneli i majtë me opsionet -->
-              <VBox layoutX="10.0" layoutY="20.0" spacing="10" />
-      
-                    <!-- Paneli i djathtë me tekstin përshkrues -->
-              <TextArea fx:id="txtContent" layoutX="359.0" layoutY="18.0" prefHeight="462.0" prefWidth="411.0" style="-fx-background-color: #2c3e50; -fx-text-fill: white;" wrapText="true" />
-               <Button layoutX="14.0" layoutY="206.0" onAction="#showPastrimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helppastrimifushave" />
-               <Button layoutX="14.0" layoutY="241.0" onAction="#showShfaqja" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpRaportet" />
-               <Button layoutX="14.0" layoutY="314.0" onAction="#showRegjistrimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpNotat" />
-               <Button layoutX="14.0" layoutY="277.0" onAction="#showLlogaritja" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpstatistikat" />
-               <Button layoutX="14.0" layoutY="170.0" onAction="#showPerdorimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpPerdorimi" />
-      
-          </children>
-      
+
+         <children>
+
+            <!-- Paneli i majtë me opsionet -->
+            <VBox layoutX="10.0" layoutY="20.0" spacing="10" />
+
+            <!-- Paneli i djathtë me tekstin përshkrues -->
+            <TextArea fx:id="txtContent" layoutX="359.0" layoutY="18.0" prefHeight="462.0" prefWidth="411.0" style="-fx-background-color: #2c3e50; -fx-text-fill: white;" wrapText="true" />
+            <Button layoutX="14.0" layoutY="206.0" onAction="#showPastrimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helppastrimifushave" />
+            <Button layoutX="14.0" layoutY="241.0" onAction="#showShfaqja" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpRaportet" />
+            <Button layoutX="14.0" layoutY="314.0" onAction="#showRegjistrimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpNotat" />
+            <Button layoutX="14.0" layoutY="277.0" onAction="#showLlogaritja" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpstatistikat" />
+            <Button layoutX="14.0" layoutY="170.0" onAction="#showPerdorimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpPerdorimi" />
+
+         </children>
+
       </AnchorPane>
    </children>
 </VBox>

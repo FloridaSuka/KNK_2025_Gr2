@@ -58,7 +58,6 @@ public class LoginController {
             return;
         }
 
-        // Printo për verifikim
         System.out.println("🔄 Roli i përdoruesit: " + u.getRole());
 
         try {

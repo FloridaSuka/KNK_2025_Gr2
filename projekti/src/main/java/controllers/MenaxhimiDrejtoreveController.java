@@ -1,14 +1,25 @@
 package controllers;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import models.Drejtor;
+import models.Klasa;
+import models.dto.create.CreateDrejtor;
+import models.dto.update.UpdateDrejtor;
+import models.dto.update.UpdateShkolla;
 import repositories.AdresaRepository;
 import repositories.DrejtoriRepository;
+import services.DrejtorService;
 import utils.LanguageHandler;
 import utils.MenuUtils;
 import utils.SceneLocator;
+
+import java.util.List;
 
 import static utils.ZipUtils.gjejQytetinNgaZip;
 
@@ -21,81 +32,27 @@ public class MenaxhimiDrejtoreveController {
     @FXML private TextField txtTel;
     @FXML private TextField txtIdShkolla;
     @FXML private TextField txtId;
-    @FXML private TableView<Drejtor> tabelaDrejtor;
+    @FXML private TableView<Drejtor> tabelaDrejtorit;
     @FXML private TableColumn<Drejtor, Integer> colId;
-    @FXML private TableColumn<Drejtor, String> colEmri;
-    @FXML private TableColumn<Drejtor, String> colMbiemri;
-    @FXML private TableColumn<Drejtor, Integer> colShkolla;
-
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
-
+    @FXML private TableColumn<Drejtor, String> colEmri, colMbiemri,colShkolla,colTel;
 
     private final DrejtoriRepository drejtoriRepo = new DrejtoriRepository();
     private final AdresaRepository adresaRepo = new AdresaRepository();
+    private final DrejtorService service = new DrejtorService();
     @FXML
     private MenuButton menuLanguage;
 
     @FXML
     public void initialize() {
-
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
-
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colEmri.setCellValueFactory(new PropertyValueFactory<>("emri"));
+        colMbiemri.setCellValueFactory(new PropertyValueFactory<>("mbiemri"));
+        colTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        colShkolla.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShkollaId().getEmri()));
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.PRINCIPAL_MANAGEMENT_PAGE);
-
-    }
-    @FXML
-    public void handleNew(ActionEvent event) {
-        MenuUtils.handleNew();
+        mbushTabelen();
     }
 
-    @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
-        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
-    }
-
-    @FXML
-    public void handleQuit() {
-        System.exit(0);
-    }
-
-    @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleHelp() {
-        MenuUtils.openhelp();
-    }
 
     @FXML
     private void shtoDrejtor() {
@@ -116,7 +73,7 @@ public class MenaxhimiDrejtoreveController {
             return;
         }
 
-        Drejtor d = new Drejtor(
+        CreateDrejtor d = new CreateDrejtor(
                 txtEmri.getText(),
                 txtMbiemri.getText(),
                 txtEmail.getText(),
@@ -127,16 +84,15 @@ public class MenaxhimiDrejtoreveController {
 
         DrejtoriRepository drejtoriRepo = new DrejtoriRepository();
         boolean success = drejtoriRepo.shtoDrejtor(d);
+        if(success)
+            mbushTabelen();
         showAlert(success, "Shtim", "Drejtori u shtua me sukses!", "Shtimi dështoi.");
     }
-
-
     @FXML
     private void perditesoDrejtor() {
         int id = Integer.parseInt(txtId.getText());
         String rruga = txtAdresa.getText();
         String zip = txtzip.getText();
-
         Integer adresaId = 0;
         if (!rruga.isBlank() && !zip.isBlank()) {
             String qyteti = gjejQytetinNgaZip(zip);
@@ -145,7 +101,7 @@ public class MenaxhimiDrejtoreveController {
             }
         }
 
-        Drejtor d = new Drejtor(
+        UpdateDrejtor d = new UpdateDrejtor(
                 id,
                 txtEmri.getText().isBlank() ? null : txtEmri.getText(),
                 txtMbiemri.getText().isBlank() ? null : txtMbiemri.getText(),
@@ -157,14 +113,17 @@ public class MenaxhimiDrejtoreveController {
 
 
         boolean success = drejtoriRepo.perditesoDrejtor(d);
+        if(success)
+            mbushTabelen();
         showAlert(success, "Përditësim", "Drejtori u përditësua me sukses!", "Përditësimi dështoi.");
     }
 
-    // 🔸 Fshirja
     @FXML
     private void fshijDrejtor() {
         int id = Integer.parseInt(txtId.getText());
         boolean success = drejtoriRepo.fshijDrejtor(id);
+        if(success)
+            mbushTabelen();
         showAlert(success, "Fshirje", "Drejtori u fshi me sukses!", "Fshirja dështoi.");
     }
     private void showAlert(boolean success, String title, String msgSuccess, String msgFail) {
@@ -174,5 +133,9 @@ public class MenaxhimiDrejtoreveController {
         alert.showAndWait();
     }
 
-
+    private void mbushTabelen() {
+        List<Drejtor> drejtoret = service.gjejTeGjithe();
+        ObservableList<Drejtor> listaObservable = FXCollections.observableArrayList(drejtoret);
+        tabelaDrejtorit.setItems(listaObservable);
+    }
 }

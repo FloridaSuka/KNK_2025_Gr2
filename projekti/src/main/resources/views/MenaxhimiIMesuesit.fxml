@@ -75,12 +75,11 @@
                             <children>
                                 <TableView fx:id="tabelaMesuesit" layoutX="8.0" layoutY="14.0" prefHeight="313.0" prefWidth="374.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0">
                                     <columns>
-                                        <TableColumn fx:id="kolEmri" prefWidth="120.0" text="%drejtorEmri" />
-                                        <TableColumn fx:id="kolMbiemri" prefWidth="120.0" text="%drejtorMbiemri" />
-                                        <TableColumn fx:id="kolEmail" prefWidth="150.0" text="%addUserLabelEmail" />
-                                        <TableColumn fx:id="kolTel" prefWidth="100.0" text="%drejtorTel" />
-                                        <TableColumn fx:id="kolRoli" prefWidth="100.0" text="%addUserLabelRole" />
-
+                                        <TableColumn fx:id="kolId" prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="ID" />
+                                        <TableColumn fx:id="kolEmri" prefWidth="120.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="%drejtorEmri" />
+                                        <TableColumn fx:id="kolMbiemri" prefWidth="120.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="%drejtorMbiemri" />
+                                        <TableColumn fx:id="kolEmail" prefWidth="150.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="%addUserLabelEmail" />
+                                        <TableColumn fx:id="kolTel" prefWidth="100.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="%drejtorTel" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -106,12 +105,12 @@
                                 <Label layoutX="83.0" layoutY="210.0" prefHeight="17.0" prefWidth="47.0" text="%adresa" AnchorPane.rightAnchor="218.0" />
                                 <TextField fx:id="txtAdresa" layoutX="217.0" layoutY="206.0" AnchorPane.rightAnchor="43.333333333333314" />
 
-                                      <Button layoutX="83.0" layoutY="288.0" onAction="#fshijMesues" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="%_fshij" />
+                                <Button layoutX="83.0" layoutY="288.0" onAction="#fshijMesues" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="%_fshij" />
                                 <Button layoutX="159.0" layoutY="288.0" onAction="#perditesoMesues" prefHeight="25.0" prefWidth="63.0" text="%_perditso" />
-                                <Button layoutX="302.0" layoutY="288.0" onAction="#shtoMesues" prefHeight="25.0" prefWidth="63.0" text="%_shto" />
+                                <Button layoutX="302.0" layoutY="288.0" onAction="#shtoMesues" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #27ae60;" text="%_shto" />
                             </children>
                         </AnchorPane>
-                          <TextArea fx:id="raportiMesuesve" editable="false" layoutX="-6.0" layoutY="384.0" maxHeight="17.0" maxWidth="800.0" prefHeight="5.0" prefWidth="794.0" wrapText="true" />
+                        <TextArea fx:id="raportiMesuesve" editable="false" layoutX="-6.0" layoutY="384.0" maxHeight="17.0" maxWidth="800.0" prefHeight="5.0" prefWidth="794.0" wrapText="true" />
                     </children>
                 </AnchorPane>
                 <fx:include source="globalView.fxml" />

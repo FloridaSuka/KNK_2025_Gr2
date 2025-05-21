@@ -2,30 +2,30 @@ package models.dto.create;
 
 public class CreateLenda {
     private String emri;
-    private String drejtimi;
-    private String perioda;
-    private String mesuesi;
+    private int drejtimiId;
+    private int periodaId;
+    private int mesuesiId;
 
-    public CreateLenda(String emri, String drejtimi, String perioda, String mesuesi) {
+    public CreateLenda(String emri, int drejtimiId, int periodaId, int mesuesiId) {
         this.emri = emri;
-        this.drejtimi = drejtimi;
-        this.perioda = perioda;
-        this.mesuesi = mesuesi;
+        this.drejtimiId = drejtimiId;
+        this.periodaId = periodaId;
+        this.mesuesiId = mesuesiId;
     }
 
     public String getEmri() {
         return emri;
     }
 
-    public String getDrejtimi() {
-        return drejtimi;
+    public int getDrejtimi() {
+        return drejtimiId;
     }
 
-    public String getPerioda() {
-        return perioda;
+    public int getPerioda() {
+        return periodaId;
     }
 
-    public String getMesuesi() {
-        return mesuesi;
+    public int getMesuesi() {
+        return mesuesiId;
     }
 }

@@ -7,7 +7,7 @@ import repositories.UserRepository;
 
 public class UserService {
 
-    private static User currentUser;  // Përdoruesi i kyçur aktualisht
+    private static User currentUser;
     private final UserRepository userRepository = new UserRepository();
 
     public boolean register(CreateUser user) {

@@ -1,96 +1,46 @@
-
 package controllers;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import models.Mesuesi;
 import models.dto.create.CreateMesuesi;
 import models.dto.update.UpdateMesuesi;
 import repositories.AdresaRepository;
+import repositories.MesuesiRepository;
 import services.MesuesiService;
 import utils.LanguageHandler;
-import utils.MenuUtils;
 import utils.SceneLocator;
+
+import java.util.List;
 
 public class MenaxhimiIMesuesitController {
     @FXML private TextField txtId, txtEmri, txtMbiemri, txtEmail, txtTel, txtRoli, txtAdresa;
-    @FXML private TableView<CreateMesuesi> tabelaMesuesit;
-    @FXML private TableColumn<CreateMesuesi, String> kolEmri, kolMbiemri, kolEmail, kolTel, kolRoli;
+    @FXML private TableView<Mesuesi> tabelaMesuesit;
+    @FXML private TableColumn<Mesuesi, String> kolEmri, kolMbiemri, kolEmail, kolTel;
+    @FXML private TableColumn<Mesuesi, Integer> kolId;
     @FXML private TextArea raportiMesuesve;
 
     private final MesuesiService mesuesiService = new MesuesiService();
     private final AdresaRepository adresaRepository = new AdresaRepository();
+    private final MesuesiRepository repo= new MesuesiRepository();
     @FXML
     private MenuButton menuLanguage;
 
 
     @FXML
     public void initialize() {
-        kolEmri.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().emri));
-        kolMbiemri.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().mbiemri));
-        kolEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().email));
-        kolTel.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tel));
-        kolRoli.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().roli));
+        kolId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        kolEmri.setCellValueFactory(new PropertyValueFactory<>("emri"));
+        kolMbiemri.setCellValueFactory(new PropertyValueFactory<>("mbiemri"));
+        kolEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        kolTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
 
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.TEACHER_MANAGEMENT_PAGE);
-        tabelaMesuesit.getItems().setAll(mesuesiService.gjejTeGjitheMesuesit());
-        String name = this.getClass().getSimpleName();
-        System.out.println("🔍 Controller aktiv: " + name);
-        MenuUtils.populateOpenSubMenu(menuOpen, name);
-    }
-    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
-    @FXML private Menu menuOpen;
-
-    @FXML
-    public void handleNew(ActionEvent event) {
-        MenuUtils.handleNew();
-    }
-
-    @FXML
-    public void handleOpen() {
-        // Shembull: ky controller është për admin
-        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
-    }
-
-    @FXML
-    public void handleQuit() {
-        System.exit(0);
-    }
-
-    @FXML
-    public void handleUndo() {
-        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleRedo() {
-        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCut() {
-        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleCopy() {
-        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handlePaste() {
-        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleSelectAll() {
-        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
-    }
-
-    @FXML
-    public void handleHelp() {
-        MenuUtils.openhelp();
+        mbushTabelen();
     }
 
     @FXML
@@ -110,9 +60,8 @@ public class MenaxhimiIMesuesitController {
 
         boolean success = mesuesiService.shto(m);
         if (success) {
+            mbushTabelen();
             shfaqAlert("Sukses", "Mësuesi u shtua!", "Të dhënat janë ruajtur me sukses.", Alert.AlertType.INFORMATION);
-            tabelaMesuesit.getItems().add(m);
-            raportiMesuesve.appendText("✅ Shtuar: " + m.emri + " " + m.mbiemri + "\n");
 
         } else {
             shfaqAlert("Gabim", "Dështoi shtimi!", "Nuk u arrit të ruhet mësuesi në databazë.", Alert.AlertType.ERROR);
@@ -141,7 +90,7 @@ public class MenaxhimiIMesuesitController {
         boolean success = mesuesiService.perditeso(m);
         if (success) {
             shfaqAlert("Sukses", "Përditësimi u krye!", "Të dhënat u përditësuan me sukses.", Alert.AlertType.INFORMATION);
-            raportiMesuesve.appendText("✏️ Përditësuar: " + m.emri + " " + m.mbiemri + " | ID: " + m.id + "\n");
+            mbushTabelen();
 
         } else {
             shfaqAlert("Gabim", "Dështoi përditësimi!", "Nuk u arrit të përditësohen të dhënat në databazë.", Alert.AlertType.ERROR);
@@ -150,18 +99,13 @@ public class MenaxhimiIMesuesitController {
 
     @FXML
     private void fshijMesues() {
-        if (txtId.getText().isEmpty()) {
-            shfaqAlert("Gabim", "ID mungon!", "Ju lutem shkruani ID-n e mësuesit që doni të fshini.", Alert.AlertType.WARNING);
-            return;
-        }
-
         int id = Integer.parseInt(txtId.getText());
-        boolean success = mesuesiService.fshij(id);
-        if (success) {
+        try {
+            System.out.println("📌 ID për fshirje: " + id);
+            boolean success = repo.fshij(id);
             shfaqAlert("Sukses", "Fshirja u krye!", "Mësuesi me ID " + id + " u fshi me sukses.", Alert.AlertType.INFORMATION);
-            raportiMesuesve.appendText("🗑️ Fshirë: Mësuesi me ID " + id + "\n");
-
-        } else {
+            if (success) mbushTabelen();
+        } catch (NumberFormatException e) {
             shfaqAlert("Gabim", "Dështoi fshirja!", "Nuk u arrit të fshihet mësuesi me ID " + id + ".", Alert.AlertType.ERROR);
         }
     }
@@ -172,5 +116,10 @@ public class MenaxhimiIMesuesitController {
         alert.setHeaderText(headeri);
         alert.setContentText(mesazhi);
         alert.showAndWait();
+    }
+    private void mbushTabelen() {
+        List<Mesuesi> klasat = mesuesiService.gjejTeGjitheMesuesit();
+        ObservableList<Mesuesi> listaObservable = FXCollections.observableArrayList(klasat);
+        tabelaMesuesit.setItems(listaObservable);
     }
 }

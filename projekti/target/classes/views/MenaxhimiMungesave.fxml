@@ -120,7 +120,7 @@
 
                             </children>
                         </AnchorPane>
-                          <ListView fx:id="raportiMungesave" layoutX="-336.0" layoutY="439.0" prefHeight="17.0" prefWidth="1124.0" AnchorPane.leftAnchor="-336.0" AnchorPane.topAnchor="439.0" />
+                        <ListView fx:id="raportiMungesave" layoutX="-336.0" layoutY="439.0" prefHeight="17.0" prefWidth="1124.0" AnchorPane.leftAnchor="-336.0" AnchorPane.topAnchor="439.0" />
                     </children>
                 </AnchorPane>
                 <fx:include source="globalView.fxml" />

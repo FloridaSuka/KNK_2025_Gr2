@@ -26,6 +26,10 @@ public class AdminController {
     }
 
     @FXML
+    private void shtoUser(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.ADD_USER_PAGE);
+    }
+    @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
     }

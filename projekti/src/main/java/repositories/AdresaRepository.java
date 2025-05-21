@@ -18,7 +18,7 @@ public class AdresaRepository {
             if (rs.next()) {
                 return rs.getInt("id");
             } else {
-                return null; // nuk u gjet
+                return null;
             }
         } catch (Exception e) {
             e.printStackTrace();

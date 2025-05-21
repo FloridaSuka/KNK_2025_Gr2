@@ -1,8 +1,6 @@
 package repositories;
 
 import database.DBConnector;
-import models.Adresa;
-import models.Mesuesi;
 import models.dto.create.CreateMesuesi;
 import models.dto.update.UpdateMesuesi;
 
@@ -51,8 +49,7 @@ public class MesuesiRepository {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            e.printStackTrace(); return false;
         }
     }
     public int merrNumrinEMesuesve() {
@@ -72,33 +69,31 @@ public class MesuesiRepository {
 
         return count;
     }
-    public List<Mesuesi> gjejTeGjithe() {
-        List<Mesuesi> mesuesit = new ArrayList<>();
-        String query = """
-                SELECT m.id, m.emri, m.mbiemri, m.email, m.tel
-                FROM mesuesi m
-                """;
+    public static List<CreateMesuesi> gjejTeGjithe() {
+        List<CreateMesuesi> lista = new ArrayList<>();
+        String sql = "SELECT emri, mbiemri, email, tel, roli, adresa_id FROM mesuesi";
 
         try (Connection con = DBConnector.getConnection();
-             PreparedStatement ps = con.prepareStatement(query);
+             PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                Mesuesi m = new Mesuesi(
-                        rs.getInt("id"),
+                CreateMesuesi m = new CreateMesuesi(
                         rs.getString("emri"),
                         rs.getString("mbiemri"),
                         rs.getString("email"),
-                        rs.getString("tel")
+                        rs.getString("tel"),
+                        rs.getString("roli"),
+                        rs.getInt("adresa_id")
                 );
-                mesuesit.add(m);
+                lista.add(m);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return mesuesit;
+        return lista;
     }
     public int getMesuesiIdByEmail(String email) {
         String sql = "SELECT id FROM mesuesi WHERE email = ?";
@@ -117,3 +112,5 @@ public class MesuesiRepository {
     }
 
 }
+
+

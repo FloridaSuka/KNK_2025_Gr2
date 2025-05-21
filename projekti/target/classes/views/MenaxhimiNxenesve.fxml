@@ -88,14 +88,14 @@
                             <children>
                                 <TableView blendMode="SRC_ATOP" cache="true" layoutX="14.0" prefHeight="313.0" prefWidth="423.0" scaleShape="false" styleClass="tabela" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="0.0">
                                     <columns>
-<!--                                        private int id;-->
-<!--                                        private String emri;-->
-<!--                                        private String mbiemri;-->
-<!--                                        private Date datelindja;-->
-<!--                                        private char gjinia;-->
-<!--                                        private String email;-->
-<!--                                        private String phone;-->
-<!--                                        private Adresa adresa;-->
+                                        <!--                                        private int id;-->
+                                        <!--                                        private String emri;-->
+                                        <!--                                        private String mbiemri;-->
+                                        <!--                                        private Date datelindja;-->
+                                        <!--                                        private char gjinia;-->
+                                        <!--                                        private String email;-->
+                                        <!--                                        private String phone;-->
+                                        <!--                                        private Adresa adresa;-->
                                         <TableColumn prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="%IdNxenesit" />
                                         <TableColumn prefWidth="94.00005340576172" style="-fx-background-color: #264653;;" styleClass="column-header" text="%addUserLabelName" />
                                         <TableColumn prefWidth="82.00003051757812" style="-fx-background-color: #264653;;" styleClass="column-header" text="%addUserLabelSurname" />
@@ -136,7 +136,7 @@
 
                             </children>
                         </AnchorPane>
-                          <ListView fx:id="raportiNxenesve" layoutX="-400.0" layoutY="441.0" prefHeight="17.0" prefWidth="1197.0" />
+                        <ListView fx:id="raportiNxenesve" layoutX="-400.0" layoutY="441.0" prefHeight="17.0" prefWidth="1197.0" />
                     </children>
                 </AnchorPane>
                 <fx:include source="globalView.fxml" />
