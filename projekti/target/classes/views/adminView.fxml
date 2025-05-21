@@ -78,7 +78,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="63.0" layoutY="201.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%_school.button">
+            <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="63.0" layoutY="201.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%_school.button" onAction="#onOpenSchool">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>

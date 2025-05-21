@@ -12,8 +12,6 @@ import java.util.ResourceBundle;
 
 public class AdminController {
 
-
-
     @FXML
     private MenuButton menuLanguage;
 
@@ -31,4 +29,8 @@ public class AdminController {
         SceneNavigator.logout((Node) event.getSource());
     }
 
+    @FXML
+    private void onOpenSchool(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SCHOOL_MANAGEMENT_PAGE);
+    }
 }
