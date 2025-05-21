@@ -56,7 +56,7 @@ public class SettingsController {
         } else {
             System.out.println("User not found!");
         }
-        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.HELP_PAGE);
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SETTINGS_PAGE);
     }
 
     @FXML
