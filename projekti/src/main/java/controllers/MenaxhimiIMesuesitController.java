@@ -32,6 +32,7 @@ public class MenaxhimiIMesuesitController {
         kolRoli.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().roli));
 
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.TEACHER_MANAGEMENT_PAGE);
+        tabelaMesuesit.getItems().setAll(mesuesiService.gjejTeGjitheMesuesit());
 
     }
 
