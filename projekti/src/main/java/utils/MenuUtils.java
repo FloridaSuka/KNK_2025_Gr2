@@ -1,85 +1,61 @@
 package utils;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import models.User.Role;
 
 public class MenuUtils {
 
-    public static void handleNew() {
-        Stage stage = new Stage();
-        SceneLocator.locate(stage, SceneLocator.ADD_USER_PAGE);
-        stage.setTitle("Shto Përdorues të Ri");
-        stage.show();
-    }
-
-    private static final Map<String, List<String>> allowedViewsPerScene = Map.ofEntries(
-            Map.entry("AdminController", List.of("menaxhimiShkolles.fxml", "menaxhimiDrejtoreve.fxml")),
-            Map.entry("MenaxhimiShkollesController", List.of("menaxhimiDrejtoreve.fxml")),
-            Map.entry("MenaxhimiDrejtoreveController", List.of("menaxhimiShkolles.fxml")),
-
-            Map.entry("DrejtoriController", List.of("MenaxhimiMesuesit.fxml", "MenaxhimiKlaseve.fxml", "MenaxhimiLendeve.fxml", "StatistikatDrejtor.fxml")),
-            Map.entry("MenaxhimiIMesuesitController", List.of("MenaxhimiKlaseve.fxml", "MenaxhimiLendeve.fxml", "StatistikatDrejtor.fxml")),
-            Map.entry("MenaxhimiKlaseveController", List.of("MenaxhimiMesuesit.fxml", "MenaxhimiLendeve.fxml", "StatistikatDrejtor.fxml")),
-            Map.entry("MenaxhimiLendeveController", List.of("MenaxhimiMesuesit.fxml", "MenaxhimiKlaseve.fxml", "StatistikatDrejtor.fxml")),
-            Map.entry("StatistikatDrejtorController", List.of("MenaxhimiMesuesit.fxml", "MenaxhimiKlaseve.fxml", "MenaxhimiLendeve.fxml")),
-
-
-            Map.entry("MesuesiController", List.of("MenaxhimiNxenesve.fxml", "MenaxhimiINotave.fxml","MenaxhimiMungesave.fxml", "statistikaMesuesi.fxml")),
-            Map.entry("NotatController", List.of("MenaxhimiNxenesve.fxml","MenaxhimiMungesave.fxml", "statistikaMesuesi.fxml")),
-            Map.entry("MesuesiStatistikatController", List.of("MenaxhimiNxenesve.fxml", "MenaxhimiINotave.fxml","MenaxhimiMungesave.fxml")),
-            Map.entry("MungesaController", List.of("MenaxhimiNxenesve.fxml", "MenaxhimiINotave.fxml", "statistikaMesuesi.fxml")),
-            Map.entry("MenaxhimiNxenesveController", List.of("MenaxhimiINotave.fxml","MenaxhimiMungesave.fxml", "statistikaMesuesi.fxml")),
-
-            Map.entry("NxenesiController", List.of("statistikaNxenesi.fxml", "Mungesat.fxml","" )),
-            Map.entry("NxenesitStatistikatController", List.of("Mungesat.fxml","" )),
-            Map.entry("NxenesMungesaController", List.of("statistikaNxenesi.fxml","" ))
+    private static final Map<Role, List<String>> allowedViewsPerRole = Map.ofEntries(
+            Map.entry(Role.ADMIN, List.of("menaxhimiShkolles.fxml", "menaxhimiDrejtoreve.fxml")),
+            Map.entry(Role.DREJTOR, List.of("MenaxhimiIMesuesit.fxml", "MenaxhimiKlaseve.fxml", "MenaxhimiLendeve.fxml", "StatistikatDrejtor.fxml")),
+            Map.entry(Role.PRINCIPAL, List.of("MenaxhimiMesuesit.fxml", "MenaxhimiKlaseve.fxml", "MenaxhimiLendeve.fxml", "StatistikatDrejtor.fxml")),
+            Map.entry(Role.MESUES, List.of("MenaxhimiNxenesve.fxml", "MenaxhimiINotave.fxml","MenaxhimiMungesave.fxml", "statistikaMesuesi.fxml")),
+            Map.entry(Role.TEACHER, List.of("MenaxhimiNxenesve.fxml", "MenaxhimiINotave.fxml","MenaxhimiMungesave.fxml", "statistikaMesuesi.fxml")),
+            Map.entry(Role.NXENES, List.of("NotatNxenesi.fxml", "Mungesat.fxml")),
+            Map.entry(Role.STUDENT, List.of("NotatNxenesi.fxml", "Mungesat.fxml"))
     );
 
-    public static void openConditionalView(String currentController, String fxmlName, String title) {
-        List<String> allowedViews = allowedViewsPerScene.getOrDefault(currentController, List.of());
+    public static void populateOpenSubMenu(Menu openMenu, Role role, Stage stage) {
+        openMenu.getItems().clear();
+
+        List<String> views = allowedViewsPerRole.getOrDefault(role, List.of());
+
+        for (String view : views) {
+            if (view == null || view.isBlank()) continue;
+
+            String title = formatTitleFromFxml(view);
+            MenuItem item = new MenuItem(title);
+
+            item.setOnAction(e -> {
+                openConditionalView(role, view, title, stage);
+            });
+
+            openMenu.getItems().add(item);
+        }
+    }
+
+
+    public static void openConditionalView(Role role, String fxmlName, String title, Stage stage) {
+        List<String> allowedViews = allowedViewsPerRole.getOrDefault(role, List.of());
 
         if (allowedViews.contains(fxmlName)) {
-            openView("/views/" + fxmlName, title);
+            openView("/views/" + fxmlName, title, stage);
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Qasje e ndaluar");
-            alert.setHeaderText(null);
-            alert.setContentText("Nuk lejohet të hapet ky view nga ky rol.");
-            alert.showAndWait();
+            showError("⛔ Nuk lejohet të hapet ky view nga ky rol.");
         }
     }
-    public static void openView(String fxmlPath, String title) {
-        try {
-            FXMLLoader loader = new FXMLLoader(MenuUtils.class.getResource(fxmlPath));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle(title);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showError("Gabim gjatë hapjes së view-it: " + fxmlPath);
-        }
+
+    public static void openView(String fxmlPath, String title, Stage stage) {
+        SceneNavigator.switchScene(stage, fxmlPath);  // përdor Navigatorin
     }
+
     private static void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Gabim");
@@ -87,31 +63,17 @@ public class MenuUtils {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    public static void populateOpenSubMenu(Menu openMenu, String controllerName) {
-        openMenu.getItems().clear();
 
-        List<String> views = allowedViewsPerScene.getOrDefault(controllerName, List.of());
-
-        for (String view : views) {
-            if (view == null || view.isBlank()) continue;
-
-            String title = formatTitleFromFxml(view);
-
-            MenuItem item = new MenuItem(title);
-            item.setOnAction(e -> openConditionalView(controllerName, view, title));
-
-            openMenu.getItems().add(item);
-        }
-    }
     private static String formatTitleFromFxml(String fxmlName) {
         return fxmlName
                 .replace(".fxml", "")
                 .replace("Menaxhimi", "Menaxhimi i")
                 .replace("Statistikat", "Statistikat")
                 .replace("statistika", "Statistika")
-                .replaceAll("([A-Z])", " $1") // ndan fjalët në titull
+                .replaceAll("([A-Z])", " $1")
                 .trim();
     }
+
     public static void registerShortcuts(Scene scene) {
         scene.getAccelerators().put(
                 new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN),
@@ -126,10 +88,6 @@ public class MenuUtils {
         scene.getAccelerators().put(
                 new KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN),
                 () -> performRedo(scene)
-        );
-        scene.getAccelerators().put(
-                new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN),
-                () -> handleNew()
         );
 
         scene.getAccelerators().put(
@@ -188,16 +146,6 @@ public class MenuUtils {
     public static void performSelectAll(Scene scene) {
         TextInputControl focused = getFocusedTextInput(scene);
         if (focused != null) focused.selectAll();
-    }
-//PERFUNDIMI I EDIT
-
-
-    //MENUJA HELP
-    public static void openhelp() {
-        Stage stage = new Stage();
-        SceneLocator.locate(stage, SceneLocator.HELP_PAGE);
-        stage.setTitle("Help");
-        stage.show();
     }
 
 }

@@ -1,18 +1,28 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import models.Mesuesi;
 import models.Shkolla;
+import models.User;
 import models.dto.create.CreateShkolla;
 import models.dto.update.UpdateShkolla;
 import repositories.AdresaRepository;
 import repositories.ShkollaRepository;
+import services.UserService;
 import utils.LanguageHandler;
+import utils.MenuUtils;
 import utils.SceneLocator;
+import utils.SceneNavigator;
+
+
 import static utils.ZipUtils.gjejQytetinNgaZip;
 import java.util.List;
 
@@ -35,6 +45,10 @@ public class MenaxhimiShkollesController {
     @FXML
     private MenuButton menuLanguage;
 
+    @FXML private VBox root;
+    @FXML private Menu menuOpen;
+    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
+
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SCHOOL_MANAGEMENT_PAGE);
@@ -42,6 +56,12 @@ public class MenaxhimiShkollesController {
         colEmri.setCellValueFactory(new PropertyValueFactory<>("emri"));
         colTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         mbushTabelen();
+
+        Platform.runLater(() -> {
+            User.Role role = UserService.getCurrentUser().getRole();
+            Stage stage = (Stage) root.getScene().getWindow();
+            MenuUtils.populateOpenSubMenu(menuOpen, role, stage);
+        });
     }
     @FXML
     private void shto() {
@@ -69,6 +89,9 @@ public class MenaxhimiShkollesController {
 
         ShkollaRepository shkollarepo=new ShkollaRepository();
         boolean success = shkollarepo.shtoShkollen(shkolla);
+        if (success) {
+            mbushTabelen();
+        }
 
 
         showAlert(success, "Shtim", "Shkolla u shtua me sukses!", "Shtimi dështoi.");
@@ -119,9 +142,54 @@ public class MenaxhimiShkollesController {
         alert.showAndWait();
     }
 
+
     private void mbushTabelen() {
         List<Shkolla> shkollat = repo.gjejTeGjitha();
         ObservableList<Shkolla> listaObservable = FXCollections.observableArrayList(shkollat);
         tabelaShkollave.setItems(listaObservable);
+    }
+    @FXML public void handleLogout(ActionEvent event) {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SceneNavigator.switchScene(stage, SceneLocator.LOGIN_PAGE);
+    }
+    @FXML public void handleSettings(ActionEvent event) {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SceneNavigator.switchScene(stage, SceneLocator.SETTINGS_PAGE);
+    }
+
+    @FXML public void handleHelp(ActionEvent event) {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SceneNavigator.switchScene(stage, SceneLocator.HELP_PAGE);
+    }
+
+    @FXML public void handleQuit(ActionEvent actionEvent) {
+        Platform.exit();
+    }
+
+    @FXML public void handleNew(ActionEvent actionEvent) {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SceneNavigator.switchScene(stage, SceneLocator.ADD_USER_PAGE);
+    }
+
+    public void handleUndo(ActionEvent actionEvent) {
+        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
+    }
+    public void handleRedo(ActionEvent actionEvent) {
+        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
+    }
+    public void handleCut(ActionEvent actionEvent) {
+        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    public void handleCopy(ActionEvent actionEvent) {
+        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    public void handlePaste(ActionEvent actionEvent) {
+        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    public void handleSelectAll(ActionEvent actionEvent) {
+        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
     }
 }

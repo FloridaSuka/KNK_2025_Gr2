@@ -77,6 +77,33 @@ public class SceneNavigator {
             e.printStackTrace();
         }
     }
+    public static void switchScene(Stage stage, String path) {
+        try {
+            Locale locale = new Locale("al");
+            ResourceBundle bundle = ResourceBundle.getBundle("bundles.Messages", locale);
+
+            URL resource = SceneNavigator.class.getResource(path);
+            if (resource == null) {
+                System.out.println("❌ Skedari nuk u gjet: " + path);
+                return;
+            }
+
+            FXMLLoader loader = new FXMLLoader(resource, bundle);
+            Parent view = loader.load();
+            view.setId(path);
+
+            Scene scene = new Scene(view);
+            stage.setScene(scene);
+            stage.show();
+
+            System.out.println("✅ Skena u ngarkua me sukses: " + path);
+
+        } catch (IOException e) {
+            System.out.println("❌ Gabim gjatë ngarkimit të skenës: " + path);
+            e.printStackTrace();
+        }
+    }
+
 
     // ✅ Kthimi prapa në histori
     public static void goBack(Node node) {

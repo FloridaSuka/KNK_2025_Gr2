@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
+<VBox fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
    <children>
-      <MenuBar>
+      <MenuBar style="-fx-background-color: #2e728d;" styleClass="menubar" stylesheets="@style.css">
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
+                  <MenuItem fx:id="menuNew" onAction="#handleNew" text="New" />
+                  <Menu fx:id="menuOpen" text="Open…" />
+                  <SeparatorMenuItem />
+                  <MenuItem fx:id="menuLogout" onAction="#handleLogout" text="Logout" />
+                  <MenuItem fx:id="menuQuit" onAction="#handleQuit" text="Quit" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
+            <Menu mnemonicParsing="false" styleClass="menu-item" text="Edit">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+                  <MenuItem fx:id="menuUndo" onAction="#handleUndo" text="Undo" />
+                  <MenuItem fx:id="menuRedo" onAction="#handleRedo" text="Redo" />
+                  <MenuItem fx:id="menuCut" onAction="#handleCut" text="Cut" />
+                  <MenuItem fx:id="menuCopy" onAction="#handleCopy" text="Copy" />
+                  <MenuItem fx:id="menuPaste" onAction="#handlePaste" text="Paste" />
+                  <MenuItem fx:id="menuSelectAll" onAction="#handleSelectAll" text="Select All" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Help">
+            <Menu mnemonicParsing="false" styleClass="menu-item" text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                  <MenuItem fx:id="menuHelp" onAction="#handleHelp" text="About" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" styleClass="menu-item" text="Settings">
+               <items>
+                  <MenuItem fx:id="menuSettings" onAction="#handleSettings" text="Settings" />
                </items>
             </Menu>
          </menus>
@@ -96,7 +91,7 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" graphicTextGap="20.0" layoutX="588.0" layoutY="201.0" onAction="#handleLogout" prefHeight="150.0" prefWidth="150.0" text="%_logout" textAlignment="CENTER">
+            <Button contentDisplay="TOP" graphicTextGap="20.0" layoutX="588.0" layoutY="201.0" onAction="#logout" prefHeight="150.0" prefWidth="150.0" text="%_logout" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="38.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
