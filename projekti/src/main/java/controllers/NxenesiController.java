@@ -22,75 +22,14 @@ public class NxenesiController {
     @FXML public void initialize() {
         // Configure language menu
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.STUDENT_PAGE);
-        mbushRaportinENxenesve();
     }
 
     @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
     }
+    private final NxenesitService service = new NxenesitService();
 
-        @FXML private TextField txtId, txtEmri, txtMbiemri, txtDatelindja, txtGjinia, txtEmail, txtPhone, txtAdresa;
-        private final NxenesitService service = new NxenesitService();
-
-        @FXML
-        private void shtoNxenes() {
-            int adresaId = service.getAdresaId(txtAdresa.getText());
-            CreateNxenesit nx = new CreateNxenesit(
-                    txtEmri.getText(),
-                    txtMbiemri.getText(),
-                    txtDatelindja.getText(),
-                    txtGjinia.getText().charAt(0),
-                    txtEmail.getText(),
-                    txtPhone.getText(),
-                    adresaId
-            );
-
-            if (service.shto(nx)) {
-                showAlert("Sukses", "Nxënësi u shtua me sukses.");
-            } else {
-                showAlert("Gabim", "Nxënësi nuk u shtua.");
-            }
-        }
-
-        @FXML
-        private void fshijNxenes() {
-            int id = Integer.parseInt(txtId.getText());
-            if (service.fshij(id)) {
-                showAlert("Sukses", "Nxënësi u fshi me sukses.");
-            } else {
-                showAlert("Gabim", "Nxënësi nuk u fshi.");
-            }
-        }
-
-        @FXML
-        private void perditesoNxenes() {
-            int adresaId = service.getAdresaId(txtAdresa.getText());
-            UpdateNxenesit nx = new UpdateNxenesit(
-                    Integer.parseInt(txtId.getText()),
-                    txtEmri.getText(),
-                    txtMbiemri.getText(),
-                    txtDatelindja.getText(),
-                    txtGjinia.getText().charAt(0),
-                    txtEmail.getText(),
-                    txtPhone.getText(),
-                    adresaId
-            );
-
-            if (service.perditeso(nx)) {
-                showAlert("Sukses", "Nxënësi u përditësua me sukses.");
-            } else {
-                showAlert("Gabim", "Përditësimi dështoi.");
-            }
-        }
-
-        private void showAlert(String title, String content) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(title);
-            alert.setHeaderText(null);
-            alert.setContentText(content);
-            alert.showAndWait();
-        }
 @FXML
 private void onOpenMungesat(ActionEvent event) {
     SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.MUNGESAT_PAGE);
