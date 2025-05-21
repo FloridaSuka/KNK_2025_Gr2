@@ -19,7 +19,7 @@ public class MenaxhimiKlaseveController {
     @FXML
     private TextField txtNiveli, txtShkolla ,txtParalelja, txtProfesori, txtDrejtimi, txtId;
 
-
+ 
 
     @FXML
     private Button btnShto;
