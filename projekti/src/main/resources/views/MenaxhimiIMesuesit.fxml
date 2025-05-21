@@ -80,12 +80,13 @@
                                         <TableColumn fx:id="kolEmail" prefWidth="150.0" text="%addUserLabelEmail" />
                                         <TableColumn fx:id="kolTel" prefWidth="100.0" text="%drejtorTel" />
                                         <TableColumn fx:id="kolRoli" prefWidth="100.0" text="%addUserLabelRole" />
-                                        <TableColumn fx:id="kolAdresa" minWidth="0.0" prefWidth="0.0" text="%adresa" />
+
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                     </columnResizePolicy>
                                 </TableView>
+                                <TextArea fx:id="raportiMesuesve" prefHeight="120.0" wrapText="true" editable="false" />
 
                             </children>
                         </AnchorPane>

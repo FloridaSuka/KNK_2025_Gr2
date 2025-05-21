@@ -101,8 +101,6 @@ public class MenaxhimiIMesuesitController {
         boolean success = mesuesiService.fshij(id);
         if (success) {
             shfaqAlert("Sukses", "Fshirja u krye!", "Mësuesi me ID " + id + " u fshi me sukses.", Alert.AlertType.INFORMATION);
-            raportiMesuesve.appendText("🗑️ Fshirë: Mësuesi me ID " + id + "\n");
-
         } else {
             shfaqAlert("Gabim", "Dështoi fshirja!", "Nuk u arrit të fshihet mësuesi me ID " + id + ".", Alert.AlertType.ERROR);
         }

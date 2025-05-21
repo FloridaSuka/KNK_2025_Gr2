@@ -5,6 +5,8 @@ import models.dto.create.CreateMesuesi;
 import models.dto.update.UpdateMesuesi;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MesuesiRepository {
 
@@ -65,5 +67,33 @@ public class MesuesiRepository {
 
         return count;
     }
+    public List<CreateMesuesi> gjejTeGjithe() {
+        List<CreateMesuesi> lista = new ArrayList<>();
+
+        String query = "SELECT emri, mbiemri, email, tel, roli, adresa_id FROM mesuesi";
+
+        try (Connection con = DBConnector.getConnection();
+             PreparedStatement stmt = con.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                CreateMesuesi m = new CreateMesuesi(
+                        rs.getString("emri"),
+                        rs.getString("mbiemri"),
+                        rs.getString("email"),
+                        rs.getString("tel"),
+                        rs.getString("roli")
+                       // KËTU ËSHTË ADRESA — me `int`, jo `String`
+                );
+                lista.add(m);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
 
 }
