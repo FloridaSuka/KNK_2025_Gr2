@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class BaseRepository {
     public Integer gjejId(String emri, String tabela) {
-        String sql = "SELECT id FROM " + tabela + " WHERE rruga = ?";
+        String sql = "SELECT id FROM " + tabela + " WHERE emri = ?";
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
