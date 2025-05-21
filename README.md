@@ -9,6 +9,7 @@ Projekti jonë ka të bëjë me Zhvillimin e Sistemit Interaktiv për Llogaritje
 Ky sistem interaktiv është dizajnuar për të ndihmuar shkollat në menaxhimin e të dhënave akademike dhe statistikave të notave, duke përfshirë informacionet e nxënësve, klasave, lëndëve, dhe periudhave mësimore. Aplikacioni mbështet role të ndryshme përdoruesish me privilegje të përshtatura për secilën kategori:
 
 - **Admin**: Menaxhon përdoruesit, shkollat, drejtuesit, klasat, lëndët, mesuesit, mungesat, notat dhe periudhat.
+- **Drejtor**: Monitoron statistikat e përgjithshme të shkollës dhe klasave.
 - **Mesues**: Ka akses për të menaxhuar klasat, lëndët, notat dhe mungesat e nxënësve.
 - **Nxënës**: Mund të shohë notat dhe mungesat e veta, si dhe informacionet për klasën dhe lëndët përkatëse.
 - **Drejtor**: Monitoron statistikat e përgjithshme të shkollës dhe klasave.
