@@ -66,17 +66,7 @@ public class NotatRepository {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                Notat n = new Notat(
-                        rs.getInt("nxenesi_id"),
-                        rs.getInt("lenda_id"),
-                        rs.getInt("mesuesi_id"),
-                        rs.getInt("drejtimi_id"),
-                        rs.getInt("klasa_id"),
-                        rs.getInt("paralelja_id"),
-                        rs.getInt("periudha_id"),
-                        rs.getInt("nota_pare"),
-                        rs.getInt("nota_dyte")
-                );
+                Notat n = Notat.fromResultSet(rs);
                 lista.add(n);
             }
 
@@ -86,6 +76,7 @@ public class NotatRepository {
 
         return lista;
     }
+
 
 
 }
