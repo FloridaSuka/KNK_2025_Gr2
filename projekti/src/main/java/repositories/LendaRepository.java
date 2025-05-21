@@ -1,16 +1,9 @@
 package repositories;
 
 import database.DBConnector;
-import models.Drejtimi;
-import models.Lenda;
-import models.Mesuesi;
-import models.Perioda;
-
 import models.dto.create.CreateLenda;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LendaRepository {
     public int getLendaIdByName(String emri) {
@@ -68,34 +61,4 @@ public class LendaRepository {
             return false;
         }
     }
-    public List<Lenda> gjejTeGjitha() {
-        List<Lenda> lendet = new ArrayList<>();
-        String sql = """
-        SELECT l.id, l.emri,
-               d.id AS drejtimi_id, d.emri AS drejtimi_emri,
-               p.id AS perioda_id, p.emri AS perioda_emri,
-               m.id AS mesuesi_id, m.emri AS mesuesi_emri, m.mbiemri AS mesuesi_mbiemri
-        FROM lenda l
-        JOIN drejtimi d ON l.drejtimi_id = d.id
-        JOIN perioda p ON l.perioda_id = p.id
-        JOIN mesuesi m ON l.mesuesi_id = m.id
-    """;
-
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                Drejtimi d = new Drejtimi(rs.getInt("drejtimi_id"), rs.getString("drejtimi_emri"));
-                Perioda p = new Perioda(rs.getInt("perioda_id"), rs.getString("perioda_emri"));
-                Mesuesi m = new Mesuesi(rs.getInt("mesuesi_id"), rs.getString("mesuesi_emri"), rs.getString("mesuesi_mbiemri"), "", "");
-                Lenda lenda = new Lenda(rs.getInt("id"), rs.getString("emri"), d, p, m);
-                lendet.add(lenda);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return lendet;
-    }
-
 }

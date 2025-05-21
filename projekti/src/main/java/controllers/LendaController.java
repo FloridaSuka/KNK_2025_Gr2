@@ -1,18 +1,13 @@
 package controllers;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import models.Lenda;
+import javafx.scene.control.Alert;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
 import models.dto.create.CreateLenda;
 import repositories.LendaRepository;
 import utils.LanguageHandler;
 import utils.SceneLocator;
-
-import java.util.List;
 
 public class LendaController {
 
@@ -21,12 +16,6 @@ public class LendaController {
     @FXML private TextField txtDrejtimi;
     @FXML private TextField txtPerioda;
     @FXML private TextField txtMesuesi;
-    @FXML private TableView<Lenda> tabelaLendeve;
-    @FXML private TableColumn<Lenda, Integer> colId;
-    @FXML private TableColumn<Lenda, String> colEmri;
-    @FXML private TableColumn<Lenda, String> colDrejtimi;
-    @FXML private TableColumn<Lenda, String> colPerioda;
-    @FXML private TableColumn<Lenda, String> colMesuesi;
 
     private final LendaRepository repo = new LendaRepository();
     @FXML
@@ -35,20 +24,7 @@ public class LendaController {
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SUBJECT_MANAGEMENT_PAGE);
-
-            LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SUBJECT_MANAGEMENT_PAGE);
-
-            colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-            colEmri.setCellValueFactory(new PropertyValueFactory<>("emri"));
-            colDrejtimi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDrejtimi().getEmri()));
-            colPerioda.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPerioda().getEmri()));
-            colMesuesi.setCellValueFactory(cellData -> new SimpleStringProperty(
-                    cellData.getValue().getMesuesi().getEmri() + " " + cellData.getValue().getMesuesi().getMbiemri()));
-
-            mbushTabelenLendeve();
-        }
-
-
+    }
     @FXML
     private void shtoLenda() {
         CreateLenda lenda = new CreateLenda(
@@ -59,15 +35,12 @@ public class LendaController {
         );
 
         boolean success = repo.shto(lenda);
-        mbushTabelenLendeve();
         showAlert(success, "Shtim", "Lënda u shtua me sukses!", "Shtimi dështoi!");
     }
     @FXML
     private void fshijLenda() {
         int id = Integer.parseInt(txtId.getText());
-
         boolean success = repo.fshij(id);
-        mbushTabelenLendeve();
         showAlert(success, "Fshirje", "Lënda u fshi me sukses!", "Fshirja dështoi!");
     }
 
@@ -78,10 +51,4 @@ public class LendaController {
         alert.setContentText(success ? msgSuccess : msgFail);
         alert.showAndWait();
     }
-    private void mbushTabelenLendeve() {
-        List<Lenda> lendet = repo.gjejTeGjitha(); // kjo do vijë nga databaza
-        ObservableList<Lenda> observableList = FXCollections.observableArrayList(lendet);
-        tabelaLendeve.setItems(observableList);
-    }
-
 }
