@@ -55,4 +55,7 @@ public class MesuesiService {
         return lista;
     }
 
+    public List<CreateMesuesi> gjejTeGjitheMesuesit() {
+        return MesuesiRepository.gjejTeGjithe();
+    }
 }

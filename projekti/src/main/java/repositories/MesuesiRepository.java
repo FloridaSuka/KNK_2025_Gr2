@@ -5,8 +5,12 @@ import models.dto.create.CreateMesuesi;
 import models.dto.update.UpdateMesuesi;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MesuesiRepository {
+
+
 
     public boolean shto(CreateMesuesi m) {
         String sql = "INSERT INTO mesuesi (emri, mbiemri, email, tel, roli, adresa_id) VALUES (?, ?, ?, ?, ?, ?)";
@@ -65,5 +69,32 @@ public class MesuesiRepository {
 
         return count;
     }
+    public static List<CreateMesuesi> gjejTeGjithe() {
+        List<CreateMesuesi> lista = new ArrayList<>();
+        String sql = "SELECT emri, mbiemri, email, tel, roli, adresa_id FROM mesuesi";
 
+        try (Connection con = DBConnector.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                CreateMesuesi m = new CreateMesuesi(
+                        rs.getString("emri"),
+                        rs.getString("mbiemri"),
+                        rs.getString("email"),
+                        rs.getString("tel"),
+                        rs.getString("roli"),
+                        rs.getInt("adresa_id")
+                );
+                lista.add(m);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
 }
+
+
