@@ -133,6 +133,10 @@
                                 <Button layoutX="83.0" layoutY="288.0" onAction="#fshijNxenes" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="%_fshij" />
                                 <Button layoutX="159.0" layoutY="288.0" onAction="#perditesoNxenes" prefHeight="25.0" prefWidth="63.0" text="%_perditso" />
                                 <Button layoutX="302.0" layoutY="288.0" onAction="#shtoNxenes" prefHeight="25.0" prefWidth="63.0" text="%_shto" />
+                                <HBox fx:id="statusBar" alignment="CENTER_LEFT" spacing="10.0"
+                                      style="-fx-background-color: #eeeeee; -fx-padding: 5 10 5 10;">
+                                    <Label fx:id="lblStatus" text="Ready." />
+                                </HBox>
 
                             </children>
                         </AnchorPane>
