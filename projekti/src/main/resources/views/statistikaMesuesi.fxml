@@ -1,79 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.MesuesiStatistikatController"
-            prefWidth="800" prefHeight="500"
-            styleClass="login" stylesheets="@style.css">
+<VBox prefHeight="500.0" prefWidth="800.0" spacing="0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatistikatMesuesiController">
 
-    <children>
-        <!-- Header me ngjyrë dhe titull si në MesuesiView -->
-        <AnchorPane layoutY="0" prefHeight="105" prefWidth="800" style="-fx-background-color: #264653;" styleClass="header">
-            <children>
-                <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistikat e Nxënësve" >
-                    <font>
-                        <Font name="Arial" size="36.0" />
-                    </font>
-                </Text>
-                <ImageView fitHeight="63" fitWidth="63" layoutX="41" layoutY="21" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/ikona.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </AnchorPane>
+    <!-- MenuBar -->
+    <MenuBar VBox.vgrow="NEVER">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem text="New" />
+                    <MenuItem text="Open…" />
+                    <MenuItem text="Save" />
+                    <MenuItem text="Quit" />
+                </items>
+            </Menu>
+            <Menu text="Help">
+                <items>
+                    <MenuItem text="About" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
 
-        <!-- HBox për dy grafiqet me përshkrimet -->
-        <HBox spacing="40" layoutX="50" layoutY="130" prefWidth="700" prefHeight="340" style="-fx-padding: 10;">
-            <children>
-                <!-- VBox për grafikun sipas klasave -->
-                <VBox spacing="8" alignment="CENTER">
-                    <LineChart fx:id="lineChartKlasa" prefWidth="320" prefHeight="300" style="-fx-background-color: white;">
-                        <xAxis>
-                            <CategoryAxis label="Klasa"/>
-                        </xAxis>
-                        <yAxis>
-                            <NumberAxis label="Numri i Nxënësve"/>
-                        </yAxis>
-                    </LineChart>
-                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: white;">
-                        Statistika e nxënësve sipas klasave ekzistuese në shkollë.
-                    </Text>
-                </VBox>
+    <!-- Header / Navbar -->
+    <AnchorPane prefHeight="80.0" style="-fx-background-color: #264653;">
+        <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="20.0" layoutY="15.0" preserveRatio="true">
+                <image>
+                    <Image url="@../images/ikona.png" />
+                </image>
+            </ImageView>
+            <Label layoutX="80.0" layoutY="20.0" text="EduMetrics" textFill="WHITE">
+                <font>
+                    <Font name="Colonna MT" size="32.0" />
+                </font>
+            </Label>
+            <MenuButton fx:id="menuLanguage" layoutX="680.0" layoutY="20.0" prefWidth="100.0" text="%txtLang">
+                <items>
+                    <MenuItem fx:id="menuAL" text="ALB" />
+                    <MenuItem fx:id="menuEN" text="ENG" />
+                </items>
+            </MenuButton>
+        </children>
+    </AnchorPane>
+    <VBox alignment="TOP_RIGHT" prefHeight="420.0" prefWidth="800.0" spacing="10.0" style="-fx-background-color:linear-gradient(to right, #2e728d,#264653); -fx-padding: 10;">
 
-                <!-- VBox për grafikun sipas gjinise -->
-                <VBox spacing="8" alignment="CENTER">
-                    <LineChart fx:id="lineChartGjinia" prefWidth="320" prefHeight="300" style="-fx-background-color: white;">
-                        <xAxis>
-                            <CategoryAxis label="Gjinia"/>
-                        </xAxis>
-                        <yAxis>
-                            <NumberAxis label="Numri i Nxënësve"/>
-                        </yAxis>
-                    </LineChart>
-                    <Text wrappingWidth="320" style="-fx-font-size: 14px; -fx-fill: white;">
-                        Shpërndarja e nxënësve sipas gjinive Mashkull dhe Femër.
-                    </Text>
-                </VBox>
-                <fx:include source="globalView.fxml" />
-            </children>
+        <!-- Butoni Rifresko -->
+        <Button fx:id="btnRifresko" text="Rifresko" prefWidth="100" style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#onBtnRifreskoClicked" />
+
+        <!-- Grafik -->
+        <BarChart fx:id="barChart"
+                  legendSide="RIGHT"
+                  prefHeight="250.0" prefWidth="760.0"
+                  title="Nota sipas Gjinive"
+                  style="-fx-title-text-fill: white;">
+            <xAxis>
+                <CategoryAxis label="Nota" style="-fx-tick-label-font-size: 10px; -fx-label-fill: white; -fx-tick-label-fill: white;" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Numri i Studentëve"
+                            style="-fx-label-fill: white; -fx-tick-label-fill: white;" />
+            </yAxis>
+        </BarChart>
+
+        <!-- Statistikat në rresht horizontal -->
+        <HBox spacing="15" alignment="CENTER" prefWidth="760.0" style="-fx-padding: 20 0 0 20;">
+
+
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                <Label fx:id="lblTotalNxenesit" style="-fx-font-size: 32px; -fx-text-fill: orange; -fx-font-weight: bold;" text="0" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="Numri i nxenesve" />
+            </VBox>
+
+
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                <Label fx:id="lblMesatare" style="-fx-font-size: 32px; -fx-text-fill: orange; -fx-font-weight: bold;" text="0" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="Nota mesatare" />
+            </VBox>
+
+
+
         </HBox>
-    </children>
-</AnchorPane>
+
+    </VBox>
 
 
 
 
-
-
+</VBox>

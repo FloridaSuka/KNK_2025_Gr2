@@ -76,6 +76,82 @@ public class NotatRepository {
 
         return lista;
     }
+    public int numriNotavePerGjinineDheNoten(int nota, String gjinia) {
+        String sql = "SELECT COUNT(*) AS total " +
+                "FROM notat n " +
+                "JOIN nxenesit nx ON n.nxenesi_id = nx.id " +
+                "WHERE n.nota_pare = ? AND nx.gjinia = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, nota);
+            stmt.setString(2, gjinia);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public int numriNxenesvePerMesuesin(int mesuesiId) {
+        String sql = "SELECT COUNT(DISTINCT nxenesi_id) AS total " +
+                "FROM notat " +
+                "WHERE mesuesi_id = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, mesuesiId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    // Shembull metode që merr notat nga DB sipas mesuesiId (implementimi mund ndryshojë)
+    private List<Integer> getNotatByMesuesiId(int mesuesiId) {
+        List<Integer> notat = new ArrayList<>();
+        String sql = "SELECT nota_pare FROM notat WHERE mesuesi_id = ?";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, mesuesiId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int notaPare = rs.getInt("nota_pare");
+                if (notaPare > 0) {  // opsionale, nëse do të anashkalosh nota 0 ose negative
+                    notat.add(notaPare);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return notat;
+    }
+
+    public double mesatarjaNotavePerMesuesin(int mesuesiId) {
+        List<Integer> notat = getNotatByMesuesiId(mesuesiId);
+        if (notat.isEmpty()) return 0;
+
+        int total = 0;
+        for (int n : notat) total += n;
+
+        return (double) total / notat.size();
+    }
+
+
 
 
 

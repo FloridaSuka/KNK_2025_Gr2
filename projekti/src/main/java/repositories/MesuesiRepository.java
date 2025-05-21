@@ -95,6 +95,22 @@ public class MesuesiRepository {
 
         return lista;
     }
+    public int getMesuesiIdByEmail(String email) {
+        String sql = "SELECT id FROM mesuesi WHERE email = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }
 
 

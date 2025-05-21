@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2f6790e-0925-4a86-9dec-4ea03091de35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/Mungesat.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/StatistikatMesuesiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/controllers/MesuesiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/MesuesiRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/MesuesiRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/repositories/NotatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/repositories/NotatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/java/utils/SceneLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/mesuesiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/mesuesiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/src/main/resources/views/statistikaMesuesi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/src/main/resources/views/statistikaMesuesi.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/menaxhimiShkolles.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/menaxhimiShkolles.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/mesuesiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/mesuesiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/nxenesitView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/nxenesitView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekti/target/classes/views/statistikaMesuesi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projekti/target/classes/views/statistikaMesuesi.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +33,45 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IlluminatedCloudWorkspaceSettings">
+    <option name="projectWorkspaceSettings">
+      <ProjectWorkspaceSettings>
+        <option name="anonymousApexSettings">
+          <AnonymousApexSettings>
+            <option name="savedDocuments">
+              <list>
+                <AnonymousApexSavedDocument>
+                  <option name="name" value="Anonymous Apex 1" />
+                </AnonymousApexSavedDocument>
+              </list>
+            </option>
+          </AnonymousApexSettings>
+        </option>
+        <option name="soqlQuerySettings">
+          <SoqlQuerySettings>
+            <option name="savedDocuments">
+              <list>
+                <SoqlQuerySavedDocument>
+                  <option name="name" value="SOQL Query 1" />
+                </SoqlQuerySavedDocument>
+              </list>
+            </option>
+          </SoqlQuerySettings>
+        </option>
+        <option name="soslQuerySettings">
+          <SoslQuerySettings>
+            <option name="savedDocuments">
+              <list>
+                <SoslQuerySavedDocument>
+                  <option name="name" value="SOSL Query 1" />
+                </SoslQuerySavedDocument>
+              </list>
+            </option>
+          </SoslQuerySettings>
+        </option>
+      </ProjectWorkspaceSettings>
+    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -99,6 +148,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

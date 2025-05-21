@@ -34,6 +34,10 @@ public class MesuesiController {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.ABSENCES_PAGE);
     }
     @FXML
+    private void onOpenStatisticsTeacher(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.TEACHER_STATISTICS_PAGE);
+    }
+    @FXML
     private void handleLogout(ActionEvent event) {
         SceneNavigator.logout((Node) event.getSource());
     }
@@ -42,5 +46,6 @@ public class MesuesiController {
     private void onOpenSettings(ActionEvent event) {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SETTINGS_PAGE);
     }
+
 
 }

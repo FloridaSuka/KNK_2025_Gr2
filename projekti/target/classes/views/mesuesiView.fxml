@@ -99,7 +99,7 @@
                     </graphic>
                 </Button>
 
-                <Button fx:id="btnStatistikat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%btnStatistikat">
+                <Button fx:id="btnStatistikat" contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="524.0" layoutY="145.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%btnStatistikat" onAction="#onOpenStatisticsTeacher">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
