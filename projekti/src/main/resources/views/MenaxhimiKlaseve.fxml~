@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ListView?>
 <VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiKlaseveController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
@@ -118,6 +119,8 @@
                                 <Label layoutX="83.0" layoutY="243.0" text="%drejtimi" AnchorPane.rightAnchor="231.0" />
                                 <TextField fx:id="txtDrejtimi" layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
                                 <Button layoutX="251.0" layoutY="286.0" onAction="#shtoKlasa" prefHeight="25.0" prefWidth="82.0" text="%_shto" />
+
+
                             </children>
                         </AnchorPane>
                     </children>

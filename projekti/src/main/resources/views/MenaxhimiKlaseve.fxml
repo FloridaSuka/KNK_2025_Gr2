@@ -119,8 +119,17 @@
                                 <Label layoutX="83.0" layoutY="243.0" text="%drejtimi" AnchorPane.rightAnchor="231.0" />
                                 <TextField fx:id="txtDrejtimi" layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
                                 <Button layoutX="251.0" layoutY="286.0" onAction="#shtoKlasa" prefHeight="25.0" prefWidth="82.0" text="%_shto" />
-                                <ListView fx:id="raportiKlasave" layoutX="14.0" layoutY="370.0" prefHeight="120.0" prefWidth="770.0" />
 
+                                <TableView fx:id="tabelaKlasave">
+                                    <columns>
+                                        <TableColumn fx:id="colId" text="ID" />
+                                        <TableColumn fx:id="colNiveli" text="Niveli" />
+                                        <TableColumn fx:id="colShkolla" text="Shkolla" />
+                                        <TableColumn fx:id="colParalelja" text="Paralelja" />
+                                        <TableColumn fx:id="colMesuesi" text="Mesuesi" />
+                                        <TableColumn fx:id="colDrejtimi" text="Drejtimi" />
+                                    </columns>
+                                </TableView>
                             </children>
                         </AnchorPane>
                     </children>

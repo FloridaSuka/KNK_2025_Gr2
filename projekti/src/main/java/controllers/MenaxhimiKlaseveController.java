@@ -1,7 +1,11 @@
 package controllers;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import models.Klasa;
 import models.dto.create.CreateKlasa;
 import services.KlasaService;
@@ -14,7 +18,7 @@ public class MenaxhimiKlaseveController {
 
     @FXML
     private TextField txtNiveli, txtShkolla ,txtParalelja, txtProfesori, txtDrejtimi, txtId;
-    @FXML private ListView<String> raportiKlasave;
+
 
     @FXML
     private Button btnShto;
@@ -27,8 +31,25 @@ public class MenaxhimiKlaseveController {
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.CLASS_MANAGEMENT_PAGE);
-        mbushRaportin();
+
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colNiveli.setCellValueFactory(new PropertyValueFactory<>("niveli"));
+        colShkolla.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShkolla().getEmri()));
+        colParalelja.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getParalelja().getEmri()));
+        colMesuesi.setCellValueFactory(cellData -> new SimpleStringProperty(
+                cellData.getValue().getMesuesi().getEmri() + " " + cellData.getValue().getMesuesi().getMbiemri()));
+        colDrejtimi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDrejtimi().getEmri()));
+
+        mbushTabelen();
     }
+    @FXML private TableView<Klasa> tabelaKlasave;
+    @FXML private TableColumn<Klasa, Integer> colId;
+    @FXML private TableColumn<Klasa, Integer> colNiveli;
+    @FXML private TableColumn<Klasa, String> colShkolla;
+    @FXML private TableColumn<Klasa, String> colParalelja;
+    @FXML private TableColumn<Klasa, String> colMesuesi;
+    @FXML private TableColumn<Klasa, String> colDrejtimi;
+
 
     @FXML
     private void shtoKlasa() {
@@ -43,12 +64,13 @@ public class MenaxhimiKlaseveController {
         );
 
         if (klasaService.shtoKlasa(klasa)) {
-            raportiKlasave.getItems().add(" Shtuar " );
 
 
-            mbushRaportin();
+
+
+            mbushTabelen();
+
         } else {
-            raportiKlasave.getItems().add(" Deshtoj " );
 
 
         }
@@ -61,13 +83,10 @@ public class MenaxhimiKlaseveController {
     }
 
 
-    @FXML
-    private void mbushRaportin() {
-        raportiKlasave.getItems().clear();
+    private void mbushTabelen() {
         List<Klasa> klasat = klasaService.gjejTeGjitha();
-        for (Klasa klasa : klasat) {
-            raportiKlasave.getItems().add(klasa.toReportLine());
-        }
+        ObservableList<Klasa> listaObservable = FXCollections.observableArrayList(klasat);
+        tabelaKlasave.setItems(listaObservable);
     }
 
 
