@@ -124,6 +124,16 @@
                     </children>
                 </AnchorPane>
                 <fx:include source="globalView.fxml" />
+                <TableView fx:id="tabelaMungesat">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" />
+                        <TableColumn fx:id="colStudentId" text="Student ID" />
+                        <TableColumn fx:id="colLendaId" text="Lënda" />
+                        <TableColumn fx:id="colPeriodaId" text="Perioda" />
+                        <TableColumn fx:id="colData" text="Data" />
+                        <TableColumn fx:id="colArsyeja" text="Arsyeja" />
+                    </columns>
+                </TableView>
 
 
             </children>

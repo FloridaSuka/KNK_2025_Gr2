@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import models.Mungesa;
 import repositories.*;
 import services.MungesaService;
@@ -31,6 +32,13 @@ public class MungesaController {
     private final NxenesitRepository nxenesiRepo = new NxenesitRepository();
     private final LendaRepository lendaRepo = new LendaRepository();
     private final PeriodaRepository periodaRepo = new PeriodaRepository();
+    @FXML private TableView<Mungesa> tabelaMungesat;
+    @FXML private TableColumn<Mungesa, Integer> colId;
+    @FXML private TableColumn<Mungesa, Integer> colStudentId;
+    @FXML private TableColumn<Mungesa, Integer> colLendaId;
+    @FXML private TableColumn<Mungesa, Integer> colPeriodaId;
+    @FXML private TableColumn<Mungesa, Date> colData;
+    @FXML private TableColumn<Mungesa, String> colArsyeja;
 
     @FXML
     private Label lblStatus;
@@ -44,28 +52,26 @@ public class MungesaController {
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ABSENCES_PAGE);
         mbushRaportinMungesave();
-        raportiMungesave.setCellFactory(list -> new ListCell<>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                } else {
-                    setText(item);
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colLendaId.setCellValueFactory(new PropertyValueFactory<>("lendaId"));
+        colPeriodaId.setCellValueFactory(new PropertyValueFactory<>("periodaId"));
+        colData.setCellValueFactory(new PropertyValueFactory<>("dataMungeses"));
+        colArsyeja.setCellValueFactory(new PropertyValueFactory<>("arsyeja"));
 
-                    // Ngjyra sipas arsyes
-                    if (item.toLowerCase().contains("sëmurë")) {
-                        setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
-                    } else if (item.toLowerCase().contains("justifikuar")) {
-                        setStyle("-fx-text-fill: green;");
-                    } else {
-                        setStyle("-fx-text-fill: black;");
-                    }
-                }
-            }
-        });
+        mbushTabelaMungesave(); // e thirr metoda e mbushjes
+
 
     }
+
+    private void mbushTabelaMungesave() {
+
+            List<Mungesa> lista = mungesaRepo.gjejTeGjithaMungesat();
+            tabelaMungesat.getItems().clear();
+            tabelaMungesat.getItems().addAll(lista);
+        }
+
+
 
     @FXML
     private void shtoMungese() {
@@ -86,7 +92,8 @@ public class MungesaController {
 
         if (success) {
             shfaqAlert("Sukses", "Mungesa u ruajt", "Të dhënat u ruajtën me sukses.", Alert.AlertType.INFORMATION);
-            mbushRaportinMungesave();
+            mbushTabelaMungesave();
+
         } else {
             shfaqAlert("Gabim", "Dështoi ruajtja", "Nuk u arrit të ruhet mungesa.", Alert.AlertType.ERROR);
         }
@@ -113,7 +120,8 @@ public class MungesaController {
 
         if (success) {
             shfaqAlert("Sukses", "U përditësua", "Të dhënat u përditësuan me sukses.", Alert.AlertType.INFORMATION);
-            mbushRaportinMungesave();
+            mbushTabelaMungesave();
+
         } else {
             shfaqAlert("Gabim", "Dështoi përditësimi", "Nuk u arrit të përditësohen të dhënat.", Alert.AlertType.ERROR);
         }
@@ -131,7 +139,8 @@ public class MungesaController {
 
         if (success) {
             lblStatus.setText("Mungesa u ruajt me sukses më: " + java.time.LocalDateTime.now());
-            mbushRaportinMungesave();
+            mbushTabelaMungesave();
+
         } else {
             lblStatus.setText(" Dështoi ruajtja e mungesës.");
         }
@@ -151,14 +160,7 @@ public class MungesaController {
             raportiMungesave.getItems().add(m.toString());
         }
     }
-    @FXML
-    private void mbushRaportin() {
-        raportiMungesave.getItems().clear();
-        for (Mungesa m : MungesaService.gjejTeGjithaMungesat()) {
-            raportiMungesave.getItems().add(m.toString());
-        }
 
-    }
 
 
 
