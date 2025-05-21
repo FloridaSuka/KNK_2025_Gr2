@@ -90,7 +90,7 @@
                      <children>
                         <Label layoutX="128.0" layoutY="73.0" text="%shkollaId" AnchorPane.rightAnchor="223.99999999999997" />
                         <TextField fx:id="txtIdShkolla" layoutX="213.0" layoutY="70.0" AnchorPane.rightAnchor="46.99999999999994" />
-                        <Label layoutX="75.0" layoutY="103.0" text="\%addUserLabelName" AnchorPane.rightAnchor="220.33333333333331" />
+                        <Label layoutX="75.0" layoutY="103.0" text="%addUserLabelName" AnchorPane.rightAnchor="220.33333333333331" />
                         <TextField fx:id="txtEmri" layoutX="213.0" layoutY="100.0" AnchorPane.rightAnchor="46.99999999999994" />
                         <Label layoutX="82.0" layoutY="163.0" text="%drejtorTel" AnchorPane.rightAnchor="266.0" />
                         <TextField fx:id="txtTel" layoutX="213.0" layoutY="160.0" AnchorPane.rightAnchor="46.99999999999994" />
@@ -105,7 +105,7 @@
                         <TextField fx:id="txtEmail" layoutX="213.0" layoutY="190.0" />
                         <Label layoutX="90.0" layoutY="223.0" text="%adresa" />
                         <TextField fx:id="txtAdresa" layoutX="213.0" layoutY="220.0" />
-                        <Label layoutX="82.0" layoutY="254.0" text="Zip" />
+                        <Label layoutX="82.0" layoutY="254.0" text="%zip" />
                         <TextField fx:id="txtzip" layoutX="213.0" layoutY="250.0" />
 
                      </children>
