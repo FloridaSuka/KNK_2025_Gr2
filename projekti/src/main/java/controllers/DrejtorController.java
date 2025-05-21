@@ -35,6 +35,10 @@ public class DrejtorController {
     private void handleTeacher(ActionEvent event) {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.TEACHER_MANAGEMENT_PAGE);
     }
+    @FXML
+    private void handlePrincipalStatistics(ActionEvent event){
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.PRINCIPAL_STATISTICS_PAGE);
+    }
 
     @FXML
     private void handleSubject(ActionEvent event) {
