@@ -61,9 +61,8 @@ public class DrejtoriRepository {
             params.add(d.getShkollaId());
         }
 
-        if (params.isEmpty()) return false; // s'ka asgjë për përditësim
+        if (params.isEmpty()) return false;
 
-        // Hiq presjen e fundit dhe shto WHERE
         sql.setLength(sql.length() - 2);
         sql.append(" WHERE id = ?");
         params.add(d.getId());
@@ -90,11 +89,8 @@ public class DrejtoriRepository {
 
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, id);
-
             return stmt.executeUpdate() > 0;
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

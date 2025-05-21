@@ -2,26 +2,13 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
-import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import utils.LanguageHandler;
 import utils.SceneLocator;
 import utils.SceneNavigator;
 
-import java.io.IOException;
-import java.net.URL;
-
-import static utils.SceneLocator.CLASS_MANAGEMENT_PAGE;
-
 public class DrejtorController {
-
-
-
     //PJESA E GJUHES
     @FXML
     private MenuButton menuLanguage;
