@@ -73,25 +73,17 @@
                     <children>
                         <AnchorPane layoutY="-1.0">
                             <children>
-                                <TableView blendMode="SRC_ATOP" cache="true" layoutX="14.0" prefHeight="313.0" prefWidth="423.0" scaleShape="false" styleClass="tabela" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="0.0">
+                                <TableView fx:id="tabelaKlasave">
                                     <columns>
-<!--                                        private int id;-->
-<!--                                        private int niveli;-->
-<!--                                        private int shkollaId;-->
-<!--                                        private int paraleljaId;-->
-<!--                                        private int profesoriId;-->
-<!--                                        private int drejtimiId;-->
-                                        <TableColumn prefWidth="76.66662883758545" style="-fx-background-color: #264653;;" styleClass="column-header" text="%klasaId" />
-                                        <TableColumn prefWidth="94.00005340576172" style="-fx-background-color: #264653;;" styleClass="column-header" text="%klasa" />
-                                        <TableColumn prefWidth="82.00003051757812" style="-fx-background-color: #264653;;" styleClass="column-header" text="%paraleljaId" />
-                                        <TableColumn prefWidth="98.66664123535156" style="-fx-background-color: #264653;;" styleClass="column-header" text="%mesuesId" />
-                                        <TableColumn prefWidth="68.0" style="-fx-background-color: #264653;;" styleClass="column-header" text="%drejtimiId" />
+                                        <TableColumn fx:id="colId" text="ID" />
+                                        <TableColumn fx:id="colNiveli" text="Niveli" />
+                                        <TableColumn fx:id="colParalelja" text="Paralelja" />
+                                        <TableColumn fx:id="colMesuesi" text="Mesuesi" />
+                                        <TableColumn fx:id="colDrejtimi" text="Drejtimi" />
                                         <TableColumn fx:id="colShkolla" text="Shkolla" />
                                     </columns>
-                                    <columnResizePolicy>
-                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                    </columnResizePolicy>
                                 </TableView>
+
                             </children>
                         </AnchorPane>
                         <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="336.0" prefWidth="410.0">
