@@ -67,7 +67,7 @@ public class MenaxhimiDrejtoreveController {
 
         DrejtoriRepository drejtoriRepo = new DrejtoriRepository();
         boolean success = drejtoriRepo.shtoDrejtor(d);
-        mbushTabelen();
+
         showAlert(success, "Shtim", "Drejtori u shtua me sukses!", "Shtimi dështoi.");
     }
 
@@ -96,9 +96,7 @@ public class MenaxhimiDrejtoreveController {
                 txtIdShkolla.getText().isBlank() ? 0 : Integer.parseInt(txtIdShkolla.getText())
         );
 
-
         boolean success = drejtoriRepo.perditesoDrejtor(d);
-        mbushTabelen();
         showAlert(success, "Përditësim", "Drejtori u përditësua me sukses!", "Përditësimi dështoi.");
     }
 
@@ -107,7 +105,6 @@ public class MenaxhimiDrejtoreveController {
     private void fshijDrejtor() {
         int id = Integer.parseInt(txtId.getText());
         boolean success = drejtoriRepo.fshijDrejtor(id);
-        mbushTabelen();
         showAlert(success, "Fshirje", "Drejtori u fshi me sukses!", "Fshirja dështoi.");
     }
     private void showAlert(boolean success, String title, String msgSuccess, String msgFail) {
