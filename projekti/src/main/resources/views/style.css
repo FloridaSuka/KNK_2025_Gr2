@@ -1,6 +1,11 @@
 .login{
        -fx-background-color:linear-gradient(to right, #2e728d,#264653);
 
+
+}
+.chart-pie-label {
+    -fx-fill: white;
+    -fx-font-weight: bold;
 }
 
 .login-form {

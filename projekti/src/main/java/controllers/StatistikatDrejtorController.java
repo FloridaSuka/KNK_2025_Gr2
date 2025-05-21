@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,23 +17,32 @@ import repositories.NxenesitRepository;
 public class StatistikatDrejtorController {
 
     @FXML
-    private PieChart outerPieChart;  // Për notat
+    private PieChart outerPieChart;
 
     @FXML
-    private PieChart innerPieChart;  // Për mungesat
+    private PieChart innerPieChart;
 
     @FXML
     private Button btnRifresko;
 
+    @FXML
+    private Label lblTotalNxenesit;
+
+    @FXML
+    private Label lblMesuesit;
+
+    @FXML
+    private Label lblMungesat;
+
     private final NotatRepository notatRepo = new NotatRepository();
-    private final MungesatRepository repo = new MungesatRepository();
+    private final MungesatRepository mungesatRepo = new MungesatRepository();
+    private final MesuesiRepository mesuesitRepo = new MesuesiRepository();
+    private final NxenesitRepository nxenesitRepo = new NxenesitRepository();
 
     @FXML
     public void initialize() {
         ngarkoGrafiket();
         btnRifresko.setOnAction(e -> ngarkoGrafiket());
-        int total = nxenesitRepo.merrNumrinENxenesve();
-        lblTotalNxenesit.setText(String.valueOf(total));
     }
 
     private void ngarkoGrafiket() {
@@ -48,10 +58,10 @@ public class StatistikatDrejtorController {
         outerPieChart.setLabelsVisible(true);
         outerPieChart.setLegendVisible(false);
 
-        // ------------------------- MUNGESAT me NORMALIZIM -------------------------
+        // ------------------------- MUNGESAT -------------------------
         ObservableList<PieChart.Data> mungesat = FXCollections.observableArrayList(
-                new PieChart.Data("Meshkuj", repo.numriMungesavePerGjinine("M")),
-                new PieChart.Data("Femra", repo.numriMungesavePerGjinine("F"))
+                new PieChart.Data("Mungesat-Meshkuj", mungesatRepo.numriMungesavePerGjinine("M")),
+                new PieChart.Data("Mungesat-Femra", mungesatRepo.numriMungesavePerGjinine("F"))
         );
 
         ObservableList<PieChart.Data> mungesatNormalizuara = normalizo(mungesat);
@@ -59,20 +69,26 @@ public class StatistikatDrejtorController {
         innerPieChart.setLabelsVisible(true);
         innerPieChart.setLegendVisible(false);
 
-        // ------------------------- NGJYRAT + TOOLTIP -------------------------
+        // ------------------------- VLERAT -------------------------
+        int nxenesat = nxenesitRepo.merrNumrinENxenesve();
+        lblTotalNxenesit.setText(String.valueOf(nxenesat));
+
+        int mesueset = mesuesitRepo.merrNumrinEMesuesve();
+        lblMesuesit.setText(String.valueOf(mesueset));
+
+        int nrMungesat = mungesatRepo.numriMungesavePerGjinine("M") + mungesatRepo.numriMungesavePerGjinine("F");
+        lblMungesat.setText(String.valueOf(nrMungesat));
+
+        // ------------------------- STILIZIM + TOOLTIP -------------------------
         Platform.runLater(() -> {
             setPieColors(notat, new String[]{"#2980b9", "#27ae60", "#f1c40f", "#e67e22", "#c0392b"});
             setPieColors(mungesatNormalizuara, new String[]{"#1abc9c", "#e74c3c"});
 
             vendosTooltip(notat);
             vendosTooltip(mungesatNormalizuara);
+
+
         });
-        int nxenesat = nxenesitRepo.merrNumrinENxenesve();
-        lblTotalNxenesit.setText(String.valueOf(nxenesat));
-        int mesueset = mesuesitRepo.merrNumrinEMesuesve();
-        lblMesuesit.setText(String.valueOf(mesueset));
-        int nrMungesat = mungesatRepo.numriMungesavePerGjinine("M")+mungesatRepo.numriMungesavePerGjinine("F");
-        lblMungesat.setText(String.valueOf(nrMungesat));
     }
 
     private ObservableList<PieChart.Data> normalizo(ObservableList<PieChart.Data> lista) {
@@ -85,39 +101,26 @@ public class StatistikatDrejtorController {
         return normalizuar;
     }
 
-    private void setPieColors(ObservableList<PieChart.Data> dataList, String[] colors) {
-        for (int i = 0; i < dataList.size(); i++) {
-            final PieChart.Data data = dataList.get(i);
+    private void setPieColors(ObservableList<PieChart.Data> data, String[] colors) {
+        for (int i = 0; i < data.size(); i++) {
+            final PieChart.Data d = data.get(i);
             final String color = colors[i % colors.length];
-            if (data.getNode() != null) {
-                data.getNode().setStyle("-fx-pie-color: " + color + ";");
-            }
+            d.nodeProperty().addListener((obs, oldNode, newNode) -> {
+                if (newNode != null) {
+                    newNode.setStyle("-fx-pie-color: " + color + ";");
+                }
+            });
         }
     }
 
-    private void vendosTooltip(ObservableList<PieChart.Data> dataList) {
-        for (PieChart.Data data : dataList) {
-            Tooltip tooltip = new Tooltip(
-                    data.getName() + ": " + String.format("%.2f", data.getPieValue()) + "%"
-            );
-            Tooltip.install(data.getNode(), tooltip);
+    private void vendosTooltip(ObservableList<PieChart.Data> data) {
+        for (PieChart.Data d : data) {
+            Tooltip tooltip = new Tooltip(d.getName() + ": " + String.format("%.1f", d.getPieValue()) + "%");
+            Tooltip.install(d.getNode(), tooltip);
         }
     }
-    @FXML
-    private Label lblTotalNxenesit;
-
-    private final NxenesitRepository nxenesitRepo = new NxenesitRepository();
-
-
-    @FXML
-    private Label lblMesuesit;
-
-    private final MesuesiRepository mesuesitRepo = new MesuesiRepository();
-
-    @FXML
-    private Label lblMungesat;
-    private final MungesatRepository mungesatRepo = new MungesatRepository();
 
 
 }
+
 
