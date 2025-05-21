@@ -1,20 +1,14 @@
 package controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import models.Drejtor;
 import repositories.AdresaRepository;
 import repositories.DrejtoriRepository;
-import services.DrejtoriService;
 import utils.LanguageHandler;
 import utils.MenuUtils;
 import utils.SceneLocator;
-
-import java.util.List;
 
 import static utils.ZipUtils.gjejQytetinNgaZip;
 
@@ -39,7 +33,6 @@ public class MenaxhimiDrejtoreveController {
 
     private final DrejtoriRepository drejtoriRepo = new DrejtoriRepository();
     private final AdresaRepository adresaRepo = new AdresaRepository();
-    private final DrejtoriService drejtoriService = new DrejtoriService();
     @FXML
     private MenuButton menuLanguage;
 
@@ -134,7 +127,6 @@ public class MenaxhimiDrejtoreveController {
 
         DrejtoriRepository drejtoriRepo = new DrejtoriRepository();
         boolean success = drejtoriRepo.shtoDrejtor(d);
-        mbushTabelen();
         showAlert(success, "Shtim", "Drejtori u shtua me sukses!", "Shtimi dështoi.");
     }
 
@@ -165,7 +157,6 @@ public class MenaxhimiDrejtoreveController {
 
 
         boolean success = drejtoriRepo.perditesoDrejtor(d);
-        mbushTabelen();
         showAlert(success, "Përditësim", "Drejtori u përditësua me sukses!", "Përditësimi dështoi.");
     }
 
@@ -174,7 +165,6 @@ public class MenaxhimiDrejtoreveController {
     private void fshijDrejtor() {
         int id = Integer.parseInt(txtId.getText());
         boolean success = drejtoriRepo.fshijDrejtor(id);
-        mbushTabelen();
         showAlert(success, "Fshirje", "Drejtori u fshi me sukses!", "Fshirja dështoi.");
     }
     private void showAlert(boolean success, String title, String msgSuccess, String msgFail) {
@@ -183,13 +173,6 @@ public class MenaxhimiDrejtoreveController {
         alert.setContentText(success ? msgSuccess : msgFail);
         alert.showAndWait();
     }
-    @FXML
-    public void mbushTabelen() {
-        List<Drejtor> lista = drejtoriService.gjejTeGjithe();
-        ObservableList<Drejtor> observableList = FXCollections.observableArrayList(lista);
-        tabelaDrejtor.setItems(observableList);
-    }
-
 
 
 }

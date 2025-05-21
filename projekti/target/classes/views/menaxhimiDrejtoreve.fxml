@@ -59,41 +59,28 @@
             <AnchorPane layoutY="164.0">
                <children>
                   <AnchorPane layoutY="-1.0">
-                     <children>
-                        <TableView blendMode="SRC_ATOP" cache="true" layoutX="14.0" prefHeight="313.0" prefWidth="423.0" scaleShape="false" styleClass="tabela" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="0.0">
-                           <columns>
-                              <TableColumn prefWidth="107.99999713897705" style="-fx-background-color: #264653;;" styleClass="column-header" text="%drejtorId" />
-                              <TableColumn prefWidth="80.66668701171875" style="-fx-background-color: #264653;;" styleClass="column-header" text="%drejtorEmri" />
-                              <TableColumn prefWidth="98.66664123535156" style="-fx-background-color: #264653;;" styleClass="column-header" text="%drejtorMbiemri" />
-                              <TableColumn prefWidth="122.66668701171875" style="-fx-background-color: #264653;;" styleClass="column-header" text="%_school.button" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                     </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="385.0" layoutY="-47.0" prefHeight="382.0" prefWidth="409.0">
+                  <AnchorPane layoutX="148.0" layoutY="-47.0" prefHeight="382.0" prefWidth="646.0">
                      <children>
-                        <Label layoutX="128.0" layoutY="73.0" text="%shkollaId" AnchorPane.rightAnchor="223.99999999999997" />
-                        <TextField fx:id="txtIdShkolla" layoutX="213.0" layoutY="70.0" AnchorPane.rightAnchor="46.99999999999994" />
-                        <Label layoutX="128.0" layoutY="103.0" text="%addUserLabelName" AnchorPane.rightAnchor="220.33333333333331" />
-                        <TextField fx:id="txtEmri" layoutX="213.0" layoutY="100.0" AnchorPane.rightAnchor="46.99999999999994" />
-                        <Label layoutX="130.0" layoutY="163.0" text="%drejtorTel" AnchorPane.rightAnchor="266.0" />
-                        <TextField fx:id="txtTel" layoutX="213.0" layoutY="160.0" AnchorPane.rightAnchor="46.99999999999994" />
-                        <Button layoutX="81.0" layoutY="330.0" onAction="#fshijDrejtor" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="%_fshij" />
-                        <Button layoutX="157.0" layoutY="330.0" onAction="#perditesoDrejtor" prefHeight="25.0" prefWidth="63.0" text="%_perditso" />
-                        <Button layoutX="300.0" layoutY="330.0" onAction="#shtoDrejtor" prefHeight="25.0" prefWidth="63.0" text="%_shto" />
-                        <Label layoutX="129.0" layoutY="43.0" text="%drejtorId" />
-                        <TextField fx:id="txtId" layoutX="213.0" layoutY="40.0" />
-                        <Label layoutX="128.0" layoutY="133.0" text="%addUserLabelSurname" />
-                        <TextField fx:id="txtMbiemri" layoutX="213.0" layoutY="130.0" />
-                        <Label layoutX="128.0" layoutY="193.0" text="%addUserLabelEmail" />
-                        <TextField fx:id="txtEmail" layoutX="213.0" layoutY="190.0" />
-                        <Label layoutX="128.0" layoutY="223.0" text="%adresa" />
-                        <TextField fx:id="txtAdresa" layoutX="213.0" layoutY="220.0" />
-                        <Label layoutX="128.0" layoutY="254.0" text="%zip" />
-                        <TextField fx:id="txtzip" layoutX="213.0" layoutY="250.0" />
+                        <Label layoutX="61.0" layoutY="76.0" text="%shkollaId" AnchorPane.rightAnchor="527.6666666666666" />
+                        <TextField fx:id="txtIdShkolla" layoutX="213.0" layoutY="72.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="219.0" />
+                        <Label layoutX="8.0" layoutY="106.0" text="%addUserLabelName" AnchorPane.rightAnchor="524.0" />
+                        <TextField fx:id="txtEmri" layoutX="213.0" layoutY="102.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="219.0" />
+                        <Label layoutX="65.0" layoutY="165.0" text="%drejtorTel" AnchorPane.rightAnchor="519.6666666666666" />
+                        <TextField fx:id="txtTel" layoutX="213.0" layoutY="161.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="219.0" />
+                        <Button layoutX="492.0" layoutY="178.0" onAction="#fshijDrejtor" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: crimson;" text="%_fshij" />
+                        <Button layoutX="492.0" layoutY="211.0" onAction="#perditesoDrejtor" prefHeight="25.0" prefWidth="89.0" text="%_perditso" />
+                        <Button layoutX="492.0" layoutY="251.0" onAction="#shtoDrejtor" prefHeight="25.0" prefWidth="89.0" text="%_shto" />
+                        <Label layoutX="59.0" layoutY="44.0" text="%drejtorId" />
+                        <TextField fx:id="txtId" layoutX="213.0" layoutY="40.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="61.0" layoutY="134.0" text="%addUserLabelSurname" />
+                        <TextField fx:id="txtMbiemri" layoutX="213.0" layoutY="132.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="65.0" layoutY="194.0" text="%addUserLabelEmail" />
+                        <TextField fx:id="txtEmail" layoutX="214.0" layoutY="191.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="65.0" layoutY="224.0" text="%adresa" />
+                        <TextField fx:id="txtAdresa" layoutX="214.0" layoutY="221.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="65.0" layoutY="255.0" text="%zip" />
+                        <TextField fx:id="txtzip" layoutX="214.0" layoutY="251.0" prefHeight="25.0" prefWidth="214.0" />
 
                      </children>
                   </AnchorPane>

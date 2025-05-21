@@ -98,34 +98,6 @@ public class DrejtoriRepository {
 
         return false;
     }
-    public List<Drejtor> gjejTeGjithe() {
-        List<Drejtor> lista = new ArrayList<>();
-        String query = "SELECT * FROM drejtor";
-
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                Drejtor d = new Drejtor(
-                        rs.getInt("id"),
-                        rs.getString("emri"),
-                        rs.getString("mbiemri"),
-                        rs.getString("email"),
-                        rs.getString("tel"),
-                        rs.getInt("adresa_id"),
-                        rs.getInt("shkolla_id")
-                );
-                lista.add(d);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return lista;
-    }
-
 
 }
 
