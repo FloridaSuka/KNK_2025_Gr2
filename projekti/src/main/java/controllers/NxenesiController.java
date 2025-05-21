@@ -89,7 +89,10 @@ public class NxenesiController {
             alert.setContentText(content);
             alert.showAndWait();
         }
-
+@FXML
+private void onOpenMungesat(ActionEvent event) {
+    SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.MUNGESAT_PAGE);
+}
 
 }
 

@@ -96,7 +96,7 @@
                     </padding>
                 </Button>
 
-                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="250.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%btnMungesat">
+                <Button contentDisplay="TOP" ellipsisString="" graphicTextGap="20.0" layoutX="250.0" layoutY="204.0" maxHeight="150.0" maxWidth="150.0" prefHeight="150.0" prefWidth="150.0" text="%btnMungesat" onAction="#onOpenMungesat">
                     <graphic>
                         <ImageView fitHeight="38.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                             <image>
