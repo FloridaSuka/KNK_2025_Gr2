@@ -39,7 +39,7 @@
                     </Group>
                 </StackPane>
 
-
+                <fx:include source="globalView.fxml" />
             </children>
         </AnchorPane>
     </children>

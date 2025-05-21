@@ -114,6 +114,7 @@
                       </AnchorPane>
                   </children>
               </AnchorPane>
+              <fx:include source="globalView.fxml" />
           </children>
          <VBox.margin>
             <Insets />

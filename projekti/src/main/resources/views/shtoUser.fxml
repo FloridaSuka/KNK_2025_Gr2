@@ -112,6 +112,7 @@
             <RadioButton fx:id="radioNxenes" layoutX="642.0" layoutY="350.0" mnemonicParsing="false" text="%addUserRadioStudent" textFill="WHITE" />
 
             <Button layoutX="720.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="52.0" styleClass="button-close" text="%addUserButtonClose" textFill="#db1616" />
+            <fx:include source="globalView.fxml" />
          </children>
       </AnchorPane>
    </children>

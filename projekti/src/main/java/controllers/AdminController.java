@@ -33,4 +33,9 @@ public class AdminController {
     private void onOpenSchool(ActionEvent event) {
         SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.SCHOOL_MANAGEMENT_PAGE);
     }
+    @FXML
+    private void onOpenPrincipal(ActionEvent event) {
+        SceneNavigator.switchScene((Node) event.getSource(), SceneLocator.PRINCIPAL_MANAGEMENT_PAGE);
+
+    }
 }
