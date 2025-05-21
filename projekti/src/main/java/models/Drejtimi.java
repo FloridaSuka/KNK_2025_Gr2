@@ -68,4 +68,9 @@ public class Drejtimi {
                 ", Paralelja ID = " + paraleljaId +
                 '}';
     }
+    public Drejtimi(int id, String emri) {
+        this.id = id;
+        this.emri = emri;
+    }
+
 }

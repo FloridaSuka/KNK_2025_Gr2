@@ -95,12 +95,4 @@ public class Mesuesi {
                 ", Adresa = " + adresa +
                 '}';
     }
-    public Mesuesi(int id, String emri, String mbiemri, String email, String tel) {
-        this.id = id;
-        this.emri = emri;
-        this.mbiemri = mbiemri;
-        this.email = email;
-        this.tel = tel;
-    }
-
 }
