@@ -1,10 +1,13 @@
 package repositories;
 
 import database.DBConnector;
+import models.Nxenesit;
 import models.dto.create.CreateNxenesit;
 import models.dto.update.UpdateNxenesit;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NxenesitRepository {
 
@@ -97,6 +100,26 @@ public class NxenesitRepository {
 
         return count;
     }
+    public List<Nxenesit> gjejTeGjitheNxenesit() {
+        List<Nxenesit> lista = new ArrayList<>();
+        String query = "SELECT * FROM Nxenesit JOIN Adresa ON Nxenesit.adresa_id = Adresa.id";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Nxenesit nx = Nxenesit.fromResultSet(rs);
+                lista.add(nx);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
 
 
 
