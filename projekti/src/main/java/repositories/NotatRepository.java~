@@ -57,6 +57,30 @@ public class NotatRepository {
 
         return total;
     }
+    public List<Notat> gjejTeGjithaNotat() {
+        List<Notat> lista = new ArrayList<>();
+        String query = "SELECT * FROM Notat";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                while (rs.next()) {
+                    Notat n = Notat.fromResultSet(rs);
+                    lista.add(n);
+                }
 
 
-}
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
