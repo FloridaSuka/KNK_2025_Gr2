@@ -84,6 +84,6 @@ public class Lenda {
     }
 
     public int getIdLenda() {
-        return id;
+        return 0;
     }
 }

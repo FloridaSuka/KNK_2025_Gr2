@@ -23,6 +23,9 @@ public class Perioda {
         this.dataMbarimit = dataMbarimit;
     }
 
+    public Perioda(int periodaId, String periodaEmri) {
+    }
+
     public static Perioda fromResultSet(ResultSet result) throws SQLException {
         int id = result.getInt("id");
         String emri = result.getString("emri");
@@ -69,4 +72,5 @@ public class Perioda {
                 ", Data Mbarimit = " + dataMbarimit +
                 '}';
     }
+
 }
