@@ -100,20 +100,21 @@
                       <AnchorPane layoutX="384.0" layoutY="-47.0" prefHeight="382.0" prefWidth="410.0">
                           <children>
                               <Label layoutX="80.0" layoutY="124.0" text="Id shkolles:" AnchorPane.rightAnchor="271.33333333333337" />
-                              <TextField layoutX="215.0" layoutY="120.0" AnchorPane.rightAnchor="45.66666666666663" />
+                              <TextField fx:id="txtId" layoutX="215.0" layoutY="120.0" AnchorPane.rightAnchor="45.66666666666663" />
                               <Label layoutX="80.0" layoutY="193.0" text="Adresa e shkolles:" AnchorPane.rightAnchor="236.0" />
-                              <TextField layoutX="215.0" layoutY="189.0" AnchorPane.rightAnchor="45.66666666666663" />
+                              <TextField fx:id="txtAdresa" layoutX="215.0" layoutY="189.0" AnchorPane.rightAnchor="45.66666666666663" />
                               <Label layoutX="82.0" layoutY="226.0" text="Nr. telefonit:" AnchorPane.rightAnchor="262.0" />
-                              <TextField layoutX="215.0" layoutY="222.0" AnchorPane.rightAnchor="45.66666666666663" />
-                        <Button layoutX="83.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" />
-                              <Button layoutX="159.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" />
-                        <Button layoutX="302.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" />
+                              <TextField fx:id="txtTel" layoutX="215.0" layoutY="222.0" AnchorPane.rightAnchor="45.66666666666663" />
+                        <Button layoutX="83.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="_Fshij" onAction="#fshij"/>
+                              <Button layoutX="159.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Perditso" onAction="#perditeso"/>
+                        <Button layoutX="302.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="_Shto" onAction="#shto"/>
                         <Label layoutX="80.0" layoutY="158.0" text="Emri i shkolles:" />
-                        <TextField layoutX="215.0" layoutY="154.0" />
+                        <TextField fx:id="txtEmri" layoutX="215.0" layoutY="154.0" />
                           </children>
                       </AnchorPane>
                   </children>
               </AnchorPane>
+              <fx:include source="globalView.fxml" />
           </children>
          <VBox.margin>
             <Insets />

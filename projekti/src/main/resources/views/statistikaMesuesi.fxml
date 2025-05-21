@@ -66,6 +66,7 @@
                         Shpërndarja e nxënësve sipas gjinive Mashkull dhe Femër.
                     </Text>
                 </VBox>
+                <fx:include source="globalView.fxml" />
             </children>
         </HBox>
     </children>

@@ -1,133 +1,59 @@
 package controllers;
 
-import database.DBConnector;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import models.Shkolla;
-import models.Drejtor;
-import models.Adresa;
-import utils.LanguageHandler;
-import utils.SceneLocator;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import models.dto.create.CreateShkolla;
+import models.dto.update.UpdateShkolla;
+import repositories.BaseRepository;
+import repositories.ShkollaRepository;
 
 public class MenaxhimiShkollesController {
-//
-//    @FXML
-//    private TableView<Shkolla> tableSchools;
-//
-//    @FXML
-//    private TableColumn<?, ?> columnSchoolId;
-//
-//
-//    @FXML
-//    private TableColumn<Shkolla, String> columnSchoolName;
-//
-//    @FXML
-//    private TableColumn<Shkolla, String> columnPhone;
-//
-//    @FXML
-//    private TableColumn<Shkolla, String> columnAddress;
-//
-//    @FXML
-//    private TextField txtSchoolName, txtPhoneNumber;
-//    @FXML
-//    private TextField txtAddressStreet, txtAddressCity, txtAddressZip;
-//
-//    @FXML
-//    private TableView<Drejtor> tableDirectors;
-//
-//    @FXML
-//    private TableColumn<Drejtor, Integer> columnDirectorId;
-//
-//    @FXML
-//    private TableColumn<Drejtor, String> columnDirectorName;
-//
-//    @FXML
-//    private TableColumn<Drejtor, String> columnDirectorSurname;
-//
-//    @FXML
-//    private TableColumn<Drejtor, String> columnDirectorPhone;
-//
-//    @FXML
-//    private MenuButton menuLanguage;
-//
-//
-//    private ObservableList<Shkolla> schoolList = FXCollections.observableArrayList();
-//    private ObservableList<Drejtor> directorList = FXCollections.observableArrayList();
-//
-//    @FXML
-//    public void initialize() {
-//        // Columns for the School Table
-//        columnSchoolId.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        columnSchoolName.setCellValueFactory(new PropertyValueFactory<>("emri"));
-//        columnPhone.setCellValueFactory(new PropertyValueFactory<>("tel"));
-//        columnAddress.setCellValueFactory(new PropertyValueFactory<>("adresa"));
-//
-//        // Columns for the Director Table (Only partial data is shown)
-//        columnDirectorId.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        columnDirectorName.setCellValueFactory(new PropertyValueFactory<>("emri"));
-//        columnDirectorSurname.setCellValueFactory(new PropertyValueFactory<>("mbiemri"));
-//        columnDirectorPhone.setCellValueFactory(new PropertyValueFactory<>("tel"));
-//
-//        loadSchoolData();
-//        loadDirectorData();
-//
-//        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.SCHOOL_MANAGEMENT_PAGE);
-//
-//    }
-//
-//    private void loadSchoolData() {
-//        schoolList.clear();
-//        try (Connection conn = DBConnector.getConnection();
-//             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM shkolla");
-//             ResultSet rs = stmt.executeQuery()) {
-//
-//            while (rs.next()) {
-//                Shkolla shkolla = Shkolla.getInstance(rs);
-//                schoolList.add(shkolla);
-//            }
-//            tableSchools.setItems(schoolList);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void loadDirectorData() {
-//        directorList.clear();
-//        try (Connection conn = DBConnector.getConnection();
-//             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM drejtori");
-//             ResultSet rs = stmt.executeQuery()) {
-//
-//            while (rs.next()) {
-//                Drejtor drejtor = Drejtor.getInstance(rs);
-//                directorList.add(drejtor);
-//            }
-//            tableDirectors.setItems(directorList);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    @FXML
-//    private void handleAddSchool(ActionEvent event) {
-//        System.out.println("Shto shkollën");
-//    }
-//
-//    @FXML
-//    private void handleUpdateSchool(ActionEvent event) {
-//        System.out.println("Përditëso shkollën");
-//    }
-//
-//    @FXML
-//    private void handleDeleteSchool(ActionEvent event) {
-//        System.out.println("Fshij shkollën");
-//    }
+
+    @FXML private TextField txtId;
+    @FXML private TextField txtEmri;
+    @FXML private TextField txtTel;
+    @FXML private TextField txtAdresa;
+
+    private final ShkollaRepository repo = new ShkollaRepository();
+    private final BaseRepository base= new BaseRepository();
+
+    @FXML
+    private void shto() {
+        int adresaId = base.gjejId(txtAdresa.getText(), "Adresa");
+        CreateShkolla shkolla = new CreateShkolla(
+                txtEmri.getText(),
+                txtTel.getText(),
+                adresaId
+        );
+        boolean success = repo.shtoShkollen(shkolla);
+        showAlert(success, "Shtim", "Shkolla u shtua me sukses!", "Shtimi dështoi.");
+    }
+
+    @FXML
+    private void perditeso() {
+        int adresaId = base.gjejId(txtAdresa.getText(), "Adresa");
+        UpdateShkolla shkolla = new UpdateShkolla(
+                Integer.parseInt(txtId.getText()),
+                txtEmri.getText(),
+                txtTel.getText(),
+                adresaId
+        );
+        boolean success = repo.perditesoShkollen(shkolla);
+        showAlert(success, "Përditësim", "Shkolla u përditësua me sukses!", "Përditësimi dështoi.");
+    }
+
+    @FXML
+    private void fshij() {
+        int id = Integer.parseInt(txtId.getText());
+        boolean success = repo.fshijShkollen(id);
+        showAlert(success, "Fshirje", "Shkolla u fshi me sukses!", "Fshirja dështoi.");
+    }
+
+    private void showAlert(boolean success, String title, String msgSuccess, String msgFail) {
+        Alert alert = new Alert(success ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(success ? msgSuccess : msgFail);
+        alert.showAndWait();
+    }
 }

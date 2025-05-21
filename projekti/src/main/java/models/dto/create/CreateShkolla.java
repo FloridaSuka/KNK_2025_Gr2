@@ -1,32 +1,17 @@
-package main.java.models.dto.create;
-import models.Adresa;
+package models.dto.create;
 
 public class CreateShkolla {
-    private int id;
     private String emri;
     private String tel;
-    private Adresa adresa;
+    private int adresaId;
 
-    public CreateShkolla(int id, String emri, String tel, Adresa adresa) {
-        this.id = id;
+    public CreateShkolla(String emri, String tel, int adresaId) {
         this.emri = emri;
         this.tel = tel;
-        this.adresa = adresa;
+        this.adresaId = adresaId;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getEmri() {
-        return emri;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public Adresa getAdresa() {
-        return adresa;
-    }
+    public String getEmri() { return emri; }
+    public String getTel() { return tel; }
+    public int getAdresaId() { return adresaId; }
 }

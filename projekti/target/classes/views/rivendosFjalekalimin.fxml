@@ -73,6 +73,7 @@
                         <MenuItem fx:id="menuEN" mnemonicParsing="false" onAction="#handleEnglishLanguage" text="ENG" />
                     </items>
                 </MenuButton>
+                <fx:include source="globalView.fxml" />
             </children>
         </AnchorPane>
     </children>

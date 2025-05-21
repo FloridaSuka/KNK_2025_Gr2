@@ -68,4 +68,22 @@ public class MungesatRepository {
         }
         return null;
     }
+    public int numriMungesavePerGjinine(String gjinia) {
+        String sql = "SELECT COUNT(*) AS total FROM Mungesa m " +
+                "JOIN nxenesit n ON m.student_id = n.id " +
+                "WHERE n.gjinia = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, gjinia);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }
