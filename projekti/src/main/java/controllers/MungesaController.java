@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import models.Mungesa;
 import repositories.*;
+import services.MungesaService;
 import utils.LanguageHandler;
 import utils.SceneLocator;
 import utils.SceneNavigator;
@@ -43,6 +44,27 @@ public class MungesaController {
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ABSENCES_PAGE);
         mbushRaportinMungesave();
+        raportiMungesave.setCellFactory(list -> new ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+
+                    // Ngjyra sipas arsyes
+                    if (item.toLowerCase().contains("sëmurë")) {
+                        setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                    } else if (item.toLowerCase().contains("justifikuar")) {
+                        setStyle("-fx-text-fill: green;");
+                    } else {
+                        setStyle("-fx-text-fill: black;");
+                    }
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -64,6 +86,7 @@ public class MungesaController {
 
         if (success) {
             shfaqAlert("Sukses", "Mungesa u ruajt", "Të dhënat u ruajtën me sukses.", Alert.AlertType.INFORMATION);
+            mbushRaportinMungesave();
         } else {
             shfaqAlert("Gabim", "Dështoi ruajtja", "Nuk u arrit të ruhet mungesa.", Alert.AlertType.ERROR);
         }
@@ -90,6 +113,7 @@ public class MungesaController {
 
         if (success) {
             shfaqAlert("Sukses", "U përditësua", "Të dhënat u përditësuan me sukses.", Alert.AlertType.INFORMATION);
+            mbushRaportinMungesave();
         } else {
             shfaqAlert("Gabim", "Dështoi përditësimi", "Nuk u arrit të përditësohen të dhënat.", Alert.AlertType.ERROR);
         }
@@ -107,6 +131,7 @@ public class MungesaController {
 
         if (success) {
             lblStatus.setText("Mungesa u ruajt me sukses më: " + java.time.LocalDateTime.now());
+            mbushRaportinMungesave();
         } else {
             lblStatus.setText(" Dështoi ruajtja e mungesës.");
         }
@@ -125,6 +150,14 @@ public class MungesaController {
         for (Mungesa m : mungesat) {
             raportiMungesave.getItems().add(m.toString());
         }
+    }
+    @FXML
+    private void mbushRaportin() {
+        raportiMungesave.getItems().clear();
+        for (Mungesa m : MungesaService.gjejTeGjithaMungesat()) {
+            raportiMungesave.getItems().add(m.toString());
+        }
+
     }
 
 

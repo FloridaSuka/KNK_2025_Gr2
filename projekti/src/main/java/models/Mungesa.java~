@@ -115,5 +115,21 @@ public class Mungesa {
         return "[Mungesa: id=" + id + ", studentId=" + studentId + "] → " +
                 "(Lenda#" + lendaId + ", Perioda#" + periodaId + ", data=" + dataMungeses + ", arsyeja=" + arsyeja + ")";
     }
+    public static Mungesa fromResultSet(ResultSet rs) throws SQLException {
+        return new Mungesa(
+                rs.getInt("id"),
+                rs.getInt("student_id"),
+                rs.getInt("lenda_id"),
+                rs.getInt("perioda_id"),
+                rs.getDate("data_mungeses"),
+                rs.getString("arsyeja")
+        );
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d | Nxënësi ID: %d | Lënda ID: %d | Perioda ID: %d | Data: %s | Arsyeja: %s",
+                id, studentId, lendaId, periodaId, dataMungeses, arsyeja);
+    }
 
 }
