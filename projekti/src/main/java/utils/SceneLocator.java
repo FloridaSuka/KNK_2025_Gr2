@@ -32,6 +32,7 @@ public class SceneLocator {
     public final static String STUDENT_MANAGEMENT_PAGE = "/views/MenaxhimiNxenesve.fxml";
     public final static String PRINCIPAL_MANAGEMENT_PAGE = "/views/MenaxhimiDrejtoreve.fxml";
     public final static String PRINCIPAL_STATISTICS_PAGE = "/views/StatistikatDrejtor.fxml";
+    public static final String STUDENT_ABSENCES_PAGE = "/views/Mungesat.fxml";
 
     public static void locate(Event event, String form) {
         Node eventNode = (Node) event.getSource();
