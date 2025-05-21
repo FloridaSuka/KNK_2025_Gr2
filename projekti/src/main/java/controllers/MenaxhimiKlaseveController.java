@@ -3,6 +3,7 @@ package controllers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -10,6 +11,7 @@ import models.Klasa;
 import models.dto.create.CreateKlasa;
 import services.KlasaService;
 import utils.LanguageHandler;
+import utils.MenuUtils;
 import utils.SceneLocator;
 
 import java.util.List;
@@ -42,6 +44,62 @@ public class MenaxhimiKlaseveController {
         colDrejtimi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDrejtimi().getEmri()));
 
         mbushTabelen();
+        String name = this.getClass().getSimpleName();
+        System.out.println("🔍 Controller aktiv: " + name);
+        MenuUtils.populateOpenSubMenu(menuOpen, name);
+    }
+    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
+    @FXML private Menu menuOpen;
+
+    @FXML
+    public void handleNew(ActionEvent event) {
+        MenuUtils.handleNew();
+    }
+
+    @FXML
+    public void handleOpen() {
+        // Shembull: ky controller është për admin
+        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
+    }
+
+    @FXML
+    public void handleQuit() {
+        System.exit(0);
+    }
+
+    @FXML
+    public void handleUndo() {
+        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleRedo() {
+        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleCut() {
+        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleCopy() {
+        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handlePaste() {
+        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleSelectAll() {
+        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleHelp() {
+        MenuUtils.openhelp();
     }
     @FXML private TableView<Klasa> tabelaKlasave;
     @FXML private TableColumn<Klasa, Integer> colId;
