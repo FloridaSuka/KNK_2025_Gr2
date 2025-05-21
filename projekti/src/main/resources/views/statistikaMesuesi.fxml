@@ -56,13 +56,13 @@
         <BarChart fx:id="barChart"
                   legendSide="RIGHT"
                   prefHeight="400.0" prefWidth="760.0"
-                  title="Nota sipas Gjinive"
+                  title="%notasipasgjinive"
                   style="-fx-title-text-fill: white;">
             <xAxis>
                 <CategoryAxis label="Nota" style="-fx-tick-label-font-size: 10px; -fx-label-fill: white; -fx-tick-label-fill: white;" />
             </xAxis>
             <yAxis>
-                <NumberAxis label="Numri i Studentëve"
+                <NumberAxis label="%nrstudent"
                             style="-fx-label-fill: white; -fx-tick-label-fill: white;" />
             </yAxis>
         </BarChart>
@@ -73,13 +73,13 @@
 
             <VBox alignment="CENTER" prefHeight="90.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
                 <Label fx:id="lblTotalNxenesit" style="-fx-font-size: 32px; -fx-text-fill: orange; -fx-font-weight: bold;" text="0" />
-                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="Numri i nxenesve" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="%nrstudent" />
             </VBox>
 
 
             <VBox alignment="CENTER" prefHeight="90.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
                 <Label fx:id="lblMesatare" style="-fx-font-size: 32px; -fx-text-fill: orange; -fx-font-weight: bold;" text="0" />
-                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="Nota mesatare" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="%notames" />
             </VBox>
 
 

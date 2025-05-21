@@ -8,11 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.Tooltip;
 import repositories.MesuesiRepository;
 import repositories.MungesatRepository;
 import repositories.NotatRepository;
 import repositories.NxenesitRepository;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class StatistikatDrejtorController {
 
@@ -38,11 +41,15 @@ public class StatistikatDrejtorController {
     private final MungesatRepository mungesatRepo = new MungesatRepository();
     private final MesuesiRepository mesuesitRepo = new MesuesiRepository();
     private final NxenesitRepository nxenesitRepo = new NxenesitRepository();
+    @FXML
+    private MenuButton menuLanguage;
 
     @FXML
     public void initialize() {
         ngarkoGrafiket();
         btnRifresko.setOnAction(e -> ngarkoGrafiket());
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.PRINCIPAL_STATISTICS_PAGE);
+
     }
 
     private void ngarkoGrafiket() {

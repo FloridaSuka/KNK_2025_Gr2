@@ -8,12 +8,15 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import models.User;
 import repositories.MesuesiRepository;
 import repositories.NotatRepository;
 import services.UserService;
+import utils.LanguageHandler;
+import utils.SceneLocator;
 
 public class StatistikatMesuesiController {
 
@@ -32,10 +35,13 @@ public class StatistikatMesuesiController {
     private void onBtnRifreskoClicked() {
         initialize();
     }
+    @FXML
+    private MenuButton menuLanguage;
 
     @FXML
     public void initialize() {
         User user = UserService.getCurrentUser();
+        LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.TEACHER_STATISTICS_PAGE);
 
         if (user != null) {
             String email = user.getEmail();
