@@ -77,22 +77,22 @@
                      <children>
                         <Label layoutX="128.0" layoutY="73.0" text="%shkollaId" AnchorPane.rightAnchor="223.99999999999997" />
                         <TextField fx:id="txtIdShkolla" layoutX="213.0" layoutY="70.0" AnchorPane.rightAnchor="46.99999999999994" />
-                        <Label layoutX="75.0" layoutY="103.0" text="%addUserLabelName" AnchorPane.rightAnchor="220.33333333333331" />
+                        <Label layoutX="128.0" layoutY="103.0" text="%addUserLabelName" AnchorPane.rightAnchor="220.33333333333331" />
                         <TextField fx:id="txtEmri" layoutX="213.0" layoutY="100.0" AnchorPane.rightAnchor="46.99999999999994" />
-                        <Label layoutX="82.0" layoutY="163.0" text="%drejtorTel" AnchorPane.rightAnchor="266.0" />
+                        <Label layoutX="130.0" layoutY="163.0" text="%drejtorTel" AnchorPane.rightAnchor="266.0" />
                         <TextField fx:id="txtTel" layoutX="213.0" layoutY="160.0" AnchorPane.rightAnchor="46.99999999999994" />
                         <Button layoutX="81.0" layoutY="330.0" onAction="#fshijDrejtor" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="%_fshij" />
                         <Button layoutX="157.0" layoutY="330.0" onAction="#perditesoDrejtor" prefHeight="25.0" prefWidth="63.0" text="%_perditso" />
                         <Button layoutX="300.0" layoutY="330.0" onAction="#shtoDrejtor" prefHeight="25.0" prefWidth="63.0" text="%_shto" />
                         <Label layoutX="129.0" layoutY="43.0" text="%drejtorId" />
                         <TextField fx:id="txtId" layoutX="213.0" layoutY="40.0" />
-                        <Label layoutX="67.0" layoutY="133.0" text="%addUserLabelSurname" />
+                        <Label layoutX="128.0" layoutY="133.0" text="%addUserLabelSurname" />
                         <TextField fx:id="txtMbiemri" layoutX="213.0" layoutY="130.0" />
-                        <Label layoutX="77.0" layoutY="193.0" text="%addUserLabelEmail" />
+                        <Label layoutX="128.0" layoutY="193.0" text="%addUserLabelEmail" />
                         <TextField fx:id="txtEmail" layoutX="213.0" layoutY="190.0" />
-                        <Label layoutX="90.0" layoutY="223.0" text="%adresa" />
+                        <Label layoutX="128.0" layoutY="223.0" text="%adresa" />
                         <TextField fx:id="txtAdresa" layoutX="213.0" layoutY="220.0" />
-                        <Label layoutX="82.0" layoutY="254.0" text="%zip" />
+                        <Label layoutX="128.0" layoutY="254.0" text="%zip" />
                         <TextField fx:id="txtzip" layoutX="213.0" layoutY="250.0" />
 
                      </children>

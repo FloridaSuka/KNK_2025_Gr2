@@ -45,7 +45,7 @@ public class MenaxhimiDrejtoreveController {
 
     @FXML
     public void initialize() {
-
+        mbushTabelen();
         String name = this.getClass().getSimpleName();
         System.out.println("🔍 Controller aktiv: " + name);
         MenuUtils.populateOpenSubMenu(menuOpen, name);
