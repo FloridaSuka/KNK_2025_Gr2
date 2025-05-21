@@ -102,8 +102,10 @@
                         <TableColumn fx:id="colLenda" text="%lenda" prefWidth="180"/>
                     </columns>
                 </TableView>
+                <fx:include source="globalView.fxml" />
             </children>
         </AnchorPane>
+
     </children>
 </VBox>
 

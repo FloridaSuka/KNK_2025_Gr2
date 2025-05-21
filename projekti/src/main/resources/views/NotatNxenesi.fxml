@@ -78,7 +78,7 @@
             </AnchorPane>
         </HBox>
 
-
+        <fx:include source="globalView.fxml" />
 
     </VBox>
 </VBox>
