@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import models.dto.update.UpdateUser;
 import services.UserService;
 import utils.LanguageHandler;
+import utils.MenuUtils;
 import utils.SceneLocator;
 
 import java.util.Locale;
@@ -33,8 +34,63 @@ public class RivendosFjalekaliminController {
     @FXML
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.RESET_PASSWORD);
+        String name = this.getClass().getSimpleName();
+        System.out.println("🔍 Controller aktiv: " + name);
+        MenuUtils.populateOpenSubMenu(menuOpen, name);
+    }
+    @FXML private MenuItem menuCut, menuCopy, menuPaste, menuUndo, menuSelectAll, menuRedo;
+    @FXML private Menu menuOpen;
+
+    @FXML
+    public void handleNew(ActionEvent event) {
+        MenuUtils.handleNew();
     }
 
+    @FXML
+    public void handleOpen() {
+        // Shembull: ky controller është për admin
+        MenuUtils.openConditionalView("MenaxhimiDrejtoreveController", "menaxhimiDrejtoreve.fxml", "Menaxhimi i Drejtoreve");
+    }
+
+    @FXML
+    public void handleQuit() {
+        System.exit(0);
+    }
+
+    @FXML
+    public void handleUndo() {
+        MenuUtils.performUndo(menuUndo.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleRedo() {
+        MenuUtils.performRedo(menuRedo.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleCut() {
+        MenuUtils.performCut(menuCut.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleCopy() {
+        MenuUtils.performCopy(menuCopy.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handlePaste() {
+        MenuUtils.performPaste(menuPaste.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleSelectAll() {
+        MenuUtils.performSelectAll(menuSelectAll.getParentPopup().getOwnerWindow().getScene());
+    }
+
+    @FXML
+    public void handleHelp() {
+        MenuUtils.openhelp();
+    }
     @FXML
     void handleChange(ActionEvent event) {
         String username = txtUsername.getText().trim();
