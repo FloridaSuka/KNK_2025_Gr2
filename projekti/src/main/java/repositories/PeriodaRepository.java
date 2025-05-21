@@ -4,8 +4,6 @@ import database.DBConnector;
 import models.Perioda;
 import models.dto.create.CreatePerioda;
 import models.dto.update.UpdatePerioda;
-import models.dto.delete.DeletePerioda;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
