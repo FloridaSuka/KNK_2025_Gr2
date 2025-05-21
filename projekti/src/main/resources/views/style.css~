@@ -92,11 +92,5 @@
 .center-pane{
     -fx-align: center;
 }
-.list-view {
-    -fx-font-size: 14px;
-    -fx-text-fill: darkgreen;  /* ose red, blue, orange... */
-    -fx-font-weight: bold;
-}
-
 
 

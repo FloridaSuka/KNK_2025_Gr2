@@ -44,6 +44,27 @@ public class MungesaController {
     public void initialize() {
         LanguageHandler.configureLanguageMenu(menuLanguage, SceneLocator.ABSENCES_PAGE);
         mbushRaportinMungesave();
+        raportiMungesave.setCellFactory(list -> new ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+
+                    // Ngjyra sipas arsyes
+                    if (item.toLowerCase().contains("sëmurë")) {
+                        setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                    } else if (item.toLowerCase().contains("justifikuar")) {
+                        setStyle("-fx-text-fill: green;");
+                    } else {
+                        setStyle("-fx-text-fill: black;");
+                    }
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -136,6 +157,7 @@ public class MungesaController {
         for (Mungesa m : MungesaService.gjejTeGjithaMungesat()) {
             raportiMungesave.getItems().add(m.toString());
         }
+
     }
 
 
