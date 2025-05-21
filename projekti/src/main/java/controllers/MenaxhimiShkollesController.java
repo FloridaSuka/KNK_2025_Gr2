@@ -7,9 +7,9 @@ import javafx.scene.control.TextField;
 import models.Shkolla;
 import models.dto.create.CreateShkolla;
 import models.dto.update.UpdateShkolla;
-import repositories.BaseRepository;
+import repositories.AdresaRepository;
 import repositories.ShkollaRepository;
-
+import static utils.ZipUtils.gjejQytetinNgaZip;
 import java.util.List;
 
 public class MenaxhimiShkollesController {
@@ -18,44 +18,64 @@ public class MenaxhimiShkollesController {
     @FXML private TextField txtEmri;
     @FXML private TextField txtTel;
     @FXML private TextField txtAdresa;
+    @FXML private TextField txtZip;
     @FXML
     private ListView<String> raportiShkollave;
 
     private final ShkollaRepository repo = new ShkollaRepository();
-    private final BaseRepository base= new BaseRepository();
-
+    private final AdresaRepository adresaRepo = new AdresaRepository();
     @FXML
     private void shto() {
-        int adresaId = base.gjejId(txtAdresa.getText(), "Adresa");
-        CreateShkolla shkolla = new CreateShkolla(
+        String rruga = txtAdresa.getText();
+        String kodiPostar = txtZip.getText();
+        String qyteti = gjejQytetinNgaZip(kodiPostar);
+
+        if (qyteti == null) {
+            showAlert(false, "Gabim", "Kodi postar i panjohur!", "Kontrolloni kodin postar.");
+            return;
+        }
+
+        AdresaRepository adresaRepo = new AdresaRepository();
+        Integer adresaId = adresaRepo.shtoAdrese(qyteti, rruga, kodiPostar);
+
+        if (adresaId == null) {
+            showAlert(false, "Gabim", "Adresa nuk u ruajt!", "Adresa dështoi.");
+            return;
+        }
+        CreateShkolla shkolla=new CreateShkolla(
                 txtEmri.getText(),
                 txtTel.getText(),
                 adresaId
         );
-        boolean success = repo.shtoShkollen(shkolla);
+
+        ShkollaRepository shkollarepo=new ShkollaRepository();
+        boolean success = shkollarepo.shtoShkollen(shkolla);
 
 
-        if (success) {
-            String raport = "📘 Shkolla: " + txtEmri.getText() + " | Tel: " + txtTel.getText();
-            raportiShkollave.getItems().add(raport);
-        }
+        showAlert(success, "Shtim", "Shkolla u shtua me sukses!", "Shtimi dështoi.");
     }
 
     @FXML
     private void perditeso() {
-        int adresaId = base.gjejId(txtAdresa.getText(), "Adresa");
+        int id = Integer.parseInt(txtId.getText());
+        String rruga = txtAdresa.getText();
+        String zip = txtZip.getText();
+        Integer adresaId = 0;
+        if (!rruga.isBlank() && !zip.isBlank()) {
+            String qyteti = gjejQytetinNgaZip(zip);
+            if (qyteti != null) {
+                adresaId = adresaRepo.shtoAdrese(qyteti, rruga, zip);
+            }
+        }
         UpdateShkolla shkolla = new UpdateShkolla(
-                Integer.parseInt(txtId.getText()),
-                txtEmri.getText(),
-                txtTel.getText(),
+                id,
+                txtEmri.getText().isBlank() ? null : txtEmri.getText(),
+                txtTel.getText().isBlank() ? null : txtTel.getText(),
                 adresaId
         );
+
         boolean success = repo.perditesoShkollen(shkolla);
-
-        if (success) {
-            raportiShkollave.getItems().add(" Përditësim: " + txtEmri.getText() + " | Tel: " + txtTel.getText());
-        }
-
+        showAlert(success, "Përditësim", "Shkolla u përditësua me sukses!", "Përditësimi dështoi.");
     }
 
     @FXML
