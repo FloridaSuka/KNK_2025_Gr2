@@ -104,11 +104,16 @@
                             </Group>
                         </children>
                     </StackPane>
+
                 </children>
             <padding>
                <Insets right="20.0" />
             </padding>
             </AnchorPane>
+
         </HBox>
+        <fx:include source="globalView.fxml" />
+
     </VBox>
+
 </VBox>

@@ -13,7 +13,7 @@ import services.UserService;
 public class NotatNxenesiController {
 
     @FXML
-    private PieChart PieChart;
+    private PieChart grafika;
 
     @FXML
     private Button btnRifresko;
@@ -48,11 +48,11 @@ public class NotatNxenesiController {
 
     private void loadPieChartData() {
         if (currentNxenesiId <= 0) {
-            PieChart.getData().clear();
+            grafika.getData().clear();
             return; // Nuk ka nxenes aktiv
         }
 
-        PieChart.getData().clear();
+        grafika.getData().clear();
 
         // Përdor funksionin numriNotavePerNxenesin për nota 1-5
         for (int nota = 1; nota <= 5; nota++) {
@@ -61,7 +61,7 @@ public class NotatNxenesiController {
             // Shto në PieChart vetëm nëse ka të dhëna
             if (count > 0) {
                 PieChart.Data slice = new PieChart.Data("Nota " + nota, count);
-                PieChart.getData().add(slice);
+                grafika.getData().add(slice);
             }
         }
     }
