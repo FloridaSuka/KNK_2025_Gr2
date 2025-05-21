@@ -19,28 +19,61 @@
         <Button fx:id="btnRifresko" text="🔄 Rifresko"
                 layoutX="750" layoutY="20" prefWidth="120" prefHeight="30" />
 
-        <!-- Zona ku vendosen grafikët -->
-        <AnchorPane layoutX="100" layoutY="70" prefWidth="700" prefHeight="500"
-                    style="-fx-border-color: #2a9d8f; -fx-border-width: 2px; -fx-border-radius: 15px; -fx-background-radius: 15px;">
+        <!-- Layout horizontal që ndan ekranin në dy pjesë -->
+        <HBox layoutX="50" layoutY="80" spacing="40" prefWidth="800" prefHeight="500">
 
-            <children>
+            <!-- VBox për statistikat në të majtë -->
+            <VBox alignment="CENTER" spacing="20"
+                  prefWidth="300" prefHeight="500">
+                <VBox alignment="CENTER" spacing="10"
+                      prefWidth="300" prefHeight="150"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                    <Label fx:id="lblMesuesit" text="0"
+                           style="-fx-font-size: 36px; -fx-text-fill: orange; -fx-font-weight: bold;" />
+                    <Label text="Numri i mesuesve"
+                           style="-fx-font-size: 14px; -fx-text-fill: #444;" />
+                </VBox>
+                <VBox alignment="CENTER" spacing="10"
+                      prefWidth="300" prefHeight="150"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                    <Label fx:id="lblTotalNxenesit" text="0"
+                           style="-fx-font-size: 36px; -fx-text-fill: orange; -fx-font-weight: bold;" />
+                    <Label text="Numri i nxenesve"
+                           style="-fx-font-size: 14px; -fx-text-fill: #444;" />
+                </VBox>
 
-                <!-- StackPane për të përqendruar grafikët -->
-                <StackPane layoutX="150" layoutY="50" prefWidth="400" prefHeight="400" alignment="CENTER">
-                    <!-- Outer PieChart: Notat -->
-                    <PieChart fx:id="outerPieChart"
-                              prefWidth="400" prefHeight="400"
-                              style="-fx-background-color: transparent;" />
 
-                    <!-- Inner PieChart: Mungesat, zvogëluar me scale -->
-                    <Group scaleX="0.45" scaleY="0.45">
-                        <PieChart fx:id="innerPieChart"
-                                  style="-fx-background-color: transparent; -fx-font-size: 30px;" />
-                    </Group>
-                </StackPane>
+                <VBox alignment="CENTER" spacing="10"
+                      prefWidth="300" prefHeight="150"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                    <Label fx:id="lblMungesat" text="0"
+                           style="-fx-font-size: 36px; -fx-text-fill: orange; -fx-font-weight: bold;" />
+                    <Label text="Numri i mungesave"
+                           style="-fx-font-size: 14px; -fx-text-fill: #444;" />
+                </VBox>
 
-                <fx:include source="globalView.fxml" />
-            </children>
-        </AnchorPane>
+                <!-- Mund të shtosh më shumë VBox për statistika të tjera këtu -->
+            </VBox>
+
+            <!-- Zona e grafikëve në të djathtë -->
+            <AnchorPane prefWidth="500" prefHeight="500"
+                        style="-fx-border-color: #2a9d8f; -fx-border-width: 2px; -fx-border-radius: 15px; -fx-background-radius: 15px;">
+                <children>
+                    <StackPane layoutX="50" layoutY="50" prefWidth="400" prefHeight="400" alignment="CENTER">
+                        <PieChart fx:id="outerPieChart"
+                                  prefWidth="400" prefHeight="400"
+                                  style="-fx-background-color: transparent;" />
+                        <Group scaleX="0.45" scaleY="0.45">
+                            <PieChart fx:id="innerPieChart"
+                                      style="-fx-background-color: transparent; -fx-font-size: 30px;" />
+                        </Group>
+                    </StackPane>
+
+                    <fx:include source="globalView.fxml" />
+                </children>
+            </AnchorPane>
+
+        </HBox>
+
     </children>
 </AnchorPane>

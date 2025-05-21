@@ -6,9 +6,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import repositories.MesuesiRepository;
 import repositories.MungesatRepository;
 import repositories.NotatRepository;
+import repositories.NxenesitRepository;
 
 public class StatistikatDrejtorController {
 
@@ -28,6 +31,8 @@ public class StatistikatDrejtorController {
     public void initialize() {
         ngarkoGrafiket();
         btnRifresko.setOnAction(e -> ngarkoGrafiket());
+        int total = nxenesitRepo.merrNumrinENxenesve();
+        lblTotalNxenesit.setText(String.valueOf(total));
     }
 
     private void ngarkoGrafiket() {
@@ -62,6 +67,12 @@ public class StatistikatDrejtorController {
             vendosTooltip(notat);
             vendosTooltip(mungesatNormalizuara);
         });
+        int nxenesat = nxenesitRepo.merrNumrinENxenesve();
+        lblTotalNxenesit.setText(String.valueOf(nxenesat));
+        int mesueset = mesuesitRepo.merrNumrinEMesuesve();
+        lblMesuesit.setText(String.valueOf(mesueset));
+        int nrMungesat = mungesatRepo.numriMungesavePerGjinine("M")+mungesatRepo.numriMungesavePerGjinine("F");
+        lblMungesat.setText(String.valueOf(nrMungesat));
     }
 
     private ObservableList<PieChart.Data> normalizo(ObservableList<PieChart.Data> lista) {
@@ -92,5 +103,21 @@ public class StatistikatDrejtorController {
             Tooltip.install(data.getNode(), tooltip);
         }
     }
+    @FXML
+    private Label lblTotalNxenesit;
+
+    private final NxenesitRepository nxenesitRepo = new NxenesitRepository();
+
+
+    @FXML
+    private Label lblMesuesit;
+
+    private final MesuesiRepository mesuesitRepo = new MesuesiRepository();
+
+    @FXML
+    private Label lblMungesat;
+    private final MungesatRepository mungesatRepo = new MungesatRepository();
+
+
 }
 

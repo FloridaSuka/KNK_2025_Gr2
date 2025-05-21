@@ -48,4 +48,22 @@ public class MesuesiRepository {
             e.printStackTrace(); return false;
         }
     }
+    public int merrNumrinEMesuesve() {
+        int count = 0;
+
+        try (Connection conn = DBConnector.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM mesuesi")) {
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // ose log.error(e);
+        }
+
+        return count;
+    }
+
 }

@@ -80,6 +80,24 @@ public class NxenesitRepository {
         }
         return null;
     }
+    public int merrNumrinENxenesve() {
+        int count = 0;
+
+        try (Connection conn = DBConnector.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM nxenesit")) {
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // ose log.error(e);
+        }
+
+        return count;
+    }
+
 
 
 }
