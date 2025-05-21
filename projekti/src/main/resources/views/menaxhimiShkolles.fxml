@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ListView?>
 <VBox fillWidth="false" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiShkollesController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
@@ -104,11 +105,15 @@
                               <Label layoutX="80.0" layoutY="193.0" text="%adresashkolles" AnchorPane.rightAnchor="236.0" />
                               <TextField fx:id="txtAdresa" layoutX="215.0" layoutY="189.0" AnchorPane.rightAnchor="45.66666666666663" />
                               <Label layoutX="82.0" layoutY="226.0" text="%drejtorTel" AnchorPane.rightAnchor="262.0" />
+
                               <TextField fx:id="txtTel" layoutX="215.0" layoutY="222.0" AnchorPane.rightAnchor="45.66666666666663" />
                         <Button layoutX="83.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="%_fshij" onAction="#fshij"/>
                               <Button layoutX="159.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="%_perditso" onAction="#perditeso"/>
+
                         <Button layoutX="302.0" layoutY="288.0" prefHeight="25.0" prefWidth="63.0" text="%_shto" onAction="#shto"/>
-                        <Label layoutX="80.0" layoutY="158.0" text="%drejtorEmri" />
+                              <ListView fx:id="raportiShkollave" prefHeight="150.0" prefWidth="400.0" AnchorPane.topAnchor="350.0" AnchorPane.leftAnchor="14.0" />
+
+                              <Label layoutX="80.0" layoutY="158.0" text="%drejtorEmri" />
                         <TextField fx:id="txtEmri" layoutX="215.0" layoutY="154.0" />
                           </children>
                       </AnchorPane>
